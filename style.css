@@ -1,0 +1,435 @@
+/* Reset default margin and padding, set base font */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Mena Grotesk", sans-serif;
+}
+
+/* Main wrapper for the whole page layout */
+.revit-container {
+  height: 100vh;
+  width: 100%;
+  max-width: 1700px;
+  margin: auto;
+  padding-bottom: 300px; /* Extra space below content */
+}
+
+/* Header wrapper */
+header {
+  width: 90%;
+  margin: auto;
+}
+
+/* Navigation content area */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Group logo and nav links */
+.logo-and-navlinks {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  width: 80%;
+}
+
+/* Logo container dimensions */
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+/* Scale logo image to fit container */
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Style the navigation links */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 30px;
+  font-weight: 400;
+}
+
+/* Style for navigation call-to-action button */
+.nav-cta-btn {
+  background-color: #d17609;
+  padding: 0 20px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Hero section wrapper */
+.hero-container {
+  width: 90%;
+  height: 553px;
+  margin: 20px auto;
+  border-radius: 20px;
+  border: 3px solid #d17609;
+  background-image: url("./Images/hero\ page\ img.jpg");
+  background-position: center;
+}
+
+/* Position hero text within the container */
+.the-hero-content {
+  width: 90%;
+  margin: auto;
+  position: relative;
+  top: 60px;
+  color: white;
+}
+
+/* Main hero heading */
+.the-hero-content .text-part h1 {
+  width: 600px;
+  font-size: 56px;
+  font-weight: 900;
+}
+
+/* Hero subtext */
+.the-hero-content .text-part p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Floating content bar under hero text */
+.the-floating-bar {
+  margin-top: 20px;
+  width: 557px;
+  height: 217px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #494249, #101112);
+  border: 1px solid rgba(255, 255, 255, 0.501);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+}
+
+/* Base style for elements inside floating bar */
+.the-floating-bar div {
+  height: 40px;
+  width: 90%;
+  border-radius: 40px;
+}
+
+/* Wrapper for hero call-to-action buttons */
+.hero-cta-btn {
+  background-color: #575452;
+  border: 0.5px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Individual hero buttons */
+.hero-cta-btn .text {
+  width: 50%;
+  height: 100%;
+  border-radius: 40px;
+  text-align: center;
+  background-color: #57545200; /* Transparent */
+  color: white;
+}
+
+/* Active state for buttons */
+.active {
+  background: linear-gradient(to top, #414244, #5f5b58);
+  border: 2px solid white;
+}
+
+/* Inactive button has no border */
+.inactive {
+  border: none;
+}
+
+/* Search bar container styling */
+.the-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 500px;
+  height: 60px;
+  background-color: white;
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for search input field */
+.the-search-bar input {
+  height: 100%;
+  width: 70%;
+  padding-left: 10px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+/* Search button styling */
+.the-search-bar button {
+  width: 150px;
+  height: 45px;
+  background-color: #000;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+
+/* Icon size inside button */
+button svg {
+  font-size: 40px;
+  color: #d17609;
+}
+
+/* Adjust text alignment inside button */
+button p {
+  margin-top: 3px;
+}
+
+/* Companies logo list style */
+.companies-logo-list {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  height: 100%;
+  width: 100%;
+  color: #89898af2;
+}
+
+/* Wrapper for the main sections (About, Services, etc.) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* About section layout */
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  height: 412px;
+}
+
+/* About text column */
+.about-text {
+  max-width: 600px;
+}
+
+/* About heading */
+.about-text h2 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+/* Paragraph spacing in about section */
+.about-text .sub-header {
+  font-size: 24px;
+  line-height: 30.38px;
+  font-weight: 600;
+  color: #404051;
+  margin-top: 40px;
+}
+
+.about-text p {
+  font-size: i6px;
+  line-height: 31.14px;
+  font-weight: 500;
+  color: #404051;
+  margin-top: 40px;
+}
+
+/* Right-aligned metrics */
+.about-numbers {
+  text-align: right;
+  margin-top: 160px;
+  padding-left: 20px;
+  border-left: 0.76px solid #060318;
+}
+
+.about-numbers .the-no-text {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Styling each stat in about section */
+.about-numbers .numbers {
+  font-size: 44.05px;
+  font-weight: 400;
+  text-align: start;
+}
+
+/* Learn more input + button */
+
+/* Search bar container styling */
+.keyword-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 700px;
+  margin-top: 20px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50px;
+  border: 1.74px solid #2c292db2;
+  padding: 5px;
+}
+
+/* Style for search input field */
+.keyword-search-bar input {
+  height: 100%;
+  width: 70%;
+  padding-left: 10px;
+  font-size: 20.32px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+/* Search button styling */
+.keyword-search-bar button {
+  width: 227px;
+  height: 55px;
+  background-color: #000;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  padding: 0 10px;
+}
+
+/* Icon size inside button */
+.keyword-search-bar button svg {
+  font-size: 30px;
+  color: #d17609;
+}
+
+/* Adjust text alignment inside button */
+.keyword-search-bar button p {
+  margin-top: 3px;
+  color: white;
+  font-size: 20.79px;
+}
+
+/* Services section wrapper */
+.services {
+  margin-top: 150px;
+}
+
+/* Services heading */
+.services h3 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+/* Grid layout for services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Each service card */
+.services-grid .the-content-container {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: start;
+}
+
+.services-grid .the-content-container .the-image-container {
+  width: 100%;
+  height: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.services-grid .the-content-container .the-image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.services-grid .the-content-container .the-text-part {
+  font-size: 20px;
+}
+
+/* Highlight or promo section */
+.highlight-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d17609;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 3rem 0;
+}
+
+/* Highlight text container */
+.highlight-section .text {
+  max-width: 50%;
+}
+
+/* Button inside highlight section */
+.highlight-section button {
+  margin-top: 1rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Portfolio section background and style */
+.portfolio {
+  background-color: #1f1f1f;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* Portfolio heading */
+.portfolio h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+/* Grid layout for portfolio items */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* Portfolio item cards */
+.portfolio-grid div {
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 8px;
+}

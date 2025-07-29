@@ -1,0 +1,276 @@
+<!-- Declare the document type and version -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8" />
+
+    <!-- Ensures proper rendering on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title of the webpage shown in browser tab -->
+    <title>Revit-Systems</title>
+
+    <!-- Preconnect to Google's font service for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Import Host Grotesk font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Import Mena Grotesk font from cdnfonts.com -->
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+
+    <!-- Import Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- Main container for the entire page -->
+    <div class="revit-container">
+      <!-- Header section containing navigation -->
+      <header>
+        <nav>
+          <div class="nav-content">
+            <!-- Logo and Navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Company logo image -->
+                <img src="./Images/Logo/without bg black font.png" alt="" />
+              </div>
+              <!-- Navigation links list -->
+              <ul class="nav-links">
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Services</li>
+                <li>Portfolio</li>
+                <li>Blog</li>
+                <li>Contact Us</li>
+              </ul>
+            </div>
+            <!-- Call-to-action button -->
+            <button class="nav-cta-btn">Get Started</button>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Hero section -->
+      <div class="hero-container">
+        <div class="the-hero-content">
+          <div class="text-part">
+            <!-- Main headline -->
+            <h1>Innovative Solutions for your Business Growth</h1>
+            <!-- Supporting tagline -->
+            <p>
+              Empowering brands with creative, digital and software solutions
+            </p>
+          </div>
+
+          <!-- Floating bar under the hero content -->
+          <div class="the-floating-bar">
+            <!-- Call-to-action buttons -->
+            <div class="hero-cta-btn">
+              <button class="text active">Explore Services</button>
+              <button class="text inactive">Get a Quote</button>
+            </div>
+
+            <!-- Search bar -->
+            <div class="the-search-bar">
+              <input type="text" placeholder="Search by Keyword" />
+              <button>
+                <!-- Magnifying glass SVG icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <p>Search</p>
+              </button>
+            </div>
+
+            <!-- Trusted companies logos (currently text) -->
+            <div class="companies-logo">
+              <ul class="companies-logo-list">
+                <li>Microsoft</li>
+                <li>AirBnB</li>
+                <li>Bisell</li>
+                <li>Glass Door</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main container for page sections -->
+      <div class="container">
+        <!-- About Us section -->
+        <section class="about-section">
+          <div class="about-text">
+            <h2>About us</h2>
+            <!-- Brief company description -->
+            <p class="sub-header">
+              We are borne with the responsibility of helping businesses reach
+              their customers!!!
+            </p>
+            <p>
+              Revit system is a multidisciplinary B2B agency providing branding,
+              software development, digital marketing, and business consulting
+              services We look forward to majoring in custom software
+              engineering and system automation. we employ a systemic approach
+              to helping you solve your business problems and facilitate growth.
+              We are a trusted brand partner with all tech solutions to every
+              businesses hurdles and challenges.
+            </p>
+            <!-- Input and button for learning more -->
+            <div class="keyword-search-bar">
+              <input type="text" placeholder="Learn More About Us!!!" />
+              <button>
+                <!-- Magnifying glass SVG icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <!-- Shaft from far left (x1 = 0) to arrowhead (x2 = 19) -->
+                  <line x1="0" y1="12" x2="19" y2="12" />
+                  <!-- Arrowhead -->
+                  <polyline points="12 5, 19 12, 12 19" />
+                </svg>
+
+                <p>Click Here</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Company stats -->
+          <div class="about-numbers">
+            <div class="the-no-text">
+              <div>
+                <p class="numbers">7 years</p>
+                <p>Years of experience</p>
+              </div>
+              <div>
+                <p class="numbers">005</p>
+                <p>Companies served</p>
+              </div>
+              <div>
+                <p class="numbers">06</p>
+                <p>Team size/expertise</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services section -->
+        <section class="services">
+          <h3>Services</h3>
+          <!-- Grid of services offered -->
+          <div class="services-grid">
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img src="./Images/the services image/Branding.jpg" alt="" />
+              </div>
+              <div class="the-text-part">Branding</div>
+            </div>
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img
+                  src="./Images/the services image/Digitl Marketing.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="the-text-part">Digital Marketing</div>
+            </div>
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img
+                  src="./Images/the services image/Software development.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="the-text-part">Software Development</div>
+            </div>
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img
+                  src="./Images/the services image/Business Consultant.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="the-text-part">Business Consultation</div>
+            </div>
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img
+                  src="./Images/the services image/Product Design.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="the-text-part">Product Design</div>
+            </div>
+            <div class="the-content-container">
+              <div class="the-image-container">
+                <img
+                  src="./Images/the services image/Automated Systems Design.png"
+                  alt=""
+                />
+              </div>
+              <div class="the-text-part">Automated System Designs</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Highlight/Promo section -->
+        <section class="highlight-section">
+          <div class="text">
+            <h3>Get insights into Revit Services</h3>
+            <p>
+              We are just a click away. Looking forward to working with you.
+            </p>
+            <!-- Call-to-action button -->
+            <button>Request Service</button>
+          </div>
+          <!-- Example image (can be replaced) -->
+          <img src="https://via.placeholder.com/150" alt="Smiling man" />
+        </section>
+
+        <!-- Portfolio section -->
+        <section class="portfolio">
+          <h3>Portfolio</h3>
+          <!-- Grid of portfolio projects -->
+          <div class="portfolio-grid">
+            <div>Market Research</div>
+            <div>Ads Production</div>
+            <div>Branding Strategies</div>
+          </div>
+        </section>
+      </div>
+      <!-- End of .container -->
+    </div>
+    <!-- End of .revit-container -->
+  </body>
+</html>
