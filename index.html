@@ -1,53 +1,54 @@
-<!-- Declare the document type and version -->
+<!-- Declare the document type as HTML5 -->
 <!DOCTYPE html>
+<!-- Define the HTML document with English as the primary language -->
 <html lang="en">
   <head>
-    <!-- Character encoding for the document -->
+    <!-- Specify the character encoding for the document -->
     <meta charset="UTF-8" />
 
-    <!-- Ensures proper rendering on mobile devices -->
+    <!-- Configure viewport for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Title of the webpage shown in browser tab -->
+    <!-- Set the webpage title displayed in the browser tab -->
     <title>Revit-Systems</title>
 
-    <!-- Preconnect to Google's font service for performance -->
+    <!-- Preconnect to Google Fonts for improved font loading performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Import Host Grotesk font from Google Fonts -->
+    <!-- Load Host Grotesk font from Google Fonts with specified weights and styles -->
     <link
       href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Import Mena Grotesk font from cdnfonts.com -->
+    <!-- Load Mena Grotesk font from cdnfonts.com -->
     <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
 
-    <!-- Import Font Awesome icons -->
+    <!-- Include Font Awesome library for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Link to your custom CSS file -->
+    <!-- Link to the custom CSS stylesheet -->
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
-    <!-- Main container for the entire page -->
+    <!-- Main wrapper for the entire page content -->
     <div class="revit-container">
-      <!-- Header section containing navigation -->
+      <!-- Header section containing the navigation bar -->
       <header>
         <nav>
           <div class="nav-content">
-            <!-- Logo and Navigation links -->
+            <!-- Container for logo and navigation links -->
             <div class="logo-and-navlinks">
               <div class="logo">
-                <!-- Company logo image -->
+                <!-- Display the company logo image -->
                 <img src="./Images/Logo/without bg black font.png" alt="" />
               </div>
-              <!-- Navigation links list -->
+              <!-- Unordered list for navigation menu items -->
               <ul class="nav-links">
                 <li>Home</li>
                 <li>About Us</li>
@@ -57,37 +58,37 @@
                 <li>Contact Us</li>
               </ul>
             </div>
-            <!-- Call-to-action button -->
+            <!-- Call-to-action button in the navigation -->
             <button class="nav-cta-btn">Get Started</button>
           </div>
         </nav>
       </header>
 
-      <!-- Hero section -->
+      <!-- Hero section for the main banner -->
       <div class="hero-container">
         <div class="the-hero-content">
           <div class="text-part">
-            <!-- Main headline -->
+            <!-- Main headline for the hero section -->
             <h1>Innovative Solutions for your Business Growth</h1>
-            <!-- Supporting tagline -->
+            <!-- Subheading or tagline for the hero section -->
             <p>
               Empowering brands with creative, digital and software solutions
             </p>
           </div>
 
-          <!-- Floating bar under the hero content -->
+          <!-- Floating bar with additional hero content -->
           <div class="the-floating-bar">
-            <!-- Call-to-action buttons -->
+            <!-- Call-to-action buttons for the hero section -->
             <div class="hero-cta-btn">
               <button class="text active">Explore Services</button>
               <button class="text inactive">Get a Quote</button>
             </div>
 
-            <!-- Search bar -->
+            <!-- Search bar component -->
             <div class="the-search-bar">
               <input type="text" placeholder="Search by Keyword" />
               <button>
-                <!-- Magnifying glass SVG icon -->
+                <!-- SVG icon for the search button -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -106,7 +107,7 @@
               </button>
             </div>
 
-            <!-- Trusted companies logos (currently text) -->
+            <!-- List of trusted companies (represented as text logos) -->
             <div class="companies-logo">
               <ul class="companies-logo-list">
                 <li>Microsoft</li>
@@ -119,17 +120,18 @@
         </div>
       </div>
 
-      <!-- Main container for page sections -->
+      <!-- Main container for the page's core sections -->
       <div class="container">
         <!-- About Us section -->
         <section class="about-section">
           <div class="about-text">
             <h2>About us</h2>
-            <!-- Brief company description -->
+            <!-- Subheading for the About Us section -->
             <p class="sub-header">
               We are borne with the responsibility of helping businesses reach
               their customers!!!
             </p>
+            <!-- Detailed description of the company -->
             <p>
               Revit system is a multidisciplinary B2B agency providing branding,
               software development, digital marketing, and business consulting
@@ -139,11 +141,11 @@
               We are a trusted brand partner with all tech solutions to every
               businesses hurdles and challenges.
             </p>
-            <!-- Input and button for learning more -->
+            <!-- Input and button for learning more about the company -->
             <div class="keyword-search-bar">
               <input type="text" placeholder="Learn More About Us!!!" />
               <button>
-                <!-- Magnifying glass SVG icon -->
+                <!-- SVG icon for the button -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="40"
@@ -155,18 +157,17 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <!-- Shaft from far left (x1 = 0) to arrowhead (x2 = 19) -->
+                  <!-- Arrow shaft -->
                   <line x1="0" y1="12" x2="19" y2="12" />
                   <!-- Arrowhead -->
                   <polyline points="12 5, 19 12, 12 19" />
                 </svg>
-
                 <p>Click Here</p>
               </button>
             </div>
           </div>
 
-          <!-- Company stats -->
+          <!-- Company statistics section -->
           <div class="about-numbers">
             <div class="the-no-text">
               <div>
@@ -188,7 +189,7 @@
         <!-- Services section -->
         <section class="services">
           <h3>Services</h3>
-          <!-- Grid of services offered -->
+          <!-- Grid layout for displaying services -->
           <div class="services-grid">
             <div class="the-content-container">
               <div class="the-image-container">
@@ -246,31 +247,819 @@
 
         <!-- Highlight/Promo section -->
         <section class="highlight-section">
-          <div class="text">
-            <h3>Get insights into Revit Services</h3>
-            <p>
-              We are just a click away. Looking forward to working with you.
-            </p>
-            <!-- Call-to-action button -->
-            <button>Request Service</button>
+          <div class="textand-cta-button">
+            <div class="text">
+              <h3>Get insights into Revit Services</h3>
+              <p>
+                We are just a click away. Looking forward to working with you.
+              </p>
+            </div>
+            <!-- Call-to-action input and button for demo request -->
+            <div class="demo-request">
+              <input
+                type="text"
+                name=""
+                id=""
+                placeholder="To start, describe what you want here..."
+              />
+              <button>
+                Request a Demo
+                <!-- SVG icon for the button -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <!-- Arrow shaft -->
+                  <line x1="0" y1="12" x2="19" y2="12" />
+                  <!-- Arrowhead -->
+                  <polyline points="12 5, 19 12, 12 19" />
+                </svg>
+              </button>
+            </div>
           </div>
-          <!-- Example image (can be replaced) -->
-          <img src="https://via.placeholder.com/150" alt="Smiling man" />
+          <!-- Image for the highlight section -->
+          <div class="the-image">
+            <img
+              src="./Images/hightlight/57a2bd1233ab22ed84506aeeb44452298c4f332c.png"
+              alt="Smiling man"
+            />
+          </div>
         </section>
 
-        <!-- Portfolio section -->
-        <section class="portfolio">
-          <h3>Portfolio</h3>
-          <!-- Grid of portfolio projects -->
-          <div class="portfolio-grid">
-            <div>Market Research</div>
-            <div>Ads Production</div>
-            <div>Branding Strategies</div>
+        <!-- Portfolio section to showcase past projects -->
+        <section class="portfolio" aria-label="Portfolio showcase">
+          <div class="the-content">
+            <div class="portfolio-header">
+              <div class="title">Portfolio</div>
+              <div class="subtitle">
+                Have an insight into some of our past projects
+              </div>
+            </div>
+            <div class="cards">
+              <div class="card">
+                <div class="top-line">
+                  <h3>Market research</h3>
+                  <div class="arrow-icon" aria-label="external link">↗</div>
+                </div>
+                <p>
+                  Brand customer behavior and economic trends to confirm and
+                  improve lorem ipsum lorem ipsum.
+                </p>
+                <div class="img-wrapper" aria-hidden="true">
+                  <img
+                    src="./Images/Portfolio/844591c28c26c90fe611b787714244f8373a88da.jpg"
+                    alt="Market research visual"
+                  />
+                </div>
+              </div>
+
+              <div class="card middle-card">
+                <div class="card highlight">
+                  <div class="top-line">
+                    <h3>Ads Production</h3>
+                  </div>
+                  <p>
+                    Brand customer behavior and economic trends to confirm and
+                    improve lorem ipsum lorem ipsum.
+                  </p>
+                  <div class="img-wrapper" aria-hidden="true">
+                    <img
+                      src="./Images/Portfolio/f36a790085a8a2a3fb386f104d46595149116e8b.jpg"
+                      alt="Ads production visual"
+                    />
+                  </div>
+                </div>
+                <div class="arrow-circle" aria-label="call to action"></div>
+              </div>
+
+              <div class="card">
+                <div class="top-line">
+                  <h3>Branding Strategies</h3>
+                  <div class="arrow-icon" aria-label="external link">↗</div>
+                </div>
+                <p>
+                  Brand customer behavior and economic trends to confirm and
+                  improve lorem ipsum lorem ipsum.
+                </p>
+                <div class="img-wrapper" aria-hidden="true">
+                  <img
+                    src="./Images/Portfolio/43d1c1d9d3462c766ba49bf1db117e41ad4a9239.jpg"
+                    alt="Branding strategies visual"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="view-more-wrapper">
+              <button class="view-more" aria-label="View more projects">
+                View more
+              </button>
+            </div>
           </div>
         </section>
+
+        <!-- Meet Our Team section -->
+        <section class="team-section" aria-label="Meet our team">
+          <div class="header">
+            <div class="titles">
+              <h1>Meet our team <span class="arrow">↗</span></h1>
+              <p>
+                Meet our exceptional team at Revit system comprising diverse
+                talents and expertise. we are a dedicated group committed to
+                delivering excellence in every project.
+              </p>
+            </div>
+          </div>
+          <div class="the-scroll-track">
+            <div class="cards">
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
+                    alt="Isaac, Software Engineer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Isaac</div>
+                  <div class="role">Software Engineer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Noble, Team lead"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Noble</div>
+                  <div class="role">Team lead</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="David, Creative director"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">David</div>
+                  <div class="role">Creative director</div>
+                </div>
+              </div>
+              <!-- Duplicated team member cards for carousel effect -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
+                    alt="Isaac, Software Engineer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Isaac</div>
+                  <div class="role">Software Engineer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Noble, Team lead"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Noble</div>
+                  <div class="role">Team lead</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="David, Creative director"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">David</div>
+                  <div class="role">Creative director</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Blog section for showcasing articles -->
+        <main class="article-showcase">
+          <div class="container">
+            <div class="top-bar">
+              <div class="heading-block">
+                <h1 class="section-title">Fresh Articles</h1>
+                <!-- List of blog topics -->
+                <div class="topic-list">
+                  <span class="topic">Digital Marketing</span>
+                  <span class="divider">|</span>
+                  <span class="topic">Software Development</span>
+                  <span class="divider">|</span>
+                  <span class="topic">Graphics</span>
+                  <span class="divider">|</span>
+                  <span class="topic">Sales Marketing</span>
+                </div>
+              </div>
+              <!-- Navigation arrows for blog carousel -->
+              <div class="scroll-arrows" aria-label="scroll navigation">
+                <button class="arrow-btn arrow-prev" aria-label="scroll left">
+                  ‹
+                </button>
+                <button class="arrow-btn arrow-next" aria-label="scroll right">
+                  ›
+                </button>
+              </div>
+            </div>
+
+            <div class="scroll-container">
+              <div class="card-row">
+                <!-- Blog article card -->
+                <article class="blog-card">
+                  <div class="image-frame">
+                    <img
+                      src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=500&h=300&q=80"
+                      alt="Web Solution"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="tag">Web Solution</div>
+                    <h2 class="card-heading">
+                      Make a better website solution for your product.
+                    </h2>
+                    <p class="summary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Integer nec odio praesent libero.
+                    </p>
+                    <a href="#" class="read-more">Read Blog</a>
+                  </div>
+                </article>
+
+                <!-- Blog article card -->
+                <article class="blog-card">
+                  <div class="image-frame">
+                    <img
+                      src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=500&h=300&q=80"
+                      alt="Web Solution"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="tag">Web Solution</div>
+                    <h2 class="card-heading">
+                      Make a better website solution for your product.
+                    </h2>
+                    <p class="summary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Integer nec odio praesent libero.
+                    </p>
+                    <a href="#" class="read-more">Read Blog</a>
+                  </div>
+                </article>
+
+                <!-- Blog article card -->
+                <article class="blog-card">
+                  <div class="image-frame">
+                    <img
+                      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&h=300&q=80"
+                      alt="Web Solution"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="tag">Web Solution</div>
+                    <h2 class="card-heading">
+                      Make a better website solution for your product.
+                    </h2>
+                    <p class="summary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Integer nec odio praesent libero.
+                    </p>
+                    <a href="#" class="read-more">Read Blog</a>
+                  </div>
+                </article>
+
+                <!-- Blog article card -->
+                <article class="blog-card">
+                  <div class="image-frame">
+                    <img
+                      src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=500&h=300&q=80"
+                      alt="Web Solution"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="card-content">
+                    <div class="tag">Web Solution</div>
+                    <h2 class="card-heading">
+                      Make a better website solution for your product.
+                    </h2>
+                    <p class="summary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Integer nec odio praesent libero.
+                    </p>
+                    <a href="#" class="read-more">Read Blog</a>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Call-to-action button for exploring more articles -->
+            <div class="cta-row">
+              <button class="cta-btn">Explore All Articles</button>
+            </div>
+          </div>
+        </main>
+
+        <!-- Schedule a Consultation section -->
+        <div class="consult-section">
+          <div class="consult-section-content">
+            <h2>Schedule a Free consultation!!!</h2>
+            <p>we are just a click away. Looking forward to working with you</p>
+            <a href="#" class="consult-btn">Consult</a>
+          </div>
+        </div>
+
+        <!-- Customer Reviews section -->
+        <section class="rv-trustchain" aria-label="Why clients rely on us">
+          <div class="rv-trusthead">
+            <div class="rv-trust-info">
+              <div class="rv-quote-sign">“</div>
+              <h1 class="rv-title">Why clients rely on Us</h1>
+              <p class="rv-subtitle">
+                Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+              </p>
+            </div>
+          </div>
+
+          <div class="rv-carousel-mask">
+            <div class="rv-carousel" id="rvTestimonialFlow">
+              <!-- Testimonial card -->
+              <div class="rv-card highlight">
+                <p class="rv-text">
+                  Legally advisors has been an invaluable partner in managing
+                  the complexities of business law. Legally advisors has been an
+                  invaluable partner in managing the complexities of business
+                  law. Legally advisors has been an invaluable partner in
+                  managing.
+                </p>
+                <div class="rv-author">
+                  <div class="rv-avatar">
+                    <img
+                      src="./Images/client reviews/151ca36e0a3d3fc0d34cf0d02f566ad377813e78.jpg"
+                      alt="ProZeen"
+                    />
+                  </div>
+                  <div class="rv-meta">
+                    <div class="rv-name">ProZeen</div>
+                    <div class="rv-role">Founder</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonial card -->
+              <div class="rv-card">
+                <p class="rv-text">
+                  Legally advisors has been an invaluable partner in managing
+                  the complexities of business law. Legally advisors has been an
+                  invaluable partner in managing the complexities of business
+                  law.
+                </p>
+                <div class="rv-author">
+                  <div class="rv-avatar">
+                    <img
+                      src="/Images/client reviews/5aab5459786b226d5d70e39a1dfa0e817fee1e4d.jpg"
+                      alt="ProZeen"
+                    />
+                  </div>
+                  <div class="rv-meta">
+                    <div class="rv-name">ProZeen</div>
+                    <div class="rv-role">Founder</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonial card -->
+              <div class="rv-card">
+                <p class="rv-text">
+                  Legally advisors has been an invaluable partner in managing
+                  the complexities of business law. Legally advisors has been an
+                  invaluable partner in managing the complexities of business
+                  law.
+                </p>
+                <div class="rv-author">
+                  <div class="rv-avatar">
+                    <img
+                      src="./Images/client reviews/ad5a8d5cfe4f63f37596dcc43194f79baacfc599.jpg"
+                      alt="ProZeen"
+                    />
+                  </div>
+                  <div class="rv-meta">
+                    <div class="rv-name">ProZeen</div>
+                    <div class="rv-role">Founder</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Duplicated testimonial cards for carousel effect -->
+              <div class="rv-card">
+                <p class="rv-text">
+                  Legally advisors has been an invaluable partner in managing
+                  the complexities of business law. Legally advisors has been an
+                  invaluable partner in managing the complexities of business
+                  law.
+                </p>
+                <div class="rv-author">
+                  <div class="rv-avatar">
+                    <img
+                      src="./Images/client reviews/ad5a8d5cfe4f63f37596dcc43194f79baacfc599.jpg"
+                      alt="ProZeen"
+                    />
+                  </div>
+                  <div class="rv-meta">
+                    <div class="rv-name">ProZeen</div>
+                    <div class="rv-role">Founder</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rv-card">
+                <p class="rv-text">
+                  Legally advisors has been an invaluable partner in managing
+                  the complexities of business law. Legally advisors has been an
+                  invaluable partner in managing the complexities of business
+                  law.
+                </p>
+                <div class="rv-author">
+                  <div class="rv-avatar">
+                    <img
+                      src="./Images/client reviews/ad5a8d5cfe4f63f37596dcc43194f79baacfc599.jpg"
+                      alt="ProZeen"
+                    />
+                  </div>
+                  <div class="rv-meta">
+                    <div class="rv-name">ProZeen</div>
+                    <div class="rv-role">Founder</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel navigation buttons -->
+          <div class="rv-switchers">
+            <button
+              class="rv-arrow-btn rv-prev"
+              aria-label="previous testimonial"
+            >
+              ‹
+            </button>
+            <button class="rv-arrow-btn rv-next" aria-label="next testimonial">
+              ›
+            </button>
+          </div>
+        </section>
+
+        <!-- Help Center section -->
+        <section class="rv-help-hub">
+          <div class="rv-help-grid">
+            <div class="rv-info-block">
+              <div class="rv-copy">
+                <h2 class="rv-headline">Help Center</h2>
+                <p class="rv-paragraph">
+                  Fill the form with your enquiries and a member of our team
+                  would reach out to you.
+                </p>
+              </div>
+              <div class="rv-graphic">
+                <img
+                  src="./Images/the help section/e2450bf224f305c9a76055109c309e11c677c3cf.png"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <!-- Contact form for user inquiries -->
+            <div class="rv-form-shell">
+              <form class="rv-contact-form" aria-label="support contact">
+                <div class="rv-field">
+                  <input
+                    id="rv-name"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="rv-field">
+                  <input
+                    id="rv-email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+                <div class="rv-field">
+                  <textarea
+                    id="rv-message"
+                    rows="5"
+                    placeholder="Describe your request"
+                    required
+                  ></textarea>
+                </div>
+                <div class="rv-helper">
+                  <small
+                    >Have a question? Reach us at
+                    <a href="mailto:support@revitsystem.com"
+                      >support@revitsystem.com</a
+                    ></small
+                  >
+                </div>
+                <button type="submit" class="rv-submit">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Newsletter signup section -->
+        <section class="rv-newsblast">
+          <div class="rv-news-inner">
+            <div class="rv-news-card">
+              <h2 class="rv-news-title">Join our Newsletter</h2>
+              <p class="rv-news-desc">
+                Stay connected and informed: Join our newsletter for the latest
+                updates, inspiration, and blog insights.
+              </p>
+              <form class="rv-news-form" aria-label="newsletter signup">
+                <label for="user-email">Email:</label>
+                <input
+                  type="email"
+                  id="user-email"
+                  name="user-email"
+                  required
+                />
+                <button type="submit">Sign me up</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img src="./Images/Logo/without bg white font.png" alt="" />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M13.5 2H17v4h-2c-1.1 0-1 .5-1 1.1V9h3l-.5 3H14v8h-3v-8H8v-3h3V7c0-2.2 1-3 3-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.29 3.9A12.16 12.16 0 0 1 3.1 4.7a4.28 4.28 0 0 0 1.33 5.72 4.25 4.25 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.19 4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.97 8.6 8.6 0 0 1-5.32 1.83A12.1 12.1 0 0 0 12 21c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5-.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Telegram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Telegram icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 240 240"
+                    aria-hidden="true"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm55.5 80.4l-19.6 92.3c-1.5 6.2-5.5 7.7-11.2 4.8l-31-22.9-15 14.5c-1.7 1.7-3.2 3.2-6.5 3.2l2.3-32.6 59.4-53.7c2.6-2.3-.6-3.6-4-1.3l-73.5 46.3-31.7-9.9c-6.9-2.2-7-6.9 1.4-10.2l123.9-47.8c5.7-2.2 10.7 1.4 8.9 10.4z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Portfolio</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="#">Pricing</a>
+                <a href="#">FAQs</a>
+                <a href="#">Help Center</a>
+                <a href="#">Blog</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Policies</div>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Solutions. All Rights Reserved.
+          </div>
+        </footer>
       </div>
-      <!-- End of .container -->
+      <!-- End of main container -->
     </div>
-    <!-- End of .revit-container -->
+    <!-- End of revit-container -->
   </body>
 </html>
