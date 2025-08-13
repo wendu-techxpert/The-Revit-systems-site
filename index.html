@@ -33,13 +33,14 @@
 
     <!-- Link to the custom CSS stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
   </head>
 
   <body>
     <!-- Main wrapper for the entire page content -->
     <div class="revit-container">
       <!-- Header section containing the navigation bar -->
-      <header>
+      <header id="header">
         <nav>
           <div class="nav-content">
             <!-- Container for logo and navigation links -->
@@ -60,9 +61,48 @@
             </div>
             <!-- Call-to-action button in the navigation -->
             <button class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
           </div>
         </nav>
       </header>
+
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Navigation</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
 
       <!-- Hero section for the main banner -->
       <div class="hero-container">
@@ -928,7 +968,26 @@
             </div>
           </div>
         </section>
-
+        <!-- From Uiverse.io by eirikvold -->
+        <button class="reach-out">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <span>Reach Out</span>
+        </button>
         <!-- Footer section -->
         <footer class="rv-footprint">
           <div class="rv-foot-main">

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Slide Menu Example</title>
+    <style>
+      :root {
+        --menu-panel-width: 280px;
+        --menu-transition: 300ms cubic-bezier(0.2, 0.9, 0.2, 1);
+        --menu-bg: #0f1724;
+        --menu-accent: #06b6d4;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+
+      /* Header */
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: #111827;
+        color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      }
+      .header-logo {
+        font-weight: 700;
+        letter-spacing: 0.4px;
+      }
+
+      /* Menu toggle button */
+      .menu-toggle {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .menu-toggle:focus {
+        outline: 3px solid rgba(6, 182, 212, 0.18);
+      }
+
+      /* Hamburger icon lines */
+      .menu-toggle .icon-line {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        position: relative;
+        transition: transform var(--menu-transition),
+          opacity var(--menu-transition);
+      }
+      .menu-toggle .icon-line::before,
+      .menu-toggle .icon-line::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        border-radius: 2px;
+        transition: transform var(--menu-transition),
+          opacity var(--menu-transition);
+      }
+      .menu-toggle .icon-line::before {
+        top: -6px;
+      }
+      .menu-toggle .icon-line::after {
+        top: 6px;
+      }
+
+      /* Toggle open to X */
+      .menu-toggle[aria-expanded="true"] .icon-line {
+        transform: rotate(45deg);
+      }
+      .menu-toggle[aria-expanded="true"] .icon-line::before {
+        transform: rotate(-90deg) translateX(-6px);
+        top: 0;
+      }
+      .menu-toggle[aria-expanded="true"] .icon-line::after {
+        opacity: 0;
+      }
+
+      /* Overlay */
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--menu-transition);
+      }
+      .menu-overlay.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Side panel */
+      .menu-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: var(--menu-panel-width);
+        background: linear-gradient(180deg, var(--menu-bg), #071023);
+        color: #fff;
+        padding: 20px 16px;
+        box-shadow: 4px 0 30px rgba(2, 6, 23, 0.6);
+        transform: translateX(-110%);
+        transition: transform var(--menu-transition);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 60;
+      }
+      .menu-panel.is-visible {
+        transform: translateX(0);
+      }
+
+      .menu-panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .menu-panel-title {
+        margin: 0;
+        font-size: 18px;
+      }
+      .menu-close {
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+      }
+
+      .menu-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .menu-nav a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: #e6eef6;
+        text-decoration: none;
+      }
+      .menu-nav a:focus,
+      .menu-nav a:hover {
+        background: rgba(255, 255, 255, 0.04);
+        outline: 2px solid rgba(6, 182, 212, 0.12);
+      }
+
+      .menu-footer {
+        margin-top: auto;
+        color: #9aa6b2;
+        font-size: 13px;
+      }
+
+      .page-content {
+        padding: 28px;
+      }
+
+      @media (max-width: 420px) {
+        :root {
+          --menu-panel-width: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-logo">MySite</div>
+      <button
+        class="menu-toggle"
+        id="menuToggleBtn"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <span class="icon-line" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+    <aside
+      class="menu-panel"
+      id="navMenu"
+      role="navigation"
+      aria-label="Main menu"
+    >
+      <div class="menu-panel-header">
+        <h2 class="menu-panel-title">Navigation</h2>
+        <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+          ✕
+        </button>
+      </div>
+
+      <nav class="menu-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-footer">
+        Signed in as <strong>you@example.com</strong>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <h1>Demo page</h1>
+      <p>
+        Click the menu toggle in the header to open the slide-in menu from the
+        left.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        const menuToggleBtn = document.getElementById("menuToggleBtn");
+        const menuOverlay = document.getElementById("menuOverlay");
+        const navMenu = document.getElementById("navMenu");
+        const menuCloseBtn = document.getElementById("menuCloseBtn");
+        const firstNavLink = navMenu.querySelector(".menu-nav a");
+
+        function openMenu() {
+          navMenu.classList.add("is-visible");
+          menuOverlay.classList.add("is-visible");
+          menuToggleBtn.setAttribute("aria-expanded", "true");
+          setTimeout(() => firstNavLink && firstNavLink.focus(), 200);
+        }
+        function closeMenu() {
+          navMenu.classList.remove("is-visible");
+          menuOverlay.classList.remove("is-visible");
+          menuToggleBtn.setAttribute("aria-expanded", "false");
+          menuToggleBtn.focus();
+        }
+
+        menuToggleBtn.addEventListener("click", () => {
+          const expanded =
+            menuToggleBtn.getAttribute("aria-expanded") === "true";
+          expanded ? closeMenu() : openMenu();
+        });
+
+        menuOverlay.addEventListener("click", closeMenu);
+        menuCloseBtn.addEventListener("click", closeMenu);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && navMenu.classList.contains("is-visible")) {
+            closeMenu();
+          }
+        });
+
+        navMenu
+          .querySelectorAll(".menu-nav a")
+          .forEach((link) => link.addEventListener("click", closeMenu));
+      })();
+    </script>
+  </body>
+</html>
