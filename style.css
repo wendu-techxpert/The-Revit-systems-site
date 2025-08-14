@@ -1610,7 +1610,7 @@ button p {
   margin: 0;
   font-size: 38px;
   font-weight: 600;
-  line-height: 25px;
+  line-height: 40px;
 }
 .rv-subtitle {
   margin: 20px 0 0;
@@ -1739,7 +1739,7 @@ button p {
 .rv-help-hub {
   background-color: #f2f1ec;
   padding: 60px 20px;
-  height: 633.1622924804688px;
+  min-height: 633.1622924804688px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2004,7 +2004,7 @@ button p {
   background: linear-gradient(to top, #131313, #282727);
   padding: 60px 20px 20px;
   font-size: 0.85rem;
-  height: 300px;
+  min-height: 300px;
   color: white;
 }
 .rv-foot-main {
@@ -2103,4 +2103,9 @@ button p {
   text-align: left;
   font-size: 0.7rem;
   opacity: 0.85;
+}
+@media (max-width: 800px) {
+  .rv-foot-main {
+    flex-direction: column;
+  }
 }
