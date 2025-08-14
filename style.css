@@ -790,6 +790,13 @@ button p {
   }
 }
 
+@media (max-width: 550px) {
+  .about-section {
+    margin-top: 100px;
+    margin-bottom: 250px;
+  }
+}
+
 /********* Services section wrapper ********/
 .services {
   margin: auto;
@@ -838,6 +845,18 @@ button p {
   .services-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services {
+    margin-top: 150px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
     gap: 1rem;
   }
 }
@@ -968,7 +987,7 @@ button p {
 
   .highlight-section .text {
     width: 350px;
-    height: 128px;
+    height: 12git 8px;
   }
 
   .highlight-section .textand-cta-button {
