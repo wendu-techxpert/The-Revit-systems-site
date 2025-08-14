@@ -1783,7 +1783,7 @@ button p {
 }
 .rv-news-form {
   gap: 8px;
-  width: 456px;
+  width: 80%;
   height: 50.96px;
   margin: auto;
   background-color: #f2f1ec;
@@ -1791,9 +1791,12 @@ button p {
   border-radius: 50px;
   font-weight: 700;
   font-size: 11.17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .rv-news-form input {
-  width: 66%;
+  width: 90%;
   padding-left: 5px;
   border: none;
   outline: none;
@@ -1811,9 +1814,17 @@ button p {
   font-weight: 700;
   font-size: 11.17px;
   height: 100%;
+  width: 150px;
 }
 .rv-news-form button:hover {
   filter: brightness(1.05);
+}
+
+@media (max-width: 567px) {
+  .rv-news-form button {
+    width: 150px;
+    padding: 12px 15px;
+  }
 }
 
 /* From Uiverse.io by eirikvold */
