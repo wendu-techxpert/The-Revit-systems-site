@@ -264,7 +264,7 @@ header {
 /* Floating content bar under hero text */
 .the-floating-bar {
   margin-top: 20px;
-  width: 307px;
+  width: 507px;
   height: 217px;
   border-radius: 20px;
   background: linear-gradient(to right, #494249, #101112);
@@ -280,37 +280,54 @@ header {
 .the-floating-bar div {
   height: 40px;
   width: 90%;
-  border-radius: 40px;
 }
 
-/* Wrapper for hero call-to-action buttons */
+/* Wrapper for hero call-to-action buttons */ /* Wrapper for hero call-to-action buttons */
 .hero-cta-btn {
+  position: relative;
   background-color: #575452;
   border: 0.5px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 40px;
+  width: 90%;
+  border-radius: 40px;
+  overflow: hidden;
 }
 
-/* Individual hero buttons */
+/* Slider background */
+.hero-cta-btn .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 90%;
+  background: linear-gradient(to top, #414244, #5f5b58);
+  border: 2px solid white;
+  border-radius: 40px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+/* Buttons */
 .hero-cta-btn .text {
   width: 50%;
   height: 100%;
-  border-radius: 40px;
-  text-align: center;
-  background-color: #57545200; /* Transparent */
-  color: white;
-}
-
-/* Active state for buttons */
-.active {
-  background: linear-gradient(to top, #414244, #5f5b58);
-  border: 2px solid white;
-}
-
-/* Inactive button has no border */
-.inactive {
   border: none;
+  background: transparent;
+  color: white;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Active/inactive text colors (optional) */
+.hero-cta-btn .text.active {
+  font-weight: bold;
+}
+
+.hero-cta-btn .text.inactive {
+  opacity: 0.8;
 }
 
 /* Search bar container styling */
@@ -379,13 +396,178 @@ button p {
     width: 100%;
     height: 700px;
     border: 0;
-    border-radius: 0px;
-    background-image: url("./Images/hero\ page\ img.jpg");
-    background-position: center;
+    border-radius: 0;
+  }
+  .the-hero-content {
+    position: relative;
+    top: 30%;
+  }
+
+  .the-hero-content .text-part h1 span {
+    color: #d17609;
   }
 }
 
-/************** Wrapper for the main sections (About, Services, etc.) ****************/
+@media (max-width: 700px) {
+  .hero-container {
+    background-position: 88% center;
+  }
+
+  .the-hero-content {
+    width: 100%;
+    position: relative;
+    top: 52%;
+  }
+
+  .the-hero-content .text-part {
+    width: 90%;
+    margin: auto;
+  }
+
+  .the-hero-content .text-part h1 {
+    width: auto;
+    font-size: 36px;
+    font-weight: 900;
+  }
+
+  .the-hero-content .text-part p {
+    font-size: 10px;
+  }
+
+  .the-floating-bar {
+    width: 99.6%;
+    margin: 20px auto 0 auto;
+    height: 217px;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+}
+
+@media (max-width: 488px) {
+  .hero-container {
+    width: 100%;
+    height: 700px;
+    border: 0;
+    border-radius: 0px;
+    background-image: url("./Images/hero\ page\ img.jpg");
+    background-position: 88% center;
+  }
+  .the-hero-content {
+    width: 100%;
+    position: relative;
+    top: 47%;
+  }
+  .hero-cta-btn {
+    position: relative;
+    background-color: #575452;
+    border: 0.5px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Slider background */
+  .hero-cta-btn .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 90%;
+    background: linear-gradient(to top, #414244, #5f5b58);
+    border: 2px solid white;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+
+  /* Buttons */
+  .hero-cta-btn .text {
+    width: 50%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: white;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  /* Active/inactive text colors (optional) */
+  .hero-cta-btn .text.active {
+    font-weight: bold;
+  }
+
+  .hero-cta-btn .text.inactive {
+    opacity: 0.8;
+  }
+
+  /* Search bar container styling */
+  .the-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 500px;
+    height: 60px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Style for search input field */
+  .the-search-bar input {
+    height: 100%;
+    width: 70%;
+    padding-left: 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+
+  /* Search button styling */
+  .the-search-bar button {
+    width: 150px;
+    height: 45px;
+    background-color: #000;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+  }
+
+  /* Icon size inside button */
+  button svg {
+    font-size: 40px;
+    color: #d17609;
+  }
+
+  /* Adjust text alignment inside button */
+  button p {
+    margin-top: 3px;
+  }
+
+  /* Companies logo list style */
+  .companies-logo-list {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    color: #89898af2;
+  }
+}
+
+/************** Wrapper for the main sections (about, services, etc.) ****************/
 .container {
   width: 100%;
   margin: 0 auto;
