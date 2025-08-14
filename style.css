@@ -850,8 +850,8 @@ button p {
   align-items: center;
   background-color: #d17609;
   color: #fff;
-  margin: 3rem auto;
-  height: 400px;
+  margin: 100px auto;
+  height: 460px;
 }
 
 /* Highlight text container */
@@ -918,20 +918,58 @@ button p {
 }
 
 .highlight-section .the-image {
-  width: 590px;
   height: 530px;
   position: relative;
   bottom: 33px;
 }
 
 .highlight-section img {
-  width: 100%;
   height: 100%;
 }
 
 @media (max-width: 1150px) {
+  .highlight-section {
+    flex-direction: column;
+    height: 990px;
+  }
   .highlight-section .the-image {
-    display: none;
+    height: 530px;
+    position: relative;
+    bottom: 0;
+  }
+  .highlight-section .textand-cta-button {
+    margin: auto;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .highlight-section {
+    flex-direction: column;
+    height: 800px;
+  }
+  .highlight-section .the-image {
+    height: 400px;
+    position: relative;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .highlight-section {
+    flex-direction: column;
+    height: 650px;
+  }
+  .highlight-section .the-image {
+    height: 300px;
+    position: relative;
+    bottom: 0;
+  }
+
+  .highlight-section .text {
+    width: 350px;
+    height: 168px;
+    position: relative;
   }
 }
 
@@ -1246,6 +1284,8 @@ button p {
 @media (max-width: 800px) {
   .team-section .header {
     max-width: 400px;
+    position: relative;
+    left: 5%;
   }
 }
 
