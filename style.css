@@ -1480,6 +1480,7 @@ button p {
 .article-showcase {
   background-color: #f9f9f9;
   width: 100%;
+  padding-bottom: 70px;
 }
 
 .top-bar {
@@ -1545,9 +1546,9 @@ button p {
 .scroll-container {
   overflow-x: auto;
   padding-bottom: 6px;
+  padding: 0z 10px;
   margin-top: 6px;
   scroll-behavior: smooth;
-
   /* custom scrollbar for container only */
   scrollbar-width: none;
 }
@@ -1555,12 +1556,12 @@ button p {
 .card-row {
   display: flex;
   gap: 20px;
-  padding: 6px 4px 14px;
-  min-width: max-content;
+  padding: 10px;
+  width: 1100px;
 }
 
 .blog-card {
-  flex: 0 0 320px;
+  width: 250px;
   background: white;
   border-radius: 18px;
   overflow: hidden;
@@ -1732,12 +1733,33 @@ button p {
   background-color: #b5650f;
 }
 
+@media (max-width: 700px) {
+  .consult-section-content {
+    height: 176px;
+    width: 90%;
+  }
+  .consult-section h2 {
+    font-size: 25px;
+  }
+  .consult-section p {
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #ccc;
+  }
+  .consult-btn {
+    background-color: #d17b14;
+    color: white;
+    font-size: 10px;
+  }
+}
 /* ---------- TRUSTCHAIN / TESTIMONIALS ---------- */
 .rv-trustchain {
-  padding: 60px 20px 32px;
+  width: 100%;
+  margin-top: 50px;
 }
 .rv-trusthead {
-  max-width: 100%;
+  width: 90%;
   margin: 0 auto 24px;
   display: flex;
   justify-content: space-between;
@@ -1807,6 +1829,8 @@ button p {
   overflow-x: scroll;
   height: 410px;
   padding-left: 20px;
+  width: 95%;
+  margin: auto;
 }
 .rv-carousel::-webkit-scrollbar {
   border-radius: 30px;
@@ -1851,7 +1875,7 @@ button p {
   font-size: 18px;
   font-weight: 500;
   line-height: 28px;
-  width: 394px;
+  width: 90%;
   height: 168px;
 }
 .rv-author {
@@ -1879,42 +1903,79 @@ button p {
   opacity: 0.85;
 }
 
+@media (max-width: 700px) {
+  .rv-title {
+    font-size: 25px;
+  }
+  .rv-subtitle {
+    font-size: 15px;
+  }
+
+  .rv-text {
+    font-size: 14px;
+  }
+  .rv-card {
+    width: 350px;
+    height: 250px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .rv-arrow-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+}
+
 /* ---------- HELP HUB ---------- */
 .rv-help-hub {
   background-color: #f2f1ec;
-  padding: 60px 20px;
   min-height: 633.1622924804688px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: 60px 0;
 }
 
 .rv-help-grid {
-  width: 90%;
-  margin: 0 auto;
+  width: 95%;
+  margin: 60px auto;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 40px;
-  flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+  .rv-help-grid {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 .rv-info-block {
   border-radius: 14px;
   display: flex;
   justify-content: space-evenly;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  max-height: 500px;
+  max-height: 400px;
 }
 .rv-graphic {
-  width: 350.33px;
-  height: 380px;
+  width: 90%;
   margin-top: 50px;
 }
 
 .rv-graphic img {
   width: 100%;
-  height: 100%;
 }
 
 .rv-copy {
@@ -1994,6 +2055,46 @@ button p {
   filter: brightness(1.05);
 }
 
+@media (max-width: 600px) {
+  .rv-copy {
+    height: 200px;
+  }
+  .rv-form-shell {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 26px 22px;
+    width: 80%;
+    height: 406px;
+  }
+
+  .rv-info-block {
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+  }
+
+  .rv-graphic {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .rv-newsblast .rv-news-title {
+    margin: 0;
+    font-size: 15.39px;
+    font-weight: 700;
+    font-style: bold;
+  }
+
+  .rv-newsblast .rv-news-desc {
+    font-size: 9px;
+    width: 80%;
+  }
+}
 /* ---------- NEWSBLAST ---------- */
 .rv-newsblast {
   background: #d17609;
@@ -2088,7 +2189,7 @@ button p {
   right: 1%;
   bottom: 20%;
   font-family: inherit;
-  font-size: 18px;
+  font-size: 10px;
   background: linear-gradient(30deg, #331e04 0%, #d17609 70%);
   color: white;
   padding: 0.8em 1.2em;
@@ -2096,9 +2197,11 @@ button p {
   align-items: center;
   justify-content: center;
   border: none;
+  width: 100px;
   border-radius: 25px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
+  z-index: 10;
 }
 
 .reach-out:hover {
@@ -2146,13 +2249,14 @@ button p {
 /* ---------- FOOTPRINT (FOOTER) ---------- */
 .rv-footprint {
   background: linear-gradient(to top, #131313, #282727);
-  padding: 60px 20px 20px;
   font-size: 0.85rem;
   min-height: 300px;
   color: white;
+  width: 100%;
+  padding: 50px 0;
 }
 .rv-foot-main {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -2242,7 +2346,7 @@ button p {
   text-decoration: underline;
 }
 .rv-foot-note {
-  max-width: 1180px;
+  width: 90%;
   margin: 30px auto 0;
   text-align: left;
   font-size: 0.7rem;
@@ -2256,12 +2360,12 @@ button p {
 
 /* now here are all style below 450px */
 @media (max-width: 450px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
+  .rv-tagline {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+    width: 80%;
   }
-
   .rv-graphic {
     width: auto;
     height: auto;
