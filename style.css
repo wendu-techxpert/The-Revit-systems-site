@@ -4,6 +4,9 @@
   margin: 0;
   font-family: "Mena Grotesk", sans-serif;
 }
+body {
+  background-color: white;
+}
 
 /* Main wrapper for the whole page layout */
 .revit-container {
@@ -231,7 +234,7 @@ header {
 /* Hero section wrapper */
 .hero-container {
   width: 90%;
-  height: 553px;
+  min-height: 553px;
   margin: 100px auto 20px auto;
   border-radius: 20px;
   border: 3px solid #d17609;
@@ -394,13 +397,16 @@ button p {
 @media (max-width: 1000px) {
   .hero-container {
     width: 100%;
-    height: 700px;
+    min-height: 700px;
     border: 0;
     border-radius: 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
   }
+
   .the-hero-content {
-    position: relative;
-    top: 30%;
+    margin: 0 auto;
   }
 
   .the-hero-content .text-part h1 span {
@@ -411,12 +417,13 @@ button p {
 @media (max-width: 700px) {
   .hero-container {
     background-position: 88% center;
+    align-items: end;
   }
 
   .the-hero-content {
     width: 100%;
     position: relative;
-    top: 52%;
+    top: 0px;
   }
 
   .the-hero-content .text-part {
@@ -447,16 +454,10 @@ button p {
 @media (max-width: 488px) {
   .hero-container {
     width: 100%;
-    height: 700px;
     border: 0;
     border-radius: 0px;
     background-image: url("./Images/hero\ page\ img.jpg");
     background-position: 88% center;
-  }
-  .the-hero-content {
-    width: 100%;
-    position: relative;
-    top: 47%;
   }
   .hero-cta-btn {
     position: relative;
@@ -476,7 +477,7 @@ button p {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 48.5%;
     height: 90%;
     background: linear-gradient(to top, #414244, #5f5b58);
     border: 2px solid white;
@@ -494,6 +495,7 @@ button p {
     color: white;
     z-index: 1;
     cursor: pointer;
+    font-size: 10px;
   }
 
   /* Active/inactive text colors (optional) */
@@ -503,6 +505,10 @@ button p {
 
   .hero-cta-btn .text.inactive {
     opacity: 0.8;
+  }
+
+  .the-floating-bar {
+    width: 98.6%;
   }
 
   /* Search bar container styling */
@@ -522,6 +528,7 @@ button p {
   .the-search-bar input {
     height: 100%;
     width: 70%;
+    font-size: 10px;
     padding-left: 10px;
     background-color: transparent;
     outline: none;
@@ -530,12 +537,12 @@ button p {
 
   /* Search button styling */
   .the-search-bar button {
-    width: 150px;
-    height: 45px;
+    width: 120px;
+    height: 35px;
     background-color: #000;
     color: white;
     border: none;
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -545,7 +552,8 @@ button p {
 
   /* Icon size inside button */
   button svg {
-    font-size: 40px;
+    height: 20px;
+    width: 20px;
     color: #d17609;
   }
 
@@ -556,7 +564,7 @@ button p {
 
   /* Companies logo list style */
   .companies-logo-list {
-    font-size: 20px;
+    font-size: 10px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -571,6 +579,10 @@ button p {
 .container {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /****************** About section layout *****************/
@@ -579,8 +591,8 @@ button p {
   justify-content: space-between;
   align-items: flex-start;
   margin: auto;
-  margin-bottom: 3rem;
-  height: 412px;
+  margin-bottom: 30px;
+  min-height: 412px;
   width: 90%;
 }
 
@@ -791,22 +803,69 @@ button p {
 }
 
 @media (max-width: 550px) {
-  .about-section {
-    margin-top: 100px;
-    margin-bottom: 250px;
+  /* About text column */
+  .about-text {
+    width: 600px;
+  }
+
+  /* About heading */
+  .about-text h2 {
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  /* Paragraph spacing in about section */
+  .about-text .sub-header {
+    font-size: 17px;
+    line-height: 30.38px;
+    font-weight: 600;
+    color: #404051;
+    margin-top: 14px;
+  }
+
+  .about-text p {
+    font-size: 12px;
+    line-height: 31.14px;
+    font-weight: 500;
+    color: #404051;
+    margin-top: 14px;
+  }
+
+  .keyword-search-bar button {
+    width: 150px;
+    height: 100%;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+  }
+  /* Adjust text alignment inside button */
+  .keyword-search-bar button p {
+    margin-top: 3px;
+    color: white;
+    font-size: 8.79px;
+  }
+
+  .keyword-search-bar button svg {
+    height: 17px;
+    width: 17px;
   }
 }
 
 /********* Services section wrapper ********/
 .services {
-  margin: auto;
-  margin-top: 150px;
+  padding-top: 30px;
   width: 90%;
 }
 
 /* Services heading */
 .services h3 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -851,13 +910,21 @@ button p {
 
 @media (max-width: 600px) {
   .services {
-    margin-top: 150px;
+    border-top: 1px solid #cfcfcf36;
   }
-
   .services-grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 3rem;
+  }
+
+  .the-content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
   }
 }
 
@@ -876,12 +943,13 @@ button p {
 /* Highlight text container */
 .highlight-section .textand-cta-button {
   margin: auto;
+  position: relative;
+  left: 20px;
 }
 
 .highlight-section .text {
-  width: 414px;
+  min-width: 414px;
   height: 168px;
-  position: relative;
 }
 
 .highlight-section h3 {
@@ -898,15 +966,6 @@ button p {
 }
 
 /* Button inside highlight section */
-.highlight-section button {
-  margin-top: 1rem;
-  background-color: #000;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 .highlight-section .demo-request {
   height: 80px;
@@ -927,6 +986,10 @@ button p {
 }
 
 .highlight-section button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
   width: 190px;
   display: flex;
   align-items: center;
@@ -939,7 +1002,7 @@ button p {
 .highlight-section .the-image {
   height: 530px;
   position: relative;
-  bottom: 33px;
+  bottom: 36px;
 }
 
 .highlight-section img {
@@ -949,49 +1012,52 @@ button p {
 @media (max-width: 1150px) {
   .highlight-section {
     flex-direction: column;
-    height: 990px;
+    height: 910px;
   }
   .highlight-section .the-image {
-    height: 530px;
+    height: auto;
+    width: 60%;
     position: relative;
     bottom: 0;
   }
+
+  .highlight-section .the-image img {
+    width: 100%;
+  }
+
   .highlight-section .textand-cta-button {
-    margin: auto;
-    text-align: center;
-  }
-}
-
-@media (max-width: 700px) {
-  .highlight-section {
+    width: 90%;
+    display: flex;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    height: 800px;
-  }
-  .highlight-section .the-image {
-    height: 400px;
-    position: relative;
-    bottom: 0;
-  }
-}
-
-@media (max-width: 500px) {
-  .highlight-section {
-    flex-direction: column;
-    height: 650px;
-  }
-  .highlight-section .the-image {
-    height: 300px;
-    position: relative;
-    bottom: 0;
+    gap: 30px;
+    margin: 100px auto 10px auto;
   }
 
   .highlight-section .text {
-    width: 350px;
-    height: 12git 8px;
+    height: 100px;
+    text-align: center;
+    width: 90%;
   }
+  .demo-request {
+    width: 90%;
+  }
+}
 
-  .highlight-section .textand-cta-button {
-    margin: auto;
+@media (max-width: 900px) {
+  .highlight-section .the-image {
+    height: auto;
+    width: 70%;
+    position: relative;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 730px) {
+  .highlight-section .text {
+    min-height: 100px;
   }
 
   .highlight-section h3 {
@@ -1008,14 +1074,50 @@ button p {
   }
 
   .highlight-section .demo-request {
-    width: 300px;
+    width: 90%;
     margin: auto;
+  }
+
+  .highlight-section .the-image {
+    height: auto;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .highlight-section {
+    height: 710px;
+  }
+  .highlight-section .text {
+    margin: auto;
+    min-width: 50px;
+  }
+
+  .highlight-section h3 {
+    font-size: 25px;
+    line-height: 30.8px;
+  }
+
+  .highlight-section p {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .highlight-section input {
+    font-size: 9px;
+  }
+
+  .highlight-section button {
+    width: 140px;
+    font-size: 11px;
   }
 }
 
 /******* Portfolio section background and style ********/
 .portfolio {
-  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
   padding: 2rem 1rem 3rem;
@@ -1213,7 +1315,7 @@ button p {
 /************** the team section **************/
 .team-section {
   width: 100%;
-  margin: 100px auto;
+  margin: 50px auto;
 }
 .team-section .header {
   margin-bottom: 32px;
@@ -1238,8 +1340,11 @@ button p {
   padding: 10px 12px 3px 12px;
   border-radius: 40px;
   line-height: 1;
-  margin: 0 0 0 20px;
+  margin-left: 0px;
   font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .team-section .titles p {
   margin: 20px 0 0;
@@ -1321,6 +1426,12 @@ button p {
   text-transform: capitalize;
 }
 
+@media (max-width: 1150px) {
+  .team-section {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 800px) {
   .team-section .header {
     max-width: 400px;
@@ -1329,10 +1440,14 @@ button p {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
+  .team-section .header {
+    width: 90%;
+    left: 5%;
+  }
   .team-section .titles h1 {
     margin: 0;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -1343,12 +1458,13 @@ button p {
     display: inline-block;
     background: #d17609;
     color: white;
-    font-size: 27px;
-    padding: 10px 12px 3px 12px;
-    border-radius: 40px;
-    line-height: 1;
-    margin: 0 0 0 20px;
-    font-weight: 600;
+    font-size: 15px;
+    height: 20px;
+    margin-left: 0px;
+    padding: 8px 12px 3px 12px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
   .team-section .titles p {
     margin: 20px 0 0;
@@ -1356,14 +1472,14 @@ button p {
     line-height: 1.4;
     font-weight: 400;
     color: #404051;
-    width: 95%;
+    width: 100%;
   }
 }
 
 /*************** the  blog section style **************/
 .article-showcase {
-  padding: 60px 20px 100px;
   background-color: #f9f9f9;
+  width: 100%;
 }
 
 .top-bar {
@@ -1372,27 +1488,34 @@ button p {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 20px;
+  margin: 30px auto;
+  width: 95%;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 38px;
-  font-weight: 600;
+.heading-block {
+  width: 600px;
+}
+
+.topic-slider {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .topic-list {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: 400;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  color: #434343;
+  display: flex; /* flex row layout */
+  gap: 10px; /* space between items */
+  list-style: none;
+}
+
+.topic-list li {
+  flex-shrink: 0; /* prevent items from shrinking */
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
 }
 
 .divider {
-  margin: 0 4px;
+  color: #999;
 }
 
 .scroll-arrows {
@@ -1525,19 +1648,40 @@ button p {
   filter: brightness(1.05);
 }
 
-@media (max-width: 1024px) {
-  .card-row {
-    gap: 14px;
-  }
-  .blog-card {
-    flex: 0 0 280px;
-  }
+@media (max-width: 800px) {
   .top-bar {
     flex-direction: column;
-    align-items: flex-start;
+    width: 90%;
   }
-  .scroll-arrows {
-    margin-top: 8px;
+
+  .heading-block {
+    width: 100%;
+  }
+
+  .topic-slider {
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+  }
+
+  .topic-list {
+    display: flex; /* flex row layout */
+    gap: 10px; /* space between items */
+    list-style: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .topic-list li {
+    font-size: 15px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+  .cta-btn {
+    font-size: 12px;
+    padding: 10px 20px;
   }
 }
 
@@ -2107,5 +2251,20 @@ button p {
 @media (max-width: 800px) {
   .rv-foot-main {
     flex-direction: column;
+  }
+}
+
+/* now here are all style below 450px */
+@media (max-width: 450px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+  }
+
+  .rv-graphic {
+    width: auto;
+    height: auto;
+    margin-top: 50px;
   }
 }
