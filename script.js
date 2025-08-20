@@ -35,24 +35,3 @@
     .querySelectorAll(".menu-nav a")
     .forEach((link) => link.addEventListener("click", closeMenu));
 })();
-
-// Function for the get a quote or explore service buttons
-const slider = document.querySelector(".slider");
-const btnServices = document.getElementById("btn-services");
-const btnQuote = document.getElementById("btn-quote");
-
-btnQuote.addEventListener("click", () => {
-  slider.style.transform = "translateX(100%)";
-  btnQuote.classList.add("active");
-  btnQuote.classList.remove("inactive");
-  btnServices.classList.remove("active");
-  btnServices.classList.add("inactive");
-});
-
-btnServices.addEventListener("click", () => {
-  slider.style.transform = "translateX(0%)";
-  btnServices.classList.add("active");
-  btnServices.classList.remove("inactive");
-  btnQuote.classList.remove("active");
-  btnQuote.classList.add("inactive");
-});
