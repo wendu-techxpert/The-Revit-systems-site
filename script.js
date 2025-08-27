@@ -35,3 +35,25 @@
     .querySelectorAll(".menu-nav a")
     .forEach((link) => link.addEventListener("click", closeMenu));
 })();
+
+// Add randomness so each circle moves differently
+document.querySelectorAll(".abt-circle").forEach((circle) => {
+  circle.style.animationDuration = 15 + Math.random() * 15 + "s";
+  circle.style.animationDelay = Math.random() * 10 + "s";
+});
+
+document.getElementById("toggleBtn").addEventListener("click", function () {
+  const text = document.getElementById("myText");
+
+  if (text.classList.contains("show")) {
+    // If hidden, show it
+    text.classList.remove("show");
+    text.classList.add("rv-active");
+    this.textContent = "Read Less..."; // change button text
+  } else {
+    // If shown, hide it
+    text.classList.remove("rv-active");
+    text.classList.add("show");
+    this.textContent = "Read More...";
+  }
+});

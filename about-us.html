@@ -1,0 +1,610 @@
+<!-- Declare the document type as HTML5 -->
+<!DOCTYPE html>
+<!-- Define the HTML document with English as the primary language -->
+<html lang="en">
+  <head>
+    <!-- Specify the character encoding for the document -->
+    <meta charset="UTF-8" />
+
+    <!-- Configure viewport for responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Set the webpage title displayed in the browser tab -->
+    <title>Revit-Systems</title>
+
+    <!-- Preconnect to Google Fonts for improved font loading performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Load Host Grotesk font from Google Fonts with specified weights and styles -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load Mena Grotesk font from cdnfonts.com -->
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+
+    <!-- Include Font Awesome library for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Link to the custom CSS stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main wrapper for the entire page content -->
+    <div class="revit-container">
+      <!-- Header section containing the navigation bar -->
+      <header id="header">
+        <nav>
+          <div class="nav-content">
+            <!-- Container for logo and navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Display the company logo image -->
+                <img src="./Images/Logo/without bg black font.png" alt="" />
+              </div>
+              <!-- Unordered list for navigation menu items -->
+              <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- Call-to-action button in the navigation -->
+            <button class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Navigation</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
+      <!-- Main container for the page's core sections -->
+      <div class="container">
+        <section class="the-about-page-hero-container">
+          <div class="about-page-identifier">
+            <ul>
+              <li>Home</li>
+              <li>/</li>
+              <li class="abt-active">About Us</li>
+            </ul>
+          </div>
+          <div class="about-page-hero">
+            <div class="the-about-page-text-and-button">
+              <h3>About Revit Systems</h3>
+              <h1>Who we are</h1>
+              <p>
+                Revit system is a multidisciplinary B2B agency providing
+                branding, software development, digital marketing, and business
+                consulting services We look forward to majoring in custom
+                software engineering and system automation.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- how it work -->
+        <div class="abt-section-container">
+          <div class="abt-heading-wrapper">
+            <div class="abt-main-heading">How it started</div>
+            <div class="abt-icon-top">
+              <div class="abt-icon-image"></div>
+              <div class="abt-icon-label">Founder</div>
+            </div>
+          </div>
+          <div class="abt-text-content">
+            <div class="abt-paragraph">
+              <div class="abt-highlight-text">Revit Systems</div>
+              began with a simple idea: technology should make life easier and
+              businesses smarter. What started as a small team of innovators has
+              grown into a
+              <div class="abt-highlight-text">
+                trusted digital services company
+              </div>
+              <span class="read-more"
+                ><span class="show-more" id="toggleBtn">read-more...</span
+                ><span class="show" id="myText">
+                  offering software, IT solutions, cloud, cybersecurity, and
+                  more. We believe behind every system is a story, and our
+                  mission is to
+                  <div class="abt-highlight-text">craft solutions</div>
+                  that are not just powerful, but purposeful. Today, we help
+                  businesses adapt, grow, and thrive in a connected world.</span
+                ></span
+              >
+            </div>
+            <div class="abt-icon-bottom">
+              <div class="abt-icon-image"></div>
+              <div class="abt-icon-label">Co-Founder</div>
+            </div>
+          </div>
+        </div>
+        <!-- vision -->
+        <div class="abt-vision-section">
+          <div class="abt-vision-left-column">
+            <div class="abt-vision-title-box">
+              <div class="abt-vision-small-title">Our Vision</div>
+            </div>
+            <div class="abt-vision-statement">
+              To help Businesses and clients with sales and tech-driven
+              solutions for their companies
+            </div>
+          </div>
+          <!-- RIGHT COLUMN -->
+          <div class="abt-vision-right-column">
+            <div class="abt-circle-container">
+              <div class="abt-circle abt-circle-lg"></div>
+              <div class="abt-circle abt-circle-md"></div>
+              <div class="abt-circle abt-circle-sm"></div>
+              <div class="abt-circle abt-circle-md"></div>
+              <div class="abt-circle abt-circle-lg"></div>
+              <div class="abt-circle abt-circle-sm"></div>
+              <div class="abt-circle abt-circle-md"></div>
+            </div>
+
+            <div class="abt-text-container">
+              Systems That <br />
+              Build Businesses
+            </div>
+          </div>
+        </div>
+        <!-- Meet Our Team section -->
+        <section class="team-section" aria-label="Meet our team">
+          <div class="header">
+            <div class="titles">
+              <h1>Meet our team <span class="arrow">↗</span></h1>
+              <p>
+                Meet our exceptional team at Revit system comprising diverse
+                talents and expertise. we are a dedicated group committed to
+                delivering excellence in every project.
+              </p>
+            </div>
+          </div>
+          <div class="the-scroll-track">
+            <div class="cards">
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
+                    alt="Isaac, Software Engineer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Isaac</div>
+                  <div class="role">Software Engineer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Noble, Team lead"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Noble</div>
+                  <div class="role">Team lead</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="David, Creative director"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">David</div>
+                  <div class="role">Creative director</div>
+                </div>
+              </div>
+              <!-- Duplicated team member cards for carousel effect -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
+                    alt="Isaac, Software Engineer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Isaac</div>
+                  <div class="role">Software Engineer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Bright, Lead developer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Bright</div>
+                  <div class="role">Lead developer</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="Noble, Team lead"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Noble</div>
+                  <div class="role">Team lead</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
+                    alt="David, Creative director"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">David</div>
+                  <div class="role">Creative director</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- join us section -->
+        <div class="abt-join-section">
+          <div class="abt-join-left">
+            <div class="abt-join-title-wrapper">
+              <div class="abt-join-title">Join a</div>
+              <div class="abt-join-title abt-join-title-bold">world-class</div>
+              <div class="abt-join-title abt-join-title-bold">team now</div>
+            </div>
+            <div class="abt-join-subtitle">
+              Transform your business today and make a massive returns.
+            </div>
+            <button class="abt-join-button">Book a slot</button>
+          </div>
+          <div class="abt-join-right">
+            <div class="abt-testimonial-card">
+              <div class="abt-quote-icon">''</div>
+              <div class="abt-testimonial-text">
+                Sales and marketing are two sides of the same coin - one ignites
+                curiosity, the other builds trust. Together, they don't just
+                drive revenue; they create lasting connections between a
+                business and its customers.
+              </div>
+              <div class="abt-testimonial-author">
+                <div class="abt-author-info">
+                  <div class="abt-author-name">David</div>
+                  <div class="abt-author-role">Creative Director</div>
+                </div>
+                <div class="abt-author-image"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- the value section  -->
+        <div class="abt-values-section">
+          <div class="abt-values-title">Our Values</div>
+          <div class="abt-values-cards-container">
+            <div class="abt-value-card abt-card-blue">
+              <div class="abt-card-title">Innovation</div>
+              <div class="abt-card-text">
+                We embrace creativity and forward-thinking, constantly exploring
+                new technologies and strategies to deliver solutions that keep
+                our clients ahead in the digital landscape.
+              </div>
+            </div>
+            <div class="abt-value-card abt-card-beige">
+              <div class="abt-card-title">Client-Centered</div>
+              <div class="abt-card-text">
+                Every project begins with full understanding. We listen, adapt,
+                and tailor our services to meet the unique goals of each client,
+                ensuring solutions that are both impactful and relevant.
+              </div>
+            </div>
+            <div class="abt-value-card abt-card-tan">
+              <div class="abt-card-title">Excellent Execution</div>
+              <div class="abt-card-text">
+                From the smallest detail to the biggest launch, we are committed
+                to delivering work of the highest quality—reliable, efficient,
+                and designed to exceed expectations.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- From Uiverse.io by eirikvold -->
+        <button class="reach-out">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <span>Reach Out</span>
+        </button>
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img src="./Images/Logo/without bg white font.png" alt="" />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M13.5 2H17v4h-2c-1.1 0-1 .5-1 1.1V9h3l-.5 3H14v8h-3v-8H8v-3h3V7c0-2.2 1-3 3-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.29 3.9A12.16 12.16 0 0 1 3.1 4.7a4.28 4.28 0 0 0 1.33 5.72 4.25 4.25 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.19 4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.97 8.6 8.6 0 0 1-5.32 1.83A12.1 12.1 0 0 0 12 21c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5-.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href=""
+                  aria-label="LinkedIn"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- LinkedIn icon SVG -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Portfolio</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="#">Pricing</a>
+                <a href="#">FAQs</a>
+                <a href="#">Help Center</a>
+                <a href="#">Blog</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Solutions. All Rights Reserved.
+          </div>
+        </footer>
+      </div>
+      <!-- End of main container -->
+    </div>
+    <!-- End of revit-container -->
+  </body>
+</html>
