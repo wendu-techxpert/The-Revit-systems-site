@@ -1,37 +1,22 @@
-<!-- Declare the document type as HTML5 -->
 <!DOCTYPE html>
-<!-- Define the HTML document with English as the primary language -->
 <html lang="en">
   <head>
-    <!-- Specify the character encoding for the document -->
     <meta charset="UTF-8" />
-
-    <!-- Configure viewport for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Set the webpage title displayed in the browser tab -->
     <title>Revit-Systems</title>
 
-    <!-- Preconnect to Google Fonts for improved font loading performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Load Host Grotesk font from Google Fonts with specified weights and styles -->
     <link
       href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Load Mena Grotesk font from cdnfonts.com -->
     <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
-
-    <!-- Include Font Awesome library for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <!-- Link to the custom CSS stylesheet -->
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
   </head>
@@ -53,7 +38,7 @@
               <ul class="nav-links">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="./services.html">Services</a></li>
                 <li><a href="#">Portfolio</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Contact Us</a></li>
@@ -93,7 +78,7 @@
           <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="./services.html">Services</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Contact Us</a></li>
@@ -461,26 +446,92 @@
             <button class="abt-join-button">Book a slot</button>
           </div>
           <div class="abt-join-right">
-            <div class="abt-testimonial-card">
-              <div class="abt-quote-icon">''</div>
-              <div class="abt-testimonial-text">
-                Sales and marketing are two sides of the same coin - one ignites
-                curiosity, the other builds trust. Together, they don't just
-                drive revenue; they create lasting connections between a
-                business and its customers.
-              </div>
-              <div class="abt-testimonial-author">
-                <div class="abt-author-info">
-                  <div class="abt-author-name">David</div>
-                  <div class="abt-author-role">Creative Director</div>
+            <div class="abt-testimonial-wrapper">
+              <div class="abt-testimonial-card active">
+                <div class="abt-quote-icon">''</div>
+                <div class="abt-testimonial-text">
+                  Sales and marketing are two sides of the same coin - one
+                  ignites curiosity, the other builds trust...
                 </div>
-                <div
-                  class="abt-author-image"
-                  style="
-                    background-image: url('./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg');
-                  "
-                ></div>
+                <div class="abt-testimonial-author">
+                  <div class="abt-author-info">
+                    <div class="abt-author-name">David</div>
+                    <div class="abt-author-role">Creative Director</div>
+                  </div>
+                  <div
+                    class="abt-author-image"
+                    style="
+                      background-image: url('./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg');
+                    "
+                  ></div>
+                </div>
               </div>
+
+              <div class="abt-testimonial-card active">
+                <div class="abt-quote-icon">''</div>
+                <div class="abt-testimonial-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
+                  aliquid voluptates corrupti inventore animi incidunt
+                  doloremque quae, veritatis possimus aliquam.
+                </div>
+                <div class="abt-testimonial-author">
+                  <div class="abt-author-info">
+                    <div class="abt-author-name">David</div>
+                    <div class="abt-author-role">Creative Director</div>
+                  </div>
+                  <div
+                    class="abt-author-image"
+                    style="
+                      background-image: url('./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg');
+                    "
+                  ></div>
+                </div>
+              </div>
+
+              <div class="abt-testimonial-card active">
+                <div class="abt-quote-icon">''</div>
+                <div class="abt-testimonial-text">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Ullam facere, amet quas magni voluptatem alias sed enim ut
+                  autem! Hic explicabo dicta nam deleniti quia corporis
+                  assumenda
+                </div>
+                <div class="abt-testimonial-author">
+                  <div class="abt-author-info">
+                    <div class="abt-author-name">David</div>
+                    <div class="abt-author-role">Creative Director</div>
+                  </div>
+                  <div
+                    class="abt-author-image"
+                    style="
+                      background-image: url('./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg');
+                    "
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Duplicate for other testimonials -->
+              <div class="abt-testimonial-card">
+                <div class="abt-quote-icon">''</div>
+                <div class="abt-testimonial-text">
+                  Creativity fuels innovation, and innovation drives business
+                  growth.
+                </div>
+                <div class="abt-testimonial-author">
+                  <div class="abt-author-info">
+                    <div class="abt-author-name">Sophia</div>
+                    <div class="abt-author-role">Marketing Lead</div>
+                  </div>
+                  <div
+                    class="abt-author-image"
+                    style="
+                      background-image: url('./Images/The Team Image/sophia.jpg');
+                    "
+                  ></div>
+                </div>
+              </div>
+
+              <!-- Add 4 more cards with same structure -->
             </div>
           </div>
         </div>

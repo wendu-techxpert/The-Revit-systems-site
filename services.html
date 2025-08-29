@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Revit-Systems</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main wrapper for the entire page content -->
+    <div class="revit-container">
+      <!-- Header section containing the navigation bar -->
+      <header id="header">
+        <nav>
+          <div class="nav-content">
+            <!-- Container for logo and navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Display the company logo image -->
+                <img src="./Images/Logo/without bg black font.png" alt="" />
+              </div>
+              <!-- Unordered list for navigation menu items -->
+              <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- Call-to-action button in the navigation -->
+            <button class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Navigation</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
+      <!-- Main container for the page's core sections -->
+      <div class="container">
+        <div class="ser-what-we-do-section">
+          <div class="ser-what-we-do-nav">
+            <a href="#" class="ser-nav-link">Home</a>
+            <span class="ser-nav-divider">/</span>
+            <a href="#" class="ser-nav-link ser-active">Services</a>
+          </div>
+          <div class="ser-what-we-do-content">
+            <div class="ser-icon ser-icon-left">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <!-- Clipboard -->
+                <path
+                  d="M16 4h1a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1"
+                />
+                <rect x="9" y="2" width="6" height="4" rx="1" ry="1" />
+
+                <!-- Clock badge -->
+                <circle cx="15" cy="18" r="4" />
+                <path d="M15 16.5v2l1 1" />
+              </svg>
+            </div>
+            <div class="ser-text-wrapper">
+              <div class="ser-what-we-do-title">What We Do</div>
+              <div class="ser-what-we-do-subtitle">
+                Tailored Solutions to Elevate your Business
+              </div>
+            </div>
+            <div class="ser-icon ser-icon-right">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                <path
+                  d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- the video conatiner section  -->
+
+        <section class="ser-container">
+          <!-- Video Section -->
+          <div class="ser-video-wrapper">
+            <img
+              src="./Images/video/04a8df7f83828ada41dc7fa866fc1a232daf2ddc.jpg"
+              alt="Video Thumbnail"
+            />
+            <div class="ser-play-btn"></div>
+          </div>
+
+          <!-- Services Cards -->
+          <div class="ser-cards">
+            <div class="ser-card">
+              <div class="ser-card-icon ser-icon-business">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="64"
+                  height="64"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  role="img"
+                >
+                  <title>Person holding a book</title>
+
+                  <!-- Head -->
+                  <circle cx="12" cy="4.5" r="2.2" />
+
+                  <!-- Torso -->
+                  <path
+                    d="M12 7.2c-1.8 0-3.2.9-3.8 2.6l-.6 1.8c-.3.9.1 1.8 1 2.1l1.6.5"
+                  />
+                  <path
+                    d="M12 7.2c1.8 0 3.2.9 3.8 2.6l.6 1.8c.3.9-.1 1.8-1 2.1l-1.6.5"
+                  />
+
+                  <!-- Book — centered in front of body, held by hands -->
+                  <rect
+                    x="8.2"
+                    y="12.6"
+                    width="7.6"
+                    height="4.6"
+                    rx="0.6"
+                    ry="0.6"
+                  />
+                </svg>
+              </div>
+              <h3>Business Consulting</h3>
+              <p>Designing intuitive and engaging user experiences</p>
+              <a href="#">Get Info ></a>
+            </div>
+
+            <div class="ser-card">
+              <div class="ser-card-icon ser-icon-software">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <title>Code Symbol</title>
+                  <path d="M7 8l-4 4 4 4" />
+                  <!-- Left angle bracket -->
+                  <path d="M17 8l4 4-4 4" />
+                  <!-- Right angle bracket -->
+                  <path d="M14 4l-4 16" />
+                  <!-- Slash -->
+                </svg>
+              </div>
+              <h3>Software Development</h3>
+              <p>Designing intuitive and engaging user experiences</p>
+              <a href="#">Get Info ></a>
+            </div>
+
+            <div class="ser-card">
+              <div class="ser-card-icon .ser-icon-brand">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 64 64"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  role="img"
+                >
+                  <title>Military dog tag</title>
+
+                  <!-- short bead chain -->
+                  <g fill="currentColor">
+                    <circle cx="28" cy="6" r="1.4" />
+                    <circle cx="31.5" cy="8.2" r="1.4" />
+                    <circle cx="35" cy="10.4" r="1.4" />
+                  </g>
+
+                  <!-- connector ring -->
+                  <circle cx="38" cy="13" r="2.2" fill="none" />
+
+                  <!-- dog tag -->
+                  <rect
+                    x="18"
+                    y="14"
+                    width="28"
+                    height="36"
+                    rx="3.6"
+                    ry="3.6"
+                    transform="rotate(6 34 32)"
+                    fill="none"
+                  />
+                  <!-- hole -->
+                  <circle cx="39.8" cy="17.2" r="1.6" fill="currentColor" />
+
+                  <!-- engraved text lines (suggested stamping) -->
+                  <path d="M24 26h16" />
+                  <path d="M24 31h14" />
+                  <path d="M24 36h10" />
+                </svg>
+              </div>
+              <h3>Brand & Identity</h3>
+              <p>Designing intuitive and engaging user experiences</p>
+              <a href="#">Get Info ></a>
+            </div>
+
+            <div class="ser-card">
+              <div class="ser-card-icon ser-icon-seo">
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.5 15.5L19 19"
+                    stroke="#333333"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z"
+                    stroke="#333333"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M11 7C12.6569 7 14 8.34315 14 10C14 11.6569 12.6569 13 11 13"
+                    stroke="#333333"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13 10C13 8.34315 11.6569 7 10 7"
+                    stroke="#333333"
+                    stroke-width="1"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>SEO & Marketing</h3>
+              <p>Designing intuitive and engaging user experiences</p>
+              <a href="#">Get Info ></a>
+            </div>
+          </div>
+        </section>
+        <!-- committee section -->
+        <div class="ser-commitment-section">
+          <div class="ser-stat-card ser-stat-card-orange">
+            <div class="black"></div>
+            <div class="ser-stat-number">65+</div>
+            <div class="ser-stat-label">Projects</div>
+            <div class="ser-stat-text">
+              Proven success to every new challenges.
+            </div>
+          </div>
+          <div class="ser-stat-card ser-stat-card-blue">
+            <div class="black"></div>
+            <div class="ser-stat-number">7+</div>
+            <div class="ser-stat-label">Years</div>
+            <div class="ser-stat-text">Serving the market with excellence</div>
+          </div>
+          <div class="ser-text-card">
+            <div class="ser-text-title">Committed Team for all Services</div>
+            <div class="ser-text-description">
+              Our expert team handles all your service needs. From your design
+              to development, ensuring top-quality results tailored to you.
+            </div>
+            <button class="ser-text-button">
+              Learn more
+              <span class="ser-arrow-icon">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- milestone section -->
+        <div class="abt-milestones-section">
+          <div class="abt-milestones-header-wrapper">
+            <div class="abt-milestones-text">
+              <div class="abt-milestones-title">Milestones We've Achieved</div>
+              <div class="abt-milestones-subtitle">
+                A brief Overview of our achievements and progress, highlighting
+                the key milestones that have shaped our journey to success
+              </div>
+            </div>
+          </div>
+          <div class="abt-milestones-cards-container">
+            <div class="abt-milestone-card">
+              <div class="abt-milestone-icon"></div>
+              <div class="abt-milestone-year">2025</div>
+              <div class="abt-milestone-event">
+                First major Client Achaieved
+              </div>
+              <div class="abt-milestone-description">
+                A brief Overview of our achievements and progress, highlighting
+                the key milestones that have shaped our journey to success
+              </div>
+            </div>
+            <div class="abt-milestone-card">
+              <div class="abt-milestone-icon"></div>
+              <div class="abt-milestone-year">2024</div>
+              <div class="abt-milestone-event">
+                First major Client Achaieved
+              </div>
+              <div class="abt-milestone-description">
+                A brief Overview of our achievements and progress, highlighting
+                the key milestones that have shaped our journey to success
+              </div>
+            </div>
+            <div class="abt-milestone-card">
+              <div class="abt-milestone-icon"></div>
+              <div class="abt-milestone-year">2023</div>
+              <div class="abt-milestone-event">
+                First major Client Achaieved
+              </div>
+              <div class="abt-milestone-description">
+                A brief Overview of our achievements and progress, highlighting
+                the key milestones that have shaped our journey to success
+              </div>
+            </div>
+            <div class="abt-milestone-card">
+              <div class="abt-milestone-icon"></div>
+              <div class="abt-milestone-year">2022</div>
+              <div class="abt-milestone-event">First major Cl Achaieved</div>
+              <div class="abt-milestone-description">
+                A brief Overview of our ach progress, highlighting the k
+                milestones that have shaped our journey to success
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- From Uiverse.io by eirikvold -->
+        <button class="reach-out">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <span>Reach Out</span>
+        </button>
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img src="./Images/Logo/without bg white font.png" alt="" />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M13.5 2H17v4h-2c-1.1 0-1 .5-1 1.1V9h3l-.5 3H14v8h-3v-8H8v-3h3V7c0-2.2 1-3 3-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.29 3.9A12.16 12.16 0 0 1 3.1 4.7a4.28 4.28 0 0 0 1.33 5.72 4.25 4.25 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.19 4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.97 8.6 8.6 0 0 1-5.32 1.83A12.1 12.1 0 0 0 12 21c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5-.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href=""
+                  aria-label="LinkedIn"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- LinkedIn icon SVG -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Portfolio</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="#">Pricing</a>
+                <a href="#">FAQs</a>
+                <a href="#">Help Center</a>
+                <a href="#">Blog</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Solutions. All Rights Reserved.
+          </div>
+        </footer>
+      </div>
+      <!-- End of main container -->
+    </div>
+    <!-- End of revit-container -->
+  </body>
+</html>

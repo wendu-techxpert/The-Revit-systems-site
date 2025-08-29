@@ -57,3 +57,21 @@ document.getElementById("toggleBtn").addEventListener("click", function () {
     this.textContent = "Read More...";
   }
 });
+
+// the fade carousel on the about us join section
+const cards = document.querySelectorAll(".abt-testimonial-card");
+let current = 0;
+
+function showNextCard() {
+  // hide current
+  cards[current].classList.remove("active");
+
+  // move to next
+  current = (current + 1) % cards.length;
+
+  // show next
+  cards[current].classList.add("active");
+}
+
+// autoplay every 5 seconds
+setInterval(showNextCard, 5000);

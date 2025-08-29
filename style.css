@@ -2363,6 +2363,13 @@ button p {
   }
 }
 
+@media (max-width: 600px) {
+  .about-page-hero {
+    width: 100%;
+    border-radius: 0px;
+  }
+}
+
 /* TEXT CONTAINER ABOVE BUBBLES */
 .abt-text-container {
   position: relative;
@@ -2476,31 +2483,27 @@ button p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem; /* Space between paragraph and bottom icon */
+  margin-top: 2rem;
   position: relative;
   left: -40%;
 }
 
 .abt-icon-image {
-  width: 40px; /* Size of the image/avatar */
+  width: 40px;
   height: 40px;
-  background-color: #cccccc; /* Placeholder for the image */
-  border-radius: 50%; /* Makes it circular */
-  border: 2px solid #ffffff; /* White border */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  /* You would replace background-color with a background-image URL */
-  /* background-image: url('path/to/founder-image.jpg'); */
+  background-color: #cccccc;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-position: center;
 }
-/* Specific image for the top icon */
 .abt-icon-top .abt-icon-image {
-  background-image: url("./Images/The\ Team\ Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"); /* Replace with actual image URL */
+  background-image: url("./Images/The\ Team\ Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg");
 }
 
-/* Specific image for the bottom icon */
 .abt-icon-bottom .abt-icon-image {
-  background-image: url("https://i.imgur.com/example-cofounder-bottom.jpg"); /* Replace with actual image URL */
+  background-image: url("https://i.imgur.com/example-cofounder-bottom.jpg");
 }
 
 .abt-icon-label {
@@ -2511,13 +2514,12 @@ button p {
   font-size: 0.7rem;
   font-weight: 600;
   margin-top: 0.5rem;
-  white-space: nowrap; /* Prevent label from breaking */
+  white-space: nowrap;
 }
 
-/* Text content wrapper */
 .abt-text-content {
-  max-width: 900px; /* Limits the width of the paragraph */
-  margin: 0 auto; /* Center the paragraph */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .abt-paragraph,
@@ -2536,12 +2538,11 @@ button p {
 }
 
 .abt-highlight-text {
-  display: inline; /* Keep highlighted text inline with the rest */
+  display: inline;
   color: #d17609;
   font-weight: 600;
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
   .abt-main-heading {
     font-size: 2.5rem;
@@ -2552,7 +2553,7 @@ button p {
   }
 
   .abt-icon-top {
-    right: 5%; /* Adjust for smaller screens */
+    right: 5%;
     top: -10px;
   }
   .abt-paragraph {
@@ -2565,7 +2566,7 @@ button p {
     font-size: 2rem;
   }
   .abt-icon-top {
-    position: static; /* Stack icons on smaller screens */
+    position: static;
     margin-bottom: 1rem;
   }
   .abt-text-content {
@@ -2772,6 +2773,26 @@ button p {
   line-height: 0;
 }
 
+.abt-testimonial-wrapper {
+  position: relative;
+  height: auto; /* keeps it flexible */
+}
+
+.abt-testimonial-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none; /* avoid clicks on hidden cards */
+}
+
+.abt-testimonial-card.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative; /* bring active card to normal flow */
+}
+
 .abt-testimonial-text {
   font-size: 0.9rem;
   color: #666666;
@@ -2932,5 +2953,533 @@ button p {
   }
   .abt-value-card {
     max-width: 100%;
+  }
+}
+
+/********************  from here onward all styles are for the service page  *********************/
+/* Main section container */
+.ser-what-we-do-section {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+/* Navigation links */
+.ser-what-we-do-nav {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.ser-nav-link {
+  color: rgb(159, 159, 159);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+}
+
+.ser-active {
+  color: #d17609;
+}
+
+.ser-nav-divider {
+  color: #e59c50;
+  font-weight: 600;
+}
+
+.ser-what-we-do-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  width: 100%;
+  position: relative;
+}
+
+.ser-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ser-what-we-do-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ser-what-we-do-subtitle {
+  font-size: 1rem;
+  color: #777777;
+  margin-top: 0.5rem;
+}
+
+/* Icon styling */
+.ser-icon {
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  color: #d17609;
+}
+
+.ser-icon-left {
+  transform: rotate(-30deg);
+}
+
+.ser-icon-right {
+  transform: rotate(30deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ser-what-we-do-content {
+    gap: 20px;
+    flex-direction: column;
+  }
+  .ser-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .ser-what-we-do-title {
+    font-size: 2rem;
+  }
+}
+
+.ser-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  height: 600px;
+}
+
+/* Left side video */
+.ser-video-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.ser-video-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.ser-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ser-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.ser-play-btn::before {
+  content: "";
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent #ff8800;
+  margin-left: 4px;
+}
+
+/* Right side cards grid */
+.ser-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.ser-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #f8f8f8; /* Default background color */
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* Individual card icon backgrounds and colors */
+.ser-icon-business {
+  background-image: url("https://i.imgur.com/example-business-icon.png");
+  background-color: #e6f0ff; /* Light blue */
+  color: #242527;
+  border-bottom-left-radius: 40px;
+}
+
+.ser-icon-software {
+  background-image: url("https://i.imgur.com/example-software-icon.png");
+  background-color: #fcf8e5; /* Light yellow */
+  border-bottom-right-radius: 40px;
+}
+
+.ser-icon-brand {
+  background-image: url("https://i.imgur.com/example-brand-icon.png");
+  background-color: #f9f0e6; /* Light tan/orange */
+  border-bottom-left-radius: 90px;
+}
+
+.ser-icon-brand svg {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.ser-icon-seo {
+  background-image: url("https://i.imgur.com/example-seo-icon.png");
+  background-color: #e6e6ff; /* Light purple */
+  border-bottom-right-radius: 40px;
+}
+.ser-icon-seo svg {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.ser-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ser-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.ser-icon {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.ser-card h3 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.ser-card p {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.ser-card a {
+  font-size: 14px;
+  color: #ff8800;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.ser-card a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ser-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .ser-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* committee section */
+.ser-commitment-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: stretch;
+  padding: 4rem 0rem;
+  background-color: #f0f0f5; /* Light purple-gray background */
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Statistic cards */
+.ser-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.ser-stat-card-orange {
+  background-color: #d17609; /* Orange background  */
+}
+
+.ser-stat-card-blue {
+  background-color: #a9a8a5; /* Blue background */
+}
+
+.black {
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+  background-color: #00000047;
+  position: relative;
+  top: -50px;
+  right: -55%;
+}
+.ser-stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.ser-stat-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ser-stat-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Text and button card */
+.ser-text-card {
+  flex: 2;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 2rem 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.ser-text-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.ser-text-description {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.ser-text-button {
+  background: none;
+  border: 2px solid #e59c50; /* Orange border */
+  color: #e59c50;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.ser-text-button:hover {
+  background-color: #e59c50;
+  color: #ffffff;
+}
+
+.ser-arrow-icon {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .ser-commitment-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ser-stat-card,
+  .ser-text-card {
+    max-width: 80%;
+    text-align: center;
+  }
+  .ser-text-button {
+    margin: 0 auto;
+  }
+}
+
+/* milestone section */
+.abt-milestones-section {
+  padding: 4rem 0rem;
+  width: 100%;
+}
+
+/* Header with title, subtitle, and navigation */
+.abt-milestones-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+  width: 95%;
+}
+
+.abt-milestones-text {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.abt-milestones-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333333;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.abt-milestones-subtitle {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Cards container (for horizontal scrolling) */
+.abt-milestones-cards-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 1rem 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Individual milestone card */
+.abt-milestone-card {
+  flex-shrink: 0; /* Prevents cards from shrinking */
+  width: 300px; /* Fixed width for each card */
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px #d1770924;
+  text-align: left;
+  scroll-snap-align: center;
+}
+
+.abt-milestone-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #d17609; /* Light orange background */
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background-image: url("https://i.imgur.com/example-icon.png"); /* Replace with your icon URL */
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.abt-milestone-year {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e59c50;
+  margin-bottom: 0.5rem;
+}
+
+.abt-milestone-event {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.abt-milestone-description {
+  font-size: 0.9rem;
+  color: #777777;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .abt-milestones-header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 0rem;
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .abt-milestones-navigation {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .abt-milestones-cards-container {
+    width: 80%;
+  }
+
+  .abt-milestone-card {
+    flex-shrink: 0; /* Prevents cards from shrinking */
+    width: 170px; /* Fixed width for each card */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px #d1770924;
+    text-align: left;
+    scroll-snap-align: center;
+  }
+
+  .abt-milestones-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #333333;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
 }
