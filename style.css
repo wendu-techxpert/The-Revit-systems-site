@@ -1021,8 +1021,8 @@ button p {
   }
 }
 
-/******* blogfolio section background and style ********/
-.blogfolio {
+/******* portfolio section background and style ********/
+.portfolio {
   width: 90%;
   margin: 0 auto;
   position: relative;
@@ -1033,11 +1033,11 @@ button p {
   color: white;
 }
 
-.blogfolio .the-content {
+.portfolio .the-content {
   width: 90%;
   margin: auto;
 }
-.blogfolio-header {
+.portfolio-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -1047,12 +1047,12 @@ button p {
   border-bottom: 2px #62626299 solid;
   margin-bottom: 1.25rem;
 }
-.blogfolio-header .title {
+.portfolio-header .title {
   font-size: 40px;
   font-weight: 600;
   padding-bottom: 6px;
 }
-.blogfolio-header .subtitle {
+.portfolio-header .subtitle {
   font-size: 14px;
   color: #808080;
   font-weight: 400;
@@ -1219,7 +1219,7 @@ button p {
 }
 
 @media (max-width: 1150px) {
-  .blogfolio {
+  .portfolio {
     display: none;
   }
 }
