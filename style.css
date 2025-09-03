@@ -3756,7 +3756,7 @@ button p {
 
 @media (max-width: 550px) {
   .blog-grid-container {
-    grid-template-columns: repeat(1, 99%);
+    grid-template-columns: repeat(1, 100%);
   }
   .blog-card-image {
     height: 140px;
