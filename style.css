@@ -3736,10 +3736,9 @@ button p {
   }
 
   .blog-grid-container {
-    grid-template-columns: repeat(2, 47%);
-    gap: 24px;
+    grid-template-columns: repeat(2, 49%);
+    gap: 15px;
     width: 90%;
-    margin: 50px auto;
   }
 }
 
@@ -3755,14 +3754,9 @@ button p {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .blog-grid-container {
-    display: grid;
-    grid-template-columns: repeat(1, 97.6%);
-    gap: 24px;
-    width: 90%;
-    max-width: 1500px;
-    margin-top: 20px;
+    grid-template-columns: repeat(1, 99%);
   }
   .blog-card-image {
     height: 140px;
