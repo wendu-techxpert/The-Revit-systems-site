@@ -3787,7 +3787,8 @@ button p {
 
 /* Hero Section */
 .cont-nav {
-  margin-top: 40px;
+  margin-top: 50px;
+  height: 80px;
 }
 .cont-hero {
   background: linear-gradient(135deg, #d17609, #d14192, #5a2ca0);
