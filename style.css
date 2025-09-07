@@ -177,7 +177,6 @@ header {
     top: 0;
     left: 0;
     height: 100vh;
-    opacity: 1;
     background: linear-gradient(180deg, #d17609, #242527);
     color: #fff;
     padding: 20px 16px;
@@ -906,7 +905,7 @@ hr {
   align-items: center;
   background: #d17609;
   color: #fff;
-  margin: 100px auto;
+  margin: 30px auto 70px;
   height: 460px;
 }
 
@@ -1116,7 +1115,6 @@ hr {
   margin: 50px auto;
 }
 .team-section .header {
-  margin-bottom: 32px;
   position: relative;
   max-width: 700px;
   left: 60px;
@@ -1140,15 +1138,16 @@ hr {
 
 .the-scroll-track {
   overflow: hidden;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .team-section .cards {
   display: flex; /* make children sit in a row */
   gap: 10px;
   align-items: flex-start;
   width: max-content;
+  margin: 1rem;
   height: 450px;
-  padding-top: 10px;
+  padding-top: 2px;
   animation: scroll-left 25s linear infinite;
 }
 
@@ -1170,8 +1169,8 @@ hr {
   border-radius: 16px;
   flex-direction: column;
   gap: 8px;
-  width: 292px;
-  height: 450px;
+  width: 230px;
+  height: 400px;
   box-shadow: var(--shadow);
   position: relative;
   padding: 5;
