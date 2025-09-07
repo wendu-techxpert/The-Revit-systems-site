@@ -1758,6 +1758,19 @@ hr {
   }
 }
 
+@media (max-width: 450px) {
+  .rv-newsblast .rv-news-title {
+    margin: 0;
+    font-size: 15.39px;
+    font-weight: 700;
+    font-style: bold;
+  }
+
+  .rv-newsblast .rv-news-desc {
+    font-size: 9px;
+    width: 80%;
+  }
+}
 /* From Uiverse.io by eirikvold */
 .reach-out {
   position: fixed;
