@@ -366,10 +366,10 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  width: 49.2%;
-  height: 90%;
+  width: 49.6%;
+  height: 99%;
   background: linear-gradient(to top, #414244, #5f5b58);
-  border: 2px solid white;
+  border: 0.5px solid white;
   border-radius: 40px;
   transition: transform 0.3s ease;
   z-index: 0;
@@ -384,15 +384,6 @@ header {
   color: white;
   z-index: 1;
   cursor: pointer;
-}
-
-/* Active/inactive text colors (optional) */
-.hero-cta-btn .text.active {
-  font-weight: bold;
-}
-
-.hero-cta-btn .text.inactive {
-  opacity: 0.8;
 }
 
 @media (max-width: 1000px) {
@@ -415,6 +406,7 @@ header {
 @media (max-width: 700px) {
   .hero-container {
     align-items: end;
+    height: 600px;
   }
 
   .the-hero-content {
@@ -435,7 +427,7 @@ header {
   }
 
   .the-hero-content .text-part p {
-    font-size: 10px;
+    font-size: 18px;
   }
 
   .the-floating-bar {
@@ -473,7 +465,7 @@ header {
     width: 48.5%;
     height: 91%;
     background: linear-gradient(to top, #414244, #5f5b58);
-    border: 2px solid white;
+    border: 0.5px solid white;
     border-radius: 10px;
     transition: transform 0.3s ease;
     z-index: 0;
@@ -503,6 +495,14 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.hyphen {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: start;
   align-items: center;
 }
 
@@ -537,9 +537,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 30px auto;
+  margin: 40px auto;
   min-height: 412px;
   width: 90%;
+}
+
+hr {
+  border: none;
+  width: 30px;
+  height: 3px;
+  color: #d17609;
+  background-color: #d17609;
 }
 
 /* About text column */
@@ -568,6 +576,27 @@ header {
   font-weight: 500;
   color: #404051;
   margin-top: 20px;
+}
+
+.about-section button {
+  border: none;
+  background-color: transparent;
+  margin-top: 30px;
+}
+
+.abt-bttn {
+  background: #d17609;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
 }
 
 /* Right-aligned metrics */
@@ -624,7 +653,7 @@ header {
 
   .about-text p {
     font-size: 12px;
-    line-height: 31.14px;
+    line-height: 22.14px;
     font-weight: 500;
     color: #404051;
     margin-top: 14px;
@@ -654,7 +683,7 @@ header {
   margin-bottom: 1.25rem;
 }
 .services-header .title {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 600;
   padding-bottom: 6px;
 }
@@ -665,16 +694,17 @@ header {
 }
 .cards {
   display: grid;
-  gap: 1.3rem;
+  gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin: 3rem 0;
 }
 .card {
   position: relative;
   flex: 1;
-  width: 90%;
-  height: 337px;
+  width: 80%;
+  margin: auto;
+  height: 250px;
   background: #242527;
   border-radius: 16px;
   padding: 1rem 1rem 1.25rem;
@@ -729,7 +759,7 @@ header {
 
 .card p {
   margin: 0;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.3;
   color: #ccc;
@@ -751,46 +781,37 @@ header {
   display: block;
 }
 
-.middle-card {
-  padding: 0;
-  height: 370px;
-  background-color: #06031800;
-}
-
-.middle-card .top-line {
-  border-bottom: 1px rgba(255, 255, 255, 0.85) solid;
-}
-
-.middle-card .img-wrapper {
-  border-bottom-left-radius: 250px;
-}
-
 /* Highlighted middle card */
 .card.highlight {
   background: #d17609;
   color: #fff;
-  position: relative;
-  width: 99%;
-  height: 100%;
-  border-bottom-left-radius: 210px;
+  border-bottom-left-radius: 150px;
 }
 .card.highlight h3 {
   color: #fff;
 }
+
+.card.highlight .top-line {
+  border-bottom: 1px solid white;
+}
+
+.highlight img {
+  border-bottom-left-radius: 240px;
+}
+
 .card .arrow-circle {
   position: absolute;
   left: 12px;
   bottom: 12px;
-  width: 70px;
-  height: 60px;
+  width: 60px;
+  height: 50px;
   background: #1f1f1f;
   border-radius: 50%;
   display: flex;
   padding-top: 9px;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
-  font-size: 50.49px;
+  font-size: 40px;
   color: #d17609;
   border: 4px solid #fff;
   transition: all 0.5s ease;
@@ -851,8 +872,28 @@ header {
 }
 
 @media (max-width: 600px) {
+  .services-header .title {
+    font-size: 30px;
+  }
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .card.highlight {
+    background: #d17609;
+    color: #fff;
+    border-bottom-left-radius: 130px;
+  }
+  .card.highlight h3 {
+    color: #fff;
+  }
+
+  .card.highlight .top-line {
+    border-bottom: 1px solid white;
+  }
+
+  .highlight img {
+    border-bottom-left-radius: 300px;
   }
 }
 
@@ -951,7 +992,7 @@ header {
   }
   .highlight-section .the-image {
     height: auto;
-    width: 60%;
+    width: 100%;
     position: relative;
     bottom: 0;
   }
@@ -984,7 +1025,7 @@ header {
 @media (max-width: 900px) {
   .highlight-section .the-image {
     height: auto;
-    width: 70%;
+    width: 100%;
     position: relative;
     bottom: 0;
   }
@@ -1016,6 +1057,24 @@ header {
   .highlight-section .the-image {
     height: auto;
     width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .highlight-section .the-image {
+    height: auto;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .highlight-section .the-image {
+    height: auto;
+    width: 120%;
     position: relative;
     bottom: 0;
   }
