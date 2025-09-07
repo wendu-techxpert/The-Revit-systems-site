@@ -731,7 +731,6 @@ hr {
 }
 .card h3 {
   margin: 0;
-  width: 50px;
   font-size: 24px;
   line-height: 1.1;
   font-weight: 600;
@@ -1112,7 +1111,7 @@ hr {
 /************** the team section **************/
 .team-section {
   width: 100%;
-  margin: 50px auto;
+  margin: 50px auto 10px auto;
 }
 .team-section .header {
   position: relative;
@@ -1671,169 +1670,6 @@ hr {
   }
 }
 
-/* ---------- HELP HUB ---------- */
-.rv-help-hub {
-  background-color: #f2f1ec;
-  min-height: 633.1622924804688px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 60px 0;
-}
-
-.rv-help-grid {
-  width: 95%;
-  margin: 60px auto;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 40px;
-}
-
-@media (max-width: 1000px) {
-  .rv-help-grid {
-    width: 85%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-.rv-info-block {
-  border-radius: 14px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  max-height: 400px;
-}
-.rv-graphic {
-  width: 90%;
-  margin-top: 50px;
-}
-
-.rv-graphic img {
-  width: 100%;
-}
-
-.rv-copy {
-  height: 300px;
-}
-.rv-headline {
-  margin: 0;
-  font-size: 29.57px;
-  font-weight: 700;
-  color: #000000;
-}
-.rv-paragraph {
-  margin: 8px 0 0;
-  font-size: 11.24px;
-  font-weight: 600px;
-  color: #000;
-  width: 210px;
-  height: 57px;
-  line-height: 18.73px;
-}
-
-.rv-form-shell {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 26px 22px;
-  width: 427.1px;
-  height: 406px;
-}
-.rv-contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-.rv-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.rv-field label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-.rv-field input,
-.rv-field textarea {
-  padding: 12px 14px;
-  border: 1px solid #d8dce6;
-  border-radius: 8px;
-  font-size: 0.92rem;
-  background: #fafbfe;
-  resize: vertical;
-}
-.rv-helper {
-  font-size: 0.7rem;
-  color: #555;
-}
-.rv-helper a {
-  color: #d17609;
-  text-decoration: none;
-}
-.rv-submit {
-  background: #d17609;
-  border: none;
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  color: #fff;
-  font-size: 0.95rem;
-  align-self: flex-start;
-  transition: filter 0.2s;
-  margin: 20px auto auto auto;
-}
-.rv-submit:hover {
-  filter: brightness(1.05);
-}
-
-@media (max-width: 600px) {
-  .rv-copy {
-    height: 200px;
-  }
-  .rv-form-shell {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 26px 22px;
-    width: 80%;
-    height: 406px;
-  }
-
-  .rv-info-block {
-    border-radius: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 500px;
-  }
-
-  .rv-graphic {
-    width: 90%;
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 450px) {
-  .rv-newsblast .rv-news-title {
-    margin: 0;
-    font-size: 15.39px;
-    font-weight: 700;
-    font-style: bold;
-  }
-
-  .rv-newsblast .rv-news-desc {
-    font-size: 9px;
-    width: 80%;
-  }
-}
 /* ---------- NEWSBLAST ---------- */
 .rv-newsblast {
   background: #d17609;
