@@ -177,6 +177,7 @@ header {
     top: 0;
     left: 0;
     height: 100vh;
+    opacity: 1;
     background: linear-gradient(180deg, #d17609, #242527);
     color: #fff;
     padding: 20px 16px;
@@ -427,7 +428,7 @@ header {
   }
 
   .the-hero-content .text-part p {
-    font-size: 18px;
+    font-size: 14.3px;
   }
 
   .the-floating-bar {
@@ -462,8 +463,8 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    width: 48.5%;
-    height: 91%;
+    width: 49.2%;
+    height: 98.5%;
     background: linear-gradient(to top, #414244, #5f5b58);
     border: 0.5px solid white;
     border-radius: 10px;
@@ -537,8 +538,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 40px auto;
-  min-height: 412px;
+  margin: 40px auto 10px auto;
+  min-height: 330px;
   width: 90%;
 }
 
