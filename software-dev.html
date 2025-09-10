@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Revit-Systems</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main wrapper for the entire page content -->
+    <div class="revit-container">
+      <!-- Header section containing the navigation bar -->
+      <header id="header">
+        <nav>
+          <div class="nav-content">
+            <!-- Container for logo and navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Display the company logo image -->
+                <img src="./Images/Logo/without bg black font.png" alt="" />
+              </div>
+              <!-- Unordered list for navigation menu items -->
+              <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="#">portfolio</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- Call-to-action button in the navigation -->
+            <button class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Revit-Systems</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="#">portfolio</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
+      <!-- Main container for the page's core sections -->
+      <div class="container">
+        <!-- Hero -->
+        <section class="sub-service-hero" loading="lazy">
+          <svg
+            class="sub-icon sub-icon--1"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- angle left -->
+            <path
+              d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+              fill="currentColor"
+            />
+          </svg>
+
+          <svg
+            class="sub-icon sub-icon--2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- angle right -->
+            <path
+              d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"
+              fill="currentColor"
+            />
+          </svg>
+
+          <svg
+            class="sub-icon sub-icon--3"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- curly braces -->
+            <path
+              d="M9 4v4H7V6a2 2 0 0 0-2-2H4v6h2V8a2 2 0 0 1 2-2h1zm6 0h-1a2 2 0 0 1-2 2v2H9V4h0a2 2 0 0 0-2 2v2h2V8a2 2 0 0 1 2-2h1v6h2V8a2 2 0 0 0-2-2z"
+              fill="currentColor"
+            />
+          </svg>
+
+          <svg
+            class="sub-icon sub-icon--4"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- forward slash (code) -->
+            <path d="M7 17l10-10v10H7z" fill="currentColor" />
+          </svg>
+
+          <svg
+            class="sub-icon sub-icon--5"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- terminal / console -->
+            <path
+              d="M3 5v14h18V5H3zm2 2h14v10H5V7zm2.5 7L6 11.5 7.5 10 10 12.5 7.5 15zM13 14h5v-2h-5v2z"
+              fill="currentColor"
+            />
+          </svg>
+
+          <svg
+            class="sub-icon sub-icon--6"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <!-- database / stack -->
+            <path
+              d="M12 3C7.03 3 3 4.79 3 7v10c0 2.21 4.03 4 9 4s9-1.79 9-4V7c0-2.21-4.03-4-9-4zm0 2c4.42 0 7 1.12 7 2s-2.58 2-7 2-7-1.12-7-2 2.58-2 7-2zm-7 6.1V9.9C6.6 10.6 9 11 12 11s5.4-.4 7-1.1v1.2C17.4 12.6 15 13 12 13s-5.4-.4-7-1.1z"
+              fill="currentColor"
+            />
+          </svg>
+          <div class="sub-title-wrap">
+            <h1 class="sub-bn">Software Development</h1>
+          </div>
+        </section>
+        <section class="sub-intro-section">
+          <div class="sub-intro-container">
+            <!-- Text column -->
+            <div class="sub-intro-text">
+              <p class="sub-section-text">
+                Technology should simplify, not complicate. At Revit Systems, we
+                design and build software that works quietly in the background
+                but powerfully in your favor. From sleek websites to
+                enterprise-grade platforms, we architect systems that automate,
+                optimize, and scale with you. Whether it’s a mobile app that
+                connects with customers on the go, or a custom ERP that
+                streamlines your operations, our focus is always the same:
+                software that doesn’t just function — it empowers.
+              </p>
+            </div>
+
+            <!-- Image column -->
+            <div class="sub-intro-image">
+              <img
+                src="./Images/Portfolio/844591c28c26c90fe611b787714244f8373a88da.jpg"
+                alt="Software development illustration"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section class="sub-service-section">
+          <h2>Our Services</h2>
+          <div class="sub-service-grid">
+            <div class="sub-service-card">
+              <h3>Website Design & Development</h3>
+              <hr />
+              <p>
+                Corporate sites, eCommerce stores, and landing pages built to
+                impress and convert.
+              </p>
+            </div>
+            <div class="sub-service-card">
+              <h3>Web App Development</h3>
+              <hr class="rule" />
+              <p>
+                Custom portals, dashboards, and internal tools tailored to your
+                operations.
+              </p>
+            </div>
+            <div class="sub-service-card">
+              <h3>Mobile App Development</h3>
+              <hr class="rule" />
+              <p>
+                Android-first, hybrid or native apps designed for usability and
+                performance.
+              </p>
+            </div>
+            <div class="sub-service-card">
+              <h3>Custom Software Solutions</h3>
+              <hr class="rule" />
+              <p>
+                From EMRs to ERP and POS systems — built around your business
+                needs.
+              </p>
+            </div>
+            <div class="sub-service-card">
+              <h3>System Architecture & Automation Design</h3>
+              <hr class="rule" />
+              <p>Blueprints and automations that keep your systems seamless.</p>
+            </div>
+            <div class="sub-service-card">
+              <h3>Maintenance & Support Services</h3>
+              <hr class="rule" />
+              <p>
+                Post-launch updates or long-term support contracts to keep
+                things running.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img src="./Images/Logo/without bg white font.png" alt="" />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M13.5 2H17v4h-2c-1.1 0-1 .5-1 1.1V9h3l-.5 3H14v8h-3v-8H8v-3h3V7c0-2.2 1-3 3-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M22.46 6c-.77.35-1.6.58-2.46.69a4.3 4.3 0 0 0 1.88-2.37 8.6 8.6 0 0 1-2.72 1.04 4.28 4.28 0 0 0-7.29 3.9A12.16 12.16 0 0 1 3.1 4.7a4.28 4.28 0 0 0 1.33 5.72 4.25 4.25 0 0 1-1.94-.54v.05a4.28 4.28 0 0 0 3.43 4.19 4.3 4.3 0 0 1-1.93.07 4.29 4.29 0 0 0 4 2.97 8.6 8.6 0 0 1-5.32 1.83A12.1 12.1 0 0 0 12 21c7.88 0 12.2-6.53 12.2-12.2 0-.19 0-.37-.01-.56A8.7 8.7 0 0 0 24 5.5a8.4 8.4 0 0 1-2.54.7z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm5 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5-.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href=""
+                  aria-label="LinkedIn"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- LinkedIn icon SVG -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="#">Pricing</a>
+                <a href="#">FAQs</a>
+                <a href="#">Help Center</a>
+                <a href="#">Blog</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Systems. All Rights Reserved.
+          </div>
+        </footer>
+      </div>
+      <!-- End of main container -->
+    </div>
+    <!-- End of revit-container -->
+  </body>
+</html>

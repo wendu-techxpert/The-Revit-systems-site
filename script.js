@@ -41,37 +41,3 @@ document.querySelectorAll(".abt-circle").forEach((circle) => {
   circle.style.animationDuration = 15 + Math.random() * 15 + "s";
   circle.style.animationDelay = Math.random() * 10 + "s";
 });
-
-document.getElementById("toggleBtn").addEventListener("click", function () {
-  const text = document.getElementById("myText");
-
-  if (text.classList.contains("show")) {
-    // If hidden, show it
-    text.classList.remove("show");
-    text.classList.add("rv-active");
-    this.textContent = "Read Less..."; // change button text
-  } else {
-    // If shown, hide it
-    text.classList.remove("rv-active");
-    text.classList.add("show");
-    this.textContent = "Read More...";
-  }
-});
-
-// the fade carousel on the about us join section
-const cards = document.querySelectorAll(".abt-testimonial-card");
-let current = 0;
-
-function showNextCard() {
-  // hide current
-  cards[current].classList.remove("active");
-
-  // move to next
-  current = (current + 1) % cards.length;
-
-  // show next
-  cards[current].classList.add("active");
-}
-
-// autoplay every 5 seconds
-setInterval(showNextCard, 5000);

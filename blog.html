@@ -95,7 +95,7 @@
           <div class="top-nav">
             <a href="#" class="top-nav-link">Home</a>
             <span class="top-nav-divider">/</span>
-            <a href="#" class="top-nav-link top-active">portfolio</a>
+            <a href="#" class="top-nav-link top-active">Blog</a>
           </div>
           <div class="blog-blog-header">
             <h1>
@@ -138,30 +138,32 @@
           </div>
         </div>
         <div class="blog-grid-container">
-          <div class="blog-blog-card">
-            <img
-              src="./Images/Portfolio/43d1c1d9d3462c766ba49bf1db117e41ad4a9239.jpg"
-              alt="Optimizing Workflow Process"
-              class="blog-card-image"
-            />
-            <div class="blog-card-content">
-              <h3 class="blog-card-title">
-                Optimizing Workflow Process for Maximum Efficiency
-              </h3>
-              <p class="blog-card-description">
-                Understand the imblogance of optimizing workflow processes to
-                enhance efficiency.
-              </p>
-              <div class="blog-author-info">
-                <img
-                  src="./Images/Portfolio/844591c28c26c90fe611b787714244f8373a88da.jpg"
-                  alt="Author"
-                  class="blog-author-avatar"
-                />
-                <span class="blog-author-name">Jodi Kensley</span>
+          <a href="./blog-post.html">
+            <div class="blog-blog-card">
+              <img
+                src="./Images/Portfolio/43d1c1d9d3462c766ba49bf1db117e41ad4a9239.jpg"
+                alt="Optimizing Workflow Process"
+                class="blog-card-image"
+              />
+              <div class="blog-card-content">
+                <h3 class="blog-card-title">
+                  Optimizing Workflow Process for Maximum Efficiency
+                </h3>
+                <p class="blog-card-description">
+                  Understand the imblogance of optimizing workflow processes to
+                  enhance efficiency.
+                </p>
+                <div class="blog-author-info">
+                  <img
+                    src="./Images/Portfolio/844591c28c26c90fe611b787714244f8373a88da.jpg"
+                    alt="Author"
+                    class="blog-author-avatar"
+                  />
+                  <span class="blog-author-name">Jodi Kensley</span>
+                </div>
               </div>
-            </div>
-          </div>
+            </div></a
+          >
           <div class="blog-blog-card">
             <img
               src="./Images/Portfolio/f36a790085a8a2a3fb386f104d46595149116e8b.jpg"
@@ -514,6 +516,31 @@
           button.classList.add("blog-active");
         });
       });
+
+      const blogGrid = document.querySelector(".blog-grid-container");
+      function renderPosts() {
+        let posts = JSON.parse(localStorage.getItem("posts")) || [];
+        console.log(posts);
+        posts.forEach((post) => {
+          const card = document.createElement("div");
+          card.classList.add("blog-blog-card");
+
+          card.innerHTML = `
+        <img src="${post.imageUrl}" alt="${post.topic}" class="blog-card-image" />
+        <div class="blog-card-content">
+          <h3 class="blog-card-title">${post.topic}</h3>
+          <p class="blog-card-description">${post.content}</p>
+          <div class="blog-author-info">
+            <img src="./Images/default-avatar.png" alt="${post.user}" class="blog-author-avatar" />
+            <span class="blog-author-name">${post.user}</span>
+          </div>
+        </div>
+      `;
+          blogGrid.prepend(card);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", renderPosts);
     </script>
   </body>
 </html>

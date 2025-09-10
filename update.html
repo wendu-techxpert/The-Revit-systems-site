@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revit-Systems</title>
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #000;
+      }
+
+      .container {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        filter: blur(8px) brightness(0.6);
+      }
+
+      .slides {
+        display: flex;
+        width: 300%;
+        height: 100%;
+      }
+
+      .slides img {
+        width: 100vw;
+        height: 100vh;
+        animation: slide 15s infinite;
+        object-fit: cover;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        33% {
+          transform: translateX(-100%);
+        }
+        66% {
+          transform: translateX(-200%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .form-container {
+        position: relative;
+        z-index: 1;
+        background: #fffffffd;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      select,
+      .btn {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      input,
+      textarea {
+        width: 95%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+
+      .btn {
+        background: #d17609;
+        color: white;
+        border: none;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- MAIN SECTION WITH SLIDER + FORM -->
+    <div class="container">
+      <!-- Background Slider -->
+      <div class="slider">
+        <div class="slides">
+          <img src="https://picsum.photos/id/1018/1600/900" alt="Slide 1" />
+          <img src="https://picsum.photos/id/1025/1600/900" alt="Slide 2" />
+          <img src="https://picsum.photos/id/1036/1600/900" alt="Slide 3" />
+        </div>
+      </div>
+
+      <!-- Foreground Form -->
+      <div class="form-container">
+        <h2>Create a Post</h2>
+        <form id="postForm">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="tech">Tech</option>
+            <option value="business">Business</option>
+            <option value="lifestyle">Lifestyle</option>
+          </select>
+
+          <label for="topic">Topic</label>
+          <input type="text" id="topic" placeholder="Enter topic" required />
+
+          <label for="content">Content</label>
+          <textarea
+            id="content"
+            rows="5"
+            placeholder="Enter content..."
+            required
+          ></textarea>
+
+          <label for="user">Select User</label>
+          <select id="user" required>
+            <option value="">-- Pick User --</option>
+            <option value="wendu">Wendu</option>
+            <option value="john">John</option>
+            <option value="mary">Mary</option>
+          </select>
+
+          <label for="imageUrl">Image URL</label>
+          <input
+            type="url"
+            id="imageUrl"
+            placeholder="Enter image URL"
+            required
+          />
+
+          <button type="button" class="btn" onclick="savePost()">
+            Save Post
+          </button>
+        </form>
+      </div>
+    </div>
+    <script>
+      function savePost() {
+        // Gather form data
+        const newPost = {
+          category: document.getElementById("category").value,
+          topic: document.getElementById("topic").value,
+          content: document.getElementById("content").value,
+          user: document.getElementById("user").value,
+          imageUrl: document.getElementById("imageUrl").value,
+        };
+
+        // Load existing posts from localStorage or start empty
+        let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+        // Add new post to list
+        posts.push(newPost);
+
+        // Save back to localStorage
+        localStorage.setItem("posts", JSON.stringify(posts));
+
+        // Reset the form
+        document.getElementById("postForm").reset();
+      }
+    </script>
+  </body>
+</html>
