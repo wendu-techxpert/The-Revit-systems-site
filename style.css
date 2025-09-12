@@ -1763,77 +1763,15 @@ hr {
 @media (max-width: 450px) {
   .rv-newsblast .rv-news-title {
     margin: 0;
-    font-size: 15.39px;
+    font-size: 17.39px;
     font-weight: 700;
     font-style: bold;
   }
 
   .rv-newsblast .rv-news-desc {
-    font-size: 9px;
+    font-size: 13px;
     width: 80%;
   }
-}
-/* From Uiverse.io by eirikvold */
-.reach-out {
-  position: fixed;
-  right: 1%;
-  bottom: 20%;
-  font-family: inherit;
-  font-size: 10px;
-  background: linear-gradient(30deg, #331e04 0%, #d17609 70%);
-  color: white;
-  padding: 0.8em 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  width: 100px;
-  border-radius: 25px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
-  z-index: 10;
-}
-
-.reach-out:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.reach-out:active {
-  transform: scale(0.95);
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.reach-out span {
-  display: block;
-  margin-left: 0.4em;
-  transition: all 0.3s;
-}
-
-.reach-out svg {
-  width: 18px;
-  height: 18px;
-  fill: white;
-  transition: all 0.3s;
-}
-.reach-out .svg-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin-right: 0.5em;
-  transition: all 0.3s;
-}
-
-.reach-out:hover .svg-wrapper {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.reach-out:hover svg {
-  transform: rotate(45deg);
 }
 
 /* ---------- FOOTPRINT (FOOTER) ---------- */
@@ -4267,5 +4205,120 @@ hr {
   .sub-service-card p {
     font-size: 13px;
     color: #404051;
+  }
+}
+
+/* the faq styles */
+/* FAQ Section */
+.faq-section {
+  background: #fff;
+  padding: 50px 0px;
+  width: 100%;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle a {
+  font-size: 14px;
+  color: #d17609;
+  text-decoration: underline;
+}
+
+.faq-item {
+  background: #f9f9f9;
+  margin: 15px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left;
+  transition: all 0.5s ease;
+}
+
+.faq-item.open {
+  background: #d17609;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.faq-question {
+  color: #18181a;
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-icon {
+  font-size: 18px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 18px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+  font-weight: 500px;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+  color: #fff;
+}
+
+.faq-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.faq-footer-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.faq-footer button {
+  margin-top: 25px;
+  border: 0;
+}
+
+.faq-btn {
+  background-color: #d17609;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.faq-btn:hover {
+  background: #242527;
+}
+
+@media screen {
+  .faq-footer p {
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
   }
 }

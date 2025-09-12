@@ -109,62 +109,98 @@
           <div class="top-nav">
             <a href="#" class="top-nav-link">Home</a>
             <span class="top-nav-divider">/</span>
-            <a href="#" class="top-nav-link top-active">Contact</a>
+            <a href="#" class="top-nav-link top-active">FAQs</a>
           </div>
         </div>
-        <!-- Hero Section -->
-        <section class="cont-hero">
-          <h1>Contact Us</h1>
-        </section>
+        <section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <p class="faq-subtitle">
+      <a href="#">Checkout some of the most asked questions</a>
+    </p>
 
-        <!-- Main Content -->
-        <section class="cont-container">
-          <!-- Left Info -->
-          <div class="cont-info">
-            <h4 class="cont-subtitle">Get in Touch</h4>
-            <h2 class="cont-title">
-              We are always ready <br />
-              to help you and answer your questions
-            </h2>
-            <p class="cont-desc">
-              Simply fill in the form and a member of our support team will
-              reach out to you shortly.
-            </p>
+    <div class="faq-item open">
+      <button class="faq-question">
+        What services does your digital agency provide?
+        <span class="faq-icon">➖</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We offer a full range of digital solutions, including web and app development, 
+          digital marketing, branding, SEO, social media management, UI/UX design, 
+          cloud services, and IT support—customized to fit your business needs.
+        </p>
+      </div>
+    </div>
 
-            <div class="cont-details">
-              <div class="cont_sub_details">
-                <strong>Visit Us:</strong><br />
-                Suite 404, XYZ Plaza, Abuja
-              </div>
-              <div class="cont_sub_details">
-                <strong>Email:</strong><br />
-                support@revitsystems.com
-              </div>
-              <div class="cont_sub_details">
-                <strong>Phone:</strong><br />
-                +234 800 000 0000
-              </div>
-            </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        How can a digital agency help my business grow?
+        <span class="faq-icon">➕</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          By providing tailored strategies, tools, and designs to expand your online 
+          presence, attract new customers, and improve efficiency.
+        </p>
+      </div>
+    </div>
 
-            <div class="cont-socials">
-              <a href="#">Fb</a>
-              <a href="#">X</a>
-              <a href="#">In</a>
-              <a href="#">Ig</a>
+    <div class="faq-item">
+      <button class="faq-question">
+        Do you work with small businesses or only large companies?
+        <span class="faq-icon">➕</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We work with businesses of all sizes—startups, SMEs, and large enterprises.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do you measure the success of your services?
+        <span class="faq-icon">➕</span>
+      </button>
+      <div class="faq-answer">
+        <p>
+          We track KPIs such as traffic, engagement, conversions, and ROI to 
+          ensure your goals are met.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-footer">
+      <h3 class="faq-footer-title">Still have questions?</h3>
+      <p>If you have any other questions or need further information, don’t hesitate to contact us. We are here to help you!</p>
+      <button ><a href="./contact.html" class="faq-btn">Get in touch</a> </button>
+    </div>
+  </div>
+</section>
+        <!-- Newsletter signup section -->
+        <section class="rv-newsblast">
+          <div class="rv-news-inner">
+            <div class="rv-news-card">
+              <h2 class="rv-news-title">Join our Newsletter</h2>
+              <p class="rv-news-desc">
+                Stay connected and informed: Join our newsletter for the latest
+                updates, inspiration, and blog insights.
+              </p>
+              <form class="rv-news-form" aria-label="newsletter signup">
+                <label for="user-email">Email:</label>
+                <input
+                  type="email"
+                  id="user-email"
+                  name="user-email"
+                  required
+                />
+                <button type="submit">Sign me up</button>
+              </form>
             </div>
           </div>
-
-          <!-- Right Form -->
-          <div class="cont-form">
-            <h3>Get in touch</h3>
-            <form>
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email" required />
-              <textarea placeholder="Message" rows="5" required></textarea>
-              <button type="submit">Send Message</button>
-            </form>
-          </div>
         </section>
+
         <!-- Footer section -->
         <footer class="rv-footprint">
           <div class="rv-foot-main">
@@ -247,5 +283,25 @@
       <!-- End of main container -->
     </div>
     <!-- End of revit-container -->
+    <script>
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const faqItem = button.parentElement;
+          const isOpen = faqItem.classList.contains("open");
+
+          // Close all other items
+          document.querySelectorAll(".faq-item").forEach((item) => {
+            item.classList.remove("open");
+            item.querySelector(".faq-icon").textContent = "➕";
+          });
+
+          // Toggle current item
+          if (!isOpen) {
+            faqItem.classList.add("open");
+            button.querySelector(".faq-icon").textContent = "➖";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
