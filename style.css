@@ -1840,7 +1840,7 @@ hr {
 .rv-footprint {
   background: linear-gradient(to top, #131313, #282727);
   font-size: 0.85rem;
-  min-height: 300px;
+  min-height: 200px;
   color: white;
   width: 100%;
   padding: 50px 0;
@@ -4036,6 +4036,17 @@ hr {
   color: rgba(0, 0, 0, 0.907);
   font-weight: 500;
   font-size: 13px;
+}
+
+.sub-intro-text .sub-section-text .emphasis {
+  color: #d17609;
+  font-weight: 500;
+  font-size: 13px;
+  width: auto;
+  display: inline;
+  border-left: 0px solid #d17609;
+  padding-left: 0px;
+  margin-bottom: 0px;
 }
 
 .sub-intro-image {
