@@ -3719,7 +3719,7 @@ hr {
   }
 }
 /* Branding Page Styles */
-.branding-hero {
+/* .branding-hero {
   height: 90vh;
   background: linear-gradient(to right, #242527, #000),
     url("./Images/Portfolio/branding-bg.jpg") center/cover no-repeat;
@@ -3796,7 +3796,7 @@ hr {
 .branding-cta h2 {
   font-size: 36px;
   margin-bottom: 20px;
-}
+} */
 
 /* Service Pages */
 
@@ -4020,6 +4020,10 @@ hr {
   .sub-intro-image img {
     margin: auto;
   }
+  .sub-icon {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 /* Responsive: stack vertically */
@@ -4049,6 +4053,13 @@ hr {
     width: 100%;
     height: auto;
     border-radius: 0px;
+  }
+
+  .sub-icon--4 {
+    color: rgba(0, 200, 150, 0.993);
+    bottom: 6%;
+    left: 70%;
+    transform: translateZ(0) rotate(12deg);
   }
 }
 
@@ -4149,34 +4160,22 @@ hr {
     height: 500px;
   }
   .sub-icon--1 {
-    width: 100px;
-    height: 100px;
     top: 6%;
   }
   .sub-icon--2 {
-    width: 70px;
-    height: 70px;
     top: 18%;
   }
   .sub-icon--3 {
-    width: 90px;
-    height: 90px;
     bottom: 18%;
   }
   .sub-icon--4 {
-    width: 60px;
-    height: 60px;
     bottom: 6%;
   }
   .sub-icon--5 {
-    width: 70px;
-    height: 70px;
     top: 80%;
     left: 12%;
   }
   .sub-icon--6 {
-    width: 44px;
-    height: 44px;
     top: 28%;
     left: 40%;
   }
