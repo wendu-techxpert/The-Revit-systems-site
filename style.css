@@ -739,6 +739,7 @@ hr {
   color: #d17609;
 }
 .card .arrow-icon {
+  text-decoration: none;
   width: 45px;
   height: 42px;
   display: flex;
@@ -793,6 +794,7 @@ hr {
 }
 
 .card.highlight .top-line {
+  margin-top: 15px;
   border-bottom: 1px solid white;
 }
 
@@ -802,6 +804,7 @@ hr {
 
 .card .arrow-circle {
   position: absolute;
+  text-decoration: none;
   left: 12px;
   bottom: 12px;
   width: 60px;
@@ -866,6 +869,14 @@ hr {
   background: #242527;
 }
 
+@media (max-width: 1200px) {
+  .card.highlight {
+    background: #d17609;
+    color: #fff;
+    border-bottom-left-radius: 150px;
+  }
+}
+
 @media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr 1fr;
@@ -883,7 +894,7 @@ hr {
   .card.highlight {
     background: #d17609;
     color: #fff;
-    border-bottom-left-radius: 130px;
+    border-bottom-left-radius: 170px;
   }
   .card.highlight h3 {
     color: #fff;

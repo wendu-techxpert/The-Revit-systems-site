@@ -1,64 +1,50 @@
 <!DOCTYPE html>
-<!-- Define the HTML document with English as the primary language -->
 <html lang="en">
   <head>
-    <!-- Specify the character encoding for the document -->
     <meta charset="UTF-8" />
-
-    <!-- Configure viewport for responsive design on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Set the webpage title displayed in the browser tab -->
     <title>Revit-Systems</title>
 
-    <!-- Preconnect to Google Fonts for improved font loading performance -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Load Host Grotesk font from Google Fonts with specified weights and styles -->
     <link
       href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Load Mena Grotesk font from cdnfonts.com -->
     <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
-
-    <!-- Include Font Awesome library for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Link to the custom CSS stylesheet -->
+    <!-- Custom CSS & JS -->
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
   </head>
 
   <body>
-    <!-- Main wrapper for the entire page content -->
     <div class="revit-container">
-      <!-- Header section containing the navigation bar -->
+      <!-- ===== HEADER ===== -->
       <header id="header">
         <nav>
           <div class="nav-content">
-            <!-- Container for logo and navigation links -->
             <div class="logo-and-navlinks">
               <div class="logo">
-                <!-- Display the company logo image -->
-                <img src="./Images/Logo/without bg black font.png" alt="" />
+                <img
+                  src="./Images/Logo/without bg black font.png"
+                  alt="Revit Logo"
+                />
               </div>
-              <!-- Unordered list for navigation menu items -->
               <ul class="nav-links">
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about-us.html">About Us</a></li>
                 <li><a href="./services.html">Services</a></li>
-                <li><a href="#">portfolio</a></li>
+                <li><a href="#">Portfolio</a></li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
               </ul>
             </div>
-            <!-- Call-to-action button in the navigation -->
             <button class="nav-cta-btn">Get Started</button>
             <button
               class="menu-toggle"
@@ -73,8 +59,8 @@
         </nav>
       </header>
 
+      <!-- Mobile Menu -->
       <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
-
       <aside
         class="menu-panel"
         id="navMenu"
@@ -87,24 +73,24 @@
             ✕
           </button>
         </div>
-
         <nav class="menu-nav">
           <ul>
             <li><a href="./index.html">Home</a></li>
             <li><a href="./about-us.html">About Us</a></li>
             <li><a href="./services.html">Services</a></li>
-            <li><a href="#">portfolio</a></li>
+            <li><a href="#">Portfolio</a></li>
             <li><a href="./blog.html">Blog</a></li>
             <li><a href="./contact.html">Contact Us</a></li>
           </ul>
         </nav>
-
         <div class="menu-footer">
           Signed in as <strong>you@example.com</strong>
         </div>
       </aside>
-      <!-- Main container for the page's core sections -->
+
+      <!-- ===== MAIN CONTENT ===== -->
       <div class="container">
+        <!-- Breadcrumb -->
         <div class="cont-nav">
           <div class="top-nav">
             <a href="#" class="top-nav-link">Home</a>
@@ -112,73 +98,182 @@
             <a href="#" class="top-nav-link top-active">FAQs</a>
           </div>
         </div>
+
+        <!-- FAQ Section -->
         <section class="faq-section">
-  <div class="faq-container">
-    <h2 class="faq-title">Frequently Asked Questions</h2>
-    <p class="faq-subtitle">
-      <a href="#">Checkout some of the most asked questions</a>
-    </p>
+          <div class="faq-container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <p class="faq-subtitle">
+              <a href="#">Checkout some of the most asked questions</a>
+            </p>
 
-    <div class="faq-item open">
-      <button class="faq-question">
-        What services does your digital agency provide?
-        <span class="faq-icon">➖</span>
-      </button>
-      <div class="faq-answer">
-        <p>
-          We offer a full range of digital solutions, including web and app development, 
-          digital marketing, branding, SEO, social media management, UI/UX design, 
-          cloud services, and IT support—customized to fit your business needs.
-        </p>
-      </div>
-    </div>
+            <!-- FAQ Items -->
+            <div class="faq-item open">
+              <button class="faq-question">
+                What exactly does Revit Systems do?
+                <span class="faq-icon">➖</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We help businesses review, reveal, and revamp how they operate
+                  in today’s digital world. From software development and system
+                  automation to branding, digital marketing, and business
+                  consultation, we design solutions that help you grow, run
+                  efficiently, and stand out.
+                </p>
+              </div>
+            </div>
 
-    <div class="faq-item">
-      <button class="faq-question">
-        How can a digital agency help my business grow?
-        <span class="faq-icon">➕</span>
-      </button>
-      <div class="faq-answer">
-        <p>
-          By providing tailored strategies, tools, and designs to expand your online 
-          presence, attract new customers, and improve efficiency.
-        </p>
-      </div>
-    </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Do I need to know exactly what I want before reaching out?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Not at all. Many of our clients come to us with an idea, a
+                  problem, or even just frustration. Our job is to clarify your
+                  needs, map out solutions, and recommend what fits your stage
+                  and budget.
+                </p>
+              </div>
+            </div>
 
-    <div class="faq-item">
-      <button class="faq-question">
-        Do you work with small businesses or only large companies?
-        <span class="faq-icon">➕</span>
-      </button>
-      <div class="faq-answer">
-        <p>
-          We work with businesses of all sizes—startups, SMEs, and large enterprises.
-        </p>
-      </div>
-    </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                How much do your services cost?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  There’s no one-size-fits-all price because every business is
+                  different. After an initial consultation, we provide a
+                  tailored proposal that aligns with your goals, whether you’re
+                  a startup testing the waters or an established brand scaling
+                  to new heights.
+                </p>
+              </div>
+            </div>
 
-    <div class="faq-item">
-      <button class="faq-question">
-        How do you measure the success of your services?
-        <span class="faq-icon">➕</span>
-      </button>
-      <div class="faq-answer">
-        <p>
-          We track KPIs such as traffic, engagement, conversions, and ROI to 
-          ensure your goals are met.
-        </p>
-      </div>
-    </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Can you handle projects outside Nigeria?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. We work remotely with clients across Africa and globally.
+                  Our systems are designed for smooth collaboration, no matter
+                  your location.
+                </p>
+              </div>
+            </div>
 
-    <div class="faq-footer">
-      <h3 class="faq-footer-title">Still have questions?</h3>
-      <p>If you have any other questions or need further information, don’t hesitate to contact us. We are here to help you!</p>
-      <button ><a href="./contact.html" class="faq-btn">Get in touch</a> </button>
-    </div>
-  </div>
-</section>
-        <!-- Newsletter signup section -->
+            <div class="faq-item">
+              <button class="faq-question">
+                What industries do you specialize in?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We’ve worked with businesses in tech, healthcare, fashion,
+                  food, education, energy, and more. But our real specialty is
+                  not industry—it’s helping you position, systemize, and grow,
+                  regardless of the field.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How long will my project take?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Timelines depend on the scope. A brand identity project may
+                  take 2–4 weeks, while a full software build could run several
+                  months. We always give clear timelines upfront and keep you
+                  updated at every stage.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Do you only work on big projects?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. We work with startups, small businesses, and established
+                  companies. Whether you need a logo refresh, a marketing
+                  campaign, or a full enterprise system, we scale our services
+                  to fit you.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What if I already have a brand/website/software but it’s not
+                working well?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Perfect! This is where we shine. We’ll review what you have,
+                  reveal what’s missing, and revamp it into something that truly
+                  works for your audience and business goals.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I get started?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Simple. Just reach out via our contact page. We’ll schedule a
+                  quick consultation to understand your needs, then prepare a
+                  clear roadmap for your project.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Why should I choose Revit Systems over other agencies?
+                <span class="faq-icon">➕</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Because we don’t just deliver services. We build systems. Many
+                  agencies give you a website, a logo, or a campaign and
+                  disappear. We focus on creating lasting solutions that
+                  integrate into your business and continue to deliver value
+                  long after launch.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Footer -->
+            <div class="faq-footer">
+              <h3 class="faq-footer-title">Still have questions?</h3>
+              <p>
+                If you have any other questions or need further information,
+                don’t hesitate to contact us. We are here to help you!
+              </p>
+              <button>
+                <a href="./contact.html" class="faq-btn">Get in touch</a>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Newsletter -->
         <section class="rv-newsblast">
           <div class="rv-news-inner">
             <div class="rv-news-card">
@@ -200,7 +295,6 @@
             </div>
           </div>
         </section>
-
         <!-- Footer section -->
         <footer class="rv-footprint">
           <div class="rv-foot-main">
@@ -280,22 +374,23 @@
             © 2025 Revit Systems. All Rights Reserved.
           </div>
         </footer>
-      <!-- End of main container -->
+      </div>
+      <!-- closes .container -->
     </div>
-    <!-- End of revit-container -->
+    <!-- closes .revit-container -->
+
+    <!-- ===== SCRIPT ===== -->
     <script>
       document.querySelectorAll(".faq-question").forEach((button) => {
         button.addEventListener("click", () => {
           const faqItem = button.parentElement;
           const isOpen = faqItem.classList.contains("open");
 
-          // Close all other items
           document.querySelectorAll(".faq-item").forEach((item) => {
             item.classList.remove("open");
             item.querySelector(".faq-icon").textContent = "➕";
           });
 
-          // Toggle current item
           if (!isOpen) {
             faqItem.classList.add("open");
             button.querySelector(".faq-icon").textContent = "➖";
