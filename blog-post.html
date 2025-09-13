@@ -3,236 +3,300 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revit Systems</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./Images/Logo/favicon.png" />
+    <style>
+      .sub-b-log-page {
+        width: 90%;
+        margin: 30px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 16px;
+      }
 
-    <title>Revit-Systems</title>
+      .sub-b-log-top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./style.css" />
-    <script defer src="./script.js"></script>
+      .sub-b-log-return {
+        color: #d17609;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+      }
+
+      .sub-b-log-tag {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #d17609;
+        font-weight: 700;
+      }
+      .sub-b-log-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 10px 0 20px;
+        color: #242527;
+      }
+
+      .sub-b-log-image1 {
+        width: 100%;
+        max-height: 500px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        border-radius: 20px;
+      }
+
+      .sub-b-log-image,
+      .sub-b-log-image1 {
+        width: 100%;
+        max-height: 300px;
+        overflow: hidden;
+        border-radius: 20px;
+        margin-bottom: 20px;
+      }
+
+      .sub-b-log-image1 {
+        max-height: 500px;
+        overflow: hidden;
+      }
+      .sub-b-log-page img {
+        width: 100%;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+      .sub-b-log-body p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #404051;
+        margin-bottom: 16px;
+      }
+
+      .sub-b-log-footer {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .sub-b-log-footer a {
+        margin: 0 10px;
+        color: #d17609;
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .sub-b-log-footer a:hover {
+        color: #242527;
+      }
+
+      .sub-b-log-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .sub-b-log-arrow {
+        background: #d17609;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+      .sub-b-log-nav a:hover {
+        background: #242527;
+      }
+    </style>
   </head>
-
   <body>
-    <!-- Main wrapper for the entire page content -->
-    <div class="revit-container">
-      <!-- Header section containing the navigation bar -->
-      <header id="header">
-        <nav>
-          <div class="nav-content">
-            <!-- Container for logo and navigation links -->
-            <div class="logo-and-navlinks">
-              <div class="logo">
-                <!-- Display the company logo image -->
-                <img src="./Images/Logo/without bg black font.png" alt="" />
-              </div>
-              <!-- Unordered list for navigation menu items -->
-              <ul class="nav-links">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="#">portfolio</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-              </ul>
-            </div>
-            <!-- Call-to-action button in the navigation -->
-            <button class="nav-cta-btn">Get Started</button>
-            <button
-              class="menu-toggle"
-              id="menuToggleBtn"
-              aria-controls="navMenu"
-              aria-expanded="false"
-              aria-label="Open menu"
-            >
-              <span class="icon-line" aria-hidden="true"></span>
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
-
-      <aside
-        class="menu-panel"
-        id="navMenu"
-        role="navigation"
-        aria-label="Main menu"
-      >
-        <div class="menu-panel-header">
-          <h2 class="menu-panel-title">Revit-Systems</h2>
-          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
-            ✕
-          </button>
-        </div>
-
-        <nav class="menu-nav">
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="./services.html">Services</a></li>
-            <li><a href="#">portfolio</a></li>
-            <li><a href="./blog.html">Blog</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
-
-        <div class="menu-footer">
-          Signed in as <strong>you@example.com</strong>
-        </div>
-      </aside>
-      <!-- Main container for the page's core sections -->
-      <div class="container">
-        <!-- Main blog post content -->
-        <main class="blog-post-container">
-          <div class="top-nav">
-            <a href="./index.html" class="top-nav-link">Home</a>
-            <span class="top-nav-divider">/</span>
-            <a href="./blog.html" class="top-nav-link">Blog</a>
-            <span class="top-nav-divider">/</span>
-            <span class="top-nav-link top-active">Article Title</span>
-          </div>
-
-          <article class="blog-post">
-            <h1 class="blog-post-title">
-              Optimizing Workflow Process for Maximum Efficiency
-            </h1>
-            <div class="blog-post-meta">
-              <img
-                src="./Images/Portfolio/844591c28c26c90fe611b787714244f8373a88da.jpg"
-                alt="Author"
-                class="blog-author-avatar"
-              />
-              <span class="blog-author-name">Jodi Kensley</span>
-              <span class="blog-date"> | Sept 8, 2025</span>
-            </div>
-
-            <div class="the-blog-post-blog-content-holder">
-              <div class="blog-post-image">
-                <img
-                  src="./Images/Portfolio/43d1c1d9d3462c766ba49bf1db117e41ad4a9239.jpg"
-                  alt="Blog main image"
-                />
-              </div>
-              <div class="blog-post-content">
-                <p>
-                  In today’s fast-paced business environment, optimizing
-                  workflow processes is not just a luxury—it’s a necessity. By
-                  streamlining tasks, automating repetitive functions, and
-                  enhancing collaboration, businesses can save valuable time and
-                  resources.
-                </p>
-                <p>
-                  The key is to identify bottlenecks and replace manual tasks
-                  with smart automation tools. Doing so not only reduces errors
-                  but also increases team efficiency, ensuring that projects are
-                  delivered faster and with higher quality.
-                </p>
-                <h2>Steps to Optimize Workflow</h2>
-                <ul>
-                  <li>Identify inefficiencies</li>
-                  <li>Use project management tools</li>
-                  <li>Automate repetitive tasks</li>
-                  <li>Encourage clear communication</li>
-                </ul>
-                <p>
-                  Businesses that embrace optimized workflows are more agile and
-                  better prepared to meet evolving client needs.
-                </p>
-              </div>
-            </div>
-          </article>
-        </main>
+    <div class="sub-b-log-page">
+      <div class="sub-b-log-top-nav">
+        <!-- Article Content -->
+        <span class="sub-b-log-tag">Productivity</span>
+        <a href="./blog.html">
+          <svg
+            class="sub-b-log-return"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-circle-x-icon lucide-circle-x"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="m15 9-6 6" />
+            <path d="m9 9 6 6" />
+          </svg>
+        </a>
       </div>
-      <!-- End of main container -->
-      <!-- Footer section -->
-      <footer class="rv-footprint">
-        <div class="rv-foot-main">
-          <div class="rv-brand-block">
-            <div class="rv-logo">
-              <div class="rv-logo-mark">
-                <img src="./Images/Logo/without bg white font.png" alt="" />
-              </div>
-              <div class="rv-tagline">
-                Connecting people with impactful opportunities in the Revit
-                ecosystem.
-              </div>
-            </div>
-            <!-- Social media links -->
-            <div class="rv-socials">
-              <a
-                href="#"
-                aria-label="Facebook"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <!-- Facebook icon SVG -->
-                <img src="./SVG/facebook-176-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href="#"
-                aria-label="Twitter"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <!-- Twitter icon SVG -->
-                <img src="./SVG/twitter-3-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <!-- Instagram icon SVG -->
-                <img src="./SVG/instagram-167-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href=""
-                aria-label="LinkedIn"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <!-- LinkedIn icon SVG -->
-                <img src="./SVG/linkedin-161-svgrepo-com.svg" alt="" />
-              </a>
-            </div>
-          </div>
 
-          <!-- Footer navigation links -->
-          <div class="rv-link-columns">
-            <div class="rv-col">
-              <div class="rv-col-head">Revit Hub</div>
-              <a href="index.html">Home</a>
-              <a href="services.html">Services</a>
-              <a href="#">About</a>
-            </div>
-            <div class="rv-col">
-              <div class="rv-col-head">Support</div>
-              <a href="./faqs.html">FAQs</a>
-              <a href="./contact.html">Help Center</a>
-              <a href="./blog.html">Blog</a>
-            </div>
-          </div>
-        </div>
-        <!-- Copyright notice -->
-        <div class="rv-foot-note">
-          © 2025 Revit Systems. All Rights Reserved.
-        </div>
-      </footer>
+      <h1 class="sub-b-log-title">Why Branding is More Than Just a Logo</h1>
+      <div class="sub-b-log-image1">
+        <img
+          src="./Images/The hero Images/Image_fx (9).jpg"
+          alt="Branding workspace"
+        />
+      </div>
+
+      <div class="sub-b-log-body">
+        <p>
+          Branding goes far beyond colors, fonts, and logos—it's the story you
+          tell and the experience you create for your audience. A strong brand
+          shapes how people feel about your business, builds trust, and makes
+          you memorable in a crowded market.
+        </p>
+        <p>
+          Great branding starts with clarity: who are you? What do you stand
+          for? What problems do you solve better than anyone else? Memorable
+          branding doesn’t just decorate—it differentiates.
+        </p>
+        <p>
+          The most powerful brands don’t just sell products; they create
+          emotional connections. Apple isn’t just about hardware—it’s about
+          creativity, simplicity, and empowerment. Nike isn’t about
+          sneakers—it’s about inspiration and achievement.
+        </p>
+        <p>
+          In short, branding is the bridge between your business and your
+          audience’s loyalty. Invest in it, nurture it, and let it evolve as you
+          grow.
+        </p>
+      </div>
+
+      <div class="sub-b-log-image">
+        <img
+          src="./Images/The hero Images/Image_fx (13).jpg"
+          alt="Designer working"
+        />
+      </div>
+
+      <div class="sub-b-log-body">
+        <p>
+          Branding goes far beyond colors, fonts, and logos—it's the story you
+          tell and the experience you create for your audience...
+        </p>
+      </div>
+
+      <!-- Socials -->
+      <div class="sub-b-log-footer">
+        <a href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-instagram-icon lucide-instagram"
+          >
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+          </svg>
+        </a>
+        <a href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-twitter-icon lucide-twitter"
+          >
+            <path
+              d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+            />
+          </svg>
+        </a>
+        <a href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-facebook-icon lucide-facebook"
+          >
+            <path
+              d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+            />
+          </svg>
+        </a>
+        <a href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-linkedin-icon lucide-linkedin"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Prev / Next navigation -->
+      <div class="sub-b-log-nav">
+        <svg
+          class="sub-b-log-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-left-to-line-icon lucide-arrow-left-to-line"
+        >
+          <path d="M3 19V5" />
+          <path d="m13 6-6 6 6 6" />
+          <path d="M7 12h14" />
+        </svg>
+        <svg
+          class="sub-b-log-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right-to-line-icon lucide-arrow-right-to-line"
+        >
+          <path d="M17 12H3" />
+          <path d="m11 18 6-6-6-6" />
+          <path d="M21 5v14" />
+        </svg>
+      </div>
     </div>
-    <!-- End of revit-container -->
   </body>
 </html>

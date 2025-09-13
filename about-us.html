@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="./Images/Logo/favicon.png" />
     <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -651,24 +652,6 @@
             this.textContent = "Read More...";
           }
         });
-
-      // the fade carousel on the about us join section
-      const cards = document.querySelectorAll(".abt-testimonial-card");
-      let current = 0;
-
-      function showNextCard() {
-        // hide current
-        cards[current].classList.remove("active");
-
-        // move to next
-        current = (current + 1) % cards.length;
-
-        // show next
-        cards[current].classList.add("active");
-      }
-
-      // autoplay every 5 seconds
-      setInterval(showNextCard, 5000);
     </script>
   </body>
 </html>

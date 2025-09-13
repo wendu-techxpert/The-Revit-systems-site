@@ -33,21 +33,28 @@
 
     <!-- Link to the custom CSS stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" href="./Images/Logo/favicon.png" />
+    <!-- Defer custom JavaScript file to load after HTML parsing -->
     <script defer src="./script.js"></script>
   </head>
 
   <body>
     <!-- Main wrapper for the entire page content -->
     <div class="revit-container">
-      <!-- Header section containing the navigation bar -->
+      <!-- ================= HEADER ================= -->
       <header id="header">
+        <!-- Navigation bar -->
         <nav>
           <div class="nav-content">
             <!-- Container for logo and navigation links -->
             <div class="logo-and-navlinks">
               <div class="logo">
-                <!-- Display the company logo image -->
-                <img src="./Images/Logo/without bg black font.png" alt="" />
+                <!-- Display the company logo image (lazy loaded) -->
+                <img
+                  src="./Images/Logo/without bg black font.png"
+                  alt="Revit Systems Logo"
+                  loading="lazy"
+                />
               </div>
               <!-- Unordered list for navigation menu items -->
               <ul class="nav-links">
@@ -61,6 +68,7 @@
             </div>
             <!-- Call-to-action button in the navigation -->
             <button class="nav-cta-btn">Get Started</button>
+            <!-- Hamburger menu toggle for mobile navigation -->
             <button
               class="menu-toggle"
               id="menuToggleBtn"
@@ -74,8 +82,10 @@
         </nav>
       </header>
 
+      <!-- Overlay for mobile menu when active -->
       <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
 
+      <!-- Side menu panel for small screens -->
       <aside
         class="menu-panel"
         id="navMenu"
@@ -89,6 +99,7 @@
           </button>
         </div>
 
+        <!-- Mobile navigation links -->
         <nav class="menu-nav">
           <ul>
             <li><a href="./index.html">Home</a></li>
@@ -100,14 +111,16 @@
           </ul>
         </nav>
 
+        <!-- Footer info inside the mobile menu -->
         <div class="menu-footer">
           Signed in as <strong>you@example.com</strong>
         </div>
       </aside>
 
-      <!-- Hero section for the main banner -->
+      <!-- ================= HERO SECTION ================= -->
       <div class="hero-containers-main">
         <div class="hero-container-sub-main">
+          <!-- Individual hero slides with background images -->
           <div
             class="hero-container hero"
             style="
@@ -118,20 +131,19 @@
           >
             <div class="the-hero-content">
               <div class="text-part">
-                <!-- Main headline for the hero section -->
+                <!-- Main headline -->
                 <h1>
                   Building Smarter <span>Systems</span> for Bold Businesses
                 </h1>
-                <!-- Subheading or tagline for the hero section -->
+                <!-- Subheading -->
                 <p>
                   We fuse branding, digital marketing, and custom software into
                   one ecosystem. The result? Businesses that scale faster, work
                   smarter, and stand out sharper.
                 </p>
               </div>
-              <!-- Floating bar with additional hero content -->
+              <!-- CTA buttons container -->
               <div class="the-floating-bar">
-                <!-- Call-to-action buttons for the hero section -->
                 <div class="hero-cta-btn">
                   <div class="slider"></div>
                   <button class="text hero-btn1">Start Your Project</button>
@@ -140,6 +152,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 2nd hero slide -->
           <div
             class="hero-container"
             style="
@@ -150,19 +164,15 @@
           >
             <div class="the-hero-content hero-sub">
               <div class="text-part">
-                <!-- Main headline for the hero section -->
                 <h1>
                   <span>Systems</span> That Work.<br />Strategies That Win.
                 </h1>
-                <!-- Subheading or tagline for the hero section -->
                 <p>
                   From branding to custom software, we design tools and tactics
                   that make your business smarter, stronger, and future-ready.
                 </p>
               </div>
-              <!-- Floating bar with additional hero content -->
               <div class="the-floating-bar">
-                <!-- Call-to-action buttons for the hero section -->
                 <div class="hero-cta-btn">
                   <div class="slider"></div>
                   <button class="text hero-btn1">Start Your Project</button>
@@ -171,6 +181,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 3rd hero slide -->
           <div
             class="hero-container"
             style="
@@ -181,17 +193,13 @@
           >
             <div class="the-hero-content hero-sub">
               <div class="text-part">
-                <!-- Main headline for the hero section -->
                 <h1>Turning Vision Into <span>Systems</span></h1>
-                <!-- Subheading or tagline for the hero section -->
                 <p>
                   We help ambitious businesses build the software, strategy, and
                   stories they need to scale with confidence.
                 </p>
               </div>
-              <!-- Floating bar with additional hero content -->
               <div class="the-floating-bar">
-                <!-- Call-to-action buttons for the hero section -->
                 <div class="hero-cta-btn">
                   <div class="slider"></div>
                   <button class="text hero-btn1">Start Your Project</button>
@@ -202,7 +210,8 @@
           </div>
         </div>
       </div>
-      <!-- Main container for the page's core sections -->
+
+      <!-- ================= MAIN CONTENT ================= -->
       <div class="container">
         <!-- About Us section -->
         <section class="about-section">
@@ -211,7 +220,7 @@
               <h2>About us</h2>
               <hr />
             </div>
-            <!-- Detailed description of the company -->
+            <!-- Detailed description -->
             <p>
               At Revit Systems, we believe business should be simple, scalable,
               and smart. We’re not just a software company or a marketing
@@ -224,10 +233,10 @@
 
             <p>
               Revit started with a frustration we kept seeing in the market:
-              businesses drowning in complexity. Startups were spending too much
-              on tools they didn’t need, established...
+              businesses drowning in complexity...
             </p>
 
+            <!-- Link to full About Us page -->
             <button>
               <a href="./about-us.html" class="abt-bttn">Read More</a>
             </button>
@@ -237,22 +246,22 @@
           <div class="about-numbers">
             <div class="the-no-text">
               <div>
-                <p class="numbers">7 specialists</p>
-                <p>Across software, marketing & design</p>
+                <p class="numbers">Expert-Led Team</p>
+                <p>Specialists in software, branding, marketing & design</p>
               </div>
               <div>
-                <p class="numbers">100%</p>
-                <p>remote-ready, built for global collaboration</p>
+                <p class="numbers">Global by Design</p>
+                <p>Remote-first, built for seamless worldwide collaboration</p>
               </div>
               <div>
-                <p class="numbers">06</p>
-                <p>Team size/expertise</p>
+                <p class="numbers">Scalable Partnership</p>
+                <p>Lean, focused, and ready to grow with your business</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- services section to showcase past projects -->
+        <!-- Services section -->
         <section class="services" aria-label="services showcase">
           <div class="the-content">
             <div class="services-header">
@@ -262,6 +271,8 @@
               </div>
               <div class="subtitle">Get an insight into our services.</div>
             </div>
+
+            <!-- Service cards -->
             <div class="cards">
               <div class="card">
                 <div class="top-line">
@@ -270,29 +281,26 @@
                     <a href="./branding.html" class="arrow-icon">↗</a>
                   </div>
                 </div>
-                <p>
-                  Create identities that stand out, build brands that last and
-                  create stories that stick.
-                </p>
+                <p>Create identities that stand out...</p>
                 <div class="img-wrapper" aria-hidden="true">
                   <img
                     src="./Images/the services image/branding.png"
-                    alt="Market research visual"
+                    alt="Branding visual"
+                    loading="lazy"
                   />
                 </div>
               </div>
+
               <div class="card highlight">
                 <div class="top-line">
                   <h3>Software development</h3>
                 </div>
-                <p>
-                  From Web Apps to automation, we build systems tha work so you
-                  can grow.
-                </p>
+                <p>From Web Apps to automation, we build systems that work.</p>
                 <div class="img-wrapper" aria-hidden="true">
                   <img
                     src="./Images/the services image/software.png"
-                    alt="Ads production visual"
+                    alt="Software visual"
+                    loading="lazy"
                   />
                 </div>
                 <div aria-label="call to action">
@@ -307,19 +315,18 @@
                     <a href="./digital-marketing.html" class="arrow-icon">↗</a>
                   </div>
                 </div>
-                <p>
-                  Smart campaigns and strategies that cut through noise and
-                  drive results.
-                </p>
+                <p>Smart campaigns and strategies...</p>
                 <div class="img-wrapper" aria-hidden="true">
                   <img
                     src="./Images/the services image/Gemini_Generated_Image_ojpc88ojpc88ojpc.png"
-                    alt="Branding strategies visual"
+                    alt="Marketing visual"
+                    loading="lazy"
                   />
                 </div>
               </div>
             </div>
 
+            <!-- Link to full services page -->
             <div class="view-more-wrapper">
               <button aria-label="View more projects">
                 <a href="./services.html" class="view-more"> View more</a>
@@ -327,26 +334,23 @@
             </div>
           </div>
         </section>
+
         <!-- Highlight/Promo section -->
         <section class="highlight-section">
           <div class="textand-cta-button">
             <div class="text">
               <h3>Get insights into Revit Services</h3>
-              <p>
-                We are just a click away. Looking forward to working with you.
-              </p>
+              <p>We are just a click away...</p>
             </div>
-            <!-- Call-to-action input and button for demo request -->
+            <!-- Call-to-action input -->
             <div class="demo-request">
               <input
                 type="text"
-                name=""
-                id=""
                 placeholder="To start, describe what you want here..."
               />
               <button>
                 Request a Demo
-                <!-- SVG icon for the button -->
+                <!-- SVG arrow icon -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -358,19 +362,18 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 >
-                  <!-- Arrow shaft -->
                   <line x1="0" y1="12" x2="19" y2="12" />
-                  <!-- Arrowhead -->
                   <polyline points="12 5, 19 12, 12 19" />
                 </svg>
               </button>
             </div>
           </div>
-          <!-- Image for the highlight section -->
+          <!-- Image for highlight (lazy loaded) -->
           <div class="the-image">
             <img
               src="./Images/hightlight/Gemini_Generated_Image_p9zuxnp9zuxnp9zu-removebg.png"
               alt="Smiling man"
+              loading="lazy"
             />
           </div>
         </section>
@@ -941,11 +944,13 @@
           </div>
         </footer>
       </div>
-      <!-- End of main container -->
+      <!-- End container -->
     </div>
-    <!-- End of revit-container -->
+    <!-- End revit-container -->
+
+    <!-- ================= SCRIPT ================= -->
     <script>
-      // Get all hero CTA groups
+      // Get all hero CTA button groups
       const heroGroups = document.querySelectorAll(".hero-cta-btn");
 
       heroGroups.forEach((group) => {
@@ -953,17 +958,19 @@
         const btnQuote = group.querySelector(".hero-btn2");
         const slider = group.querySelector(".slider");
 
+        // Navigate to contact page when first button is clicked
         btnServices.addEventListener("click", () => {
-          slider.style.transform = "translateX(0%)"; // Delay 1 second, then open link
+          slider.style.transform = "translateX(0%)";
           setTimeout(() => {
-            window.open("contact.html", "_self"); // same tab
+            window.open("contact.html", "_self");
           }, 500);
         });
 
+        // Navigate to services page when second button is clicked
         btnQuote.addEventListener("click", () => {
-          slider.style.transform = "translateX(100%)"; // Delay 1 second, then open link
+          slider.style.transform = "translateX(100%)";
           setTimeout(() => {
-            window.open("services.html", "_self"); // same tab
+            window.open("services.html", "_self");
           }, 500);
         });
       });
