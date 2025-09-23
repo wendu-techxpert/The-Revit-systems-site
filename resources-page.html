@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Revit-Systems</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" href="./Images/Logo/favicon.png" />
+    <script defer src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main wrapper for the entire page content -->
+    <div class="revit-container">
+      <!-- Header section containing the navigation bar -->
+      <header id="header">
+        <nav>
+          <div class="nav-content">
+            <!-- Container for logo and navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Display the company logo image -->
+                <img src="./Images/Logo/without bg black font.png" alt="" />
+              </div>
+              <!-- Unordered list for navigation menu items -->
+              <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./resources-page.html">Resources</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- Call-to-action button in the navigation -->
+            <button class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Revit-Systems</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./resources-page.html">Resources</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
+      <!-- Main container for the page's core sections -->
+      <div class="container">
+        <div class="top-nav">
+          <a href="#" class="top-nav-link">Home</a>
+          <span class="top-nav-divider">/</span>
+          <a href="#" class="top-nav-link top-active">Resources</a>
+        </div>
+        <div class="resource-container">
+          <div class="resource-resource-header">
+            <h1>
+              Insights and Inspiration, <br />
+              Explore Our Resources
+            </h1>
+            <p>
+              Dive into our resources for expert insights, tips and industry
+              trends to elevate your project management journey
+            </p>
+          </div>
+        </div>
+        <div class="results-header">
+          <p class="results-count">Showing 13-24 of 140 results</p>
+
+          <select class="sort-dropdown" aria-label="Sort resources">
+            <option value="default">Default sorting</option>
+            <option value="business">Business Playbooks & Guides</option>
+            <option value="templates">Templates & Frameworks</option>
+            <option value="checklists">Checklists</option>
+            <option value="case-studies">Case Studies & Success Stories</option>
+            <option value="marketing">Marketing Toolkits</option>
+            <option value="roi">ROI & Cost Calculators</option>
+            <option value="industry">Industry Reports & Insights</option>
+            <option value="content">Content Libraries</option>
+          </select>
+        </div>
+
+        <div class="resource-grid-container">
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /66607f0a8a442732f73a0c202f4ba3081751ab29.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Handbook</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /6614d6d3dca598296272849ea0acaffec7afe58d.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Cap</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /87026725b314e9f615b10e668f740c93393a2301 (3).jpg"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Stationery</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /66607f0a8a442732f73a0c202f4ba3081751ab29.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Handbook</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /6614d6d3dca598296272849ea0acaffec7afe58d.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Cap</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /87026725b314e9f615b10e668f740c93393a2301 (3).jpg"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Stationery</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /66607f0a8a442732f73a0c202f4ba3081751ab29.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Handbook</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /6614d6d3dca598296272849ea0acaffec7afe58d.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Cap</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /87026725b314e9f615b10e668f740c93393a2301 (3).jpg"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Stationery</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /66607f0a8a442732f73a0c202f4ba3081751ab29.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Handbook</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /6614d6d3dca598296272849ea0acaffec7afe58d.png"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Branding Cap</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+          <div class="resource-resource-card">
+            <img
+              src="./Images/resources page /87026725b314e9f615b10e668f740c93393a2301 (3).jpg"
+              alt="Optimizing Workflow Process"
+              class="resource-card-image"
+            />
+            <div class="resource-card-content">
+              <h3 class="resource-card-title">Stationery</h3>
+              <p class="resource-card-description" onclick="popUpEmail()">
+                Download
+              </p>
+            </div>
+          </div>
+
+          <!-- Repeat other resource-resource-card blocks similarly -->
+        </div>
+
+        <nav class="pagination" aria-label="Page navigation">
+          <ul>
+            <li><a href="#" class="page-arrow">&lsaquo;</a></li>
+            <!-- Left arrow -->
+            <li><a href="#" class="page-number active">1</a></li>
+            <li><a href="#" class="page-number">2</a></li>
+            <li><a href="#" class="page-number">3</a></li>
+            <li><a href="#" class="page-number">4</a></li>
+            <li><a href="#" class="page-number">5</a></li>
+            <li><a href="#" class="page-number">6</a></li>
+            <li><a href="#" class="page-arrow">&rsaquo;</a></li>
+            <!-- Right arrow -->
+          </ul>
+        </nav>
+        <div class="resources-email" id="email-pop-up">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x-icon lucide-x"
+            onclick="cancelEmailBox()"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+          <section class="rv-newsblast rsme">
+            <div class="rv-news-inner remut">
+              <div class="rv-news-card">
+                <h2 class="rv-news-title">Email Address</h2>
+                <p class="rv-news-desc">
+                  Enter your email address to have the resource sent to your
+                  email.
+                </p>
+                <form class="rv-news-form" aria-label="newsletter signup">
+                  <label for="user-email">Email:</label>
+                  <input
+                    type="email"
+                    id="user-email"
+                    name="user-email"
+                    required
+                  />
+                  <button type="submit">Get Resource</button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img src="./Images/Logo/without bg white font.png" alt="" />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61568188626000&mibextid=ZbWKwL"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <img src="./SVG/facebook-176-svgrepo-com.svg" alt="" />
+                </a>
+                <a
+                  href="https://x.com/revitsystems"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <img src="./SVG/twitter-3-svgrepo-com.svg" alt="" />
+                </a>
+                <a
+                  href="https://www.instagram.com/revitsystems/"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <img src="./SVG/instagram-167-svgrepo-com.svg" alt="" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/revit-systems-limited/?viewAsMember=true"
+                  aria-label="LinkedIn"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- LinkedIn icon SVG -->
+                  <img src="./SVG/linkedin-161-svgrepo-com.svg" alt="" />
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="./faqs.html">FAQs</a>
+                <a href="./contact.html">Help Center</a>
+                <a href="./blog.html">Blog</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Systems. All Rights Reserved.
+          </div>
+        </footer>
+      </div>
+      <!-- End of main container -->
+    </div>
+    <script>
+      const emailBox = document.getElementById("email-pop-up");
+      function popUpEmail() {
+        emailBox.classList.add("show-email");
+      }
+      function cancelEmailBox() {
+        emailBox.classList.remove("show-email");
+      }
+    </script>
+  </body>
+</html>
