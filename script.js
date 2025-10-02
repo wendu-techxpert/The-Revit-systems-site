@@ -41,3 +41,20 @@ document.querySelectorAll(".abt-circle").forEach((circle) => {
   circle.style.animationDuration = 15 + Math.random() * 15 + "s";
   circle.style.animationDelay = Math.random() * 10 + "s";
 });
+const navBtnAct = document.querySelectorAll(".nav-cta-btn"); // returns a NodeList
+
+navBtnAct.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const phone = "2348061704042";
+    const message = "Hello Revit Systems, I'm interested in your services";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+});
+
+const theFooterPageNote = document.querySelectorAll(".rv-tagline");
+
+theFooterPageNote.forEach((element) => {
+  element.innerText =
+    "Empowering Africa’s businesses, redefining the global stage.";
+});

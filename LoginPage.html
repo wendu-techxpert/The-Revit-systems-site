@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revit-Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .admin-container-holder {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background: linear-gradient(#d17609, #8b5b21);
+        background-position: center;
+      }
+      .image-holder {
+        width: 100%;
+      }
+      img {
+        width: 70%;
+      }
+      .the-admin-container {
+        width: 60%;
+        margin: 50px auto;
+        backdrop-filter: blur(8px);
+        padding: 40px 20px;
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .the-admin-container h1 {
+        margin-bottom: 20px;
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 40px;
+      }
+
+      .the-admin-container p {
+        color: #ffffff;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 15px;
+      }
+      .the-admin-icon-and-details-holder {
+        margin-top: 20px;
+      }
+
+      .the-admin-icon-holder {
+        margin-bottom: 20px;
+      }
+
+      .lucide-user-round-icon {
+        width: 100px;
+        height: 100px;
+        color: #4d3312;
+      }
+
+      form {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 250px;
+        padding: 17px 15px;
+        border: 1px solid #ffffffdb;
+        border-radius: 30px;
+        background-color: transparent;
+        outline: none;
+        font-weight: 700;
+        color: white;
+        font-size: 1rem;
+      }
+
+      ::placeholder {
+        color: white;
+      }
+
+      button {
+        width: 220px;
+        padding: 12px 30px;
+        margin: auto;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background-color: #ffffff;
+        color: #d17609;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #d17609;
+        color: #ffffff;
+      }
+      @media (max-width: 600px) {
+        .the-admin-container {
+          width: 95%;
+          padding: 40px 0px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          width: 230px;
+        }
+      }
+
+      .error-div {
+        width: 200px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        border-radius: 10px;
+        background-color: rgb(150, 0, 0);
+        position: absolute;
+        top: 0px;
+        font-size: 0.7rem;
+        color: white;
+        transform: translateY(-100%);
+        right: 10px;
+        transition: all 0.5s;
+      }
+
+      .valid-div {
+        width: 200px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        border-radius: 10px;
+        background-color: rgb(19, 97, 1);
+        position: absolute;
+        top: 0px;
+        font-size: 0.7rem;
+        color: white;
+        transform: translateY(-100%);
+        right: 10px;
+        transition: all 0.5s;
+      }
+
+      .error-div.show-div,
+      .valid-div.show-div {
+        transform: translateY(20%);
+        transition: all 0.1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-container-holder">
+      <div class="the-admin-container">
+        <div class="the-admin-icon-and-details-holder">
+          <h1>Welcome</h1>
+          <div class="the-admin-icon-holder">
+            <!-- <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-user-round-icon lucide-user-round"
+            >
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg> -->
+          </div>
+          <form>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username or Email"
+              required
+            />
+            <br /><br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <br /><br />
+            <button onclick="authenticate(event)">Login</button>
+          </form>
+          <p>Forgot password</p>
+        </div>
+      </div>
+    </div>
+    <div class="valid-div" id="valid-div">Invalid username or password</div>
+    <div class="error-div" id="error-div">Invalid username or password</div>
+
+    <script>
+      function authenticate(event) {
+        event.preventDefault(); // <-- STOP the form from reloading the page
+        let errorBox = document.getElementById("error-div");
+        let validBox = document.getElementById("valid-div");
+        if (
+          document.getElementById("username").value === "Agatha" &&
+          document.getElementById("password").value === "Godbeg"
+        ) {
+          validBox.classList.add("show-div");
+          setTimeout(() => {
+            validBox.classList.remove("show-div");
+            window.open("./admin.html");
+          }, 2000);
+        } else {
+          errorBox.classList.add("show-div");
+          setTimeout(() => {
+            errorBox.classList.remove("show-div");
+          }, 4000);
+        }
+      }
+    </script>
+  </body>
+</html>

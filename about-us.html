@@ -3,23 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="Brand transformation framework, Brand review process, How to revamp your brand, Business branding strategy, Brand audit and positioning, Brand clarity and storytelling, Revit Systems branding solutions"
+    />
+    <meta
+      name="description"
+      content="Revit Systems helps businesses revamp their brands with proven strategies for brand transformation, audits, positioning, clarity, and storytelling."
+    />
 
     <title>Revit-Systems</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="./Images/Logo/favicon.png" />
-    <link href="https://fonts.cdnfonts.com/css/mena-grotesk" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
     <script defer src="./script.js"></script>
+    <style>
+      .abt-testimonial-card {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 1s ease-in-out;
+        pointer-events: none;
+      }
+
+      .abt-testimonial-card.active {
+        opacity: 1;
+        pointer-events: auto;
+        position: relative;
+      }
+    </style>
   </head>
 
   <body>
@@ -71,7 +93,21 @@
         <div class="menu-panel-header">
           <h2 class="menu-panel-title">Revit-Systems</h2>
           <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
-            ✕
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-x-icon lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
           </button>
         </div>
 
@@ -131,7 +167,7 @@
         <div class="abt-section-container">
           <div class="abt-heading-wrapper">
             <div class="abt-main-heading">How it started</div>
-            <div class="abt-icon-top">
+            <!-- <div class="abt-icon-top">
               <div
                 class="abt-icon-image"
                 style="
@@ -139,30 +175,56 @@
                 "
               ></div>
               <div class="abt-icon-label">Founder</div>
-            </div>
+            </div> -->
           </div>
           <div class="abt-text-content">
             <div class="abt-paragraph">
-              <div class="abt-highlight-text">Revit Systems</div>
-              began with a simple idea: technology should make life easier and
-              businesses smarter. What started as a small team of innovators has
-              grown into a
+              <div class="abt-highlight-text">Revit</div>
+              was born out of a simple but powerful belief: every business
+              deserves the chance to grow, thrive, and be seen for its true
+              value. We saw too many brilliant ideas and passionate
+              entrepreneurs struggling to find their voice in a noisy world. Too
+              many businesses working hard but not being remembered. That is
+              where our journey began. <br />
+              At Revit, we exist to
+              <div class="abt-highlight-text">review</div>
+              what is,
+              <div class="abt-highlight-text">reveal</div>
+              what can be, and
+              <div class="abt-highlight-text">revamp</div>
+              what must change. These three words guide everything we do. They
               <div class="abt-highlight-text">
-                trusted digital services company
+                remind us that growth is not just about bigger numbers but about
+                clarity, purpose, and impact.
               </div>
+              We are more than a company. We are a team of thinkers, creators,
+              and builders committed to helping brands tell their story, connect
+              with people, and step into their full potential. Whether through
+              branding, digital marketing, or technology solutions, our
+              motivation has always been the same: to turn vision into reality.
+              Our vision is to empower businesses across Africa and
+
               <span class="read-more"
                 ><span class="show-more" id="toggleBtn">read-more...</span
-                ><span class="show" id="myText">
-                  offering software, IT solutions, cloud, cybersecurity, and
-                  more. We believe behind every system is a story, and our
-                  mission is to
-                  <div class="abt-highlight-text">craft solutions</div>
-                  that are not just powerful, but purposeful. Today, we help
-                  businesses adapt, grow, and thrive in a connected world.</span
-                ></span
+                ><span class="show" id="myText"
+                  >beyond to rise above challenges and stand tall as industry
+                  leaders. Our values are rooted in
+                  <div class="abt-highlight-text">
+                    integrity, innovation, and collaboration.
+                  </div>
+                  We believe in working side by side with our clients, treating
+                  their goals as our own, and pushing boundaries to deliver
+                  results that last. What drives us is not just the projects we
+                  complete, but the lives and communities those projects touch.
+                  Every brand we work with is a chance to make a difference, and
+                  every success story fuels our passion to keep going. Revit is
+                  not just about building solutions. It is about
+                  <div class="abt-highlight-text">building legacies</div>
+                  .
+                </span></span
               >
             </div>
-            <div class="abt-icon-bottom">
+            <!-- <div class="abt-icon-bottom">
               <div
                 class="abt-icon-image"
                 style="
@@ -170,7 +232,7 @@
                 "
               ></div>
               <div class="abt-icon-label">Co-Founder</div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- vision -->
@@ -180,8 +242,9 @@
               <div class="abt-vision-small-title">Our Vision</div>
             </div>
             <div class="abt-vision-statement">
-              To help Businesses and clients with sales and tech-driven
-              solutions for their companies
+              To become Africa’s leading catalyst for business and technological
+              transformation. Empowering brands, building intelligent systems,
+              and shaping a future where ideas evolve into lasting impact.
             </div>
           </div>
           <div class="abt-vision-left-column mission">
@@ -189,8 +252,12 @@
               <div class="abt-vision-small-title">Our Mission</div>
             </div>
             <div class="abt-vision-statement">
-              To help Businesses and clients with sales and tech-driven
-              solutions for their companies
+              To help businesses review, reveal, and revamp their potential
+              through strategic branding, digital marketing, and innovative
+              technology solutions. To design and build custom software and
+              automated systems that solve real-world problems and power growth.
+              To foster a culture of collaboration, creativity, and excellence
+              that inspires teams and delivers measurable value to clients.
             </div>
           </div>
         </div>
@@ -209,44 +276,31 @@
           <div class="the-scroll-track">
             <div class="cards">
               <!-- Team member card -->
+              <!-- first track -->
               <div class="card">
                 <div class="photo">
                   <img
-                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
-                    alt="Isaac, Software Engineer"
+                    src="./Images/The Team Image/Mr Noble.jpg"
+                    alt="Mr Noble, Team Lead"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">Isaac</div>
-                  <div class="role">Software Engineer</div>
+                  <div class="name">Noble Ogochukwe</div>
+                  <div class="role">Team Lead</div>
                 </div>
               </div>
               <!-- Team member card -->
               <div class="card">
                 <div class="photo">
                   <img
-                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
+                    src="./Images/The Team Image/Mr Bright.png"
                     alt="Bright, Lead developer"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
-                </div>
-              </div>
-              <!-- Team member card -->
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
-                    alt="Bright, Lead developer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Bright</div>
+                  <div class="name">God's Bright Uzodinma</div>
                   <div class="role">Lead developer</div>
                 </div>
               </div>
@@ -254,13 +308,70 @@
               <div class="card">
                 <div class="photo">
                   <img
-                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
+                    src="./Images/The Team Image/Mr Agatha.jpg"
+                    alt="Mr Agatha, Admin / Operations"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Agatha Okoye</div>
+                  <div class="role">Admin / Operations</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/Mr Blessing Victoria.jpg"
+                    alt="Blessing Victoria, Social Media Strategist"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Blessing Ikwunze</div>
+                  <div class="role">Social Media Strategist</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/Mr Gratitude.jpg"
+                    alt="Gratitude, UI UX Designer"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Gratitude Akinsulire</div>
+                  <div class="role">UI UX Designer</div>
+                </div>
+              </div>
+              <!-- end track -->
+              <!-- first track -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/Mr Noble.jpg"
+                    alt="Mr Noble, Team Lead"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="info">
+                  <div class="name">Noble Ogochukwe</div>
+                  <div class="role">Team Lead</div>
+                </div>
+              </div>
+              <!-- Team member card -->
+              <div class="card">
+                <div class="photo">
+                  <img
+                    src="./Images/The Team Image/Mr Bright.png"
                     alt="Bright, Lead developer"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">Bright</div>
+                  <div class="name">God's Bright Uzodinma</div>
                   <div class="role">Lead developer</div>
                 </div>
               </div>
@@ -268,136 +379,45 @@
               <div class="card">
                 <div class="photo">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="Bright, Lead developer"
+                    src="./Images/The Team Image/Mr Agatha.jpg"
+                    alt="Mr Agatha, Operations manager"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
+                  <div class="name">Agatha Okoye</div>
+                  <div class="role">Admin / Operations</div>
                 </div>
               </div>
               <!-- Team member card -->
               <div class="card">
                 <div class="photo">
                   <img
-                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="Noble, Team lead"
+                    src="./Images/The Team Image/Mr Blessing Victoria.jpg"
+                    alt="Blessing Victoria, Admin"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">Noble</div>
-                  <div class="role">Team lead</div>
+                  <div class="name">Blessing Ikwunze</div>
+                  <div class="role">Social Media Strategist</div>
                 </div>
               </div>
               <!-- Team member card -->
               <div class="card">
                 <div class="photo">
                   <img
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="David, Creative director"
+                    src="./Images/The Team Image/Mr Gratitude.jpg"
+                    alt="Gratitude, UI UX Designer"
                     loading="lazy"
                   />
                 </div>
                 <div class="info">
-                  <div class="name">David</div>
-                  <div class="role">Creative director</div>
+                  <div class="name">Gratitude Akinsulire</div>
+                  <div class="role">UI UX Designer</div>
                 </div>
               </div>
-              <!-- Duplicated team member cards for carousel effect -->
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="./Images/The Team Image/28b6c0e924138de6bc4e924d5171b8442770fd52 (1).jpg"
-                    alt="Isaac, Software Engineer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Isaac</div>
-                  <div class="role">Software Engineer</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg"
-                    alt="Bright, Lead developer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="./Images/The Team Image/a0e42d4de59bba51c7cb7b2c76f284ede40d163e.jpg"
-                    alt="Bright, Lead developer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="Images/The Team Image/d493817bae55b3cd59ae8c195ab1c6ca840c713d.jpg"
-                    alt="Bright, Lead developer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="Bright, Lead developer"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Bright</div>
-                  <div class="role">Lead developer</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="Noble, Team lead"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">Noble</div>
-                  <div class="role">Team lead</div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="photo">
-                  <img
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&h=400&q=80"
-                    alt="David, Creative director"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="info">
-                  <div class="name">David</div>
-                  <div class="role">Creative director</div>
-                </div>
-              </div>
+              <!-- end track -->
             </div>
           </div>
         </section>
@@ -437,12 +457,15 @@
             <div class="abt-join-title-wrapper">
               <div class="abt-join-title">Join a</div>
               <div class="abt-join-title abt-join-title-bold">world-class</div>
-              <div class="abt-join-title abt-join-title-bold">team now</div>
+              <div class="abt-join-title abt-join-title-bold">team today!</div>
             </div>
             <div class="abt-join-subtitle">
-              Transform your business today and make a massive returns.
+              We’re more than colleagues, we’re a team of builders, creators,
+              and problem-solvers shaping the future of business and technology.
+              If you’re passionate about innovation and ready to grow with us,
+              this is where you belong.
             </div>
-            <button class="abt-join-button">Book a slot</button>
+            <button class="abt-join-button">Build With Us</button>
           </div>
           <div class="abt-join-right">
             <div class="abt-testimonial-wrapper">
@@ -455,12 +478,12 @@
                 <div class="abt-testimonial-author">
                   <div class="abt-author-info">
                     <div class="abt-author-name">Mr Noble</div>
-                    <div class="abt-author-role">Team Leader</div>
+                    <div class="abt-author-role">Team Lead</div>
                   </div>
                   <div
                     class="abt-author-image"
                     style="
-                      background-image: url('./Images/The Team Image/39e7d1a0fca838fa92d021c75af1653ebe3fb2a7.jpg');
+                      background-image: url('./Images/head profile /Mr Noble.jpg');
                     "
                   ></div>
                 </div>
@@ -476,12 +499,12 @@
                 <div class="abt-testimonial-author">
                   <div class="abt-author-info">
                     <div class="abt-author-name">Mr God's Bright</div>
-                    <div class="abt-author-role">Web Developer</div>
+                    <div class="abt-author-role">Lead Developer</div>
                   </div>
                   <div
                     class="abt-author-image"
                     style="
-                      background-image: url('./Images/The Team Image/sophia.jpg');
+                      background-image: url('./Images/head profile /Mr Bright.png');
                     "
                   ></div>
                 </div>
@@ -490,19 +513,18 @@
               <div class="abt-testimonial-card">
                 <div class="abt-quote-icon">''</div>
                 <div class="abt-testimonial-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-                  quidem ut, voluptates veniam nobis cupiditate eius ratione
-                  ipsam magnam tempora possimus voluptatum earum incidunt.
+                  Efficiency is the backbone of innovation; when operations run
+                  smoothly, technology can truly thrive.t.
                 </div>
                 <div class="abt-testimonial-author">
                   <div class="abt-author-info">
-                    <div class="abt-author-name">Mrs Agatha Lucia</div>
-                    <div class="abt-author-role">Head Admin</div>
+                    <div class="abt-author-name">~Ms. Agatha</div>
+                    <div class="abt-author-role">Admin / Operations</div>
                   </div>
                   <div
                     class="abt-author-image"
                     style="
-                      background-image: url('./Images/The Team Image/sophia.jpg');
+                      background-image: url('./Images/head profile /Mr Agatha.jpg');
                     "
                   ></div>
                 </div>
@@ -521,7 +543,7 @@
                   <div
                     class="abt-author-image"
                     style="
-                      background-image: url('./Images/The Team Image/sophia.jpg');
+                      background-image: url('./Images/head profile /Mr Blessing Victoria.jpg');
                     "
                   ></div>
                 </div>
@@ -536,12 +558,12 @@
                 <div class="abt-testimonial-author">
                   <div class="abt-author-info">
                     <div class="abt-author-name">Mr Gratitude</div>
-                    <div class="abt-author-role">UI UX Designer</div>
+                    <div class="abt-author-role">Lead Designer</div>
                   </div>
                   <div
                     class="abt-author-image"
                     style="
-                      background-image: url('./Images/The Team Image/sophia.jpg');
+                      background-image: url('./Images/head profile /Mr Gratitude.jpg');
                     "
                   ></div>
                 </div>
@@ -650,6 +672,52 @@
             text.classList.remove("rv-active");
             text.classList.add("show");
             this.textContent = "Read More...";
+          }
+        });
+      document.addEventListener("DOMContentLoaded", () => {
+        const testimonials = document.querySelectorAll(".abt-testimonial-card");
+        let current = 0;
+
+        function showNextTestimonial() {
+          // Hide current
+          testimonials[current].classList.remove("active");
+
+          // Move to next index
+          current = (current + 1) % testimonials.length;
+
+          // Show next
+          testimonials[current].classList.add("active");
+        }
+
+        // Change every 5 seconds
+        setInterval(showNextTestimonial, 5000);
+      });
+      document
+        .querySelector(".abt-join-button")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const email = "revitsystems@gmail.com";
+          const subject = "Recruitment Request";
+          const body = "Hello Revit Systems,\n\nI would like to Join your team";
+
+          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(body)}`;
+          const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
+            subject
+          )}&body=${encodeURIComponent(body)}`;
+
+          try {
+            window.location.href = mailtoLink;
+
+            // As a fallback, after a short delay, open Gmail in a new tab
+            setTimeout(() => {
+              window.open(gmailLink, "_blank");
+            }, 1000);
+          } catch (err) {
+            // If mailto fails outright, go straight to Gmail
+            window.open(gmailLink, "_blank");
           }
         });
     </script>
