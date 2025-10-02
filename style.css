@@ -810,7 +810,12 @@ hr {
   border-bottom: 1px solid white;
 }
 
-.card .arrow-circle {
+.card .arrow-circle .lucide-arrow-up-right-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.card .arr-me {
   position: absolute;
   text-decoration: none;
   left: 12px;
@@ -826,12 +831,8 @@ hr {
   border: 4px solid #fff;
   transition: all 0.5s ease;
 }
-.card .arrow-circle .lucide-arrow-up-right-icon {
-  height: 30px;
-  width: 30px;
-}
 
-.card .arrow-circle:hover {
+.card .arr-me:hover {
   transform: rotate(50deg);
   background-color: #d17609;
   color: white;
