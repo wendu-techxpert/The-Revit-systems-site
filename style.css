@@ -830,11 +830,6 @@ hr {
   height: 30px;
   width: 30px;
 }
-.card .arrow-circle::after {
-  transform: rotate(0deg);
-  display: block;
-  line-height: 1;
-}
 
 .card .arrow-circle:hover {
   transform: rotate(50deg);
