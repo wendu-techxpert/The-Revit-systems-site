@@ -1,11 +1,13 @@
-import { Response, NextFunction } from "express";
-import { AuthRequest } from "@/types/express.js";
+import { Request, Response, NextFunction } from "express";
 
 export const authorize = (role: string) => {
-  return (req: AuthRequest, res: Response, next: NextFunction) => {
-    if (req.user?.role !== role) {
-      return res.status(403).json({ message: "Forbidden" });
+  // Use the standard Request type here
+  return (req: Request, res: Response, next: NextFunction) => {
+    // req.user is now recognized globally thanks to your .d.ts file
+    if (!req.user || req.user.role !== role) {
+      return res.status(403).json({ message: "Forbidden: Access denied" });
     }
+
     next();
   };
 };

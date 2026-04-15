@@ -1,9 +1,8 @@
-import { Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express"; // Use standard Request
 import jwt from "jsonwebtoken";
-import { AuthRequest } from "@/types/express.js";
 
 export const authenticate = (
-  req: AuthRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
@@ -19,6 +18,7 @@ export const authenticate = (
       role: string;
     };
 
+    // This won't throw an error now because of Step 1!
     req.user = decoded;
 
     next();
