@@ -202,7 +202,7 @@
 ================================================================ */
 .rv-vm {
   background: var(--off-white);
-  padding: 0 0 100px;
+  padding: 80px 0 80px;
 }
 .rv-vm__inner {
   width: 90%;
