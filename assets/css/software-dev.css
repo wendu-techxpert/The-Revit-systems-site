@@ -12,7 +12,7 @@
    HERO
 ================================================================ */
 .rv-sw-hero {
-  margin-top: 90px;
+  margin-top: 70px;
   position: relative;
   background: linear-gradient(160deg, var(--dark) 0%, var(--dark-3) 100%);
   overflow: hidden;
