@@ -20,8 +20,8 @@
   --radius-lg: 24px;
   --radius-xl: 40px;
   --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Poppins", sans-serif;
   --shadow-gold: 0 20px 60px rgba(209, 118, 9, 0.18);
   --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
@@ -221,11 +221,12 @@
 .rv-hero__h1 em {
   font-style: italic;
   color: var(--gold-light);
+  font-size: clamp(1.6rem, 4.5vw, 4rem);
 }
 
 .rv-hero__sub {
   font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.82);
   max-width: 560px;
@@ -883,6 +884,14 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
   margin: 0 0 36px;
+}
+
+.rv-title {
+  font-family: var(--font-serif);
+}
+
+.rv-subtitle {
+  font-family: var(--font-sans);
 }
 
 /* ================================================================

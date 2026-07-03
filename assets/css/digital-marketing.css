@@ -430,6 +430,20 @@
   margin: 0;
   flex: 1;
 }
+
+.rv-dm-card__img {
+  position: relative;
+  bottom: 5px;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+
+  background-image: url("https://res.cloudinary.com/dmvltush8/image/upload/v1783092261/Social_media_management_hpvzbp.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .rv-dm-card--gold .rv-dm-card__body,
 .rv-dm-card--dark .rv-dm-card__body {
   color: rgba(255, 255, 255, 0.75);
