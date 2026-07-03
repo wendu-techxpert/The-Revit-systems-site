@@ -1,299 +1,478 @@
 /* ============================================================
-   REVIT SYSTEMS — SERVICES PAGE STYLES (services.css)
-   Loads after style.css + home.css — page-specific rules only
+   REVIT SYSTEMS — SERVICES PAGE REBUILD (services.css)
    ============================================================ */
 
 /* ================================================================
-   SERVICES HERO
+   HERO
 ================================================================ */
-.rv-svc-hero {
-  margin-top: 90px;
-  padding: 70px 0 60px;
-  background: var(--off-white);
-  text-align: center;
-}
-.rv-svc-hero__inner {
-  width: 90%;
-  max-width: 760px;
-  margin: 0 auto;
-}
-.rv-svc-hero .rv-breadcrumb {
-  justify-content: center;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-.rv-svc-hero .rv-breadcrumb a {
-  color: var(--mid);
-}
-.rv-svc-hero .rv-breadcrumb a:hover {
-  color: var(--gold);
-}
-.rv-svc-hero .rv-breadcrumb span {
-  color: var(--gold);
-}
-.rv-svc-hero .rv-label {
-  justify-content: center;
-}
-.rv-svc-hero .rv-label::before {
-  display: none;
-}
-
-.rv-svc-hero__h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 600;
-  color: var(--dark);
-  line-height: 1.2;
-  margin: 8px 0 20px;
-}
-.rv-svc-hero__sub {
-  font-size: 1rem;
-  color: var(--mid);
-  line-height: 1.8;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-@media (max-width: 600px) {
-  .rv-svc-hero {
-    padding: 50px 0 40px;
-  }
-}
-
-/* ================================================================
-   SERVICES SHOWCASE
-================================================================ */
-.rv-svc-showcase {
-  background: var(--white);
-  padding: 70px 0 100px;
-}
-.rv-svc-showcase__inner {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 56px;
-  align-items: start;
-}
-
-.rv-svc-showcase__media {
-  position: sticky;
-  top: 110px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-dark);
-}
-.rv-svc-showcase__media img {
-  width: 100%;
-  height: 700px;
-  object-fit: cover;
-  display: block;
-}
-
-.rv-svc-showcase__list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.rv-svc-row {
-  display: flex;
-  gap: 24px;
-  padding: 32px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  transition: padding-left 0.3s var(--ease);
-}
-.rv-svc-row:hover {
-  padding-left: 12px;
-}
-.rv-svc-row:last-child {
-  border-bottom: none;
-}
-
-.rv-svc-row__icon {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-md);
-  background: var(--off-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  transition: background 0.3s, color 0.3s;
-}
-.rv-svc-row:hover .rv-svc-row__icon {
-  background: var(--gold);
-  color: var(--white);
-}
-
-.rv-svc-row__title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--dark);
-  margin: 0 0 10px;
-}
-.rv-svc-row__text {
-  font-size: 0.95rem;
-  color: var(--mid);
-  line-height: 1.75;
-  margin: 0 0 14px;
-  max-width: 520px;
-}
-.rv-svc-row__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--gold);
-  text-decoration: none;
-  transition: gap 0.2s;
-}
-.rv-svc-row__link:hover {
-  gap: 14px;
-}
-.rv-svc-row__link i {
-  font-size: 0.7rem;
-}
-
-@media (max-width: 1000px) {
-  .rv-svc-showcase__inner {
-    grid-template-columns: 1fr;
-  }
-  .rv-svc-showcase__media {
-    position: relative;
-    top: 0;
-  }
-  .rv-svc-showcase__media img {
-    height: 400px;
-  }
-}
-@media (max-width: 600px) {
-  .rv-svc-showcase {
-    padding: 50px 0 70px;
-  }
-  .rv-svc-row {
-    gap: 16px;
-    padding: 26px 0;
-  }
-  .rv-svc-row__icon {
-    width: 52px;
-    height: 52px;
-  }
-  .rv-svc-row__title {
-    font-size: 1.25rem;
-  }
-}
-
-/* ================================================================
-   COMMITMENT / STATS
-================================================================ */
-.rv-svc-commit {
-  background: var(--off-white);
-  padding: 70px 0 70px;
-}
-.rv-svc-commit__inner {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  gap: 24px;
-  align-items: stretch;
-}
-
-.rv-svc-commit__stat,
-.rv-svc-commit__card {
-  border-radius: var(--radius-lg);
-  padding: 36px 30px;
-  min-width: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.rv-ser-hero {
+  margin-top: 70px;
   position: relative;
+  background: var(--dark);
   overflow: hidden;
-}
-.rv-svc-commit__stat--gold {
-  background: var(--gold);
-  color: var(--white);
-}
-.rv-svc-commit__stat--dark {
-  background: var(--dark-3);
-  color: var(--white);
+  padding-bottom: 0;
 }
 
-.rv-svc-commit__number {
+.rv-ser-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.rv-ser-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.rv-ser-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.rv-ser-bg-glow--1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(209, 118, 9, 0.12) 0%,
+    transparent 70%
+  );
+  top: -200px;
+  right: -100px;
+}
+.rv-ser-bg-glow--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(209, 118, 9, 0.07) 0%,
+    transparent 70%
+  );
+  bottom: 0;
+  left: 10%;
+}
+
+.rv-ser-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 90px 0 0;
+}
+
+.rv-breadcrumb--light {
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 36px;
+}
+.rv-breadcrumb--light a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+.rv-breadcrumb--light a:hover {
+  color: var(--gold-light);
+}
+.rv-breadcrumb--light span {
+  color: var(--gold-light);
+}
+.rv-breadcrumb--light i {
+  font-size: 0.6rem;
+  opacity: 0.5;
+}
+
+.rv-ser-hero__content {
+  max-width: 760px;
+  margin-bottom: 60px;
+}
+
+.rv-ser-hero__h1 {
   font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 8px;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin: 10px 0 24px;
 }
-.rv-svc-commit__number span {
-  font-size: 1.8rem;
+.rv-ser-hero__h1 em {
+  font-style: italic;
+  color: var(--gold-light);
 }
-.rv-svc-commit__label {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.rv-svc-commit__text {
-  font-size: 0.82rem;
-  opacity: 0.85;
-  line-height: 1.5;
+.rv-ser-hero__sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.82;
+  max-width: 620px;
   margin: 0;
 }
 
-.rv-svc-commit__card {
+/* Service tile nav strip */
+.rv-ser-hero__tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.rv-ser-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 36px 28px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.3s var(--ease), color 0.3s;
+  position: relative;
+}
+.rv-ser-tile:last-child {
+  border-right: none;
+}
+.rv-ser-tile:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+}
+.rv-ser-tile--gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.rv-ser-tile--gold:hover {
+  background: #b86808;
+  color: var(--white);
+}
+
+.rv-ser-tile__icon {
+  width: 40px;
+  height: 40px;
+  opacity: 0.85;
+}
+.rv-ser-tile__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.rv-ser-tile__label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex: 1;
+}
+.rv-ser-tile__arrow {
+  font-size: 0.72rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.rv-ser-tile:hover .rv-ser-tile__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+.rv-ser-tile--gold .rv-ser-tile__arrow {
+  opacity: 0.7;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .rv-ser-hero__tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rv-ser-tile {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+}
+@media (max-width: 560px) {
+  .rv-ser-hero__inner {
+    padding: 60px 0 0;
+  }
+  .rv-ser-hero__h1 {
+    font-size: 2.2rem;
+  }
+  .rv-ser-hero__tiles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .rv-ser-tile {
+    padding: 24px 18px;
+    gap: 10px;
+  }
+}
+
+/* ================================================================
+   FEATURE SECTIONS — alternating layout
+================================================================ */
+.rv-ser-features {
   background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 44px 40px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+.rv-ser-features__inner {
+  width: 100%;
+  max-width: 100%;
+}
+
+.rv-ser-feat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+.rv-ser-feat--alt {
+  direction: rtl;
+}
+.rv-ser-feat--alt > * {
+  direction: ltr;
+}
+
+.rv-ser-feat__visual {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark-2);
+}
+.rv-ser-feat__img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.rv-ser-feat__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.75;
+  transition: opacity 0.4s, transform 0.5s var(--ease);
+}
+.rv-ser-feat:hover .rv-ser-feat__img-wrap img {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.rv-ser-feat__icon-badge {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  width: 80px;
+  height: 80px;
+  background: var(--dark-3);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 14px;
+  box-shadow: var(--shadow-dark);
+}
+.rv-ser-feat__icon-badge--gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.rv-ser-feat__icon-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rv-ser-feat__body {
+  padding: 64px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 20px;
+  background: var(--white);
 }
-.rv-svc-commit__heading {
-  font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 600;
-  color: var(--dark);
-  margin: 0 0 14px;
-  line-height: 1.3;
+.rv-ser-feat .rv-label {
+  justify-content: flex-start;
+  color: var(--gold);
+  margin-bottom: 0;
 }
-.rv-svc-commit__desc {
-  font-size: 0.92rem;
-  color: var(--mid);
-  line-height: 1.75;
-  margin: 0 0 28px;
-}
-.rv-svc-commit .rv-btn {
-  width: fit-content;
+.rv-ser-feat .rv-label::before {
+  display: none;
 }
 
-@media (max-width: 1200px) {
-  .rv-svc-commit__inner {
-    grid-template-columns: 1fr 1fr;
+.rv-ser-feat__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.2;
+  margin: 0;
+}
+.rv-ser-feat__title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.rv-ser-feat__text {
+  font-size: 0.97rem;
+  color: var(--mid);
+  line-height: 1.85;
+  margin: 0;
+}
+
+.rv-ser-feat__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+.rv-ser-feat__list li {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--dark);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.4;
+}
+.rv-ser-feat__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Alternate bg for odd sections */
+.rv-ser-feat:nth-child(even) .rv-ser-feat__body {
+  background: var(--off-white);
+}
+
+.rv-btn {
+  width: 200px;
+  margin-top: 16px;
+}
+
+@media (max-width: 960px) {
+  .rv-ser-feat {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    min-height: auto;
   }
-  .rv-svc-commit__card {
-    grid-column: 1 / -1;
+  .rv-ser-feat--alt {
+    direction: ltr;
+  }
+  .rv-ser-feat__visual {
+    height: 320px;
+  }
+  .rv-ser-feat__body {
+    padding: 48px 36px;
+  }
+  .rv-ser-feat__list {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 600px) {
-  .rv-svc-commit__inner {
+  .rv-ser-feat__visual {
+    height: 240px;
+  }
+  .rv-ser-feat__body {
+    padding: 40px 24px;
+    gap: 16px;
+  }
+  .rv-ser-feat__icon-badge {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .rv-btn {
+    width: auto;
+    margin-top: 16px;
+  }
+}
+
+/* ================================================================
+   COMMITMENT STRIP
+================================================================ */
+.rv-ser-commit {
+  background: var(--dark-3);
+  padding: 70px 0;
+}
+.rv-ser-commit__inner {
+  width: 90%;
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1px auto 1px auto 1px auto;
+  gap: 0 48px;
+  align-items: center;
+}
+.rv-ser-commit__stat {
+  text-align: center;
+  padding: 0 20px;
+}
+.rv-ser-commit__num {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.rv-ser-commit__num span {
+  font-size: 1.8rem;
+}
+.rv-ser-commit__lbl {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+.rv-ser-commit__divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.rv-ser-commit__cta {
+  padding-left: 20px;
+}
+.rv-ser-commit__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 600;
+  color: var(--white);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+.rv-ser-commit__sub {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  margin: 0 0 24px;
+  max-width: 460px;
+}
+
+@media (max-width: 1100px) {
+  .rv-ser-commit__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .rv-ser-commit__divider {
+    display: none;
+  }
+  .rv-ser-commit__cta {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 32px;
+  }
+}
+@media (max-width: 560px) {
+  .rv-ser-commit {
+    padding: 56px 0;
+  }
+  .rv-ser-commit__inner {
     grid-template-columns: 1fr;
   }
-
-  .rv-svc-commit__card {
-    padding: 32px 26px;
+  .rv-ser-commit__stat {
+    text-align: left;
+    padding: 0;
   }
-
-  .rv-svc-commit .rv-btn {
-    width: 102%;
+  .rv-ser-commit__num {
+    font-size: 2.4rem;
   }
 }

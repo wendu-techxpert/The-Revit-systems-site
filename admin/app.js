@@ -227,12 +227,22 @@ function initializeEventListeners() {
   });
 
   // --- Auto-generate slug from title ---
-  document.getElementById("blog-title").addEventListener("blur", () => {
+  // Changed from "blur" to "input" so the slug updates live as the user
+  // types the title rather than only after they click away. Only fills
+  // the slug if the user hasn't manually typed one themselves.
+  document.getElementById("blog-title").addEventListener("input", () => {
     const slugInput = document.getElementById("blog-slug");
-    if (!slugInput.value) {
-      slugInput.value = Utils.slugify(
-        document.getElementById("blog-title").value
-      );
+    const titleInput = document.getElementById("blog-title");
+    // Only auto-fill if the slug is empty OR was previously auto-generated
+    // (i.e. matches the slugified version of whatever the title was before).
+    // This prevents overwriting a slug the user deliberately edited.
+    const currentSlug = slugInput.value;
+    const autoSlug = Utils.slugify(titleInput.value);
+    const prevAutoSlug = slugInput.dataset.autoSlug || "";
+
+    if (!currentSlug || currentSlug === prevAutoSlug) {
+      slugInput.value = autoSlug;
+      slugInput.dataset.autoSlug = autoSlug;
     }
   });
 

@@ -123,7 +123,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -221,231 +221,671 @@
       </aside>
 
       <div class="rv-page">
-        <!-- ===================== SERVICES HERO ===================== -->
-        <section class="rv-svc-hero" aria-label="What we do">
-          <div class="rv-svc-hero__inner">
-            <nav class="rv-breadcrumb" aria-label="Breadcrumb">
+        <!-- ===================== HERO ===================== -->
+        <section class="rv-ser-hero" aria-label="Revit Systems services">
+          <!-- Animated background grid -->
+          <div class="rv-ser-hero__bg" aria-hidden="true">
+            <div class="rv-ser-bg-grid"></div>
+            <div class="rv-ser-bg-glow rv-ser-bg-glow--1"></div>
+            <div class="rv-ser-bg-glow rv-ser-bg-glow--2"></div>
+          </div>
+
+          <div class="rv-ser-hero__inner">
+            <nav
+              class="rv-breadcrumb rv-breadcrumb--light"
+              aria-label="Breadcrumb"
+            >
               <a href="../index.html">Home</a>
               <i class="fas fa-chevron-right"></i>
               <span>Services</span>
             </nav>
-            <div class="rv-label">What We Do</div>
-            <h1 class="rv-svc-hero__h1">
-              Tailored Digital Solutions<br />for Nigerian Businesses
-            </h1>
-            <p class="rv-svc-hero__sub">
-              From brand identity to enterprise software, Revit Systems covers
-              every dimension of digital growth for startups, SMEs, and
-              enterprises across Abuja and Nigeria.
-            </p>
-          </div>
-        </section>
 
-        <!-- ===================== SERVICES SHOWCASE ===================== -->
-        <section class="rv-svc-showcase" aria-label="Our core services">
-          <div class="rv-svc-showcase__inner">
-            <div class="rv-svc-showcase__media">
-              <img
-                src="https://res.cloudinary.com/dmvltush8/image/upload/v1761066809/04a8df7f83828ada41dc7fa866fc1a232daf2ddc_rzhasv.jpg"
-                alt="Revit Systems digital agency team at work, Abuja Nigeria"
-                loading="lazy"
-              />
+            <div class="rv-ser-hero__content">
+              <div class="rv-label rv-label--light">What We Do</div>
+              <h1 class="rv-ser-hero__h1">
+                Every System Your<br />Business Needs to <em>Win</em>
+              </h1>
+              <p class="rv-ser-hero__sub">
+                Revit Systems delivers branding, software development, digital
+                marketing, and business consulting — the four pillars behind
+                every Nigerian business that grows with intention.
+              </p>
             </div>
 
-            <div class="rv-svc-showcase__list">
-              <article class="rv-svc-row">
-                <div class="rv-svc-row__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M7 8l-4 4 4 4" />
-                    <path d="M17 8l4 4-4 4" />
-                    <path d="M14 4l-4 16" />
-                  </svg>
-                </div>
-                <div class="rv-svc-row__body">
-                  <h2 class="rv-svc-row__title">Software Development</h2>
-                  <p class="rv-svc-row__text">
-                    Smart, scalable web apps, mobile apps, and custom ERP/POS
-                    systems built to streamline your operations and fuel growth.
-                  </p>
-                  <a href="./software-dev.html" class="rv-svc-row__link"
-                    >More info <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </article>
-
-              <article class="rv-svc-row">
-                <div class="rv-svc-row__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect width="8" height="18" x="3" y="3" rx="1" />
-                    <path d="M7 3v18" />
+            <!-- Four service preview tiles -->
+            <div class="rv-ser-hero__tiles">
+              <a href="./software-dev.html" class="rv-ser-tile">
+                <div class="rv-ser-tile__icon">
+                  <svg viewBox="0 0 40 40" fill="none">
                     <path
-                      d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"
+                      d="M6 20 L14 12 L10 20 L14 28 Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M34 20 L26 12 L30 20 L26 28 Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M23 10 L17 30"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
                     />
                   </svg>
                 </div>
-                <div class="rv-svc-row__body">
-                  <h2 class="rv-svc-row__title">
-                    Branding &amp; Visual Identity
-                  </h2>
-                  <p class="rv-svc-row__text">
-                    A powerful brand identity that builds trust and makes your
-                    business unforgettable — logos, strategy, guidelines, and
-                    corporate stationery.
-                  </p>
-                  <a href="./branding.html" class="rv-svc-row__link"
-                    >More info <i class="fas fa-arrow-right"></i
-                  ></a>
+                <span class="rv-ser-tile__label">Software Dev</span>
+                <i class="fas fa-arrow-right rv-ser-tile__arrow"></i>
+              </a>
+              <a href="./branding.html" class="rv-ser-tile">
+                <div class="rv-ser-tile__icon">
+                  <svg viewBox="0 0 40 40" fill="none">
+                    <path
+                      d="M20 8 L26 20 L20 32 L14 20 Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M20 32 L20 25"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M16 23 L20 32 L24 23"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.6"
+                    />
+                    <circle
+                      cx="20"
+                      cy="35"
+                      r="1.4"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                  </svg>
                 </div>
-              </article>
+                <span class="rv-ser-tile__label">Branding</span>
+                <i class="fas fa-arrow-right rv-ser-tile__arrow"></i>
+              </a>
+              <a
+                href="./digital-marketing.html"
+                class="rv-ser-tile rv-ser-tile--gold"
+              >
+                <div class="rv-ser-tile__icon">
+                  <svg viewBox="0 0 40 40" fill="none">
+                    <circle
+                      cx="20"
+                      cy="12"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <circle
+                      cx="32"
+                      cy="28"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <circle
+                      cx="8"
+                      cy="28"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <line
+                      x1="20"
+                      y1="16"
+                      x2="32"
+                      y2="24"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="20"
+                      y1="16"
+                      x2="8"
+                      y2="24"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="28"
+                      y1="28"
+                      x2="12"
+                      y2="28"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+                <span class="rv-ser-tile__label">Digital Marketing</span>
+                <i class="fas fa-arrow-right rv-ser-tile__arrow"></i>
+              </a>
+              <a href="./business-consulting.html" class="rv-ser-tile">
+                <div class="rv-ser-tile__icon">
+                  <svg viewBox="0 0 40 40" fill="none">
+                    <circle
+                      cx="20"
+                      cy="12"
+                      r="4"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                    />
+                    <path
+                      d="M20 16 C14 16 11 19 11 22 L11 24 L29 24 L29 22 C29 19 26 16 20 16Z"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linejoin="round"
+                    />
+                    <rect
+                      x="11"
+                      y="26"
+                      width="18"
+                      height="6"
+                      rx="1.5"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                    />
+                    <path
+                      d="M15 29 L25 29 M15 31 L21 31"
+                      stroke="currentColor"
+                      stroke-width="1.1"
+                      stroke-linecap="round"
+                      opacity="0.6"
+                    />
+                  </svg>
+                </div>
+                <span class="rv-ser-tile__label">Consulting</span>
+                <i class="fas fa-arrow-right rv-ser-tile__arrow"></i>
+              </a>
+            </div>
+          </div>
+        </section>
 
-              <article class="rv-svc-row">
-                <div class="rv-svc-row__icon">
+        <!-- ===================== SERVICES — FULL FEATURE CARDS ===================== -->
+        <section
+          class="rv-ser-features"
+          aria-label="Our core services in detail"
+        >
+          <div class="rv-ser-features__inner">
+            <!-- Software Development -->
+            <article class="rv-ser-feat rv-ser-feat--alt" id="software">
+              <div class="rv-ser-feat__visual">
+                <div class="rv-ser-feat__img-wrap">
+                  <img
+                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1761066833/software_image_tkd6hz.png"
+                    alt="Custom software development services — Revit Systems Abuja Nigeria"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="rv-ser-feat__icon-badge">
                   <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
+                    viewBox="0 0 64 64"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      d="M15.5 15.5L19 19"
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
                       stroke="currentColor"
-                      stroke-width="2"
+                      stroke-width="1.2"
+                      opacity="0.2"
+                    />
+                    <!-- Browser/app window -->
+                    <rect
+                      x="10"
+                      y="14"
+                      width="44"
+                      height="32"
+                      rx="4"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                    />
+                    <path
+                      d="M10 22 L54 22"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                    />
+                    <!-- Traffic lights -->
+                    <circle
+                      cx="16"
+                      cy="18"
+                      r="1.5"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                    <circle
+                      cx="21"
+                      cy="18"
+                      r="1.5"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                    <circle
+                      cx="26"
+                      cy="18"
+                      r="1.5"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                    <!-- Code lines -->
+                    <path
+                      d="M17 30 L22 27 L17 24"
+                      stroke="currentColor"
+                      stroke-width="1.7"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
-                      d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z"
+                      d="M27 24 L27 30"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      opacity="0.5"
+                    />
+                    <path
+                      d="M30 27 L44 27 M30 31 L40 31 M30 35 L42 35"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      stroke-linecap="round"
+                      opacity="0.55"
+                    />
+                    <!-- Stand -->
+                    <path
+                      d="M32 46 L32 52 M26 52 L38 52"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="rv-ser-feat__body">
+                <div class="rv-label">01 — Software Development</div>
+                <h2 class="rv-ser-feat__title">
+                  Technology That<br />Works <em>For</em> You
+                </h2>
+                <p class="rv-ser-feat__text">
+                  From sleek websites to enterprise-grade platforms, we
+                  architect digital systems that automate, optimise, and scale
+                  with your business. Whether it's a mobile app connecting
+                  customers on the go or a custom ERP streamlining your
+                  operations — we build software that doesn't just function, it
+                  empowers.
+                </p>
+                <ul class="rv-ser-feat__list">
+                  <li>Website Design &amp; Development</li>
+                  <li>Web App &amp; Dashboard Development</li>
+                  <li>Mobile App Development (Android &amp; iOS)</li>
+                  <li>Custom ERP, POS &amp; EMR Systems</li>
+                  <li>System Architecture &amp; Automation</li>
+                  <li>Maintenance &amp; Support</li>
+                </ul>
+                <a href="./software-dev.html" class="rv-btn rv-btn--primary"
+                  >Explore Software Dev</a
+                >
+              </div>
+            </article>
+
+            <!-- Branding -->
+            <article class="rv-ser-feat">
+              <div class="rv-ser-feat__visual">
+                <div class="rv-ser-feat__img-wrap">
+                  <img
+                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973156/Branding_image_2_t2i28w.png"
+                    alt="Branding and visual identity agency — Revit Systems Abuja Nigeria"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="rv-ser-feat__icon-badge rv-ser-feat__icon-badge--gold"
+                >
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      opacity="0.28"
+                    />
+                    <!-- Pen nib -->
+                    <path
+                      d="M32 12 L42 30 L32 52 L22 30 Z"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M32 52 L32 42"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M27 39 L32 52 L37 39"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M24 30 L40 30"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      opacity="0.5"
+                    />
+                    <circle
+                      cx="32"
+                      cy="56"
+                      r="2"
+                      fill="currentColor"
+                      opacity="0.65"
+                    />
+                    <!-- colour dots -->
+                    <circle
+                      cx="20"
+                      cy="20"
+                      r="3"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      opacity="0.5"
+                    />
+                    <circle
+                      cx="44"
+                      cy="20"
+                      r="3"
+                      stroke="currentColor"
+                      stroke-width="1.4"
+                      opacity="0.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="rv-ser-feat__body">
+                <div class="rv-label">02 — Branding &amp; Visual Identity</div>
+                <h2 class="rv-ser-feat__title">
+                  A Brand People<br /><em>Believe</em> In
+                </h2>
+                <p class="rv-ser-feat__text">
+                  A brand isn't just a logo — it's a story. We shape identities
+                  that stick, strategies that position you where you belong, and
+                  visuals that make you impossible to ignore. Whether you're
+                  launching or rebranding, we give your brand the voice, look,
+                  and confidence it needs to thrive in the Nigerian market.
+                </p>
+                <ul class="rv-ser-feat__list">
+                  <li>Logo Design &amp; Visual Identity Systems</li>
+                  <li>Brand Strategy &amp; Market Positioning</li>
+                  <li>Brand Guideline Development</li>
+                  <li>Company Profile &amp; Pitch Deck Design</li>
+                  <li>Packaging &amp; Print Design</li>
+                  <li>Corporate Stationery Design</li>
+                </ul>
+                <a href="./branding.html" class="rv-btn rv-btn--primary"
+                  >Explore Branding</a
+                >
+              </div>
+            </article>
+
+            <!-- Digital Marketing -->
+            <article class="rv-ser-feat rv-ser-feat--alt">
+              <div class="rv-ser-feat__visual">
+                <div class="rv-ser-feat__img-wrap">
+                  <img
+                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1761066833/Digital_marketing2_lluawp.png"
+                    alt="Digital marketing agency in Abuja Nigeria — Revit Systems"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="rv-ser-feat__icon-badge">
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      opacity="0.2"
+                    />
+                    <!-- Megaphone -->
+                    <path
+                      d="M14 26 L14 38 L22 38 L22 26 Z"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M22 22 L46 12 L46 52 L22 42 Z"
+                      stroke="currentColor"
+                      stroke-width="1.9"
+                      stroke-linejoin="round"
+                    />
+                    <!-- Sound waves -->
+                    <path
+                      d="M50 24 Q54 32 50 40"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      fill="none"
+                    />
+                    <path
+                      d="M53 20 Q59 32 53 44"
+                      stroke="currentColor"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      fill="none"
+                      opacity="0.45"
+                    />
+                    <!-- Base stand -->
+                    <path
+                      d="M16 38 L16 46 L20 46"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="rv-ser-feat__body">
+                <div class="rv-label">03 — Digital Marketing &amp; SEO</div>
+                <h2 class="rv-ser-feat__title">
+                  Campaigns That<br /><em>Convert</em>, Not Just Reach
+                </h2>
+                <p class="rv-ser-feat__text">
+                  The internet is loud — but the right message cuts through. We
+                  create and manage marketing campaigns designed to connect you
+                  with the people who matter. From SEO that brings you organic
+                  traffic to paid ads that maximise your return — every strategy
+                  is built on data and refined on results.
+                </p>
+                <ul class="rv-ser-feat__list">
+                  <li>Social Media Management</li>
+                  <li>Paid Advertising (Meta &amp; Google Ads)</li>
+                  <li>SEO — Search Engine Optimisation</li>
+                  <li>Email Marketing &amp; Automation</li>
+                  <li>Campaign Strategy &amp; Execution</li>
+                </ul>
+                <a
+                  href="./digital-marketing.html"
+                  class="rv-btn rv-btn--primary"
+                  >Explore Digital Marketing</a
+                >
+              </div>
+            </article>
+
+            <!-- Business Consulting -->
+            <article class="rv-ser-feat">
+              <div class="rv-ser-feat__visual">
+                <div class="rv-ser-feat__img-wrap">
+                  <img
+                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1761066814/business_consulting_2_zipu0q.png"
+                    alt="Business consulting services in Abuja Nigeria — Revit Systems"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="rv-ser-feat__icon-badge rv-ser-feat__icon-badge--gold"
+                >
+                  <svg
+                    viewBox="0 0 64 64"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="32"
+                      cy="32"
+                      r="30"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      opacity="0.28"
+                    />
+                    <!-- Chart bars -->
+                    <path
+                      d="M12 50 L52 50"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <rect
+                      x="16"
+                      y="32"
+                      width="8"
+                      height="18"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+                    <rect
+                      x="28"
+                      y="22"
+                      width="8"
+                      height="28"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+                    <rect
+                      x="40"
+                      y="14"
+                      width="8"
+                      height="36"
+                      rx="2"
+                      stroke="currentColor"
+                      stroke-width="1.7"
+                    />
+                    <!-- Rising arrow -->
+                    <path
+                      d="M14 36 L26 24 L36 30 L50 14"
                       stroke="currentColor"
                       stroke-width="1.6"
                       stroke-linecap="round"
                       stroke-linejoin="round"
+                      opacity="0.55"
+                    />
+                    <path
+                      d="M44 14 L50 14 L50 20"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      opacity="0.55"
                     />
                   </svg>
                 </div>
-                <div class="rv-svc-row__body">
-                  <h2 class="rv-svc-row__title">Digital Marketing &amp; SEO</h2>
-                  <p class="rv-svc-row__text">
-                    Strategies that put your business in front of the right
-                    people — SEO, paid ads, social media, and email automation
-                    that turn attention into results.
-                  </p>
-                  <a href="./digital-marketing.html" class="rv-svc-row__link"
-                    >More info <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </article>
-
-              <article class="rv-svc-row">
-                <div class="rv-svc-row__icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="4.5" r="2.2" />
-                    <path
-                      d="M12 7.2c-1.8 0-3.2.9-3.8 2.6l-.6 1.8c-.3.9.1 1.8 1 2.1l1.6.5"
-                    />
-                    <path
-                      d="M12 7.2c1.8 0 3.2.9 3.8 2.6l.6 1.8c.3.9-.1 1.8-1 2.1l-1.6.5"
-                    />
-                    <rect x="8.2" y="12.6" width="7.6" height="4.6" rx="0.6" />
-                  </svg>
-                </div>
-                <div class="rv-svc-row__body">
-                  <h2 class="rv-svc-row__title">Business Consulting</h2>
-                  <p class="rv-svc-row__text">
-                    Clear direction and actionable plans that keep your business
-                    ahead of the curve — strategy, proposals, and investor
-                    readiness.
-                  </p>
-                  <a href="./business-consulting.html" class="rv-svc-row__link"
-                    >More info <i class="fas fa-arrow-right"></i
-                  ></a>
-                </div>
-              </article>
-            </div>
+              </div>
+              <div class="rv-ser-feat__body">
+                <div class="rv-label">04 — Business Consulting</div>
+                <h2 class="rv-ser-feat__title">
+                  Strategy That<br /><em>Moves</em> the Needle
+                </h2>
+                <p class="rv-ser-feat__text">
+                  Every great business starts with a clear plan and the right
+                  execution. We work with startups and growing enterprises to
+                  refine ideas, map strategies, and set up the systems that make
+                  growth sustainable — from investor-ready proposals to market
+                  entry strategies and process optimisation.
+                </p>
+                <ul class="rv-ser-feat__list">
+                  <li>Business Plan &amp; Proposal Writing</li>
+                  <li>Startup Strategy &amp; Advisory</li>
+                  <li>Pitch Deck Review &amp; Investor Readiness</li>
+                  <li>Process Optimisation &amp; Digital Transformation</li>
+                  <li>Business Registration &amp; Setup Guidance</li>
+                </ul>
+                <a
+                  href="./business-consulting.html"
+                  class="rv-btn rv-btn--primary"
+                  >Explore Consulting</a
+                >
+              </div>
+            </article>
           </div>
         </section>
 
-        <!-- ===================== COMMITMENT / STATS ===================== -->
-        <section class="rv-svc-commit" aria-label="Why work with Revit Systems">
-          <div class="rv-svc-commit__inner">
-            <div class="rv-svc-commit__stat rv-svc-commit__stat--gold">
-              <div class="rv-svc-commit__number">25<span>+</span></div>
-              <div class="rv-svc-commit__label">Projects</div>
-              <div class="rv-svc-commit__text">
-                Proven success delivered across every new challenge.
-              </div>
+        <!-- ===================== COMMITMENT STRIP ===================== -->
+        <section class="rv-ser-commit" aria-label="Why choose Revit Systems">
+          <div class="rv-ser-commit__inner">
+            <div class="rv-ser-commit__stat">
+              <div class="rv-ser-commit__num">25<span>+</span></div>
+              <div class="rv-ser-commit__lbl">Projects Delivered</div>
             </div>
-            <div class="rv-svc-commit__stat rv-svc-commit__stat--dark">
-              <div class="rv-svc-commit__number">5<span>+</span></div>
-              <div class="rv-svc-commit__label">Years</div>
-              <div class="rv-svc-commit__text">
-                Serving the Nigerian market with excellence.
-              </div>
+            <div class="rv-ser-commit__divider"></div>
+            <div class="rv-ser-commit__stat">
+              <div class="rv-ser-commit__num">5<span>+</span></div>
+              <div class="rv-ser-commit__lbl">Years in Business</div>
             </div>
-            <div class="rv-svc-commit__card">
-              <h2 class="rv-svc-commit__heading">
+            <div class="rv-ser-commit__divider"></div>
+            <div class="rv-ser-commit__stat">
+              <div class="rv-ser-commit__num">4</div>
+              <div class="rv-ser-commit__lbl">Core Disciplines</div>
+            </div>
+            <div class="rv-ser-commit__divider"></div>
+            <div class="rv-ser-commit__cta">
+              <h2 class="rv-ser-commit__heading">
                 Ready to Build Something That Works?
               </h2>
-              <p class="rv-svc-commit__desc">
-                Your brand deserves more than trial and error. Let's create
-                systems, strategies, and solutions that actually move your
-                business forward — from idea to full execution.
+              <p class="rv-ser-commit__sub">
+                From idea to full execution — let's create systems, strategies,
+                and solutions that move your Nigerian business forward.
               </p>
               <button
                 class="rv-btn rv-btn--primary"
-                onclick="openWhatsApp('2348061704042', 'Hello Revit Systems, I\'m interested in your services')"
+                onclick="openWhatsApp('2348061704042','Hello Revit Systems, I\'m interested in your services')"
               >
                 Book a Free Consultation
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12h14" />
-                  <path d="m12 5 7 7-7 7" />
-                </svg>
+                <i class="fas fa-arrow-right"></i>
               </button>
             </div>
           </div>
         </section>
 
-        <!-- ===================== FOOTER (unchanged structure) ===================== -->
+        <!-- ===================== FOOTER ===================== -->
         <footer
           class="rv-footprint"
           itemscope
@@ -483,56 +923,47 @@
               </div>
               <div class="rv-socials">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61568188626000&mibextid=ZbWKwL"
+                  href="https://www.facebook.com/profile.php?id=61568188626000"
                   aria-label="Revit Systems on Facebook"
                   class="rv-social-link"
                   target="_blank"
                   rel="noopener"
-                >
-                  <img
+                  ><img
                     src="../assets/SVG/facebook-176-svgrepo-com.svg"
                     alt="Facebook"
-                  />
-                </a>
+                /></a>
                 <a
                   href="https://x.com/revitsystems"
                   aria-label="Revit Systems on Twitter"
                   class="rv-social-link"
                   target="_blank"
                   rel="noopener"
-                >
-                  <img
+                  ><img
                     src="../assets/SVG/twitter-3-svgrepo-com.svg"
                     alt="Twitter"
-                  />
-                </a>
+                /></a>
                 <a
                   href="https://www.instagram.com/revitsystems/"
                   aria-label="Revit Systems on Instagram"
                   class="rv-social-link"
                   target="_blank"
                   rel="noopener"
-                >
-                  <img
+                  ><img
                     src="../assets/SVG/instagram-167-svgrepo-com.svg"
                     alt="Instagram"
-                  />
-                </a>
+                /></a>
                 <a
-                  href="https://www.linkedin.com/company/revit-systems-limited/?viewAsMember=true"
+                  href="https://www.linkedin.com/company/revit-systems-limited/"
                   aria-label="Revit Systems on LinkedIn"
                   class="rv-social-link"
                   target="_blank"
                   rel="noopener"
-                >
-                  <img
+                  ><img
                     src="../assets/SVG/linkedin-161-svgrepo-com.svg"
                     alt="LinkedIn"
-                  />
-                </a>
+                /></a>
               </div>
             </div>
-
             <div class="rv-link-columns">
               <div class="rv-col">
                 <div class="rv-col-head">Services</div>
@@ -569,8 +1000,9 @@
     <script src="../assets/js/config.js"></script>
     <script>
       function openWhatsApp(phone, message) {
-        const encodedMessage = encodeURIComponent(message);
-        const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(
+          message
+        )}`;
         window.open(url, "_blank");
       }
     </script>
