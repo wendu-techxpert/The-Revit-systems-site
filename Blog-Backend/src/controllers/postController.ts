@@ -5,6 +5,7 @@ import {
   getPosts,
   getPostStats,
   getPostById,
+  getPostBySlug,
   updatePost,
   publishPost,
   deletePost,
@@ -456,4 +457,100 @@ export const createScheduledPost = async (req: Request, res: Response) => {
     console.error("createScheduledPost error:", error);
     res.status(500).json({ message: "Server error" });
   }
+};
+
+// =============================================
+// GET /posts/og/:slug
+// Public endpoint — no auth required.
+// Returns a minimal HTML page with correct Open Graph meta tags
+// for the given post slug, then immediately JS-redirects to the
+// real blog post page.
+//
+// Why this exists:
+// WhatsApp, Twitter, LinkedIn etc. send a "crawler" bot to read the
+// page when someone shares a link. That bot does NOT execute JavaScript,
+// so blog-post.html (which renders everything via JS from localStorage)
+// looks completely blank to it. It falls back to grabbing whatever image
+// it finds on the page — which ends up being the Revit Systems logo.
+// Every shared link looks identical regardless of which post it is.
+//
+// This route gives crawlers a static HTML page with the correct og:title,
+// og:description, og:image and og:url for the specific post, while real
+// users are immediately redirected to the actual blog post page.
+// =============================================
+export const getPostOGMeta = async (req: Request, res: Response) => {
+  const { slug } = req.params;
+
+  if (!slug || Array.isArray(slug)) {
+    return res.status(400).send("Invalid slug");
+  }
+
+  let post;
+  try {
+    post = await getPostBySlug(slug);
+  } catch (err) {
+    console.error("getPostOGMeta error:", err);
+    return res.status(500).send("Server error");
+  }
+
+  if (!post) {
+    return res.status(404).send("Post not found");
+  }
+
+  const frontendBase =
+    process.env.FRONTEND_URL || "https://www.revitsystems.org";
+
+  // The URL the user will actually land on — blog-post.html reads the
+  // ?slug param from the query string to know which post to display.
+  const postUrl = `${frontendBase}/pages/blog-post.html?slug=${encodeURIComponent(
+    post.slug
+  )}`;
+
+  // Strip HTML tags from excerpt for the meta description
+  const description = (post.excerpt || "")
+    .replace(/<[^>]+>/g, "")
+    .slice(0, 200);
+
+  // Featured image falls back to the site logo if none is set
+  const image =
+    post.featured_image || `${frontendBase}/assets/images/revit-og-default.png`;
+
+  const title = `${post.title} — Revit Systems`;
+
+  // Return a minimal HTML shell with all the OG tags crawlers need.
+  // The <script> immediately redirects real users to the actual page.
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "public, max-age=3600"); // cache for 1 hour
+  return res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>${title}</title>
+
+  <!-- Primary meta -->
+  <meta name="description" content="${description}" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:site_name"   content="Revit Systems" />
+  <meta property="og:url"         content="${postUrl}" />
+  <meta property="og:title"       content="${title}" />
+  <meta property="og:description" content="${description}" />
+  <meta property="og:image"       content="${image}" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="${title}" />
+  <meta name="twitter:description" content="${description}" />
+  <meta name="twitter:image"       content="${image}" />
+
+  <!-- Redirect real users immediately to the actual page -->
+  <script>window.location.replace("${postUrl}");</script>
+</head>
+<body>
+  <p>Redirecting to article...</p>
+</body>
+</html>`);
 };

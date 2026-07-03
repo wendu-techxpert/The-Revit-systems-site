@@ -8,13 +8,20 @@ import {
   updateExistingPost,
   publishExistingPost,
   removePost,
-  scheduleExistingPost, // Add this
-  createScheduledPost, // Add this
+  scheduleExistingPost,
+  createScheduledPost,
+  getPostOGMeta,
 } from "@/controllers/postController.js";
 
 import { authenticate } from "@/middleware/authMiddleware.js";
 
 const router = Router();
+
+// Open Graph meta route — public, no auth required.
+// Used by social media crawlers (WhatsApp, Twitter, LinkedIn) to read
+// og:title, og:description and og:image for a specific post.
+// Must be registered BEFORE /:id routes to avoid slug being parsed as an id.
+router.get("/og/:slug", getPostOGMeta);
 
 // Get posts by status (published, draft, scheduled)
 // Query params: status, limit, offset

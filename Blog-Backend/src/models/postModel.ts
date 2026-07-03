@@ -316,3 +316,22 @@ export const publishDueScheduledPosts = async (): Promise<
 
   return result.rows;
 };
+
+// =============================================
+// Get a single published post by its slug
+// Used by the OG meta tag endpoint so crawlers
+// get correct og:title/og:image/og:description
+// =============================================
+export const getPostBySlug = async (slug: string) => {
+  const result = await pool.query(
+    `SELECT
+       posts.*,
+       categories.name AS category_name
+     FROM posts
+     LEFT JOIN categories ON posts.category_id = categories.id
+     WHERE posts.slug = $1
+       AND posts.status = 'published'`,
+    [slug]
+  );
+  return result.rows[0];
+};

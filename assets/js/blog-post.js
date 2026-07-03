@@ -172,8 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ? post.content
     : `<p>${post.excerpt || ""}</p>`;
 
-  /* ---- Share URLs ---- */
-  const pageUrl = encodeURIComponent(window.location.href);
+  /* ---- Share URLs ---- */ const slug = post.slug; // from localStorage selectedPost
+  const pageUrl = encodeURIComponent(
+    `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`
+  );
   const pageTitle = encodeURIComponent(post.title);
   const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;

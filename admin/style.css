@@ -1314,33 +1314,50 @@ body {
 /* ============================================
    RICH TEXT EDITOR MODULE
    ============================================ */
+/* ── Quill editor container ───────────────────────────────────────────────
+   The toolbar is sticky so users never have to scroll up to access
+   formatting tools while typing a long post. Works for both the Write
+   Blog page and the Edit Post modal.
+
+   How it works:
+   - .editor-container becomes a flex column with a fixed max-height and
+     overflow-y: auto on the content area only.
+   - The toolbar sits outside the scrollable area so it stays visible.
+   - The .ql-editor area grows freely inside the scroll region.
+   ──────────────────────────────────────────────────────────────────────── */
 .editor-container {
   border: 1px solid var(--gray-300);
   border-radius: var(--radius);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-#editor-toolbar {
-  border-bottom: 1px solid var(--gray-300);
-  background: var(--gray-100);
-}
-
-#editor {
-  min-height: 300px;
-  background: var(--white);
-}
-
-/* Edit Post modal's Quill instance — gives editors/authors/admins a
-   WYSIWYG view instead of raw HTML tags when editing an existing post.
-   Shorter min-height than the main write editor since it sits inside a
-   modal with limited vertical space. */
+#editor-toolbar,
 #edit-editor-toolbar {
   border-bottom: 1px solid var(--gray-300);
   background: var(--gray-100);
+  /* Stick to the top of the editor container as the user scrolls */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
+/* Scrollable content area for Write Blog */
+#editor {
+  min-height: 300px;
+  max-height: 520px;
+  overflow-y: auto;
+  background: var(--white);
+}
+
+/* Scrollable content area for Edit Post modal — slightly shorter
+   since it sits inside a modal with limited vertical space */
 #edit-editor {
   min-height: 250px;
+  max-height: 420px;
+  overflow-y: auto;
   background: var(--white);
 }
 
