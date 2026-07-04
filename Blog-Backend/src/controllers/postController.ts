@@ -554,3 +554,39 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
 </body>
 </html>`);
 };
+
+// =============================================
+// GET /posts/slug/:slug
+// Public endpoint — no auth required.
+// Returns the raw post JSON for a given slug.
+//
+// Why this exists:
+// getPostOGMeta above serves crawlers a static HTML shell, then
+// redirects real users to blog-post.html?slug=xxx. But blog-post.js
+// only ever reads localStorage.selectedPost — it never fetches by
+// slug. So anyone opening a shared link fresh (no prior localStorage,
+// different device, incognito, etc.) landed on "Article not found"
+// even though the post exists. This endpoint lets blog-post.js fall
+// back to fetching the post directly when localStorage is empty or
+// doesn't match the slug in the URL.
+// =============================================
+export const fetchPostBySlug = async (req: Request, res: Response) => {
+  const { slug } = req.params;
+
+  if (!slug || Array.isArray(slug)) {
+    return res.status(400).json({ message: "Invalid slug" });
+  }
+
+  try {
+    const post = await getPostBySlug(slug);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    res.json(post);
+  } catch (error) {
+    console.error("fetchPostBySlug error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

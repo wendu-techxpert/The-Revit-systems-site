@@ -11,6 +11,7 @@ import {
   scheduleExistingPost,
   createScheduledPost,
   getPostOGMeta,
+  fetchPostBySlug,
 } from "@/controllers/postController.js";
 
 import { authenticate } from "@/middleware/authMiddleware.js";
@@ -22,6 +23,12 @@ const router = Router();
 // og:title, og:description and og:image for a specific post.
 // Must be registered BEFORE /:id routes to avoid slug being parsed as an id.
 router.get("/og/:slug", getPostOGMeta);
+
+// Fetch a single published post by slug — public, no auth required.
+// Used by blog-post.js as a fallback when a visitor opens a shared
+// link with no matching post already cached in localStorage.
+// Must also be registered BEFORE /:id routes.
+router.get("/slug/:slug", fetchPostBySlug);
 
 // Get posts by status (published, draft, scheduled)
 // Query params: status, limit, offset

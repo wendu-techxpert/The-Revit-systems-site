@@ -114,15 +114,53 @@ const trackView = (postId) => {
   }
 };
 
-/* ---- Init ---- */
-document.addEventListener("DOMContentLoaded", () => {
-  const raw = (() => {
+/* ---- Init ----
+   Reads the post from localStorage.selectedPost as before (fast path —
+   used when the reader arrived by clicking a card on blog.html, since
+   openPost() there sets localStorage right before navigating).
+
+   Fallback: when a shared link is opened directly — a fresh browser,
+   a different device, incognito, or after the OG-meta redirect from
+   GET /posts/og/:slug — localStorage has nothing (or an unrelated
+   post cached from a previous visit). In that case we read the
+   ?slug= query param the OG redirect always attaches and fetch the
+   post directly from GET /posts/slug/:slug so the article still
+   renders instead of showing "Article not found". ---- */
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const slugFromUrl = params.get("slug");
+
+  let raw = (() => {
     try {
       return JSON.parse(localStorage.getItem("selectedPost"));
     } catch {
       return null;
     }
   })();
+
+  // Cached post is missing, or doesn't match the slug in the URL —
+  // fetch the real post directly instead of showing "not found".
+  if (slugFromUrl && (!raw || raw.slug !== slugFromUrl)) {
+    try {
+      const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
+      const res = await fetch(
+        `${base}/posts/slug/${encodeURIComponent(slugFromUrl)}`
+      );
+      if (res.ok) {
+        raw = await res.json();
+        // Persist so the separate comments-bootstrap listener further down
+        // this file (which reads localStorage independently) and any
+        // prev/next/share logic relying on localStorage also see it.
+        try {
+          localStorage.setItem("selectedPost", JSON.stringify(raw));
+        } catch {
+          // ignore quota errors — page still renders from `raw` in memory
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch post by slug:", err);
+    }
+  }
 
   const post = normalise(raw);
 
