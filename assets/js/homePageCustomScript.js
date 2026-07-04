@@ -103,7 +103,13 @@ const loadRecentPosts = async (limit = 6, category = "All") => {
 
       article.onclick = () => {
         localStorage.setItem("selectedPost", JSON.stringify(post));
-        window.location.href = "blog-post.html";
+        // Carry the slug in the URL so the address bar is specific to
+        // this post (refreshable, and correct if manually copied) —
+        // same fix applied to blog.js's openPost().
+        const slugParam = post.slug
+          ? `?slug=${encodeURIComponent(post.slug)}`
+          : "";
+        window.location.href = `blog-post.html${slugParam}`;
       };
 
       scrollBlogRow.appendChild(article);

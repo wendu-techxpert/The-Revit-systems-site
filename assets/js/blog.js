@@ -126,7 +126,12 @@ const renderCard = (post) => {
 const openPost = (post) => {
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allFetchedPosts));
-  window.location.href = "blog-post.html";
+  // Carry the slug in the URL itself (not just localStorage) so the
+  // address bar is always specific to this post — refreshing works,
+  // and if someone copies straight from the address bar instead of
+  // the "Copy link" button, it still lands on the right article.
+  const slugParam = post.slug ? `?slug=${encodeURIComponent(post.slug)}` : "";
+  window.location.href = `blog-post.html${slugParam}`;
 };
 
 /* ---- Client-side search across cached posts ---- */

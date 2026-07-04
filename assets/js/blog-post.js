@@ -210,10 +210,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     ? post.content
     : `<p>${post.excerpt || ""}</p>`;
 
-  /* ---- Share URLs ---- */ const slug = post.slug; // from localStorage selectedPost
-  const pageUrl = encodeURIComponent(
-    `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`
-  );
+  /* ---- Share URLs ---- */
+  const slug = post.slug; // from localStorage selectedPost
+  // This is the ONE url that should ever be shared or copied for this post.
+  // It points at the crawler-friendly OG-meta endpoint (not blog-post.html
+  // directly), so WhatsApp/Twitter/LinkedIn/etc. read the correct
+  // og:title/og:image/og:description for THIS post instead of falling
+  // back to the generic static tags in blog-post.html's <head> (which is
+  // what was happening before — window.location.href was always just
+  // ".../blog-post.html" with no slug, so crawlers got the logo + generic text).
+  const shareableUrl = `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`;
+  const pageUrl = encodeURIComponent(shareableUrl);
   const pageTitle = encodeURIComponent(post.title);
   const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
@@ -227,8 +234,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (el) el.href = linkedinUrl;
   });
 
+  // Reflect the slug in the visible address bar too (without a reload),
+  // so a manual copy from the URL bar and page refreshes both keep
+  // pointing at this specific post rather than a bare, context-less URL.
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("slug", slug);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    // non-fatal — share buttons and copy-link still work regardless
+  }
+
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    // Copy the crawler-friendly OG url, NOT window.location.href —
+    // that was the actual bug: the address bar link has no OG tags
+    // of its own, so any platform reading it just sees the logo.
+    navigator.clipboard.writeText(shareableUrl).then(() => {
       ["copyLinkBtn", "copyLinkBtn2"].forEach((id) => {
         const btn = document.getElementById(id);
         if (btn) {
@@ -250,6 +271,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!targetPost) return;
     localStorage.setItem("selectedPost", JSON.stringify(targetPost));
     localStorage.setItem("allPosts", JSON.stringify(allPosts));
+    // Keep the address bar's ?slug= in sync with the post we're switching
+    // to — otherwise on reload the init logic sees an old slug in the URL
+    // that no longer matches the freshly-stored post and would re-fetch
+    // the wrong (previous) article by mistake.
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set("slug", targetPost.slug);
+      window.history.replaceState({}, "", url.toString());
+    } catch {
+      // non-fatal
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => window.location.reload(), 300);
   };
@@ -362,6 +394,15 @@ function navigateTo(post) {
   })();
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allPosts));
+  // Same reasoning as navigate() above — keep ?slug= in sync so the
+  // reload's init logic doesn't re-fetch a stale/mismatched post.
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("slug", post.slug);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    // non-fatal
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
   setTimeout(() => window.location.reload(), 300);
 }
