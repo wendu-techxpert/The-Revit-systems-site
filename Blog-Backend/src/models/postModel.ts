@@ -84,6 +84,8 @@ export const getPosts = async (
             posts.published_at,
             posts.status,
             posts.scheduled_date,
+            posts.view_count,
+            posts.unique_view_count,
             categories.id   AS category_id,
             categories.name AS category
           FROM posts
@@ -108,6 +110,8 @@ export const getPosts = async (
             posts.published_at,
             posts.status,
             posts.scheduled_date,
+            posts.view_count,
+            posts.unique_view_count,
             categories.id   AS category_id,
             categories.name AS category
           FROM posts

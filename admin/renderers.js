@@ -81,19 +81,54 @@ const Renderers = {
     }
   },
 
-  renderRecentPosts: () => {
+  // Was reading AppState.posts directly, which stayed as the generateMockData()
+  // dummy data unless renderPostsTable() had already run first — so the
+  // dashboard's "Recent Posts" card showed fake posts. Now fetches real posts
+  // directly via the (cached) API, same as everywhere else on the dashboard.
+  renderRecentPosts: async (force = false) => {
     const tbody = document.getElementById("recent-posts-table");
-    const recent = AppState.posts.slice(0, 5);
+    if (!tbody) return;
 
-    tbody.innerHTML = recent
-      .map(
-        (post) => `
+    try {
+      const response = await API.getPosts("all", 1, 100, force);
+      let posts = response.posts || [];
+
+      // Authors only see their own posts here too, consistent with the
+      // rest of the role-scoped dashboard.
+      const role = AppState.currentUser.role;
+      const currentUserId = AppState.currentUser.id;
+      if (role === "author") {
+        posts = posts.filter((p) => p.author_id === currentUserId);
+      }
+
+      const recent = [...posts]
+        .sort(
+          (a, b) =>
+            new Date(b.created_at || b.createdAt) -
+            new Date(a.created_at || a.createdAt)
+        )
+        .slice(0, 5);
+
+      if (recent.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align:center;padding:2rem;color:var(--gray-500);">
+              No posts yet.
+            </td>
+          </tr>`;
+        return;
+      }
+
+      tbody.innerHTML = recent
+        .map(
+          (post) => `
       <tr>
         <td>${post.title}</td>
         <td>${post.category || post.category_id || "—"}</td>
         <td><span class="status-badge ${post.status}">${post.status}</span></td>
         <td>${Utils.formatDate(post.created_at || post.createdAt)}</td>
-        <td>${Utils.formatNumber(post.view_count || post.views || 0)}</td>
+        <td>${Utils.formatNumber(post.view_count || 0)}</td>
+        <td>${Utils.formatNumber(post.unique_view_count || 0)}</td>
         <td>
           <div class="action-btns">
             <button class="action-btn edit" onclick="Actions.editPost('${
@@ -110,26 +145,55 @@ const Renderers = {
         </td>
       </tr>
     `
-      )
-      .join("");
+        )
+        .join("");
+    } catch (error) {
+      console.error("renderRecentPosts error:", error);
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align:center;padding:2rem;color:var(--gray-500);">
+            Failed to load recent posts.
+          </td>
+        </tr>`;
+    }
   },
 
-  renderTopPosts: () => {
+  // Same underlying bug as renderRecentPosts — was sorting AppState.posts
+  // (mock data) by a view_count that was always 0/dummy. Now fetches real
+  // posts and sorts by the real view_count, and shows unique visitors too.
+  renderTopPosts: async (force = false) => {
     const container = document.getElementById("top-posts-list");
-    const sorted = [...AppState.posts]
-      .sort(
-        (a, b) =>
-          (b.view_count || b.views || 0) - (a.view_count || a.views || 0)
-      )
-      .slice(0, 5);
+    if (!container) return;
 
-    container.innerHTML = sorted
-      .map(
-        (post, index) => `
+    try {
+      const response = await API.getPosts("all", 1, 100, force);
+      let posts = response.posts || [];
+
+      const role = AppState.currentUser.role;
+      const currentUserId = AppState.currentUser.id;
+      if (role === "author") {
+        posts = posts.filter((p) => p.author_id === currentUserId);
+      }
+
+      const sorted = [...posts]
+        .sort((a, b) => (b.view_count || 0) - (a.view_count || 0))
+        .slice(0, 5);
+
+      if (sorted.length === 0) {
+        container.innerHTML = `
+          <div class="top-post-item" style="justify-content:center;color:var(--gray-500);">
+            No posts yet.
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = sorted
+        .map(
+          (post, index) => `
       <div class="top-post-item">
         <div class="top-post-rank ${index < 3 ? "top-3" : ""}">${
-          index + 1
-        }</div>
+            index + 1
+          }</div>
         <div class="top-post-info">
           <div class="top-post-title">${post.title}</div>
           <div class="top-post-meta">${
@@ -138,14 +202,23 @@ const Renderers = {
         </div>
         <div class="top-post-views">
           <div class="top-post-views-count">${Utils.formatNumber(
-            post.view_count || post.views || 0
+            post.view_count || 0
           )}</div>
-          <div class="top-post-views-label">views</div>
+          <div class="top-post-views-label">views • ${Utils.formatNumber(
+            post.unique_view_count || 0
+          )} unique</div>
         </div>
       </div>
     `
-      )
-      .join("");
+        )
+        .join("");
+    } catch (error) {
+      console.error("renderTopPosts error:", error);
+      container.innerHTML = `
+        <div class="top-post-item" style="justify-content:center;color:var(--gray-500);">
+          Failed to load top posts.
+        </div>`;
+    }
   },
 
   // ─── reload the entire dashboard section ─────────────────────────────────
@@ -153,9 +226,9 @@ const Renderers = {
     await Promise.allSettled([
       Renderers.updateDashboardStats(force),
       Renderers.renderNotifications(force),
+      Renderers.renderRecentPosts(force),
+      Renderers.renderTopPosts(force),
     ]);
-    Renderers.renderRecentPosts();
-    Renderers.renderTopPosts();
     await Renderers.renderAnalytics(force);
   },
 
@@ -213,7 +286,8 @@ const Renderers = {
               ? Utils.formatDateTime(post.scheduled_date || post.scheduledAt)
               : Utils.formatDate(post.created_at || post.createdAt)
           }</td>
-          <td>${Utils.formatNumber(post.view_count || post.views || 0)}</td>
+          <td>${Utils.formatNumber(post.view_count || 0)}</td>
+          <td>${Utils.formatNumber(post.unique_view_count || 0)}</td>
           <td>
             <div class="action-btns">
               ${

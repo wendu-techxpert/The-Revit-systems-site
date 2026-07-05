@@ -618,7 +618,7 @@ const API = {
 
     // ── Step 2: fetch per-post view summaries in parallel ─────────────────
     // GET /posts/:postId/views/summary returns:
-    //   { total_views, desktop, mobile, tablet, unknown }
+    //   { total_views, unique_views, desktop, mobile, tablet, unknown }
     // We fetch for all posts concurrently and zip the results back.
     const summaryResults = await Promise.allSettled(
       posts.map((p) =>
@@ -637,6 +637,7 @@ const API = {
       return {
         ...p,
         totalViews: Number(summary?.total_views || 0),
+        uniqueViews: Number(summary?.unique_views || 0),
         desktopViews: Number(summary?.desktop || 0),
         mobileViews: Number(summary?.mobile || 0),
         tabletViews: Number(summary?.tablet || 0),
@@ -692,9 +693,7 @@ const API = {
         ...p,
         rank: i + 1,
         views: p.totalViews,
-        // unique views: count of distinct visitor_ids — not available from
-        // the summary endpoint yet, so approximate at 70% of total.
-        uniqueViews: Math.round(p.totalViews * 0.7),
+        uniqueViews: p.uniqueViews, // real distinct-visitor count from the summary endpoint
         avgTime: p.avgTime, // null until timeline endpoint added
         bounceRate: null, // not tracked yet
       }));

@@ -615,11 +615,11 @@ async function init() {
     Renderers.renderNotifications(),
     Renderers.updateDashboardStats(),
     Renderers.renderCategoryOptions(),
+    Renderers.renderRecentPosts(),
+    Renderers.renderTopPosts(),
   ]);
 
-  // 6. Render dashboard sections
-  Renderers.renderRecentPosts();
-  Renderers.renderTopPosts();
+  // 6. Render remaining dashboard sections
   // Authors don't see the analytics chart on the dashboard
   if (role !== "author") {
     Renderers.renderAnalytics();

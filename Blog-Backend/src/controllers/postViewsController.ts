@@ -29,10 +29,14 @@ export const trackPostView = async (req: Request, res: Response) => {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
-  const { visitorId, deviceType, sessionDuration } = req.body;
+  const { visitorId, deviceType, sessionDuration, viewId } = req.body;
 
   // Build input incrementally to satisfy exactOptionalPropertyTypes
   const input: RecordPostViewInput = { postId };
+
+  if (typeof viewId === "string" && viewId.trim().length > 0) {
+    input.viewId = viewId.trim();
+  }
 
   if (typeof visitorId === "string" && visitorId.trim().length > 0) {
     input.visitorId = visitorId.trim();

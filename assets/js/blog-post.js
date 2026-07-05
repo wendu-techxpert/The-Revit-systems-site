@@ -84,9 +84,20 @@ const getDeviceType = () => {
 };
 
 // sendBeacon with JSON content-type so Express body-parser picks it up
-const sendViewBeacon = (postId, visitorId, deviceType, sessionDuration) => {
+const sendViewBeacon = (
+  postId,
+  viewId,
+  visitorId,
+  deviceType,
+  sessionDuration
+) => {
   const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
-  const payload = JSON.stringify({ visitorId, deviceType, sessionDuration });
+  const payload = JSON.stringify({
+    viewId,
+    visitorId,
+    deviceType,
+    sessionDuration,
+  });
   const blob = new Blob([payload], { type: "application/json" });
   navigator.sendBeacon(`${base}/posts/${postId}/views`, blob);
 };
@@ -97,14 +108,24 @@ const trackView = (postId) => {
     const deviceType = getDeviceType();
     const arrivedAt = Date.now();
 
-    // Immediate view — counts the visit even on a quick bounce
-    sendViewBeacon(postId, visitorId, deviceType, 0);
+    // One id shared by both beacons below. The backend upserts on this id
+    // so the arrival beacon and the exit beacon update the SAME row
+    // instead of inserting two rows for a single visit — that duplication
+    // was why every real view was being counted twice in the database.
+    const viewId =
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2) + Date.now().toString(36);
 
-    // On tab hide / page close send the real session duration
+    // Immediate view — counts the visit even on a quick bounce
+    sendViewBeacon(postId, viewId, visitorId, deviceType, 0);
+
+    // On tab hide / page close send the real session duration —
+    // same viewId, so the backend updates this row rather than adding a new one
     const onHide = () => {
       if (document.visibilityState === "hidden") {
         const sessionDuration = Math.round((Date.now() - arrivedAt) / 1000);
-        sendViewBeacon(postId, visitorId, deviceType, sessionDuration);
+        sendViewBeacon(postId, viewId, visitorId, deviceType, sessionDuration);
         document.removeEventListener("visibilitychange", onHide);
       }
     };
@@ -114,53 +135,15 @@ const trackView = (postId) => {
   }
 };
 
-/* ---- Init ----
-   Reads the post from localStorage.selectedPost as before (fast path —
-   used when the reader arrived by clicking a card on blog.html, since
-   openPost() there sets localStorage right before navigating).
-
-   Fallback: when a shared link is opened directly — a fresh browser,
-   a different device, incognito, or after the OG-meta redirect from
-   GET /posts/og/:slug — localStorage has nothing (or an unrelated
-   post cached from a previous visit). In that case we read the
-   ?slug= query param the OG redirect always attaches and fetch the
-   post directly from GET /posts/slug/:slug so the article still
-   renders instead of showing "Article not found". ---- */
-document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const slugFromUrl = params.get("slug");
-
-  let raw = (() => {
+/* ---- Init ---- */
+document.addEventListener("DOMContentLoaded", () => {
+  const raw = (() => {
     try {
       return JSON.parse(localStorage.getItem("selectedPost"));
     } catch {
       return null;
     }
   })();
-
-  // Cached post is missing, or doesn't match the slug in the URL —
-  // fetch the real post directly instead of showing "not found".
-  if (slugFromUrl && (!raw || raw.slug !== slugFromUrl)) {
-    try {
-      const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
-      const res = await fetch(
-        `${base}/posts/slug/${encodeURIComponent(slugFromUrl)}`
-      );
-      if (res.ok) {
-        raw = await res.json();
-        // Persist so the separate comments-bootstrap listener further down
-        // this file (which reads localStorage independently) and any
-        // prev/next/share logic relying on localStorage also see it.
-        try {
-          localStorage.setItem("selectedPost", JSON.stringify(raw));
-        } catch {
-          // ignore quota errors — page still renders from `raw` in memory
-        }
-      }
-    } catch (err) {
-      console.error("Failed to fetch post by slug:", err);
-    }
-  }
 
   const post = normalise(raw);
 
@@ -210,17 +193,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     ? post.content
     : `<p>${post.excerpt || ""}</p>`;
 
-  /* ---- Share URLs ---- */
-  const slug = post.slug; // from localStorage selectedPost
-  // This is the ONE url that should ever be shared or copied for this post.
-  // It points at the crawler-friendly OG-meta endpoint (not blog-post.html
-  // directly), so WhatsApp/Twitter/LinkedIn/etc. read the correct
-  // og:title/og:image/og:description for THIS post instead of falling
-  // back to the generic static tags in blog-post.html's <head> (which is
-  // what was happening before — window.location.href was always just
-  // ".../blog-post.html" with no slug, so crawlers got the logo + generic text).
-  const shareableUrl = `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`;
-  const pageUrl = encodeURIComponent(shareableUrl);
+  /* ---- Share URLs ---- */ const slug = post.slug; // from localStorage selectedPost
+  const pageUrl = encodeURIComponent(
+    `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`
+  );
   const pageTitle = encodeURIComponent(post.title);
   const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
@@ -234,22 +210,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (el) el.href = linkedinUrl;
   });
 
-  // Reflect the slug in the visible address bar too (without a reload),
-  // so a manual copy from the URL bar and page refreshes both keep
-  // pointing at this specific post rather than a bare, context-less URL.
-  try {
-    const url = new URL(window.location.href);
-    url.searchParams.set("slug", slug);
-    window.history.replaceState({}, "", url.toString());
-  } catch {
-    // non-fatal — share buttons and copy-link still work regardless
-  }
-
   const copyLink = () => {
-    // Copy the crawler-friendly OG url, NOT window.location.href —
-    // that was the actual bug: the address bar link has no OG tags
-    // of its own, so any platform reading it just sees the logo.
-    navigator.clipboard.writeText(shareableUrl).then(() => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
       ["copyLinkBtn", "copyLinkBtn2"].forEach((id) => {
         const btn = document.getElementById(id);
         if (btn) {
@@ -271,17 +233,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!targetPost) return;
     localStorage.setItem("selectedPost", JSON.stringify(targetPost));
     localStorage.setItem("allPosts", JSON.stringify(allPosts));
-    // Keep the address bar's ?slug= in sync with the post we're switching
-    // to — otherwise on reload the init logic sees an old slug in the URL
-    // that no longer matches the freshly-stored post and would re-fetch
-    // the wrong (previous) article by mistake.
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.set("slug", targetPost.slug);
-      window.history.replaceState({}, "", url.toString());
-    } catch {
-      // non-fatal
-    }
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => window.location.reload(), 300);
   };
@@ -394,15 +345,6 @@ function navigateTo(post) {
   })();
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allPosts));
-  // Same reasoning as navigate() above — keep ?slug= in sync so the
-  // reload's init logic doesn't re-fetch a stale/mismatched post.
-  try {
-    const url = new URL(window.location.href);
-    url.searchParams.set("slug", post.slug);
-    window.history.replaceState({}, "", url.toString());
-  } catch {
-    // non-fatal
-  }
   window.scrollTo({ top: 0, behavior: "smooth" });
   setTimeout(() => window.location.reload(), 300);
 }

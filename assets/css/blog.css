@@ -357,6 +357,14 @@ body {
   transform: translateX(4px);
 }
 
+.blog-featured-date {
+  color: var(--gray-500);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
 /* ---- GRID SECTION LABEL ---- */
 .blog-grid-label {
   font-size: 0.76rem;
@@ -517,6 +525,14 @@ body {
 .rv-post-card:hover .rv-post-card-arrow {
   background: var(--rv-orange);
   color: var(--rv-white);
+}
+
+.rv-post-card-date {
+  color: var(--gray-500);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 /* ---- EMPTY / ERROR STATES ---- */

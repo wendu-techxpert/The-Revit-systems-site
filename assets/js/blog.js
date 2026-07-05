@@ -52,6 +52,18 @@ const initials = (name = "R") =>
 const imgFallback =
   "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80";
 
+/* ---- Format a post's date for display (e.g. "Jul 4, 2026") ---- */
+const formatPostDate = (dateString) => {
+  if (!dateString) return "";
+  const d = new Date(dateString);
+  if (isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
 /* ---- Render the featured hero card (first post) ---- */
 const renderFeatured = (post) => {
   if (!post) {
@@ -82,6 +94,13 @@ const renderFeatured = (post) => {
               )}</div>
               Revit Info
             </div>
+            ${
+              formatPostDate(post.created_at || post.published_at)
+                ? `<span class="blog-featured-date"><i class="far fa-calendar"></i> ${formatPostDate(
+                    post.created_at || post.published_at
+                  )}</span>`
+                : ""
+            }
           </div>
           <span class="blog-featured-read">
             Read article <i class="fas fa-arrow-right"></i>
@@ -114,6 +133,13 @@ const renderCard = (post) => {
             <div class="rv-post-author-dot">${initials("Revit Info")}</div>
             Revit Info
           </div>
+          ${
+            formatPostDate(post.created_at || post.published_at)
+              ? `<span class="rv-post-card-date"><i class="far fa-calendar"></i> ${formatPostDate(
+                  post.created_at || post.published_at
+                )}</span>`
+              : ""
+          }
           <div class="rv-post-card-arrow">
             <i class="fas fa-arrow-right"></i>
           </div>
@@ -126,12 +152,7 @@ const renderCard = (post) => {
 const openPost = (post) => {
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allFetchedPosts));
-  // Carry the slug in the URL itself (not just localStorage) so the
-  // address bar is always specific to this post — refreshing works,
-  // and if someone copies straight from the address bar instead of
-  // the "Copy link" button, it still lands on the right article.
-  const slugParam = post.slug ? `?slug=${encodeURIComponent(post.slug)}` : "";
-  window.location.href = `blog-post.html${slugParam}`;
+  window.location.href = "blog-post.html";
 };
 
 /* ---- Client-side search across cached posts ---- */

@@ -14,6 +14,7 @@ export interface PostView {
 
 export interface RecordPostViewInput {
   postId: string;
+  viewId?: string;
   visitorId?: string;
   ipAddress?: string;
   userAgent?: string;
@@ -33,6 +34,7 @@ export interface ReferrerStat {
 
 export interface PostViewSummary {
   total_views: number;
+  unique_views: number;
   desktop: number;
   mobile: number;
   tablet: number;
