@@ -665,7 +665,7 @@ async function init() {
   console.log(`RevitSystems Admin Dashboard initialized — role: ${role}`);
 }
 
-// DOM-safe boot
+// DOM-safe boot sequence: if the DOM is still loading, wait for DOMContentLoaded; otherwise run init() immediately. This ensures that the script can be placed in the <head> or <body> without breaking.
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
