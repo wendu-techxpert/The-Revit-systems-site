@@ -479,6 +479,19 @@ export const createScheduledPost = async (req: Request, res: Response) => {
 // og:description, og:image and og:url for the specific post, while real
 // users are immediately redirected to the actual blog post page.
 // =============================================
+// postController.ts
+
+const CRAWLER_UA_REGEX =
+  /bot|facebookexternalhit|twitterbot|linkedinbot|whatsapp|slackbot|telegrambot|discordbot|pinterest|embedly|quora link preview|showyoubot|outbrain|w3c_validator/i;
+
+const escapeHtml = (str: string): string =>
+  str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 export const getPostOGMeta = async (req: Request, res: Response) => {
   const { slug } = req.params;
 
@@ -501,69 +514,55 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
   const frontendBase =
     process.env.FRONTEND_URL || "https://www.revitsystems.org";
 
-  // The URL the user will actually land on — builders-digest-post.html
-  // reads the ?slug param from the query string to know which post to
-  // display. (Renamed from blog-post.html — if this doesn't match the
-  // real filename on disk, every shared link preview redirects to a
-  // dead page.)
   const postUrl = `${frontendBase}/pages/builders-digest-post.html?slug=${encodeURIComponent(
     post.slug
   )}`;
 
-  // Strip HTML tags from excerpt for the meta description
-  const description = (post.excerpt || "")
-    .replace(/<[^>]+>/g, "")
-    .slice(0, 200);
+  // Real users: send them straight there. No HTML parsing, no CSP,
+  // no meta-refresh dependency — this can never "hang."
+  const userAgent = req.headers["user-agent"] || "";
+  if (!CRAWLER_UA_REGEX.test(userAgent)) {
+    return res.redirect(302, postUrl);
+  }
 
-  // Featured image falls back to the site logo if none is set
-  const image =
-    post.featured_image || `${frontendBase}/assets/images/revit-og-default.png`;
+  // From here on we're only ever talking to a crawler — it will read
+  // the tags and never execute the redirect, so this branch no longer
+  // needs to guarantee a working client-side redirect at all.
+  const description = escapeHtml(
+    (post.excerpt || "").replace(/<[^>]+>/g, "").slice(0, 200)
+  );
+  const image = escapeHtml(
+    post.featured_image || `${frontendBase}/assets/images/revit-og-default.png`
+  );
+  const title = escapeHtml(`${post.title} — Revit Systems`);
+  const safePostUrl = escapeHtml(postUrl);
 
-  const title = `${post.title} — Revit Systems`;
-
-  // Return a minimal HTML shell with all the OG tags crawlers need.
-  // The <script> immediately redirects real users to the actual page.
- res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "public, max-age=3600");
-return res.send(`<!DOCTYPE html>
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "public, max-age=3600");
+  return res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>${title}</title>
-
-  <!-- Redirect real users immediately — meta-refresh works even though
-       Helmet's CSP (script-src 'self') blocks the inline <script> below.
-       Crawlers (WhatsApp/Twitter/LinkedIn/etc.) ignore this and just
-       read the tags. -->
-  <meta http-equiv="refresh" content="0;url=${postUrl}" />
-
   <meta name="description" content="${description}" />
-
-  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-  <meta property="og:type"        content="article" />
-  <meta property="og:site_name"   content="Revit Systems" />
-  <meta property="og:url"         content="${postUrl}" />
-  <meta property="og:title"       content="${title}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Revit Systems" />
+  <meta property="og:url" content="${safePostUrl}" />
+  <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
-  <meta property="og:image"       content="${image}" />
-  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image" content="${image}" />
+  <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="${title}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${title}" />
   <meta name="twitter:description" content="${description}" />
-  <meta name="twitter:image"       content="${image}" />
-
-  <!-- JS fallback for the rare client that ignores meta-refresh -->
-  <script>window.location.replace("${postUrl}");</script>
+  <meta name="twitter:image" content="${image}" />
 </head>
 <body>
-  <p>Redirecting to article...</p>
+  <p>${title}</p>
 </body>
 </html>`);
 };
-
 // =============================================
 // GET /posts/slug/:slug
 // Public endpoint — no auth required.
