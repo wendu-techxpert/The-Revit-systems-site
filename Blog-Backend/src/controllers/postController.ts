@@ -469,10 +469,11 @@ export const createScheduledPost = async (req: Request, res: Response) => {
 // Why this exists:
 // WhatsApp, Twitter, LinkedIn etc. send a "crawler" bot to read the
 // page when someone shares a link. That bot does NOT execute JavaScript,
-// so blog-post.html (which renders everything via JS from localStorage)
-// looks completely blank to it. It falls back to grabbing whatever image
-// it finds on the page — which ends up being the Revit Systems logo.
-// Every shared link looks identical regardless of which post it is.
+// so builders-digest-post.html (which renders everything via JS from
+// localStorage) looks completely blank to it. It falls back to grabbing
+// whatever image it finds on the page — which ends up being the Revit
+// Systems logo. Every shared link looks identical regardless of which
+// post it is.
 //
 // This route gives crawlers a static HTML page with the correct og:title,
 // og:description, og:image and og:url for the specific post, while real
@@ -500,9 +501,12 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
   const frontendBase =
     process.env.FRONTEND_URL || "https://www.revitsystems.org";
 
-  // The URL the user will actually land on — blog-post.html reads the
-  // ?slug param from the query string to know which post to display.
-  const postUrl = `${frontendBase}/pages/blog-post.html?slug=${encodeURIComponent(
+  // The URL the user will actually land on — builders-digest-post.html
+  // reads the ?slug param from the query string to know which post to
+  // display. (Renamed from blog-post.html — if this doesn't match the
+  // real filename on disk, every shared link preview redirects to a
+  // dead page.)
+  const postUrl = `${frontendBase}/pages/builders-digest-post.html?slug=${encodeURIComponent(
     post.slug
   )}`;
 
@@ -562,13 +566,13 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
 //
 // Why this exists:
 // getPostOGMeta above serves crawlers a static HTML shell, then
-// redirects real users to blog-post.html?slug=xxx. But blog-post.js
-// only ever reads localStorage.selectedPost — it never fetches by
-// slug. So anyone opening a shared link fresh (no prior localStorage,
-// different device, incognito, etc.) landed on "Article not found"
-// even though the post exists. This endpoint lets blog-post.js fall
-// back to fetching the post directly when localStorage is empty or
-// doesn't match the slug in the URL.
+// redirects real users to builders-digest-post.html?slug=xxx. But
+// blog-post.js only ever reads localStorage.selectedPost — it never
+// fetches by slug. So anyone opening a shared link fresh (no prior
+// localStorage, different device, incognito, etc.) landed on "Article
+// not found" even though the post exists. This endpoint lets
+// blog-post.js fall back to fetching the post directly when
+// localStorage is empty or doesn't match the slug in the URL.
 // =============================================
 export const fetchPostBySlug = async (req: Request, res: Response) => {
   const { slug } = req.params;

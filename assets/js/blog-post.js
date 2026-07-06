@@ -95,20 +95,9 @@ const getDeviceType = () => {
 };
 
 // sendBeacon with JSON content-type so Express body-parser picks it up
-const sendViewBeacon = (
-  postId,
-  viewId,
-  visitorId,
-  deviceType,
-  sessionDuration
-) => {
+const sendViewBeacon = (postId, viewId, visitorId, deviceType, sessionDuration) => {
   const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
-  const payload = JSON.stringify({
-    viewId,
-    visitorId,
-    deviceType,
-    sessionDuration,
-  });
+  const payload = JSON.stringify({ viewId, visitorId, deviceType, sessionDuration });
   const blob = new Blob([payload], { type: "application/json" });
   navigator.sendBeacon(`${base}/posts/${postId}/views`, blob);
 };
@@ -176,9 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (slugFromUrl && (!raw || raw.slug !== slugFromUrl)) {
     try {
       const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
-      const res = await fetch(
-        `${base}/posts/slug/${encodeURIComponent(slugFromUrl)}`
-      );
+      const res = await fetch(`${base}/posts/slug/${encodeURIComponent(slugFromUrl)}`);
       if (res.ok) {
         raw = await res.json();
         // Persist so the separate comments-bootstrap listener further down
@@ -234,9 +221,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("postTitle").textContent = post.title;
   document.getElementById("postTagText").textContent =
     post.category || "Article";
-  document.getElementById("postAuthorAvatar").textContent = initials(
-    post.author_name
-  );
+  document.getElementById("postAuthorAvatar").textContent =
+    initials(post.author_name);
   document.getElementById("postAuthorName").textContent = post.author_name;
   document.getElementById("postReadTime").textContent = readTime(
     post.content || post.excerpt || ""
