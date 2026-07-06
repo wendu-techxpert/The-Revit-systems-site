@@ -523,15 +523,20 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
 
   // Return a minimal HTML shell with all the OG tags crawlers need.
   // The <script> immediately redirects real users to the actual page.
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Cache-Control", "public, max-age=3600"); // cache for 1 hour
-  return res.send(`<!DOCTYPE html>
+ res.setHeader("Content-Type", "text/html");
+res.setHeader("Cache-Control", "public, max-age=3600");
+return res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>${title}</title>
 
-  <!-- Primary meta -->
+  <!-- Redirect real users immediately — meta-refresh works even though
+       Helmet's CSP (script-src 'self') blocks the inline <script> below.
+       Crawlers (WhatsApp/Twitter/LinkedIn/etc.) ignore this and just
+       read the tags. -->
+  <meta http-equiv="refresh" content="0;url=${postUrl}" />
+
   <meta name="description" content="${description}" />
 
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
@@ -550,7 +555,7 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image"       content="${image}" />
 
-  <!-- Redirect real users immediately to the actual page -->
+  <!-- JS fallback for the rare client that ignores meta-refresh -->
   <script>window.location.replace("${postUrl}");</script>
 </head>
 <body>
