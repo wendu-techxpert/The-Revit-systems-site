@@ -87,9 +87,12 @@ export const getPosts = async (
             posts.view_count,
             posts.unique_view_count,
             categories.id   AS category_id,
-            categories.name AS category
+            categories.name AS category,
+            users.first_name AS author_first_name,
+            users.last_name  AS author_last_name
           FROM posts
           LEFT JOIN categories ON posts.category_id = categories.id
+          LEFT JOIN users ON posts.author_id = users.id
           ORDER BY posts.created_at DESC
           LIMIT $1 OFFSET $2
           `,
@@ -113,9 +116,12 @@ export const getPosts = async (
             posts.view_count,
             posts.unique_view_count,
             categories.id   AS category_id,
-            categories.name AS category
+            categories.name AS category,
+            users.first_name AS author_first_name,
+            users.last_name  AS author_last_name
           FROM posts
           LEFT JOIN categories ON posts.category_id = categories.id
+          LEFT JOIN users ON posts.author_id = users.id
           WHERE posts.status = $1
           ORDER BY posts.created_at DESC
           LIMIT $2 OFFSET $3
@@ -152,9 +158,12 @@ export const getPostById = async (id: string) => {
     `
     SELECT
       posts.*,
-      categories.name AS category_name
+      categories.name AS category_name,
+      users.first_name AS author_first_name,
+      users.last_name  AS author_last_name
     FROM posts
     LEFT JOIN categories ON posts.category_id = categories.id
+    LEFT JOIN users ON posts.author_id = users.id
     WHERE posts.id = $1
     `,
     [id]
@@ -330,9 +339,12 @@ export const getPostBySlug = async (slug: string) => {
   const result = await pool.query(
     `SELECT
        posts.*,
-       categories.name AS category_name
+       categories.name AS category_name,
+       users.first_name AS author_first_name,
+       users.last_name  AS author_last_name
      FROM posts
      LEFT JOIN categories ON posts.category_id = categories.id
+     LEFT JOIN users ON posts.author_id = users.id
      WHERE posts.slug = $1
        AND posts.status = 'published'`,
     [slug]

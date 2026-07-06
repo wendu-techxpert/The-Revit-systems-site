@@ -20,7 +20,10 @@ import userRoutes from "@/routes/userRoutes.js";
 
 // ── New: needed for the /auth/me endpoint ──────────────────────
 import { authenticate } from "@/middleware/authMiddleware.js";
-import { getCurrentUser } from "@/controllers/authController.js";
+import {
+  getCurrentUser,
+  updateCurrentUser,
+} from "@/controllers/authController.js";
 
 const app = express();
 
@@ -75,6 +78,7 @@ app.get("/health", (req, res) => {
 app.use("/auth/refresh", refreshRoutes);
 
 app.get("/auth/me", authenticate, getCurrentUser);
+app.patch("/auth/me", authenticate, updateCurrentUser);
 
 app.use("/auth", authLimiter, authRoutes);
 

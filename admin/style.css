@@ -182,6 +182,49 @@ body {
   z-index: 1000;
 }
 
+/* Hamburger menu toggle — hidden on desktop, shown only below the
+   mobile breakpoint (see media query) where the sidebar becomes
+   off-canvas instead of a permanent icon rail. */
+.sidebar-toggle-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  transition: var(--transition);
+}
+
+.sidebar-toggle-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Backdrop behind the off-canvas sidebar on mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.sidebar-overlay.is-visible {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -1568,7 +1611,7 @@ body {
   box-shadow: var(--shadow-lg);
   width: 90%;
   max-width: 600px;
-  max-height: 93vh;
+  max-height: 90vh;
   overflow: hidden;
   animation: modalSlide 0.3s ease;
 }
@@ -2335,42 +2378,152 @@ body {
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  /* ── Sidebar becomes a true off-canvas drawer instead of a permanent
+     70px icon rail. That permanent rail was the main reason the whole
+     dashboard "barely fit" on a phone — it ate real width from every
+     table/card on top of nothing being genuinely responsive underneath.
+     Now the sidebar is fully hidden by default and slides in as an
+     overlay only when the hamburger button is tapped. ── */
+  .sidebar-toggle-btn {
+    display: flex;
+  }
+
   .sidebar {
-    width: 70px;
+    width: 260px;
+    max-width: 80vw;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
   }
 
   .nav-item span,
   .nav-badge {
-    display: none;
+    display: inline;
   }
 
   .main-content {
-    margin-left: 70px;
+    margin-left: 0;
     padding: 1rem;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .user-profile {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .date-display {
-    display: none;
+    width: 100%;
   }
 
   .top-bar {
     padding: 0 1rem;
   }
 
+  .date-display {
+    display: none;
+  }
+
+  /* ── Stats & grids collapse to a single column ── */
+  .stats-grid,
+  .analytics-grid,
+  .taxonomies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 1.1rem;
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .stat-info h3 {
+    font-size: 1.5rem;
+  }
+
+  /* ── Tables scroll horizontally within their own card instead of
+     forcing the whole page to zoom out ── */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .posts-table {
+    min-width: 640px;
+  }
+
+  /* ── Section titles, card headers, toolbars wrap and stack cleanly ── */
+  .section-title {
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-header > * {
+    width: 100%;
+  }
+
+  .filter-tabs {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    flex: 1 1 auto;
+    min-width: 70px;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .media-toolbar,
+  .comments-toolbar,
+  .users-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .media-search,
+  .comments-search,
+  .users-search {
+    max-width: none;
+  }
+
+  .bulk-actions {
+    flex-wrap: wrap;
+  }
+
+  /* ── Modals fit small screens without needing pinch-zoom ── */
   .modal-content {
-    width: 95%;
+    width: 94%;
     margin: 1rem;
+    max-height: 92vh;
+  }
+
+  .modal-body {
+    padding: 1rem;
+    max-height: calc(92vh - 130px);
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 1rem;
+  }
+
+  .modal-footer {
+    flex-wrap: wrap;
+  }
+
+  .modal-footer button {
+    flex: 1 1 auto;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
   .form-actions {
@@ -2382,25 +2535,21 @@ body {
     justify-content: center;
   }
 
-  .filter-tabs {
+  /* ── Editor toolbar wraps instead of overflowing ── */
+  .ql-toolbar {
     flex-wrap: wrap;
   }
 
-  .tab-btn {
-    flex: 1;
-    min-width: 80px;
+  #editor,
+  #edit-editor {
+    min-height: 220px;
   }
 
-  .analytics-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .taxonomies-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .media-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  /* ── User profile / comments / media grids ── */
+  .user-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .comment-item {
@@ -2411,9 +2560,95 @@ body {
     align-self: flex-start;
   }
 
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
   .draft-recovery-banner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* ── Notification / user dropdowns don't overflow the viewport edge ── */
+  .notification-dropdown,
+  .user-dropdown {
+    width: min(320px, 92vw);
+    right: -0.5rem;
+  }
+
+  /* ── Pagination controls stay tappable and don't wrap awkwardly ── */
+  .pagination {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+}
+
+/* ── Extra tightening for small phones ── */
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 0 0.75rem;
+  }
+
+  .logo span {
+    display: none;
+  }
+
+  .main-content {
+    padding: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .stat-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat-info p {
+    font-size: 0.8rem;
+  }
+
+  .stat-card .view-btn {
+    display: none; /* "View All" text buttons on stat cards — tap the card itself instead */
+  }
+
+  .content-card {
+    border-radius: var(--radius);
+  }
+
+  .card-header h2 {
+    font-size: 1.05rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-publish,
+  .btn-draft,
+  .btn-schedule,
+  .btn-danger {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .post-comment-fields-row {
+    grid-template-columns: 1fr;
+  }
+
+  .taxonomy-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .taxonomy-actions {
+    align-self: flex-end;
   }
 }
 

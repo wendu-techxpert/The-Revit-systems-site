@@ -31,14 +31,26 @@ const hideLoader = () => loader.classList.remove("show-face");
 
 /* ---- Normalise a raw API post so the rest of the UI can use
          consistent field names regardless of backend naming ---- */
-const normalise = (p) => ({
-  ...p,
-  // The API returns featured_image; map it to cover_image_url so the
-  // existing render helpers work without any other changes.
-  cover_image_url: p.featured_image || p.cover_image_url || "",
-  // category comes back as a string from the LEFT JOIN in postModel.ts
-  category: p.category || "",
-});
+const normalise = (p) => {
+  // Real author name from the users table JOIN in postModel.ts. Falls
+  // back to "Revit Systems" only if the author record is missing entirely
+  // (e.g. deleted account) — every post used to hardcode "Revit Info"
+  // regardless of who actually wrote it.
+  const authorName = [p.author_first_name, p.author_last_name]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+
+  return {
+    ...p,
+    // The API returns featured_image; map it to cover_image_url so the
+    // existing render helpers work without any other changes.
+    cover_image_url: p.featured_image || p.cover_image_url || "",
+    // category comes back as a string from the LEFT JOIN in postModel.ts
+    category: p.category || "",
+    author_name: authorName || "Revit Systems",
+  };
+};
 
 /* ---- Author initials helper ---- */
 const initials = (name = "R") =>
@@ -90,9 +102,9 @@ const renderFeatured = (post) => {
           <div class="blog-featured-meta">
             <div class="blog-featured-author">
               <div class="blog-featured-author-dot">${initials(
-                "Revit Info"
+                post.author_name
               )}</div>
-              Revit Info
+              ${post.author_name}
             </div>
             ${
               formatPostDate(post.created_at || post.published_at)
@@ -130,8 +142,8 @@ const renderCard = (post) => {
         <p class="rv-post-card-excerpt">${post.excerpt || ""}</p>
         <div class="rv-post-card-footer">
           <div class="rv-post-card-author">
-            <div class="rv-post-author-dot">${initials("Revit Info")}</div>
-            Revit Info
+            <div class="rv-post-author-dot">${initials(post.author_name)}</div>
+            ${post.author_name}
           </div>
           ${
             formatPostDate(post.created_at || post.published_at)
@@ -148,11 +160,16 @@ const renderCard = (post) => {
   return div;
 };
 
-/* ---- Navigate to blog-post.html ---- */
+/* ---- Navigate to builders-digest-post.html ---- */
 const openPost = (post) => {
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allFetchedPosts));
-  window.location.href = "blog-post.html";
+  // Carry the slug in the URL itself (not just localStorage) so the
+  // address bar is always specific to this post — refreshing works,
+  // and if someone copies straight from the address bar instead of
+  // the "Copy link" button, it still lands on the right article.
+  const slugParam = post.slug ? `?slug=${encodeURIComponent(post.slug)}` : "";
+  window.location.href = `builders-digest-post.html${slugParam}`;
 };
 
 /* ---- Client-side search across cached posts ---- */

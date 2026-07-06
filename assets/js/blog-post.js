@@ -1,6 +1,6 @@
 /* =============================================
    BLOG POST PAGE LOGIC
-   - Reads selectedPost from localStorage (set by blog.html)
+   - Reads selectedPost from localStorage (set by builders-digest.html)
    - Post fields from API: id, title, slug, content, excerpt,
      featured_image, category, created_at
    - Tracks page view via POST /posts/:id/views
@@ -12,10 +12,21 @@ const imgFallback =
   "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80";
 
 /* ---- Normalise API field names ---- */
-const normalise = (p) =>
-  p
-    ? { ...p, cover_image_url: p.featured_image || p.cover_image_url || "" }
-    : null;
+const normalise = (p) => {
+  if (!p) return null;
+  // Real author name from the users table JOIN in postModel.ts, same
+  // fallback logic as blog.js — was hardcoded "Revit Info" for every
+  // post regardless of who actually wrote it.
+  const authorName = [p.author_first_name, p.author_last_name]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
+  return {
+    ...p,
+    cover_image_url: p.featured_image || p.cover_image_url || "",
+    author_name: authorName || "Revit Systems",
+  };
+};
 
 /* ---- Estimated read time ---- */
 const readTime = (content = "") => {
@@ -136,14 +147,53 @@ const trackView = (postId) => {
 };
 
 /* ---- Init ---- */
-document.addEventListener("DOMContentLoaded", () => {
-  const raw = (() => {
+/* ---- Init ----
+   Reads the post from localStorage.selectedPost as before (fast path —
+   used when the reader arrived by clicking a card on builders-digest.html,
+   since openPost() there sets localStorage right before navigating).
+
+   Fallback: when a shared link is opened directly — a fresh browser,
+   a different device, incognito, or after the OG-meta redirect from
+   GET /posts/og/:slug — localStorage has nothing (or an unrelated
+   post cached from a previous visit). In that case we read the
+   ?slug= query param the OG redirect always attaches and fetch the
+   post directly from GET /posts/slug/:slug so the article still
+   renders instead of showing "Article not found". ---- */
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const slugFromUrl = params.get("slug");
+
+  let raw = (() => {
     try {
       return JSON.parse(localStorage.getItem("selectedPost"));
     } catch {
       return null;
     }
   })();
+
+  // Cached post is missing, or doesn't match the slug in the URL —
+  // fetch the real post directly instead of showing "not found".
+  if (slugFromUrl && (!raw || raw.slug !== slugFromUrl)) {
+    try {
+      const base = typeof window.baseURL !== "undefined" ? window.baseURL : "";
+      const res = await fetch(
+        `${base}/posts/slug/${encodeURIComponent(slugFromUrl)}`
+      );
+      if (res.ok) {
+        raw = await res.json();
+        // Persist so the separate comments-bootstrap listener further down
+        // this file (which reads localStorage independently) and any
+        // prev/next/share logic relying on localStorage also see it.
+        try {
+          localStorage.setItem("selectedPost", JSON.stringify(raw));
+        } catch {
+          // ignore quota errors — page still renders from `raw` in memory
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch post by slug:", err);
+    }
+  }
 
   const post = normalise(raw);
 
@@ -163,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <i class="fas fa-file-alt"></i>
               <h2>Article not found</h2>
               <p>We couldn't load this article. It may have been moved or deleted.</p>
-              <a href="./blog.html"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+              <a href="./builders-digest.html"><i class="fas fa-arrow-left"></i> Back to Builders Digest</a>
             </div>`;
     return;
   }
@@ -184,8 +234,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("postTitle").textContent = post.title;
   document.getElementById("postTagText").textContent =
     post.category || "Article";
-  document.getElementById("postAuthorAvatar").textContent =
-    initials("Revit Info");
+  document.getElementById("postAuthorAvatar").textContent = initials(
+    post.author_name
+  );
+  document.getElementById("postAuthorName").textContent = post.author_name;
   document.getElementById("postReadTime").textContent = readTime(
     post.content || post.excerpt || ""
   );
@@ -193,10 +245,18 @@ document.addEventListener("DOMContentLoaded", () => {
     ? post.content
     : `<p>${post.excerpt || ""}</p>`;
 
-  /* ---- Share URLs ---- */ const slug = post.slug; // from localStorage selectedPost
-  const pageUrl = encodeURIComponent(
-    `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`
-  );
+  /* ---- Share URLs ---- */
+  const slug = post.slug; // from localStorage selectedPost
+  // This is the ONE url that should ever be shared or copied for this post.
+  // It points at the crawler-friendly OG-meta endpoint (not
+  // builders-digest-post.html directly), so WhatsApp/Twitter/LinkedIn/etc.
+  // read the correct og:title/og:image/og:description for THIS post
+  // instead of falling back to the generic static tags in this file's
+  // <head> (which is what was happening before — window.location.href was
+  // always just the bare page URL with no slug, so crawlers got the logo
+  // + generic text).
+  const shareableUrl = `https://the-revit-systems-site-2p44.onrender.com/posts/og/${slug}`;
+  const pageUrl = encodeURIComponent(shareableUrl);
   const pageTitle = encodeURIComponent(post.title);
   const twitterUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
@@ -210,8 +270,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.href = linkedinUrl;
   });
 
+  // Reflect the slug in the visible address bar too (without a reload),
+  // so a manual copy from the URL bar and page refreshes both keep
+  // pointing at this specific post rather than a bare, context-less URL.
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("slug", slug);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    // non-fatal — share buttons and copy-link still work regardless
+  }
+
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
+    // Copy the crawler-friendly OG url, NOT window.location.href —
+    // that was the actual bug: the address bar link has no OG tags
+    // of its own, so any platform reading it just sees the logo.
+    navigator.clipboard.writeText(shareableUrl).then(() => {
       ["copyLinkBtn", "copyLinkBtn2"].forEach((id) => {
         const btn = document.getElementById(id);
         if (btn) {
@@ -233,6 +307,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!targetPost) return;
     localStorage.setItem("selectedPost", JSON.stringify(targetPost));
     localStorage.setItem("allPosts", JSON.stringify(allPosts));
+    // Keep the address bar's ?slug= in sync with the post we're switching
+    // to — otherwise on reload the init logic sees an old slug in the URL
+    // that no longer matches the freshly-stored post and would re-fetch
+    // the wrong (previous) article by mistake.
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set("slug", targetPost.slug);
+      window.history.replaceState({}, "", url.toString());
+    } catch {
+      // non-fatal
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => window.location.reload(), 300);
   };
@@ -345,6 +430,15 @@ function navigateTo(post) {
   })();
   localStorage.setItem("selectedPost", JSON.stringify(post));
   localStorage.setItem("allPosts", JSON.stringify(allPosts));
+  // Same reasoning as navigate() above — keep ?slug= in sync so the
+  // reload's init logic doesn't re-fetch a stale/mismatched post.
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("slug", post.slug);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    // non-fatal
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
   setTimeout(() => window.location.reload(), 300);
 }

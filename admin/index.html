@@ -255,6 +255,15 @@
     <div id="dashboard-app" class="dashboard-app">
       <!-- Top Bar -->
       <header class="top-bar">
+        <button
+          class="sidebar-toggle-btn"
+          id="sidebarToggleBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="dashboardSidebar"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
         <div class="logo">
           <i class="fas fa-blog"></i>
           <span>BlogAdmin</span>
@@ -328,8 +337,13 @@
 
       <!-- Main Container -->
       <div class="main-container">
+        <!-- Overlay shown behind the sidebar on mobile when it's open —
+             clicking it closes the sidebar, same pattern as the public
+             site's menu-overlay in script.js -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="dashboardSidebar">
           <nav class="nav-menu">
             <a
               href="#dashboard"
@@ -496,7 +510,6 @@
                       <th>Status</th>
                       <th>Date</th>
                       <th>Views</th>
-                      <th>Unique</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -753,7 +766,6 @@
                       <th>Status</th>
                       <th>Date</th>
                       <th>Views</th>
-                      <th>Unique</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -1206,7 +1218,13 @@
                         type="email"
                         id="profile-email-edit"
                         value="admin@blog.com"
+                        disabled
+                        style="background: var(--gray-100); cursor: not-allowed"
+                        title="Email cannot be changed here"
                       />
+                      <small class="help-text"
+                        >Email changes must go through a reset flow.</small
+                      >
                     </div>
                   </div>
                   <div class="form-group">

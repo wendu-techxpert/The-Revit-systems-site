@@ -111,11 +111,46 @@ function initializeDateDisplay() {
 // EVENT LISTENERS
 // ==================
 function initializeEventListeners() {
+  // --- Mobile sidebar (off-canvas drawer) ---
+  // The sidebar used to be a permanently-visible 70px icon rail on mobile,
+  // which is why the whole dashboard felt cramped and required zooming
+  // out. Now it's fully hidden by default below 900px and slides in as
+  // an overlay only when the hamburger button is tapped.
+  const dashboardSidebar = document.getElementById("dashboardSidebar");
+  const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
+  const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+  const openMobileSidebar = () => {
+    dashboardSidebar?.classList.add("is-open");
+    sidebarOverlay?.classList.add("is-visible");
+    sidebarToggleBtn?.setAttribute("aria-expanded", "true");
+  };
+
+  const closeMobileSidebar = () => {
+    dashboardSidebar?.classList.remove("is-open");
+    sidebarOverlay?.classList.remove("is-visible");
+    sidebarToggleBtn?.setAttribute("aria-expanded", "false");
+  };
+
+  sidebarToggleBtn?.addEventListener("click", () => {
+    const isOpen = dashboardSidebar?.classList.contains("is-open");
+    isOpen ? closeMobileSidebar() : openMobileSidebar();
+  });
+
+  sidebarOverlay?.addEventListener("click", closeMobileSidebar);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMobileSidebar();
+  });
+
   // --- Navigation ---
   document.querySelectorAll(".nav-item").forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
       Actions.showSection(item.dataset.section);
+      // On mobile the drawer should close after picking a section —
+      // otherwise it stays open covering the content you just navigated to.
+      closeMobileSidebar();
     });
   });
 

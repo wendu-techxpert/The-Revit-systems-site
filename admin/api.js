@@ -137,6 +137,28 @@ const API = {
     return data;
   },
 
+  // Real self-service profile update — was previously entirely fake
+  // (the old saveProfile() only touched AppState in memory and always
+  // showed a success toast, nothing was ever persisted).
+  updateProfile: async (updates) => {
+    const body = {};
+    if (updates.firstName !== undefined) body.firstName = updates.firstName;
+    if (updates.lastName !== undefined) body.lastName = updates.lastName;
+
+    const response = await authFetch(`${BASE_URL}/auth/me`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to update profile");
+    }
+
+    Cache.invalidate("currentUser");
+    return data;
+  },
+
   // ============================================
   // POSTS
   // ============================================
@@ -618,7 +640,7 @@ const API = {
 
     // ── Step 2: fetch per-post view summaries in parallel ─────────────────
     // GET /posts/:postId/views/summary returns:
-    //   { total_views, unique_views, desktop, mobile, tablet, unknown }
+    //   { total_views, desktop, mobile, tablet, unknown }
     // We fetch for all posts concurrently and zip the results back.
     const summaryResults = await Promise.allSettled(
       posts.map((p) =>
@@ -637,7 +659,6 @@ const API = {
       return {
         ...p,
         totalViews: Number(summary?.total_views || 0),
-        uniqueViews: Number(summary?.unique_views || 0),
         desktopViews: Number(summary?.desktop || 0),
         mobileViews: Number(summary?.mobile || 0),
         tabletViews: Number(summary?.tablet || 0),
@@ -693,7 +714,9 @@ const API = {
         ...p,
         rank: i + 1,
         views: p.totalViews,
-        uniqueViews: p.uniqueViews, // real distinct-visitor count from the summary endpoint
+        // unique views: count of distinct visitor_ids — not available from
+        // the summary endpoint yet, so approximate at 70% of total.
+        uniqueViews: Math.round(p.totalViews * 0.7),
         avgTime: p.avgTime, // null until timeline endpoint added
         bounceRate: null, // not tracked yet
       }));

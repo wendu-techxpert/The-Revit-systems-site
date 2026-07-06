@@ -643,20 +643,42 @@ const Actions = {
   // ==================
   // PROFILE
   // ==================
+  // Was entirely fake — only updated AppState in memory, never called
+  // the backend, and always showed "Profile updated successfully" even
+  // though nothing was saved. Now calls the real PATCH /auth/me endpoint.
   saveProfile: async (e) => {
     e.preventDefault();
-    const name = document.getElementById("profile-display-name").value;
-    const email = document.getElementById("profile-email-edit").value;
+    const fullName = document
+      .getElementById("profile-display-name")
+      .value.trim();
 
-    AppState.currentUser.name = name;
-    AppState.currentUser.email = email;
+    if (!fullName) {
+      Utils.showToast("Please enter your name", "warning");
+      return;
+    }
 
-    document.getElementById("profile-name").textContent = name;
-    document.getElementById("profile-email").textContent = email;
-    document.getElementById("dropdown-user-name").textContent = name;
-    document.getElementById("dropdown-user-email").textContent = email;
+    // The form only has a single "Display Name" field, but the backend
+    // stores first/last name separately — split on the first space.
+    const [firstName, ...rest] = fullName.split(/\s+/);
+    const lastName = rest.join(" ") || firstName;
 
-    Utils.showToast("Profile updated successfully", "success");
+    Utils.showLoader();
+    try {
+      const updated = await API.updateProfile({ firstName, lastName });
+
+      const displayName = `${updated.first_name} ${updated.last_name}`;
+      AppState.currentUser.name = displayName;
+
+      document.getElementById("profile-name").textContent = displayName;
+      document.getElementById("dropdown-user-name").textContent = displayName;
+      document.getElementById("profile-display-name").value = displayName;
+
+      Utils.showToast("Profile updated successfully", "success");
+    } catch (error) {
+      Utils.showToast(error.message || "Failed to update profile", "error");
+    } finally {
+      Utils.hideLoader();
+    }
   },
 
   // Opens the styled modal instead of the native browser confirm()

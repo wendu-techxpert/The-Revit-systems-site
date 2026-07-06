@@ -11,6 +11,7 @@ import {
   findUserById,
   updateLastLogin,
   updateUserStatus,
+  updateUserData,
 } from "@/models/userModel.js";
 import { recordLogin } from "@/models/loginHistoryModel.js";
 import { sendEmail } from "@/utils/sendEmail.js";
@@ -365,6 +366,93 @@ export const getCurrentUser = async (req: Request, res: Response) => {
     res.json(user);
   } catch (error) {
     console.error("getCurrentUser error:", error);
+    res
+      .status(503)
+      .json({ message: "Service temporarily unavailable. Please try again." });
+  }
+};
+
+// ============================================
+// 7. UPDATE CURRENT USER  (self profile — every logged-in role)
+//
+// This was previously entirely fake on the frontend — the profile form
+// only updated in-memory AppState and always showed "success", nothing
+// was ever persisted or sent to the server. This is the real endpoint.
+//
+// Email is intentionally NOT editable here, consistent with the admin
+// edit-user modal elsewhere in the app ("Email changes must go through
+// a reset flow") — changing your own login email with no verification
+// step would be an account-takeover risk, so only first/last name are
+// updatable through this route.
+// ============================================
+const notifyAdminsOfProfileChange = async (
+  userId: string,
+  fullName: string
+): Promise<void> => {
+  try {
+    const admins = await pool.query(
+      `SELECT id FROM users WHERE role = 'admin' AND status = 'active' AND id != $1`,
+      [userId]
+    );
+    await Promise.all(
+      admins.rows.map((a) =>
+        createNotification({
+          userId: a.id,
+          type: "user",
+          message: `${fullName} updated their profile information.`,
+        })
+      )
+    );
+  } catch (err) {
+    console.error("[updateCurrentUser] Failed to notify admins:", err);
+  }
+};
+
+export const updateCurrentUser = async (req: Request, res: Response) => {
+  const { firstName, lastName } = req.body;
+
+  if (
+    (firstName === undefined || firstName === null) &&
+    (lastName === undefined || lastName === null)
+  ) {
+    return res.status(400).json({ message: "Nothing to update" });
+  }
+
+  const updates: { firstName?: string; lastName?: string } = {};
+
+  if (typeof firstName === "string") {
+    const clean = sanitize(firstName).trim();
+    if (clean.length === 0) {
+      return res.status(400).json({ message: "First name cannot be empty" });
+    }
+    updates.firstName = clean;
+  }
+
+  if (typeof lastName === "string") {
+    const clean = sanitize(lastName).trim();
+    if (clean.length === 0) {
+      return res.status(400).json({ message: "Last name cannot be empty" });
+    }
+    updates.lastName = clean;
+  }
+
+  try {
+    const updated = await updateUserData(req.user!.id, updates);
+
+    if (!updated) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Fire-and-forget — every role (admin, editor, author) triggers this,
+    // so admins always know when any account's info changes.
+    notifyAdminsOfProfileChange(
+      updated.id,
+      `${updated.first_name} ${updated.last_name}`
+    );
+
+    res.json(updated);
+  } catch (error) {
+    console.error("updateCurrentUser error:", error);
     res
       .status(503)
       .json({ message: "Service temporarily unavailable. Please try again." });
