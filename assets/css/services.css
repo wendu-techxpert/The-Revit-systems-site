@@ -1,3 +1,4 @@
+@import url("../assets/css/root-variables.css");
 /* ============================================================
    REVIT SYSTEMS — SERVICES PAGE REBUILD (services.css)
    ============================================================ */
@@ -21,11 +22,8 @@
 .rv-ser-bg-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(var(--white-a03) 1px, transparent 1px),
+    linear-gradient(90deg, var(--white-a03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .rv-ser-bg-glow {
@@ -37,22 +35,14 @@
 .rv-ser-bg-glow--1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(209, 118, 9, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
   top: -200px;
   right: -100px;
 }
 .rv-ser-bg-glow--2 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(209, 118, 9, 0.07) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--gold-a07) 0%, transparent 70%);
   bottom: 0;
   left: 10%;
 }
@@ -67,11 +57,11 @@
 }
 
 .rv-breadcrumb--light {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   margin-bottom: 36px;
 }
 .rv-breadcrumb--light a {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   text-decoration: none;
 }
 .rv-breadcrumb--light a:hover {
@@ -104,7 +94,7 @@
 }
 .rv-ser-hero__sub {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--white-a62);
   line-height: 1.82;
   max-width: 620px;
   margin: 0;
@@ -115,7 +105,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--white-a07);
 }
 .rv-ser-tile {
   display: flex;
@@ -124,8 +114,8 @@
   gap: 16px;
   padding: 36px 28px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--white-a7);
+  border-right: 1px solid var(--white-a07);
   transition: background 0.3s var(--ease), color 0.3s;
   position: relative;
 }
@@ -133,7 +123,7 @@
   border-right: none;
 }
 .rv-ser-tile:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--white-a04);
   color: var(--white);
 }
 .rv-ser-tile--gold {
@@ -141,7 +131,7 @@
   color: var(--white);
 }
 .rv-ser-tile--gold:hover {
-  background: #b86808;
+  background: var(--gold-dark);
   color: var(--white);
 }
 
@@ -181,8 +171,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .rv-ser-tile {
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-right: 1px solid var(--white-a07);
+    border-bottom: 1px solid var(--white-a07);
   }
 }
 @media (max-width: 560px) {
@@ -257,7 +247,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--white-a85);
   padding: 14px;
   box-shadow: var(--shadow-dark);
 }
@@ -340,7 +330,7 @@
 }
 
 .rv-btn {
-  width: 200px;
+  width: 270px;
   margin-top: 16px;
 }
 
@@ -420,12 +410,12 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
 }
 .rv-ser-commit__divider {
   width: 1px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-a1);
 }
 .rv-ser-commit__cta {
   padding-left: 20px;
@@ -440,7 +430,7 @@
 }
 .rv-ser-commit__sub {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   line-height: 1.7;
   margin: 0 0 24px;
   max-width: 460px;
@@ -457,7 +447,7 @@
   .rv-ser-commit__cta {
     grid-column: 1 / -1;
     padding-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--white-a08);
     padding-top: 32px;
   }
 }

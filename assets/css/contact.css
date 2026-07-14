@@ -1,3 +1,4 @@
+@import url("../assets/css/root-variables.css");
 /* ============================================================
    REVIT SYSTEMS — CONTACT PAGE (contact.css)
    ============================================================ */
@@ -9,13 +10,13 @@
   right: -420px;
   z-index: 999;
   background: var(--white);
-  color: #1a7a4a;
+  color: var(--status-success-color);
   font-size: 0.88rem;
   font-weight: 600;
   padding: 16px 24px;
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border-left: 4px solid #4caf6d;
+  box-shadow: 0 10px 40px var(--black-a15);
+  border-left: 4px solid var(--term-dot-green);
   max-width: 380px;
   transition: right 0.4s var(--ease);
 }
@@ -23,8 +24,8 @@
   right: 24px;
 }
 .rv-ct-status.fail {
-  color: #b33232;
-  border-left-color: #e0524a;
+  color: var(--status-fail-color);
+  border-left-color: var(--term-dot-red);
 }
 
 /* ================================================================
@@ -43,11 +44,7 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(209, 118, 9, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--gold-a1) 0%, transparent 70%);
   top: -200px;
   right: -100px;
   pointer-events: none;
@@ -62,11 +59,11 @@
 }
 .rv-ct-hero .rv-breadcrumb {
   justify-content: center;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   margin-bottom: 32px;
 }
 .rv-ct-hero .rv-breadcrumb a {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   text-decoration: none;
 }
 .rv-ct-hero .rv-breadcrumb a:hover {
@@ -100,7 +97,7 @@
 }
 .rv-ct-hero__sub {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--white-a62);
   line-height: 1.8;
   max-width: 580px;
   margin: 0 auto;
@@ -156,12 +153,12 @@
   padding: 20px 22px;
   background: var(--white);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--black-a06);
   transition: border-color 0.25s, box-shadow 0.25s;
 }
 .rv-ct-detail:hover {
-  border-color: rgba(209, 118, 9, 0.3);
-  box-shadow: 0 4px 20px rgba(209, 118, 9, 0.08);
+  border-color: var(--gold-a3);
+  box-shadow: 0 4px 20px var(--gold-a08);
 }
 .rv-ct-detail__icon {
   flex-shrink: 0;
@@ -211,7 +208,7 @@ a.rv-ct-detail__value:hover {
   height: 44px;
   border-radius: 50%;
   background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--black-a08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,8 +223,8 @@ a.rv-ct-detail__value:hover {
   border-color: var(--gold);
 }
 .rv-ct-social__link--wa:hover {
-  background: #25d366;
-  border-color: #25d366;
+  background: var(--whatsapp-green);
+  border-color: var(--whatsapp-green);
 }
 
 /* ── Form card ── */
@@ -235,7 +232,7 @@ a.rv-ct-detail__value:hover {
   background: var(--white);
   border-radius: var(--radius-xl);
   padding: 48px 44px;
-  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 48px var(--black-a08);
 }
 .rv-ct-form-card__heading {
   font-family: var(--font-serif);
@@ -270,7 +267,7 @@ a.rv-ct-detail__value:hover {
 .rv-ct-pick-btn {
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border: 1.5px solid var(--black-a1);
   background: var(--off-white);
   color: var(--mid);
   font-family: var(--font-sans);
@@ -320,7 +317,7 @@ a.rv-ct-detail__value:hover {
 .rv-ct-field input,
 .rv-ct-field textarea {
   padding: 14px 16px;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border: 1.5px solid var(--black-a1);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: 0.95rem;
@@ -334,12 +331,12 @@ a.rv-ct-detail__value:hover {
 .rv-ct-field textarea:focus {
   border-color: var(--gold);
   background: var(--white);
-  box-shadow: 0 0 0 3px rgba(209, 118, 9, 0.1);
+  box-shadow: 0 0 0 3px var(--gold-a1);
 }
 .rv-ct-error {
   font-size: 0.76rem;
   font-weight: 600;
-  color: #e0524a;
+  color: var(--term-dot-red);
   min-height: 16px;
 }
 
@@ -360,13 +357,13 @@ a.rv-ct-detail__value:hover {
   font-weight: 700;
   cursor: pointer;
   transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 8px 32px rgba(209, 118, 9, 0.3);
+  box-shadow: 0 8px 32px var(--gold-a3);
   margin-top: 8px;
 }
 #submitBtn:hover:not(:disabled) {
-  background: #b86808;
+  background: var(--gold-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(209, 118, 9, 0.4);
+  box-shadow: 0 12px 40px var(--gold-a4);
 }
 #submitBtn:disabled {
   opacity: 0.65;
@@ -376,8 +373,8 @@ a.rv-ct-detail__value:hover {
 .spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
+  border: 2px solid var(--white-a3);
+  border-top-color: var(--white);
   border-radius: 50%;
   display: inline-block;
   animation: spin 0.7s linear infinite;

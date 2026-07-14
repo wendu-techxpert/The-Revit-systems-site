@@ -1,21 +1,11 @@
+@import url("../assets/css/root-variables.css");
 /* =============================================
          BLOG PAGE — REVIT SYSTEMS
          Brand palette from style.css
          ============================================= */
 :root {
-  --rv-orange: #d17609;
-  --rv-orange-dark: #b86808;
-  --rv-orange-light: #fef3e2;
-  --rv-orange-mid: rgba(209, 118, 9, 0.12);
-  --rv-dark: #242527;
-  --rv-mid: #404051;
-  --rv-gray: #f7f6f3;
-  --rv-gray-2: #e8e6e1;
-  --rv-white: #ffffff;
   --rv-radius: 14px;
   --rv-radius-lg: 22px;
-  --rv-shadow: 0 4px 24px rgba(36, 37, 39, 0.08);
-  --rv-shadow-hover: 0 12px 40px rgba(36, 37, 39, 0.16);
   --rv-transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -26,9 +16,8 @@
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
-  background: var(--rv-white);
-  color: var(--rv-dark);
+  background: var(--white);
+  color: var(--dark-3);
 }
 
 /* ---- HERO SECTION (untouched per brief) ---- */
@@ -37,14 +26,14 @@ body {
 /* ---- BLOG SECTION WRAPPER ---- */
 .blog-section {
   width: 100%;
-  background: var(--rv-gray);
+  background: var(--off-white);
   padding-bottom: 80px;
 }
 
 /* ---- BLOG HEADER BAND ---- */
 .blog-header-band {
-  background: var(--rv-white);
-  border-bottom: 1px solid var(--rv-gray-2);
+  background: var(--white);
+  border-bottom: 1px solid var(--border-gray);
   padding: 80px 0 40px;
 }
 
@@ -64,17 +53,17 @@ body {
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 500;
-  color: #888;
+  color: var(--gray-300);
 }
 .rv-breadcrumb a {
-  color: #888;
+  color: var(--gray-300);
   text-decoration: none;
 }
 .rv-breadcrumb a:hover {
-  color: var(--rv-orange);
+  color: var(--gold);
 }
 .rv-breadcrumb span {
-  color: var(--rv-orange);
+  color: var(--gold);
 }
 .rv-breadcrumb i {
   font-size: 0.65rem;
@@ -92,7 +81,7 @@ body {
 .blog-title-group h1 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  color: var(--rv-dark);
+  color: var(--dark-3);
   line-height: 1.15;
   letter-spacing: -0.02em;
   max-width: 560px;
@@ -100,13 +89,13 @@ body {
 
 .blog-title-group h1 em {
   font-style: normal;
-  color: var(--rv-orange);
+  color: var(--gold);
 }
 
 .blog-title-group p {
   margin-top: 10px;
   font-size: 1rem;
-  color: var(--rv-mid);
+  color: var(--mid);
   max-width: 480px;
   line-height: 1.6;
   font-weight: 400;
@@ -123,24 +112,24 @@ body {
   width: 100%;
   height: 48px;
   padding: 0 48px 0 18px;
-  border: 2px solid var(--rv-gray-2);
+  border: 2px solid var(--border-gray);
   border-radius: 999px;
   font-family: "DM Sans", sans-serif;
   font-size: 0.92rem;
-  color: var(--rv-dark);
-  background: var(--rv-gray);
+  color: var(--dark-3);
+  background: var(--off-white);
   transition: var(--rv-transition);
   outline: none;
 }
 
 .blog-search-wrap input:focus {
-  border-color: var(--rv-orange);
-  background: var(--rv-white);
-  box-shadow: 0 0 0 4px var(--rv-orange-mid);
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 4px var(--gold-dim);
 }
 
 .blog-search-wrap input::placeholder {
-  color: #aaa;
+  color: var(--gray-400);
 }
 
 .blog-search-wrap button {
@@ -152,8 +141,8 @@ body {
   height: 36px;
   border-radius: 50%;
   border: none;
-  background: var(--rv-orange);
-  color: var(--rv-white);
+  background: var(--gold);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,7 +152,7 @@ body {
 }
 
 .blog-search-wrap button:hover {
-  background: var(--rv-orange-dark);
+  background: var(--gold-dark);
   transform: translateY(-50%) scale(1.06);
 }
 
@@ -171,12 +160,12 @@ body {
 .search-results-label {
   display: none;
   font-size: 0.85rem;
-  color: var(--rv-mid);
+  color: var(--mid);
   margin-top: 8px;
   padding-left: 4px;
 }
 .search-results-label strong {
-  color: var(--rv-orange);
+  color: var(--gold);
 }
 .search-results-label.visible {
   display: block;
@@ -195,7 +184,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #aaa;
+  color: var(--gray-400);
   margin-right: 4px;
   white-space: nowrap;
 }
@@ -204,26 +193,26 @@ body {
   height: 36px;
   padding: 0 18px;
   border-radius: 999px;
-  border: 1.5px solid var(--rv-gray-2);
-  background: var(--rv-white);
+  border: 1.5px solid var(--border-gray);
+  background: var(--white);
   font-family: "DM Sans", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--rv-mid);
+  color: var(--mid);
   cursor: pointer;
   transition: var(--rv-transition);
   white-space: nowrap;
 }
 
 .blog-filter-btn:hover {
-  border-color: var(--rv-orange);
-  color: var(--rv-orange);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 .blog-filter-btn.active {
-  background: var(--rv-orange);
-  border-color: var(--rv-orange);
-  color: var(--rv-white);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--white);
   font-weight: 600;
 }
 
@@ -236,15 +225,14 @@ body {
 }
 
 /* ---- FEATURED HERO CARD ---- */
-/* The first post gets the big editorial treatment */
 .blog-featured-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  background: var(--rv-white);
+  background: var(--white);
   border-radius: var(--rv-radius-lg);
   overflow: hidden;
-  box-shadow: var(--rv-shadow);
+  box-shadow: 0 4px 24px var(--shadow-tint);
   margin-bottom: 40px;
   cursor: pointer;
   transition: var(--rv-transition);
@@ -252,7 +240,7 @@ body {
 }
 
 .blog-featured-card:hover {
-  box-shadow: var(--rv-shadow-hover);
+  box-shadow: 0 12px 40px var(--shadow-tint-strong);
   transform: translateY(-3px);
 }
 
@@ -280,8 +268,8 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--rv-orange);
-  background: var(--rv-orange-light);
+  color: var(--gold);
+  background: var(--gold-tag-bg);
   padding: 5px 12px;
   border-radius: 999px;
   width: fit-content;
@@ -290,14 +278,14 @@ body {
 .blog-featured-title {
   font-size: clamp(1.3rem, 2.5vw, 1.9rem);
   font-weight: 800;
-  color: var(--rv-dark);
+  color: var(--dark-3);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .blog-featured-excerpt {
   font-size: 0.95rem;
-  color: var(--rv-mid);
+  color: var(--mid);
   line-height: 1.65;
   font-weight: 400;
   display: -webkit-box;
@@ -319,15 +307,15 @@ body {
   gap: 8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--rv-dark);
+  color: var(--dark-3);
 }
 
 .blog-featured-author-dot {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--rv-orange);
-  color: var(--rv-white);
+  background: var(--gold);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +331,7 @@ body {
   margin-top: 8px;
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--rv-orange);
+  color: var(--gold);
   text-decoration: none;
   transition: var(--rv-transition);
 }
@@ -371,7 +359,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #bbb;
+  color: var(--gray-350);
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -382,7 +370,7 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--rv-gray-2);
+  background: var(--border-gray);
 }
 
 /* ---- POST GRID ---- */
@@ -394,10 +382,10 @@ body {
 
 /* ---- INDIVIDUAL POST CARD ---- */
 .rv-post-card {
-  background: var(--rv-white);
+  background: var(--white);
   border-radius: var(--rv-radius);
   overflow: hidden;
-  box-shadow: var(--rv-shadow);
+  box-shadow: 0 4px 24px var(--shadow-tint);
   cursor: pointer;
   transition: var(--rv-transition);
   display: flex;
@@ -406,9 +394,9 @@ body {
 }
 
 .rv-post-card:hover {
-  box-shadow: var(--rv-shadow-hover);
+  box-shadow: 0 12px 40px var(--shadow-tint-strong);
   transform: translateY(-4px);
-  border-color: var(--rv-orange-light);
+  border-color: var(--gold-tag-bg);
 }
 
 .rv-post-card-img-wrap {
@@ -438,11 +426,11 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--rv-orange);
-  background: var(--rv-white);
+  color: var(--gold);
+  background: var(--white);
   padding: 4px 10px;
   border-radius: 999px;
-  border: 1px solid var(--rv-orange-light);
+  border: 1px solid var(--gold-tag-bg);
 }
 
 .rv-post-card-body {
@@ -456,7 +444,7 @@ body {
 .rv-post-card-title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--rv-dark);
+  color: var(--dark-3);
   line-height: 1.35;
   letter-spacing: -0.01em;
   display: -webkit-box;
@@ -467,7 +455,7 @@ body {
 
 .rv-post-card-excerpt {
   font-size: 0.85rem;
-  color: var(--rv-mid);
+  color: var(--mid);
   line-height: 1.6;
   flex: 1;
   display: -webkit-box;
@@ -481,7 +469,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding-top: 12px;
-  border-top: 1px solid var(--rv-gray-2);
+  border-top: 1px solid var(--border-gray);
   margin-top: auto;
 }
 
@@ -491,15 +479,15 @@ body {
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--rv-mid);
+  color: var(--mid);
 }
 
 .rv-post-author-dot {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--rv-orange-light);
-  color: var(--rv-orange);
+  background: var(--gold-tag-bg);
+  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -512,8 +500,8 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--rv-orange-light);
-  color: var(--rv-orange);
+  background: var(--gold-tag-bg);
+  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,8 +511,8 @@ body {
 }
 
 .rv-post-card:hover .rv-post-card-arrow {
-  background: var(--rv-orange);
-  color: var(--rv-white);
+  background: var(--gold);
+  color: var(--white);
 }
 
 .rv-post-card-date {
@@ -540,12 +528,12 @@ body {
   grid-column: 1 / -1;
   text-align: center;
   padding: 80px 20px;
-  color: var(--rv-mid);
+  color: var(--mid);
 }
 
 .blog-empty-state i {
   font-size: 3rem;
-  color: var(--rv-gray-2);
+  color: var(--border-gray);
   margin-bottom: 16px;
   display: block;
 }
@@ -553,13 +541,13 @@ body {
 .blog-empty-state h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--rv-dark);
+  color: var(--dark-3);
   margin-bottom: 8px;
 }
 
 .blog-empty-state p {
   font-size: 0.9rem;
-  color: #aaa;
+  color: var(--gray-400);
 }
 
 /* ---- LOAD MORE BUTTON ---- */
@@ -575,21 +563,21 @@ body {
   gap: 10px;
   height: 50px;
   padding: 0 36px;
-  background: var(--rv-white);
-  border: 2px solid var(--rv-gray-2);
+  background: var(--white);
+  border: 2px solid var(--border-gray);
   border-radius: 999px;
   font-family: "DM Sans", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--rv-dark);
+  color: var(--dark-3);
   cursor: pointer;
   transition: var(--rv-transition);
 }
 
 .blog-load-more-btn:hover {
-  border-color: var(--rv-orange);
-  color: var(--rv-orange);
-  background: var(--rv-orange-light);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-tag-bg);
 }
 
 .blog-load-more-btn.loading {
@@ -617,17 +605,22 @@ body {
 }
 
 .rv-skeleton {
-  background: linear-gradient(90deg, #f0eeeb 25%, #e8e5e0 50%, #f0eeeb 75%);
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 25%,
+    var(--skeleton-shine) 50%,
+    var(--skeleton-base) 75%
+  );
   background-size: 600px 100%;
   animation: rv-shimmer 1.4s infinite;
   border-radius: 8px;
 }
 
 .rv-skeleton-card {
-  background: var(--rv-white);
+  background: var(--white);
   border-radius: var(--rv-radius);
   overflow: hidden;
-  box-shadow: var(--rv-shadow);
+  box-shadow: 0 4px 24px var(--shadow-tint);
   display: flex;
   flex-direction: column;
 }
@@ -663,6 +656,41 @@ body {
 .rv-skeleton-line-short {
   height: 13px;
   width: 75%;
+}
+
+/* ================================================================
+   FOOTER ADDITIONS (NAP + extra col)
+================================================================ */
+.rv-footer-nap {
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: var(--white-a55);
+  font-style: normal;
+  margin-top: 12px;
+}
+.rv-footer-nap a {
+  color: var(--white-a55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.rv-footer-nap a:hover {
+  color: var(--gold-light);
+}
+
+.menu-footer-cta {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  margin-top: 12px;
+  transition: background 0.2s;
+}
+.menu-footer-cta:hover {
+  background: var(--gold-dark);
 }
 
 /* ---- RESPONSIVE ---- */

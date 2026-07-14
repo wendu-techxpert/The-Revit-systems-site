@@ -1,3 +1,4 @@
+@import url("../assets/css/root-variables.css");
 /* ============================================================
    REVIT SYSTEMS — BRANDING PAGE STYLES (branding.css)
    Loads after style.css + home.css — page-specific rules only
@@ -29,7 +30,7 @@
 .rv-br-canvas__ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(209, 118, 9, 0.18);
+  border: 1px solid var(--gold-a18);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,13 +45,13 @@
   width: 400px;
   height: 400px;
   animation-delay: 0.8s;
-  border-color: rgba(209, 118, 9, 0.28);
+  border-color: var(--gold-a28);
 }
 .rv-br-canvas__ring--sm {
   width: 240px;
   height: 240px;
   animation-delay: 1.6s;
-  border-color: rgba(209, 118, 9, 0.4);
+  border-color: var(--gold-a4);
 }
 
 @keyframes br-pulse {
@@ -79,8 +80,8 @@
   height: 40px;
   border-radius: 50%;
   background: var(--c);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--white-a1);
+  box-shadow: 0 8px 24px var(--black-a4);
   animation: swatch-float 4s ease-in-out infinite;
 }
 .rv-br-swatch:nth-child(2) {
@@ -111,7 +112,7 @@
   font-family: var(--font-serif);
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.05);
+  color: var(--white-a05);
   user-select: none;
   animation: word-drift 8s ease-in-out infinite;
 }
@@ -164,11 +165,11 @@
 }
 
 .rv-br-hero .rv-breadcrumb {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   margin-bottom: 36px;
 }
 .rv-br-hero .rv-breadcrumb a {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   text-decoration: none;
 }
 .rv-br-hero .rv-breadcrumb a:hover {
@@ -198,7 +199,7 @@
 
 .rv-br-hero__sub {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--white-a65);
   line-height: 1.85;
   max-width: 520px;
   margin: 0 0 40px;
@@ -370,13 +371,13 @@
   padding: 40px 32px;
   display: flex;
   gap: 24px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 4px 24px var(--black-a055);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   align-items: flex-start;
 }
 .rv-br-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px var(--black-a1);
 }
 .rv-br-card--gold {
   background: var(--gold);
@@ -401,7 +402,7 @@
 }
 .rv-br-card--gold .rv-br-card__icon,
 .rv-br-card--dark .rv-br-card__icon {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--white-a9);
 }
 .rv-br-card__icon svg {
   width: 100%;
@@ -429,7 +430,7 @@
 }
 .rv-br-card--gold .rv-br-card__body,
 .rv-br-card--dark .rv-br-card__body {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--white-a78);
 }
 
 @media (max-width: 1080px) {
@@ -505,11 +506,7 @@
   left: calc(52px + 28px);
   right: -28px;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(209, 118, 9, 0.6),
-    rgba(209, 118, 9, 0.1)
-  );
+  background: linear-gradient(90deg, var(--gold-a6), var(--gold-a1));
 }
 .rv-br-step__connector--last {
   display: none;
@@ -524,7 +521,7 @@
 }
 .rv-br-step__text {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   line-height: 1.75;
   margin: 0;
 }
@@ -632,7 +629,7 @@
 }
 .rv-br-cta__sub {
   font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-a6);
   line-height: 1.8;
   max-width: 480px;
   margin: 0 0 36px;
@@ -649,7 +646,7 @@
 .rv-br-cta__ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(209, 118, 9, 0.2);
+  border: 1px solid var(--gold-a2);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -661,12 +658,12 @@
 .rv-br-cta__ring--2 {
   width: 200px;
   height: 200px;
-  border-color: rgba(209, 118, 9, 0.35);
+  border-color: var(--gold-a35);
 }
 .rv-br-cta__ring--3 {
   width: 120px;
   height: 120px;
-  border-color: rgba(209, 118, 9, 0.55);
+  border-color: var(--gold-a55);
 }
 
 .rv-br-cta__letters {

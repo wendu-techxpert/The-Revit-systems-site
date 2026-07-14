@@ -106,14 +106,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/root-variables.css" />
     <link rel="stylesheet" href="../assets/css/contact.css" />
+    <link rel="stylesheet" href="../component/header-and-footer.css" />
     <link
       rel="icon"
       type="image/png"
       href="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/favicon_qdd9zl.png"
     />
-    <script defer src="../assets/js/script.js"></script>
   </head>
 
   <body>
@@ -127,81 +127,8 @@
 
     <div class="revit-container">
       <!-- ===================== HEADER (unchanged) ===================== -->
-      <header id="header">
-        <nav>
-          <div class="nav-content">
-            <div class="logo-and-navlinks">
-              <div class="logo">
-                <img
-                  src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
-                  alt="Revit Systems — Digital Agency Abuja Nigeria"
-                />
-              </div>
-              <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./resources-page.html">Resources</a></li>
-                <li><a href="./builders-digest.html">Builders Digest</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-              </ul>
-            </div>
-            <button id="getStartedBtn" class="nav-cta-btn">Get Started</button>
-            <button
-              class="menu-toggle"
-              id="menuToggleBtn"
-              aria-controls="navMenu"
-              aria-expanded="false"
-              aria-label="Open menu"
-            >
-              <span class="icon-line" aria-hidden="true"></span>
-            </button>
-          </div>
-        </nav>
-      </header>
 
-      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
-      <aside
-        class="menu-panel"
-        id="navMenu"
-        role="navigation"
-        aria-label="Main menu"
-      >
-        <div class="menu-panel-header">
-          <h2 class="menu-panel-title">Revit Systems</h2>
-          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
-        <nav class="menu-nav">
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="./services.html">Services</a></li>
-            <li><a href="./resources-page.html">Resources</a></li>
-            <li><a href="./builders-digest.html">Builders Digest</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
-        <div class="menu-footer">
-          <a href="./contact.html" class="menu-footer-cta"
-            >Book a Free Consultation</a
-          >
-        </div>
-      </aside>
+      <div id="header-container"></div>
 
       <div class="rv-page">
         <!-- ===================== HERO ===================== -->
@@ -637,117 +564,16 @@
         </section>
 
         <!-- ===================== FOOTER ===================== -->
-        <footer
-          class="rv-footprint"
-          itemscope
-          itemtype="https://schema.org/Organization"
-        >
-          <div class="rv-foot-main">
-            <div class="rv-brand-block">
-              <div class="rv-logo">
-                <div class="rv-logo-mark">
-                  <img
-                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973011/without_bg_white_font_db7hbk.png"
-                    alt="Revit Systems — Digital Agency Abuja Nigeria"
-                    itemprop="logo"
-                  />
-                </div>
-                <p class="rv-tagline" itemprop="description">
-                  Empowering Africa's businesses, redefining the global stage.
-                </p>
-                <address
-                  class="rv-footer-nap"
-                  itemprop="address"
-                  itemscope
-                  itemtype="https://schema.org/PostalAddress"
-                >
-                  <span itemprop="addressLocality">Abuja</span>,
-                  <span itemprop="addressRegion">FCT</span>,
-                  <span itemprop="addressCountry">Nigeria</span><br />
-                  <a href="tel:+2348061704042" itemprop="telephone"
-                    >+234 806 170 4042</a
-                  ><br />
-                  <a href="mailto:revitsystems@gmail.com" itemprop="email"
-                    >revitsystems@gmail.com</a
-                  >
-                </address>
-              </div>
-              <div class="rv-socials">
-                <a
-                  href="https://www.facebook.com/profile.php?id=61568188626000"
-                  aria-label="Revit Systems on Facebook"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                  ><img
-                    src="../assets/SVG/facebook-176-svgrepo-com.svg"
-                    alt="Facebook"
-                /></a>
-                <a
-                  href="https://x.com/revitsystems"
-                  aria-label="Revit Systems on Twitter"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                  ><img
-                    src="../assets/SVG/twitter-3-svgrepo-com.svg"
-                    alt="Twitter"
-                /></a>
-                <a
-                  href="https://www.instagram.com/revitsystems/"
-                  aria-label="Revit Systems on Instagram"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                  ><img
-                    src="../assets/SVG/instagram-167-svgrepo-com.svg"
-                    alt="Instagram"
-                /></a>
-                <a
-                  href="https://www.linkedin.com/company/revit-systems-limited/"
-                  aria-label="Revit Systems on LinkedIn"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                  ><img
-                    src="../assets/SVG/linkedin-161-svgrepo-com.svg"
-                    alt="LinkedIn"
-                /></a>
-              </div>
-            </div>
-            <div class="rv-link-columns">
-              <div class="rv-col">
-                <div class="rv-col-head">Services</div>
-                <a href="./branding.html">Branding</a>
-                <a href="./software-dev.html">Software Development</a>
-                <a href="./digital-marketing.html">Digital Marketing</a>
-                <a href="./business-consulting.html">Business Consulting</a>
-              </div>
-              <div class="rv-col">
-                <div class="rv-col-head">Company</div>
-                <a href="../index.html">Home</a>
-                <a href="./about-us.html">About Us</a>
-                <a href="./services.html">All Services</a>
-                <a href="./builders-digest.html">Builders Digest</a>
-              </div>
-              <div class="rv-col">
-                <div class="rv-col-head">Support</div>
-                <a href="./faqs.html">FAQs</a>
-                <a href="./contact.html">Contact Us</a>
-                <a href="./resources-page.html">Resources</a>
-              </div>
-            </div>
-          </div>
-          <div class="rv-foot-note">
-            © 2025 Revit Systems Limited. All Rights Reserved. | Digital Agency
-            in Abuja, Nigeria
-          </div>
-        </footer>
+        <div id="footer"></div>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../assets/js/config.js"></script>
+    <script defer src="/assets/js/footer.js"></script>
+    <script defer src="/assets/js/headerMenu.js"></script>
+    <script defer src="/assets/js/header.js"></script>
+    <script defer src="../assets/js/config.js"></script>
+    <script defer src="../assets/js/script.js"></script>
     <script>
       /* ── Service interest picker ── */
       const pickBtns = document.querySelectorAll(".rv-ct-pick-btn");

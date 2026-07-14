@@ -1,39 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- ═══════════════════════════════════════════════
+     BLOG PAGE — Full SEO & GEO Head
+     File: /pages/blog.html
+═══════════════════════════════════════════════ -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="keywords"
-      content="Brand transformation framework, Brand review process, How to revamp your brand, Business branding strategy, Brand audit and positioning, Brand clarity and storytelling, Revit Systems branding solutions"
-    />
+
+    <!-- ── Primary SEO Meta ── -->
+    <title>
+      Blog | Digital Marketing, Branding & Tech Insights | Revit Systems
+    </title>
     <meta
       name="description"
-      content="Revit Systems helps businesses revamp their brands with proven strategies for brand transformation, audits, positioning, clarity, and storytelling."
+      content="Expert insights on digital marketing, branding, software development, and business growth in Nigeria. Read the Revit Systems blog — updated regularly for Nigerian business leaders."
     />
-    <title>Builders Digest — Revit Systems</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Revit Systems" />
+
+    <!-- ── Canonical ── -->
+    <link rel="canonical" href="https://www.revitsystems.org/pages/blog.html" />
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Revit Systems" />
+    <meta
+      property="og:title"
+      content="Blog | Digital Marketing, Branding & Tech Insights | Revit Systems Abuja"
+    />
+    <meta
+      property="og:description"
+      content="Expert insights on digital marketing, branding, software development, and business growth in Nigeria. Read the Revit Systems blog."
+    />
+    <meta
+      property="og:url"
+      content="https://www.revitsystems.org/pages/blog.html"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_NG" />
+
+    <!-- ── Twitter / X Card ── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@revitsystems" />
+    <meta
+      name="twitter:title"
+      content="Blog | Digital Marketing, Branding & Tech Insights | Revit Systems"
+    />
+    <meta
+      name="twitter:description"
+      content="Expert insights on digital marketing, branding, software development, and business growth in Nigeria."
+    />
+    <meta
+      name="twitter:image"
+      content="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
+    />
+
+    <!-- ── Blog / CollectionPage Schema (GEO) ── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Revit Systems Blog",
+        "description": "Expert insights on digital marketing, branding, software development, and business consulting for Nigerian businesses and entrepreneurs.",
+        "url": "https://www.revitsystems.org/pages/blog.html",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Revit Systems",
+          "url": "https://www.revitsystems.org",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Abuja",
+            "addressRegion": "FCT",
+            "addressCountry": "NG"
+          }
+        },
+        "inLanguage": "en-NG",
+        "about": [
+          { "@type": "Thing", "name": "Digital Marketing" },
+          { "@type": "Thing", "name": "Branding" },
+          { "@type": "Thing", "name": "Software Development" },
+          { "@type": "Thing", "name": "Business Consulting" },
+          { "@type": "Thing", "name": "Nigerian Business" }
+        ]
+      }
+    </script>
+
+    <!-- ── BreadcrumbList Schema (GEO) ── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.revitsystems.org/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.revitsystems.org/pages/blog.html"
+          }
+        ]
+      }
+    </script>
+
+    <!-- ── Fonts ── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <!-- ── Stylesheets ── -->
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/root-variables.css" />
     <link rel="stylesheet" href="../assets/css/blog.css" />
+    <link rel="stylesheet" href="../component/header-and-footer.css" />
+
+    <!-- ── Favicon ── -->
     <link
       rel="icon"
       type="image/png"
       href="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/favicon_qdd9zl.png"
     />
-    <script defer src="../assets/js/config.js"></script>
-    <script defer src="../assets/js/script.js"></script>
-    <script defer src="../assets/js/blog.js"></script>
-
-    <s>link</s>
   </head>
 
   <body>
@@ -41,81 +148,7 @@
       <!-- ==========================================
            HEADER — untouched from original
            ========================================== -->
-      <header id="header">
-        <nav>
-          <div class="nav-content">
-            <div class="logo-and-navlinks">
-              <div class="logo">
-                <img
-                  src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
-                  alt="Revit Systems"
-                />
-              </div>
-              <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./resources-page.html">Resources</a></li>
-                <li><a href="./builders-digest.html">Builders Digest</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-              </ul>
-            </div>
-            <button id="getStartedBtn" class="nav-cta-btn">Get Started</button>
-            <button
-              class="menu-toggle"
-              id="menuToggleBtn"
-              aria-controls="navMenu"
-              aria-expanded="false"
-              aria-label="Open menu"
-            >
-              <span class="icon-line" aria-hidden="true"></span>
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
-
-      <aside
-        class="menu-panel"
-        id="navMenu"
-        role="navigation"
-        aria-label="Main menu"
-      >
-        <div class="menu-panel-header">
-          <h2 class="menu-panel-title">Revit-Systems</h2>
-          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
-        <nav class="menu-nav">
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="./services.html">Services</a></li>
-            <li><a href="./resources-page.html">Resources</a></li>
-            <li><a href="./builders-digest.html">Builders Digest</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
-        <div class="menu-footer">
-          Signed in as <strong>you@example.com</strong>
-        </div>
-      </aside>
-
+      <div id="header-container"></div>
       <!-- ==========================================
            BLOG SECTION — redesigned
            ========================================== -->
@@ -239,77 +272,14 @@
       <!-- ==========================================
            FOOTER — untouched from original
            ========================================== -->
-      <footer class="rv-footprint">
-        <div class="rv-foot-main">
-          <div class="rv-brand-block">
-            <div class="rv-logo">
-              <div class="rv-logo-mark">
-                <img
-                  src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973011/without_bg_white_font_db7hbk.png"
-                  alt=""
-                />
-              </div>
-              <div class="rv-tagline">
-                Connecting people with impactful opportunities in the Revit
-                ecosystem.
-              </div>
-            </div>
-            <div class="rv-socials">
-              <a
-                href="https://www.facebook.com/profile.php?id=61568188626000&mibextid=ZbWKwL"
-                aria-label="Facebook"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <img src="../assets/SVG/facebook-176-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href="https://x.com/revitsystems"
-                aria-label="Twitter"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <img src="../assets/SVG/twitter-3-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href="https://www.instagram.com/revitsystems/"
-                aria-label="Instagram"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <img src="../assets/SVG/instagram-167-svgrepo-com.svg" alt="" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/revit-systems-limited/?viewAsMember=true"
-                aria-label="LinkedIn"
-                class="rv-social-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <img src="../assets/SVG/linkedin-161-svgrepo-com.svg" alt="" />
-              </a>
-            </div>
-          </div>
-          <div class="rv-link-columns">
-            <div class="rv-col">
-              <div class="rv-col-head">Revit Hub</div>
-              <a href="../index.html">Home</a>
-              <a href="./services.html">Services</a>
-              <a href="#">About</a>
-            </div>
-            <div class="rv-col">
-              <div class="rv-col-head">Support</div>
-              <a href="./faqs.html">FAQs</a>
-              <a href="./contact.html">Help Center</a>
-              <a href="./builders-digest.html">Builders Digest</a>
-            </div>
-          </div>
-        </div>
-        <div class="rv-foot-note">© 2025 Revit Systems.</div>
-      </footer>
+      <div id="footer"></div>
+      <script defer src="/assets/js/footer.js"></script>
+      <script defer src="/assets/js/headerMenu.js"></script>
+      <script defer src="/assets/js/header.js"></script>
+      <script defer src="../assets/js/config.js"></script>
+      <script defer src="../assets/js/script.js"></script>
+      <script defer src="../assets/js/blog.js"></script>
+      <!-- ── Scripts ── -->
 
       <!-- Loader -->
       <div class="loader-holder" id="loader">

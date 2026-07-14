@@ -1,55 +1,3 @@
-// Get all hero CTA button groups
-const heroGroups = document.querySelectorAll(".hero-cta-btn");
-
-heroGroups.forEach((group) => {
-  const btnServices = group.querySelector(".hero-btn1");
-  const btnQuote = group.querySelector(".hero-btn2");
-  const slider = group.querySelector(".slider");
-
-  // Navigate to contact page when first button is clicked
-  btnServices.addEventListener("click", () => {
-    slider.style.transform = "translateX(0%)";
-    setTimeout(() => {
-      window.open("./pages/contact.html", "_self");
-    }, 500);
-  });
-
-  // Navigate to services page when second button is clicked
-  btnQuote.addEventListener("click", () => {
-    slider.style.transform = "translateX(100%)";
-    setTimeout(() => {
-      window.open("./pages/services.html", "_self");
-    }, 500);
-  });
-});
-
-document.querySelector(".consult-btn").addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const email = "revitsystems@gmail.com";
-  const subject = "Consultation Request";
-  const body = "Hello Revit Systems,\n\nI would like to book a consultation.";
-
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-
-  try {
-    window.location.href = mailtoLink;
-
-    // As a fallback, after a short delay, open Gmail in a new tab
-    setTimeout(() => {
-      window.open(gmailLink, "_blank");
-    }, 1000);
-  } catch (err) {
-    // If mailto fails outright, go straight to Gmail
-    window.open(gmailLink, "_blank");
-  }
-});
-
 const scrollBlogRow = document.getElementById("scrollBlogRow");
 
 // Helper: truncate summary to N words
@@ -171,9 +119,4 @@ consultBtn.addEventListener("click", () => {
   <span class="spinner"></span>
   Loading...
 `;
-
-  setTimeout(() => {
-    consultBtn.disabled = false;
-    consultBtn.innerHTML = "consult";
-  }, 10000); // 10 seconds
 });

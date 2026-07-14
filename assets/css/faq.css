@@ -1,0 +1,132 @@
+:root {
+  --gold: #d17609;
+  --gold-light: #e59c50;
+  --gold-dim: rgba(209, 118, 9, 0.12);
+  --dark: #141416;
+  --dark-2: #1e1f22;
+  --dark-3: #242527;
+  --mid: #404051;
+  --muted: #9898aa;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+  --font-serif: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Poppins", sans-serif;
+  --shadow-gold: 0 20px 60px rgba(209, 118, 9, 0.18);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.faq-section {
+  background: #fff;
+  padding: 50px 0px;
+  width: 100%;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle a {
+  font-size: 14px;
+  color: #d17609;
+  text-decoration: underline;
+}
+
+.faq-item {
+  background: #f9f9f9;
+  margin: 15px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left;
+  transition: all 0.5s ease;
+}
+
+.faq-item.open {
+  background: #d17609;
+  color: var(--white);
+  transition: all 0.5s ease;
+}
+
+.faq-question {
+  color: #18181a;
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-icon {
+  font-size: 18px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 18px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--white);
+  font-weight: 500px;
+}
+
+.faq-item.open .faq-answer {
+  display: block;
+  color: #fff;
+}
+
+.faq-footer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.faq-footer-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.faq-footer button {
+  margin-top: 25px;
+  border: 0;
+}
+
+.faq-btn {
+  background-color: #d17609;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.faq-btn:hover {
+  background: #242527;
+}
+
+@media screen {
+  .faq-footer p {
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
+  }
+}

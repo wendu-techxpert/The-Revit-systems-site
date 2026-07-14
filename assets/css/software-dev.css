@@ -1,12 +1,15 @@
+@import url("../assets/css/root-variables.css");
 /* ============================================================
    REVIT SYSTEMS — SOFTWARE DEVELOPMENT PAGE (software-dev.css)
    Loads after style.css + home.css — page-specific rules only
    ============================================================ */
 
-:root {
-  --code-bg: #0d0d10;
-  --code-border: #2a2a2f;
-}
+/* NOTE: --code-bg / --code-border used to live in a local :root
+   block here. They now live in root-variables.css alongside the
+   rest of the design tokens (--code-bg, --code-border,
+   --code-bar-bg, --font-mono, --term-dot-*, --syntax-*) so this
+   file just consumes them via var(). Make sure root-variables.css
+   is imported before this file loads. */
 
 /* ================================================================
    HERO
@@ -28,7 +31,7 @@
   opacity: 0.5;
 }
 .rv-sw-hero__grid span {
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  border-right: 1px solid var(--white-a04);
 }
 
 .rv-sw-hero__inner {
@@ -41,11 +44,11 @@
 }
 
 .rv-sw-hero .rv-breadcrumb {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   margin-bottom: 40px;
 }
 .rv-sw-hero .rv-breadcrumb a {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-a6);
   text-decoration: none;
 }
 .rv-sw-hero .rv-breadcrumb a:hover {
@@ -81,7 +84,7 @@
 
 .rv-sw-hero__sub {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--white-a65);
   line-height: 1.85;
   max-width: 540px;
   margin: 0 0 36px;
@@ -105,7 +108,7 @@
   border: 1px solid var(--code-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 80px var(--black-a5);
   transform: rotate(2.7deg);
 }
 .rv-terminal__bar {
@@ -113,7 +116,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: #16161a;
+  background: var(--code-bar-bg);
   border-bottom: 1px solid var(--code-border);
 }
 .rv-terminal__dot {
@@ -122,24 +125,24 @@
   border-radius: 50%;
 }
 .rv-terminal__dot--red {
-  background: #e0524a;
+  background: var(--term-dot-red);
 }
 .rv-terminal__dot--amber {
-  background: #e0a93f;
+  background: var(--term-dot-amber);
 }
 .rv-terminal__dot--green {
-  background: #4caf6d;
+  background: var(--term-dot-green);
 }
 .rv-terminal__title {
   margin-left: 8px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--white-a35);
 }
 
 .rv-terminal__body {
   padding: 24px 22px 28px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.84rem;
   line-height: 1.85;
 }
@@ -149,23 +152,23 @@
   white-space: pre;
 }
 .rv-t-comment {
-  color: #6c7280;
+  color: var(--syntax-comment);
 }
 .rv-t-key {
-  color: #c586c0;
+  color: var(--syntax-keyword);
 }
 .rv-t-var {
-  color: #9cdcfe;
+  color: var(--syntax-variable);
 }
 .rv-t-str {
-  color: #e59c50;
+  color: var(--gold-light);
 }
 .rv-t-bool {
-  color: #569cd6;
+  color: var(--syntax-boolean);
 }
 .rv-t-cursor {
   margin-top: 8px !important;
-  color: #ffffff;
+  color: var(--white);
 }
 .rv-cursor-blink {
   display: inline-block;
@@ -236,13 +239,13 @@
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 24px var(--black-a06);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   color: var(--dark);
 }
 .rv-sw-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px var(--black-a1);
 }
 .rv-sw-card--gold {
   background: var(--gold);
@@ -345,8 +348,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(209, 118, 9, 0.4),
-    rgba(209, 118, 9, 0.4),
+    var(--gold-a4),
+    var(--gold-a4),
     transparent
   );
 }
@@ -379,7 +382,7 @@
 }
 .rv-sw-step__text {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   line-height: 1.75;
   margin: 0;
 }
@@ -423,7 +426,7 @@
 }
 .rv-sw-cta__sub {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--white-a82);
   line-height: 1.7;
   margin: 0 0 32px;
 }
@@ -432,8 +435,8 @@
   border-color: var(--dark);
 }
 .rv-sw-cta .rv-btn--primary:hover {
-  background: #000;
-  border-color: #000;
+  background: var(--black);
+  border-color: var(--black);
 }
 
 @media (max-width: 600px) {

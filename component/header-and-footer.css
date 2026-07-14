@@ -1,0 +1,402 @@
+@import url("../assets/css/root-variables.css");
+
+/* ---------------------------------------- */
+/* ---------- Header and Navbar ----------- */
+/* ---------------------------------------- */
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  font-family: var(--font-sans);
+  left: 0%;
+  z-index: 3;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(10px);
+}
+
+/* Navigation content area */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+/* Group logo and nav links */
+.logo-and-navlinks {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  width: 80%;
+}
+
+/* Logo container dimensions */
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+/* Scale logo image to fit container */
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Style the navigation links */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 30px;
+  font-weight: 400;
+}
+
+.nav-content li a {
+  border-bottom: 3px solid var(--white) 00;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.nav-links li a:hover {
+  border-bottom: 3px solid var(--gold-light);
+  color: var(--gold);
+  cursor: pointer;
+}
+
+/* Style for navigation call-to-action button */
+.nav-cta-btn {
+  background-color: var(--gold);
+  padding: 0 20px;
+  height: 40px;
+  border: 0;
+  position: relative;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav-cta-btn:hover {
+  background-color: var(--gold-light);
+  cursor: pointer;
+}
+
+.load-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-top-color: var(--gold-light);
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.menu-panel {
+  display: none;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 1150px) {
+  /* Menu toggle button */
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    border: 0;
+    background: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .menu-toggle:focus {
+    outline: 3px solid var(--outline);
+  }
+
+  /* Hamburger icon lines */
+  .menu-toggle .icon-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    position: relative;
+    transition: transform 300ms var(--ease), opacity 300ms var(--ease);
+  }
+  .menu-toggle .icon-line::before,
+  .menu-toggle .icon-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 2px;
+    transition: transform 300ms var(--ease), opacity 300ms var(--ease);
+  }
+  .menu-toggle .icon-line::before {
+    top: -6px;
+  }
+  .menu-toggle .icon-line::after {
+    top: 6px;
+  }
+
+  /* Toggle open to X */
+  .menu-toggle[aria-expanded="true"] .icon-line {
+    transform: rotate(45deg);
+  }
+  .menu-toggle[aria-expanded="true"] .icon-line::before {
+    transform: rotate(-90deg) translateX(-6px);
+    top: 0;
+  }
+  .menu-toggle[aria-expanded="true"] .icon-line::after {
+    opacity: 0;
+  }
+
+  /* Overlay */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 4;
+    background: var(--overlay);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--menu-transition);
+  }
+  .menu-overlay.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Side panel */
+  .menu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--gold), var(--dark-3));
+    color: var(--white);
+    padding: 20px 16px;
+    box-shadow: 4px 0 30px rgba(2, 6, 23, 0.6);
+    transform: translateX(-110%);
+    transition: transform 300ms var(--ease);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 60;
+  }
+  .menu-panel.is-visible {
+    transform: translateX(0);
+  }
+
+  .menu-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .menu-panel-title {
+    margin: 0;
+    font-size: 18px;
+  }
+  .menu-close {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 8px;
+    border-radius: 6px;
+  }
+
+  .menu-close .lucide-x-icon {
+    top: 10px;
+    right: 20px;
+  }
+
+  .menu-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .menu-nav a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--menu-link-color);
+    text-decoration: none;
+  }
+  .menu-nav a:focus,
+  .menu-nav a:hover {
+    background: rgba(255, 255, 255, 0.04);
+    outline: 2px solid var(--menu-link-outline);
+  }
+
+  .menu-footer {
+    margin-top: 90%;
+    color: var(--footer-muted);
+    font-size: 13px;
+  }
+
+  .page-content {
+    padding: 28px;
+  }
+
+  .nav-links,
+  .nav-cta-btn {
+    display: none;
+  }
+}
+/* ---------------------------------------- */
+/* ---------- FOOTPRINT (FOOTER) ---------- */
+/* ---------------------------------------- */
+.rv-footprint {
+  background: linear-gradient(
+    to top,
+    var(--footer-bg-start),
+    var(--footer-bg-end)
+  );
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  min-height: 200px;
+  color: var(--white);
+  width: 100%;
+  padding: 50px 0;
+}
+.rv-foot-main {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.rv-brand-block {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rv-logo {
+  display: flex;
+  flex-direction: column;
+}
+.rv-logo-mark {
+  width: 100px;
+  height: 100px;
+  color: var(--logo-mark-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  font-size: 1.2rem;
+}
+
+.rv-logo-mark img {
+  width: 100%;
+  height: 100%;
+}
+
+.rv-tagline {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+  width: 400px;
+}
+.rv-socials {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.rv-social-link {
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 50%;
+  color: var(--white);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  line-height: 0; /* svg alignment */
+  width: 25px;
+  height: 25px;
+}
+
+.rv-social-link img {
+  width: 100%;
+  height: 100%;
+}
+
+.rv-social-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+.rv-social-link:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
+.rv-link-columns {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.rv-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 120px;
+}
+.rv-col-head {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--gold-light);
+}
+.rv-col a {
+  color: var(--footer-link-color);
+  text-decoration: none;
+  padding: 2px 0;
+}
+.rv-col a:hover {
+  text-decoration: underline;
+}
+.rv-foot-note {
+  width: 85%;
+  margin: 30px auto 0;
+  text-align: left;
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+@media (max-width: 800px) {
+  .rv-foot-main {
+    flex-direction: column;
+  }
+}
+
+/* now here are all style below 450px */
+@media (max-width: 450px) {
+  .rv-tagline {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+    width: 85%;
+  }
+  .rv-graphic {
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+  }
+}

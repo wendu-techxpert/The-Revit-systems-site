@@ -1,3 +1,4 @@
+@import url("../assets/css/root-variables.css");
 /* ============================================================
    REVIT SYSTEMS — BUSINESS CONSULTING PAGE (business-consulting.css)
    ============================================================ */
@@ -8,7 +9,12 @@
 .rv-bc-hero {
   margin-top: 70px;
   position: relative;
-  background: linear-gradient(160deg, #0d0d10 0%, #1a1410 60%, #141210 100%);
+  background: linear-gradient(
+    160deg,
+    var(--code-bg) 0%,
+    var(--bc-hero-mid) 60%,
+    var(--bc-hero-end) 100%
+  );
   overflow: hidden;
   min-height: 90vh;
   display: flex;
@@ -41,11 +47,11 @@
   animation-delay: 0.2s;
 }
 .rv-bc-chart-line--2 {
-  stroke: rgba(209, 118, 9, 0.7);
+  stroke: var(--gold-a7);
   animation-delay: 0.6s;
 }
 .rv-bc-chart-line--3 {
-  stroke: rgba(209, 118, 9, 0.4);
+  stroke: var(--gold-a4);
   animation-delay: 1s;
 }
 @keyframes chart-draw {
@@ -63,22 +69,14 @@
 .rv-bc-bg-glow--1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(209, 118, 9, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--gold-a1) 0%, transparent 70%);
   top: -100px;
   right: 5%;
 }
 .rv-bc-bg-glow--2 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(209, 118, 9, 0.07) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, var(--gold-a07) 0%, transparent 70%);
   bottom: 10%;
   left: 15%;
 }
@@ -97,11 +95,11 @@
 }
 
 .rv-bc-hero .rv-breadcrumb {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   margin-bottom: 32px;
 }
 .rv-bc-hero .rv-breadcrumb a {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   text-decoration: none;
 }
 .rv-bc-hero .rv-breadcrumb a:hover {
@@ -129,7 +127,7 @@
 }
 .rv-bc-hero__sub {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--white-a62);
   line-height: 1.85;
   max-width: 540px;
   margin: 0 0 38px;
@@ -156,24 +154,24 @@
 .rv-bc-card--back {
   width: 260px;
   height: 160px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--white-a04);
+  border: 1px solid var(--white-a08);
   transform: rotate(6deg) translateY(20px);
 }
 .rv-bc-card--mid {
   width: 270px;
   height: 170px;
-  background: rgba(209, 118, 9, 0.12);
-  border: 1px solid rgba(209, 118, 9, 0.2);
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-a2);
   transform: rotate(2deg) translateY(10px);
 }
 .rv-bc-card--front {
   width: 280px;
   background: var(--dark-2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--white-a1);
   padding: 24px;
   transform: rotate(-1deg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 80px var(--black-a5);
   animation: card-float 5s ease-in-out infinite;
 }
 @keyframes card-float {
@@ -194,7 +192,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--white-a45);
   margin-bottom: 20px;
 }
 .rv-bc-card__metrics {
@@ -216,7 +214,7 @@
 }
 .rv-bc-card__metric-lbl {
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-a4);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -228,7 +226,7 @@
 }
 .rv-bc-card__footer {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--white-a3);
 }
 
 @media (max-width: 1000px) {
@@ -390,7 +388,7 @@
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 4px 24px var(--black-a055);
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   display: flex;
   flex-direction: column;
@@ -400,7 +398,7 @@
 }
 .rv-bc-card-svc:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px var(--black-a1);
 }
 .rv-bc-card-svc--featured {
   grid-column: span 2;
@@ -428,7 +426,7 @@
 }
 .rv-bc-card-svc--gold .rv-bc-card-svc__icon,
 .rv-bc-card-svc--dark .rv-bc-card-svc__icon {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--white-a9);
 }
 .rv-bc-card-svc__icon svg {
   width: 100%;
@@ -471,7 +469,7 @@
 }
 .rv-bc-card-svc--gold .rv-bc-card-svc__body,
 .rv-bc-card-svc--dark .rv-bc-card-svc__body {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--white-a75);
 }
 .rv-bc-card-svc__tags {
   display: flex;
@@ -491,8 +489,8 @@
 }
 .rv-bc-card-svc--gold .rv-bc-card-svc__tags span,
 .rv-bc-card-svc--dark .rv-bc-card-svc__tags span {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--white-a12);
+  color: var(--white-a8);
 }
 
 @media (max-width: 1080px) {
@@ -544,7 +542,7 @@
 }
 .rv-bc-who__text p {
   font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--white-a58);
   line-height: 1.85;
   margin: 0;
 }
@@ -554,8 +552,8 @@
   gap: 16px;
 }
 .rv-bc-who-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--white-a04);
+  border: 1px solid var(--white-a08);
   border-radius: var(--radius-md);
   padding: 28px 32px;
   align-items: start;
@@ -570,16 +568,16 @@
 }
 
 .rv-bc-who-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.14);
+  background: var(--white-a07);
+  border-color: var(--white-a14);
 }
 .rv-bc-who-card--gold {
-  background: rgba(209, 118, 9, 0.1);
-  border-color: rgba(209, 118, 9, 0.3);
+  background: var(--gold-a1);
+  border-color: var(--gold-a3);
 }
 .rv-bc-who-card--gold:hover {
-  background: rgba(209, 118, 9, 0.15);
-  border-color: rgba(209, 118, 9, 0.45);
+  background: var(--gold-a15);
+  border-color: var(--gold-a45);
 }
 .rv-bc-who-card__icon {
   width: 52px;
@@ -601,7 +599,7 @@
 
 .rv-bc-who-card p {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--white-a55);
   line-height: 1.65;
 }
 
@@ -647,7 +645,7 @@
   left: 24px;
   right: 24px;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold), rgba(209, 118, 9, 0.2));
+  background: linear-gradient(90deg, var(--gold), var(--gold-a2));
   z-index: 0;
 }
 .rv-bc-pstep {
@@ -738,7 +736,7 @@
 }
 .rv-bc-cta__sub {
   font-size: 0.98rem;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--white-a58);
   line-height: 1.8;
   max-width: 460px;
   margin: 0 0 36px;
@@ -759,23 +757,23 @@
 }
 .rv-bc-cta__doc--3 {
   height: 170px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--white-a04);
+  border: 1px solid var(--white-a07);
   transform: rotate(6deg) translateY(20px);
 }
 .rv-bc-cta__doc--2 {
   height: 180px;
-  background: rgba(209, 118, 9, 0.1);
-  border: 1px solid rgba(209, 118, 9, 0.18);
+  background: var(--gold-a1);
+  border: 1px solid var(--gold-a18);
   transform: rotate(2.5deg) translateY(10px);
 }
 .rv-bc-cta__doc--1 {
   width: 240px;
   background: var(--dark-2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--white-a1);
   padding: 24px;
   transform: rotate(-1.5deg);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 60px var(--black-a5);
   animation: doc-float 5s ease-in-out infinite;
 }
 @keyframes doc-float {
@@ -794,7 +792,7 @@
   margin-bottom: 16px;
   font-size: 0.72rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-a6);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -807,7 +805,7 @@
 }
 .rv-bc-cta__doc-line {
   height: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--white-a08);
   border-radius: 3px;
   margin-bottom: 8px;
 }

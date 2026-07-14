@@ -41,16 +41,6 @@ document.querySelectorAll(".abt-circle").forEach((circle) => {
   circle.style.animationDuration = 15 + Math.random() * 15 + "s";
   circle.style.animationDelay = Math.random() * 10 + "s";
 });
-const navBtnAct = document.querySelectorAll(".nav-cta-btn"); // returns a NodeList
-
-navBtnAct.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const phone = "2348061704042";
-    const message = "Hello Revit Systems, I'm interested in your services";
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  });
-});
 
 const theFooterPageNote = document.querySelectorAll(".rv-tagline");
 
@@ -64,31 +54,6 @@ const emailInput = document.getElementById("user-email");
 const feedback = document.getElementById("newsletterFeedback");
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-// newsForm.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-
-//   const email = emailInput.value.trim();
-//   feedback.textContent = "";
-
-//   if (!isValidEmail(email)) {
-//     feedback.textContent = "⚠️ Please enter a valid email address.";
-//     feedback.style.color = "red";
-//     return;
-//   }
-
-//   try {
-//     const res = await axios.post(`${baseURL}/newsletter`, { email });
-
-//     feedback.textContent = res.data.message || "Subscribed successfully!";
-//     feedback.style.color = "green";
-//     emailInput.value = "";
-//   } catch (err) {
-//     consult.error("Newsletter signup error:", err);
-//     feedback.textContent = "❌ Failed to subscribe. Please try again later.";
-//     feedback.style.color = "red";
-//   }
-// });
 
 const form = document.getElementById("newsForm");
 
@@ -104,5 +69,46 @@ btn.addEventListener("click", () => {
   setTimeout(() => {
     btn.disabled = false;
     btn.innerHTML = "Get Started";
+  }, 10000); // 10 seconds
+});
+
+//===================================================
+//======== consultation button ======================
+//===================================================
+document.querySelector("#consultBtn").addEventListener("click", (e) => {
+  consultBtn.disabled = true;
+  consultBtn.innerHTML = `
+  <span class="spinner"></span>
+  Loading...
+`;
+
+  e.preventDefault();
+
+  const email = "revitsystems@gmail.com";
+  const subject = "Consultation Request";
+  const body = "Hello Revit Systems,\n\nI would like to book a consultation.";
+
+  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+
+  try {
+    window.location.href = mailtoLink;
+
+    // As a fallback, after a short delay, open Gmail in a new tab
+    setTimeout(() => {
+      window.open(gmailLink, "_blank");
+    }, 1000);
+  } catch (err) {
+    // If mailto fails outright, go straight to Gmail
+    window.open(gmailLink, "_blank");
+  }
+
+  setTimeout(() => {
+    consultBtn.disabled = false;
+    consultBtn.innerHTML = "consult";
   }, 10000); // 10 seconds
 });

@@ -1,0 +1,157 @@
+:root {
+  --gold: #d17609;
+  --gold-light: #e59c50;
+  --gold-dim: rgba(209, 118, 9, 0.12);
+  --dark: #141416;
+  --dark-2: #1e1f22;
+  --dark-3: #242527;
+  --mid: #404051;
+  --muted: #9898aa;
+  --outline: #24252747;
+  --overlay: #00000073;
+  --off-white: #f7f6f3;
+  --white: #ffffff;
+  --black: #000000;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+  --font-serif: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Poppins", sans-serif;
+  --shadow-gold: 0 20px 60px rgba(209, 118, 9, 0.18);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.25);
+
+  /* Header */
+  --header-bg: rgba(255, 255, 255, 0.659);
+
+  /* Mobile menu panel */
+  --menu-link-color: #e6eef6;
+  --menu-link-outline: rgba(6, 182, 212, 0.12);
+  --footer-muted: #9aa6b2;
+
+  /* Footer */
+  --footer-bg-start: #131313;
+  --footer-bg-end: #282727;
+  --logo-mark-color: #0f132a;
+  --footer-link-color: #d1d4e0;
+
+  /* White alpha scale (rgba(255,255,255, x)) — used for translucent
+     text/borders/fills on dark backgrounds */
+  --white-a02: rgba(255, 255, 255, 0.02);
+  --white-a03: rgba(255, 255, 255, 0.03);
+  --white-a04: rgba(255, 255, 255, 0.04);
+  --white-a05: rgba(255, 255, 255, 0.05);
+  --white-a07: rgba(255, 255, 255, 0.07);
+  --white-a08: rgba(255, 255, 255, 0.08);
+  --white-a1: rgba(255, 255, 255, 0.1);
+  --white-a12: rgba(255, 255, 255, 0.12);
+  --white-a2: rgba(255, 255, 255, 0.2);
+  --white-a3: rgba(255, 255, 255, 0.3);
+  --white-a38: rgba(255, 255, 255, 0.38);
+  --white-a4: rgba(255, 255, 255, 0.4);
+  --white-a45: rgba(255, 255, 255, 0.45);
+  --white-a5: rgba(255, 255, 255, 0.5);
+  --white-a55: rgba(255, 255, 255, 0.55);
+  --white-a6: rgba(255, 255, 255, 0.6);
+  --white-a75: rgba(255, 255, 255, 0.75);
+  --white-a82: rgba(255, 255, 255, 0.82);
+  --white-a94: rgba(255, 255, 255, 0.94);
+
+  /* Black / near-black alpha scale */
+  --black-a03: rgba(0, 0, 0, 0.03);
+  --black-a22: rgba(0, 0, 0, 0.22);
+  --black-a4: rgba(0, 0, 0, 0.4);
+  --black-a5: rgba(0, 0, 0, 0.5);
+
+  /* Hero overlay base (rgb(8,8,10)) at various opacities */
+  --hero-overlay-rgb: 8, 8, 10;
+  --hero-overlay-strong: rgba(8, 8, 10, 0.94);
+  --hero-overlay-mid: rgba(8, 8, 10, 0.75);
+  --hero-overlay-soft: rgba(8, 8, 10, 0.25);
+
+  /* Gold alpha scale beyond --gold-dim (0.12) */
+  --gold-a05: rgba(209, 118, 9, 0.05);
+  --gold-a06: rgba(209, 118, 9, 0.06);
+  --gold-a18: rgba(209, 118, 9, 0.18);
+  --gold-a3: rgba(209, 118, 9, 0.3);
+  --gold-a4: rgba(209, 118, 9, 0.4);
+  --gold-a7: rgba(209, 118, 9, 0.7);
+  --gold-a07: rgba(209, 118, 9, 0.07);
+  --gold-dark: #b86808;
+
+  --white-a62: rgba(255, 255, 255, 0.62);
+  --white-a7: rgba(255, 255, 255, 0.7);
+  --white-a85: rgba(255, 255, 255, 0.85);
+  --white-a35: rgba(255, 255, 255, 0.35);
+  --white-a65: rgba(255, 255, 255, 0.65);
+
+  --black-a06: rgba(0, 0, 0, 0.06);
+  --black-a1: rgba(0, 0, 0, 0.1);
+
+  /* Code terminal (moved from software-dev.css's local :root) */
+  --code-bg: #0d0d10;
+  --code-border: #2a2a2f;
+  --code-bar-bg: #16161a;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Terminal traffic-light dots */
+  --term-dot-red: #e0524a;
+  --term-dot-amber: #e0a93f;
+  --term-dot-green: #4caf6d;
+
+  /* Syntax highlight palette (terminal code snippet) */
+  --syntax-comment: #6c7280;
+  --syntax-keyword: #c586c0;
+  --syntax-variable: #9cdcfe;
+  --syntax-boolean: #569cd6;
+
+  /* Additional gold alpha steps (branding page decorative rings/lines) */
+  --gold-a1: rgba(209, 118, 9, 0.1);
+  --gold-a2: rgba(209, 118, 9, 0.2);
+  --gold-a28: rgba(209, 118, 9, 0.28);
+  --gold-a35: rgba(209, 118, 9, 0.35);
+  --gold-a55: rgba(209, 118, 9, 0.55);
+  --gold-a6: rgba(209, 118, 9, 0.6);
+
+  --black-a055: rgba(0, 0, 0, 0.055);
+  --white-a78: rgba(255, 255, 255, 0.78);
+  --white-a9: rgba(255, 255, 255, 0.9);
+
+  /* Business consulting page */
+  --bc-hero-mid: #1a1410;
+  --bc-hero-end: #141210;
+  --white-a8: rgba(255, 255, 255, 0.8);
+  --white-a58: rgba(255, 255, 255, 0.58);
+  --white-a14: rgba(255, 255, 255, 0.14);
+  --gold-a45: rgba(209, 118, 9, 0.45);
+  --gold-a15: rgba(209, 118, 9, 0.15);
+
+  /* Digital marketing page */
+  --gold-a25: rgba(209, 118, 9, 0.25);
+  --gold-a08: rgba(209, 118, 9, 0.08);
+  --white-a06: rgba(255, 255, 255, 0.06);
+  --white-a15: rgba(255, 255, 255, 0.15);
+  --black-a3: rgba(0, 0, 0, 0.3);
+  --dm-hero-start: #0a0a0d;
+  --dm-hero-end: #1a1208;
+
+  /* Contact page */
+  --status-success-color: #1a7a4a;
+  --status-fail-color: #b33232;
+  --whatsapp-green: #25d366;
+  --black-a15: rgba(0, 0, 0, 0.15);
+  --black-a08: rgba(0, 0, 0, 0.08);
+
+  /* Blog page additions */
+  --gold-tag-bg: #fef3e2;
+  --border-gray: #e8e6e1;
+  --shadow-tint: rgba(36, 37, 39, 0.08);
+  --shadow-tint-strong: rgba(36, 37, 39, 0.16);
+  --gray-500: #6b7280;
+  --gray-400: #aaaaaa;
+  --gray-350: #bbbbbb;
+  --gray-300: #888888;
+  --skeleton-base: #f0eeeb;
+  --skeleton-shine: #e8e5e0;
+}
