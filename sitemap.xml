@@ -1,26 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ── HOMEPAGE ── -->
   <url>
-    <loc>https://revitsystems.org/</loc>
-    <lastmod>2025-10-22</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://www.revitsystems.org/</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- ── CORE PAGES ── -->
   <url>
-    <loc>https://revitsystems.org/about-us.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://www.revitsystems.org/pages/about-us.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revitsystems.org/pages/services.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revitsystems.org/pages/contact.html</loc>
+    <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
-    <loc>https://revitsystems.org/services.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://www.revitsystems.org/pages/faqs.html</loc>
+    <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ── SERVICE PAGES ── -->
+  <url>
+    <loc>https://www.revitsystems.org/pages/branding.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revitsystems.org/pages/software-dev.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revitsystems.org/pages/digital-marketing.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revitsystems.org/pages/business-consulting.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ── BLOG ── -->
+  <url>
+    <loc>https://www.revitsystems.org/pages/builders-digest.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- ── RESOURCES ── -->
   <url>
-    <loc>https://revitsystems.org/contact.html</loc>
-    <lastmod>2025-10-22</lastmod>
+    <loc>https://www.revitsystems.org/pages/resources-page.html</loc>
+    <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
+
 </urlset>
