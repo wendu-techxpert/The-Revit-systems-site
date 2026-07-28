@@ -1,31 +1,3 @@
 User-agent: *
-Disallow: /pages/login.html
-Disallow: /pages/reset-password.html
-Disallow: /pages/newsletterSuccessPage.html
-Disallow: /pages/resources-sub-page.html
-Disallow: /g.html
-Disallow: /admin/
-
-# Allow all major crawlers full access to public pages
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-Sitemap: https://www.revitsystems.org/sitemap.xml
+Disallow:
+Sitemap: https://revit.systems/sitemap.xml

@@ -25,105 +25,27 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../component/header-and-footer.css" />
     <link
       rel="icon"
       type="image/png"
       href="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/favicon_qdd9zl.png"
     />
-    <script defer src="../assets/js/script.js"></script>
   </head>
 
   <body>
     <!-- Main wrapper for the entire page content -->
     <div class="revit-container">
-      <!-- Header section containing the navigation bar -->
-      <header id="header">
-        <nav>
-          <div class="nav-content">
-            <!-- Container for logo and navigation links -->
-            <div class="logo-and-navlinks">
-              <div class="logo">
-                <!-- Display the company logo image -->
-                <img
-                  src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973008/without_bg_black_font_pjd8q9.png"
-                  alt=""
-                />
-              </div>
-              <!-- Unordered list for navigation menu items -->
-              <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./resources-page.html">Resources</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-              </ul>
-            </div>
-            <!-- Call-to-action button in the navigation -->
-            <button id="getStartedBtn" class="nav-cta-btn">Get Started</button>
-            <button
-              class="menu-toggle"
-              id="menuToggleBtn"
-              aria-controls="navMenu"
-              aria-expanded="false"
-              aria-label="Open menu"
-            >
-              <span class="icon-line" aria-hidden="true"></span>
-            </button>
-          </div>
-        </nav>
-      </header>
+      <!-- Shared site header/navbar — injected by header.js from
+           /component/header.html so it stays identical across every page -->
+      <div id="header-container"></div>
 
-      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
-
-      <aside
-        class="menu-panel"
-        id="navMenu"
-        role="navigation"
-        aria-label="Main menu"
-      >
-        <div class="menu-panel-header">
-          <h2 class="menu-panel-title">Revit-Systems</h2>
-          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-x-icon lucide-x"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <nav class="menu-nav">
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./about-us.html">About Us</a></li>
-            <li><a href="./services.html">Services</a></li>
-            <li><a href="./resources-page.html">Resources</a></li>
-            <li><a href="./blog.html">Blog</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
-
-        <div class="menu-footer">
-          Signed in as <strong>you@example.com</strong>
-        </div>
-      </aside>
       <!-- Main container for the page's core sections -->
       <div class="container">
         <div class="top-nav">
-          <a href="#" class="top-nav-link">Home</a>
+          <a href="../index.html" class="top-nav-link">Home</a>
           <span class="top-nav-divider">/</span>
-          <a href="#" class="top-nav-link top-active">Resources</a>
+          <a href="./resources-page.html" class="top-nav-link top-active">Resources</a>
         </div>
         <div class="resource-container">
           <div class="resource-resource-header">
@@ -139,6 +61,8 @@
             </p>
           </div>
         </div>
+        <!-- Results header, sort, and pagination are hidden while the page is
+             under construction — the resource grid below is not yet populated.
         <div class="results-header">
           <p class="results-count">Showing 13-24 of 140 results</p>
 
@@ -154,7 +78,8 @@
             <option value="content">Content Libraries</option>
           </select>
         </div>
-        <!-- 
+        -->
+        <!--
         <div class="resource-grid-container">
           <div class="resource-resource-card">
             <img
@@ -314,10 +239,10 @@
           </div>
         </div> -->
 
+        <!-- Pagination hidden while the page is under construction.
         <nav class="pagination" aria-label="Page navigation">
           <ul>
             <li><a href="#" class="page-arrow">&lsaquo;</a></li>
-            <!-- Left arrow -->
             <li><a href="#" class="page-number active">1</a></li>
             <li><a href="#" class="page-number">2</a></li>
             <li><a href="#" class="page-number">3</a></li>
@@ -325,9 +250,9 @@
             <li><a href="#" class="page-number">5</a></li>
             <li><a href="#" class="page-number">6</a></li>
             <li><a href="#" class="page-arrow">&rsaquo;</a></li>
-            <!-- Right arrow -->
           </ul>
         </nav>
+        -->
         <div class="resources-email" id="email-pop-up">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -368,97 +293,9 @@
           </section>
         </div>
 
-        <!-- Footer section -->
-        <footer class="rv-footprint">
-          <div class="rv-foot-main">
-            <div class="rv-brand-block">
-              <div class="rv-logo">
-                <div class="rv-logo-mark">
-                  <img
-                    src="https://res.cloudinary.com/dmvltush8/image/upload/v1760973011/without_bg_white_font_db7hbk.png"
-                    alt=""
-                  />
-                </div>
-                <div class="rv-tagline">
-                  Connecting people with impactful opportunities in the Revit
-                  ecosystem.
-                </div>
-              </div>
-              <!-- Social media links -->
-              <div class="rv-socials">
-                <a
-                  href="https://www.facebook.com/profile.php?id=61568188626000&mibextid=ZbWKwL"
-                  aria-label="Facebook"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <!-- Facebook icon SVG -->
-                  <img
-                    src="../assets/SVG/facebook-176-svgrepo-com.svg"
-                    alt=""
-                  />
-                </a>
-                <a
-                  href="https://x.com/revitsystems"
-                  aria-label="Twitter"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <!-- Twitter icon SVG -->
-                  <img src="../assets/SVG/twitter-3-svgrepo-com.svg" alt="" />
-                </a>
-                <a
-                  href="https://www.instagram.com/revitsystems/"
-                  aria-label="Instagram"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <!-- Instagram icon SVG -->
-                  <img
-                    src="../assets/SVG/instagram-167-svgrepo-com.svg"
-                    alt=""
-                  />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/revit-systems-limited/?viewAsMember=true"
-                  aria-label="LinkedIn"
-                  class="rv-social-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <!-- LinkedIn icon SVG -->
-                  <img
-                    src="../assets/SVG/linkedin-161-svgrepo-com.svg"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
-
-            <!-- Footer navigation links -->
-            <div class="rv-link-columns">
-              <div class="rv-col">
-                <div class="rv-col-head">Revit Hub</div>
-                <a href="../index.html">Home</a>
-                <a href="./services.html">Services</a>
-                <a href="#">About</a>
-              </div>
-              <div class="rv-col">
-                <div class="rv-col-head">Support</div>
-                <a href="./faqs.html">FAQs</a>
-                <a href="./contact.html">Help Center</a>
-                <a href="./blog.html">Blog</a>
-              </div>
-            </div>
-          </div>
-          <!-- Copyright notice -->
-          <div class="rv-foot-note">
-            © 2025 Revit Systems. All Rights Reserved.
-          </div>
-        </footer>
+        <!-- Shared site footer — injected by footer.js from
+             /component/footer.html so it matches every other page -->
+        <div id="footer"></div>
       </div>
       <!-- End of main container -->
     </div>
@@ -471,6 +308,10 @@
         emailBox.classList.remove("show-email");
       }
     </script>
-    <script src="../assets/js/brevo.js"></script>
+    <!-- Shared header/footer loaders — same set every other page uses.
+         headerMenu.js must load before header.js (which calls initializeMenu). -->
+    <script defer src="/assets/js/footer.js"></script>
+    <script defer src="/assets/js/headerMenu.js"></script>
+    <script defer src="/assets/js/header.js"></script>
   </body>
 </html>

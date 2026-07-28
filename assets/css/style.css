@@ -1406,6 +1406,41 @@ body {
   }
 }
 
+/* Breadcrumb bar — sits on a white strip below the fixed header.
+   The top padding clears the fixed navbar (~70px logo height) so the
+   links are no longer hidden behind / above it. Shared by faqs.html
+   and resources-page.html. */
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 100px 0 20px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.top-nav-link {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.top-nav-link:hover {
+  color: var(--gold);
+}
+
+.top-nav-link.top-active {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.top-nav-divider {
+  color: #aaa;
+}
+
 .resource-container {
   background-color: #fff;
   width: 100%;

@@ -16,14 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="../assets/Image/Logo/favicon.png" />
-    <link rel="stylesheet" href="../assets/css/faq.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/root-variables.css" />
-    <link rel="stylesheet" href="../component/header-and-footer.css" />
 
     <link
       rel="stylesheet"
@@ -32,13 +28,94 @@
 
     <!-- Custom CSS & JS -->
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <script defer src="../assets/js/script.js"></script>
   </head>
 
   <body>
     <div class="revit-container">
-      <!-- ===================== HEADER (unchanged) ===================== -->
+      <!-- Header section containing the navigation bar -->
+      <header id="header">
+        <nav>
+          <div class="nav-content">
+            <!-- Container for logo and navigation links -->
+            <div class="logo-and-navlinks">
+              <div class="logo">
+                <!-- Display the company logo image -->
+                <img
+                  src="../assets/Image/Logo/without bg black font.png"
+                  alt=""
+                />
+              </div>
+              <!-- Unordered list for navigation menu items -->
+              <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./resources-page.html">Resources</a></li>
+                <li><a href="./builders-digest.html">Builders Digest</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- Call-to-action button in the navigation -->
+            <button id="getStartedBtn" class="nav-cta-btn">Get Started</button>
+            <button
+              class="menu-toggle"
+              id="menuToggleBtn"
+              aria-controls="navMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <span class="icon-line" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+      </header>
 
-      <div id="header-container"></div>
+      <div class="menu-overlay" id="menuOverlay" tabindex="-1"></div>
+
+      <aside
+        class="menu-panel"
+        id="navMenu"
+        role="navigation"
+        aria-label="Main menu"
+      >
+        <div class="menu-panel-header">
+          <h2 class="menu-panel-title">Revit-Systems</h2>
+          <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-x-icon lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <nav class="menu-nav">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./resources-page.html">Resources</a></li>
+            <li><a href="./builders-digest.html">Builders Digest</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-footer">
+          Signed in as <strong>you@example.com</strong>
+        </div>
+      </aside>
+
       <!-- ===== MAIN CONTENT ===== -->
       <div class="container">
         <!-- Breadcrumb -->
@@ -247,24 +324,105 @@
             </div>
           </div>
         </section>
+        <!-- Footer section -->
+        <footer class="rv-footprint">
+          <div class="rv-foot-main">
+            <div class="rv-brand-block">
+              <div class="rv-logo">
+                <div class="rv-logo-mark">
+                  <img
+                    src="../assets/Image/Logo/without bg white font.png"
+                    alt=""
+                  />
+                </div>
+                <div class="rv-tagline">
+                  Connecting people with impactful opportunities in the Revit
+                  ecosystem.
+                </div>
+              </div>
+              <!-- Social media links -->
+              <div class="rv-socials">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61568188626000&mibextid=ZbWKwL"
+                  aria-label="Facebook"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Facebook icon SVG -->
+                  <img
+                    src="../assets/SVG/facebook-176-svgrepo-com.svg"
+                    alt=""
+                  />
+                </a>
+                <a
+                  href="https://x.com/revitsystems"
+                  aria-label="Twitter"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Twitter icon SVG -->
+                  <img src="../assets/SVG/twitter-3-svgrepo-com.svg" alt="" />
+                </a>
+                <a
+                  href="https://www.instagram.com/revitsystems/"
+                  aria-label="Instagram"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- Instagram icon SVG -->
+                  <img
+                    src="../assets/SVG/instagram-167-svgrepo-com.svg"
+                    alt=""
+                  />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/revit-systems-limited/?viewAsMember=true"
+                  aria-label="LinkedIn"
+                  class="rv-social-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <!-- LinkedIn icon SVG -->
+                  <img
+                    src="../assets/SVG/linkedin-161-svgrepo-com.svg"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
 
-        <!-- ===================== FOOTER ===================== -->
-        <div id="footer"></div>
+            <!-- Footer navigation links -->
+            <div class="rv-link-columns">
+              <div class="rv-col">
+                <div class="rv-col-head">Revit Hub</div>
+                <a href="../index.html">Home</a>
+                <a href="./services.html">Services</a>
+                <a href="#">About</a>
+              </div>
+              <div class="rv-col">
+                <div class="rv-col-head">Support</div>
+                <a href="./faqs.html">FAQs</a>
+                <a href="./contact.html">Help Center</a>
+                <a href="./builders-digest.html">Builders Digest</a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright notice -->
+          <div class="rv-foot-note">
+            © 2025 Revit Systems. All Rights Reserved.
+          </div>
+        </footer>
       </div>
       <!-- closes .container -->
     </div>
     <!-- closes .revit-container -->
 
     <!-- ===== SCRIPT ===== -->
-    <script defer src="../assets/js/config.js"></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
-    ></script>
-    <script defer src="/assets/js/footer.js"></script>
-    <script defer src="/assets/js/headerMenu.js"></script>
-    <script defer src="/assets/js/header.js"></script>
-    <script defer src="../assets/js/script.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       document.querySelectorAll(".faq-question").forEach((button) => {
         button.addEventListener("click", () => {
