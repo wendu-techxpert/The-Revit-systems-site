@@ -11,61 +11,20 @@ import {
   deletePost,
   schedulePost,
 } from "@/models/postModel.js";
-import { createNotification } from "@/models/notificationModel.js";
-import { pool } from "@/config/db.js";
+import { notifyRoles, notifyUser } from "@/services/notificationService.js";
+import { parsePagination, hasMorePage } from "@/utils/pagination.js";
+import { isValidRouteParam } from "@/utils/validate.js";
 
-// ── Notify specific roles ─────────────────────────────────────────────────
-// role: "admin" | "editor" | "author" | string[]
-// If authorId is passed, that specific user gets the notification
-// regardless of their role (used for author-specific alerts).
-const notifyByRole = async (
-  roles: string[],
-  type: string,
-  message: string,
-  link?: string,
-  excludeUserId?: string
-): Promise<void> => {
-  try {
-    const placeholders = roles.map((_, i) => `$${i + 1}`).join(", ");
-    const result = await pool.query(
-      `SELECT id FROM users WHERE role IN (${placeholders}) AND status = 'active'`,
-      roles
-    );
-    const targets = result.rows.filter(
-      (u: { id: string }) => u.id !== excludeUserId
-    );
-    await Promise.all(
-      targets.map((u: { id: string }) =>
-        createNotification({
-          userId: u.id,
-          type,
-          message,
-          ...(link ? { link } : {}),
-        })
-      )
-    );
-  } catch (err) {
-    console.error("[notifyByRole] Failed:", err);
-  }
-};
-
-const notifyUser = async (
-  userId: string,
-  type: string,
-  message: string,
-  link?: string
-): Promise<void> => {
-  try {
-    await createNotification({
-      userId,
-      type,
-      message,
-      ...(link ? { link } : {}),
-    });
-  } catch (err) {
-    console.error("[notifyUser] Failed:", err);
-  }
-};
+// CHANGED: notifyByRole/notifyUser used to be defined here as a
+// near-duplicate of commentController.ts's notifyRoles/notifyUser, each
+// with its own inline `pool.query` against the users table. Both files
+// now share the single implementation in notificationService.ts.
+//
+// CHANGED: the Open Graph / social-crawler meta-tag logic (getPostOGMeta,
+// CRAWLER_UA_REGEX, escapeHtml, the inline HTML template) used to live in
+// this file too, even though it has nothing to do with post CRUD — a
+// crawler-detection tweak had no business reason to touch the same file
+// as publishExistingPost. It now lives in ogMetaController.ts.
 
 // =============================================
 // Create a new post (draft, published, or scheduled)
@@ -141,8 +100,7 @@ export const createNewPost = async (req: Request, res: Response) => {
 // =============================================
 export const fetchPosts = async (req: PaginationRequest, res: Response) => {
   try {
-    const limit = Number(req.query.limit) || 10;
-    const offset = Number(req.query.offset) || 0;
+    const { limit, offset } = parsePagination(req, 10);
 
     // When the frontend sends "all" (or omits status entirely) we pass null
     // to getPosts so it runs without a WHERE status clause and returns everything.
@@ -152,9 +110,8 @@ export const fetchPosts = async (req: PaginationRequest, res: Response) => {
     const status = !rawStatus || rawStatus === "all" ? null : String(rawStatus);
 
     const posts = await getPosts(status, limit, offset);
-    const hasMore = posts.length === limit;
 
-    res.json({ posts, limit, offset, hasMore });
+    res.json({ posts, limit, offset, hasMore: hasMorePage(posts.length, limit) });
   } catch (err) {
     console.error("fetchPosts error:", err);
     res.status(500).json({ error: "Failed to fetch posts" });
@@ -182,7 +139,7 @@ export const updateExistingPost = async (req: Request, res: Response) => {
     req.body;
   const id = req.params.id;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
@@ -244,7 +201,7 @@ export const updateExistingPost = async (req: Request, res: Response) => {
 export const publishExistingPost = async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
@@ -272,21 +229,20 @@ export const publishExistingPost = async (req: Request, res: Response) => {
     // Notify the post author if someone else published their post
     // (they published it themselves → no need to notify them)
     if (post.author_id && post.author_id !== req.user!.id) {
-      notifyUser(
-        post.author_id,
-        "post",
-        `Your post "${post.title}" has been published.`
-      );
+      notifyUser({
+        userId: post.author_id,
+        type: "post",
+        message: `Your post "${post.title}" has been published.`,
+      });
     }
 
     // Notify editors that a new post is live (so they can review content)
-    notifyByRole(
-      ["editor"],
-      "post",
-      `Post "${post.title}" has been published.`,
-      undefined,
-      req.user!.id // don't notify the editor who published it
-    );
+    notifyRoles({
+      roles: ["editor"],
+      type: "post",
+      message: `Post "${post.title}" has been published.`,
+      excludeUserId: req.user!.id, // don't notify the editor who published it
+    });
 
     res.json(updated);
   } catch (err) {
@@ -301,7 +257,7 @@ export const publishExistingPost = async (req: Request, res: Response) => {
 export const removePost = async (req: Request, res: Response) => {
   const id = req.params.id;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
@@ -329,21 +285,20 @@ export const removePost = async (req: Request, res: Response) => {
 
     // If an admin deleted someone else's post, notify the author
     if (post.author_id && post.author_id !== req.user!.id) {
-      notifyUser(
-        post.author_id,
-        "post",
-        `Your post "${post.title}" has been deleted by an admin.`
-      );
+      notifyUser({
+        userId: post.author_id,
+        type: "post",
+        message: `Your post "${post.title}" has been deleted by an admin.`,
+      });
     }
 
     // Always notify admins when any post is deleted (audit trail)
-    notifyByRole(
-      ["admin"],
-      "post",
-      `Post "${post.title}" was deleted by ${req.user!.id}.`,
-      undefined,
-      req.user!.id // don't notify the admin who deleted it
-    );
+    notifyRoles({
+      roles: ["admin"],
+      type: "post",
+      message: `Post "${post.title}" was deleted by ${req.user!.id}.`,
+      excludeUserId: req.user!.id, // don't notify the admin who deleted it
+    });
 
     res.json({ message: "Post deleted" });
   } catch (err) {
@@ -359,7 +314,7 @@ export const scheduleExistingPost = async (req: Request, res: Response) => {
   const id = req.params.id;
   const { scheduledDate } = req.body;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
@@ -460,118 +415,14 @@ export const createScheduledPost = async (req: Request, res: Response) => {
 };
 
 // =============================================
-// GET /posts/og/:slug
-// Public endpoint — no auth required.
-// Returns a minimal HTML page with correct Open Graph meta tags
-// for the given post slug, then immediately JS-redirects to the
-// real blog post page.
-//
-// Why this exists:
-// WhatsApp, Twitter, LinkedIn etc. send a "crawler" bot to read the
-// page when someone shares a link. That bot does NOT execute JavaScript,
-// so builders-digest-post.html (which renders everything via JS from
-// localStorage) looks completely blank to it. It falls back to grabbing
-// whatever image it finds on the page — which ends up being the Revit
-// Systems logo. Every shared link looks identical regardless of which
-// post it is.
-//
-// This route gives crawlers a static HTML page with the correct og:title,
-// og:description, og:image and og:url for the specific post, while real
-// users are immediately redirected to the actual blog post page.
-// =============================================
-// postController.ts
-
-const CRAWLER_UA_REGEX =
-  /bot|facebookexternalhit|twitterbot|linkedinbot|whatsapp|slackbot|telegrambot|discordbot|pinterest|embedly|quora link preview|showyoubot|outbrain|w3c_validator/i;
-
-const escapeHtml = (str: string): string =>
-  str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-
-export const getPostOGMeta = async (req: Request, res: Response) => {
-  const { slug } = req.params;
-
-  if (!slug || Array.isArray(slug)) {
-    return res.status(400).send("Invalid slug");
-  }
-
-  let post;
-  try {
-    post = await getPostBySlug(slug);
-  } catch (err) {
-    console.error("getPostOGMeta error:", err);
-    return res.status(500).send("Server error");
-  }
-
-  if (!post) {
-    return res.status(404).send("Post not found");
-  }
-
-  const frontendBase =
-    process.env.FRONTEND_URL || "https://www.revitsystems.org";
-
-  const postUrl = `${frontendBase}/pages/builders-digest-post.html?slug=${encodeURIComponent(
-    post.slug
-  )}`;
-
-  // Real users: send them straight there. No HTML parsing, no CSP,
-  // no meta-refresh dependency — this can never "hang."
-  const userAgent = req.headers["user-agent"] || "";
-  if (!CRAWLER_UA_REGEX.test(userAgent)) {
-    return res.redirect(302, postUrl);
-  }
-
-  // From here on we're only ever talking to a crawler — it will read
-  // the tags and never execute the redirect, so this branch no longer
-  // needs to guarantee a working client-side redirect at all.
-  const description = escapeHtml(
-    (post.excerpt || "").replace(/<[^>]+>/g, "").slice(0, 200)
-  );
-  const image = escapeHtml(
-    post.featured_image || `${frontendBase}/assets/images/revit-og-default.png`
-  );
-  const title = escapeHtml(`${post.title} — Revit Systems`);
-  const safePostUrl = escapeHtml(postUrl);
-
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Cache-Control", "public, max-age=3600");
-  return res.send(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>${title}</title>
-  <meta name="description" content="${description}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Revit Systems" />
-  <meta property="og:url" content="${safePostUrl}" />
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${description}" />
-  <meta property="og:image" content="${image}" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${title}" />
-  <meta name="twitter:description" content="${description}" />
-  <meta name="twitter:image" content="${image}" />
-</head>
-<body>
-  <p>${title}</p>
-</body>
-</html>`);
-};
-// =============================================
 // GET /posts/slug/:slug
 // Public endpoint — no auth required.
 // Returns the raw post JSON for a given slug.
 //
 // Why this exists:
-// getPostOGMeta above serves crawlers a static HTML shell, then
-// redirects real users to builders-digest-post.html?slug=xxx. But
-// blog-post.js only ever reads localStorage.selectedPost — it never
+// getPostOGMeta (now in ogMetaController.ts) serves crawlers a static
+// HTML shell, then redirects real users to builders-digest-post.html?slug=xxx.
+// But blog-post.js only ever reads localStorage.selectedPost — it never
 // fetches by slug. So anyone opening a shared link fresh (no prior
 // localStorage, different device, incognito, etc.) landed on "Article
 // not found" even though the post exists. This endpoint lets
@@ -581,7 +432,7 @@ export const getPostOGMeta = async (req: Request, res: Response) => {
 export const fetchPostBySlug = async (req: Request, res: Response) => {
   const { slug } = req.params;
 
-  if (!slug || Array.isArray(slug)) {
+  if (!isValidRouteParam(slug)) {
     return res.status(400).json({ message: "Invalid slug" });
   }
 

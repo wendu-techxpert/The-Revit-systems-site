@@ -1,5 +1,3 @@
-// Updated postRoutes.ts - COMPLETE FILE
-
 import { Router } from "express";
 import {
   createNewPost,
@@ -10,9 +8,11 @@ import {
   removePost,
   scheduleExistingPost,
   createScheduledPost,
-  getPostOGMeta,
   fetchPostBySlug,
 } from "@/controllers/postController.js";
+// CHANGED: getPostOGMeta now lives in its own controller — see
+// ogMetaController.ts for why.
+import { getPostOGMeta } from "@/controllers/ogMetaController.js";
 
 import { authenticate } from "@/middleware/authMiddleware.js";
 

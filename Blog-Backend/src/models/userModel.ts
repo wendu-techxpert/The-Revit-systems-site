@@ -67,7 +67,6 @@ export const findManyUsers = async (filters: {
   const whereClause =
     conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
-  // Track placeholder positions for limit and offset safely
   values.push(limit, offset);
   const limitIdx = idx++;
   const offsetIdx = idx;
@@ -91,6 +90,47 @@ export const findUserById = async (id: string) => {
     [id]
   );
   return result.rows[0];
+};
+
+/**
+ * NEW — narrow lookup used by authMiddleware.ts and refreshController.ts.
+ * Both previously ran their own inline `SELECT status FROM users` /
+ * `SELECT role, status FROM users` against pool directly, duplicating
+ * knowledge of the users table schema outside the model layer (a Law of
+ * Demeter violation — middleware should ask the model for what it needs,
+ * not query the table itself). refreshController needs role too, so this
+ * returns both; callers that only need status just ignore role.
+ */
+export const findUserStatusAndRole = async (
+  id: string
+): Promise<{ role: string; status: string } | undefined> => {
+  const result = await pool.query(
+    "SELECT role, status FROM users WHERE id = $1",
+    [id]
+  );
+  return result.rows[0];
+};
+
+/**
+ * NEW — replaces the raw `SELECT id FROM users WHERE role IN (...)`
+ * queries that were previously duplicated in commentController.ts
+ * (notifyRoles), postController.ts (notifyByRole), and scheduler.ts.
+ * Centralizing this in the model also means `status = 'active'` and the
+ * exclude-self filter only need to be correct in one place.
+ */
+export const findUserIdsByRoles = async (
+  roles: string[],
+  excludeUserId?: string
+): Promise<string[]> => {
+  const placeholders = roles.map((_, i) => `$${i + 1}`).join(", ");
+  const result = await pool.query(
+    `SELECT id FROM users WHERE role IN (${placeholders}) AND status = 'active'`,
+    roles
+  );
+  const rows: { id: string }[] = result.rows;
+  return excludeUserId
+    ? rows.filter((u) => u.id !== excludeUserId).map((u) => u.id)
+    : rows.map((u) => u.id);
 };
 
 export const updateUserStatus = async (userId: string, status: string) => {

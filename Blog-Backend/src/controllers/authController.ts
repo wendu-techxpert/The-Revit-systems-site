@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import crypto from "node:crypto";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { pool } from "@/config/db.js";
 import { sanitize } from "@/utils/sanitize.js";
 import { createSession } from "@/models/sessionModel.js";
 import {
@@ -13,9 +12,37 @@ import {
   updateUserStatus,
   updateUserData,
 } from "@/models/userModel.js";
+import {
+  deleteResetTokensForUser,
+  createResetToken,
+  findResetTokenByUserId,
+} from "@/models/passwordResetTokenModel.js";
 import { recordLogin } from "@/models/loginHistoryModel.js";
 import { sendEmail } from "@/utils/sendEmail.js";
-import { createNotification } from "@/models/notificationModel.js";
+import { notifyActiveAdmins } from "@/services/notificationService.js";
+import { passwordResetEmailHtml } from "@/utils/emailTemplates.js";
+import { FRONTEND_URL } from "@/utils/env.js";
+import { USER_STATUSES, isUserStatus } from "@/utils/constants.js";
+import { pool } from "@/config/db.js";
+
+// CHANGED, file-wide:
+// - password_reset_tokens queries moved into passwordResetTokenModel.ts
+//   (this file previously ran 4 separate raw queries against that table
+//   directly — a whole feature's SQL with no model, and a Law of Demeter
+//   violation).
+// - admin-notification fan-out (register, updateCurrentUser) now goes
+//   through notificationService.notifyActiveAdmins instead of each
+//   function running its own inline `pool.query("... role = 'admin' ...")`.
+// - the password-reset email's HTML now lives in utils/emailTemplates.ts.
+// - FRONTEND_URL fallback now comes from utils/env.ts, so it's the same
+//   value everywhere instead of drifting per-file (this file previously
+//   fell back to "http://localhost:5500", postController.ts fell back to
+//   the production URL, for the same env var).
+// - resetPassword's transaction still does a raw multi-table transaction
+//   (password_hash update + session revocation + token delete) — that's
+//   legitimately transactional business logic, not just a lookup, so it's
+//   left as a direct pool.connect()/BEGIN/COMMIT here rather than forced
+//   into three separate model calls that couldn't share one transaction.
 
 // ============================================
 // 1. REGISTER NEW USER
@@ -50,24 +77,9 @@ export const register = async (req: Request, res: Response) => {
 
     // Notify all active admins that a new user is pending approval.
     // Fire-and-forget — never delay the registration response.
-    (async () => {
-      try {
-        const admins = await pool.query(
-          `SELECT id FROM users WHERE role = 'admin' AND status = 'active'`
-        );
-        await Promise.all(
-          admins.rows.map((a) =>
-            createNotification({
-              userId: a.id,
-              type: "user",
-              message: `New user ${cleanFirstName} ${cleanLastName} (${cleanEmail}) is pending approval.`,
-            })
-          )
-        );
-      } catch (err) {
-        console.error("[register] Failed to create admin notifications:", err);
-      }
-    })();
+    notifyActiveAdmins({
+      message: `New user ${cleanFirstName} ${cleanLastName} (${cleanEmail}) is pending approval.`,
+    });
 
     res
       .status(201)
@@ -188,43 +200,16 @@ export const requestPasswordReset = async (req: Request, res: Response) => {
       .digest("hex");
     const expiresAt = new Date(Date.now() + 3600000); // 1 hour
 
-    await pool.query("DELETE FROM password_reset_tokens WHERE user_id = $1", [
-      user.id,
-    ]);
-    await pool.query(
-      "INSERT INTO password_reset_tokens (user_id, token_hash, expires_at) VALUES ($1, $2, $3)",
-      [user.id, tokenHash, expiresAt]
-    );
-
-    // Use FRONTEND_URL env var so the link works in production.
-    // Falls back to localhost for local dev if the var is not set.
-    const frontendBase = process.env.FRONTEND_URL || "http://localhost:5500";
+    await deleteResetTokensForUser(user.id);
+    await createResetToken(user.id, tokenHash, expiresAt);
 
     // token and id go in the query string so reset-password.html can read them
-    const resetLink = `${frontendBase}/pages/reset-password.html?token=${rawToken}&id=${user.id}`;
+    const resetLink = `${FRONTEND_URL}/pages/reset-password.html?token=${rawToken}&id=${user.id}`;
 
     await sendEmail({
       email: user.email,
       subject: "Password Reset Request — Revit Systems",
-      message: `
-        <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;border:1px solid #eee;border-radius:8px;">
-          <h2 style="color:#d17609;">Password Reset</h2>
-          <p>You requested a password reset for your Revit Systems account.</p>
-          <p>Click the button below to set a new password. This link is valid for <strong>1 hour</strong>.</p>
-          <p style="margin:32px 0;">
-            <a href="${resetLink}"
-               style="background:#d17609;color:#fff;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600;display:inline-block;">
-              Reset Password
-            </a>
-          </p>
-          <p style="font-size:0.85rem;color:#666;">
-            If you did not request this, you can safely ignore this email.<br/>
-            The link will expire in 1 hour.
-          </p>
-          <hr style="border:none;border-top:1px solid #eee;margin:24px 0;"/>
-          <p style="font-size:0.75rem;color:#aaa;">Revit Systems · revitsystems@gmail.com</p>
-        </div>
-      `,
+      message: passwordResetEmailHtml(resetLink),
     });
 
     res.json(genericResponse);
@@ -253,11 +238,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
   let tokenRecord;
   try {
-    const tokenResult = await pool.query(
-      "SELECT * FROM password_reset_tokens WHERE user_id = $1",
-      [userId]
-    );
-    tokenRecord = tokenResult.rows[0];
+    tokenRecord = await findResetTokenByUserId(userId);
 
     if (!tokenRecord) {
       return res
@@ -266,9 +247,7 @@ export const resetPassword = async (req: Request, res: Response) => {
     }
 
     if (new Date(tokenRecord.expires_at) < new Date()) {
-      await pool.query("DELETE FROM password_reset_tokens WHERE user_id = $1", [
-        userId,
-      ]);
+      await deleteResetTokensForUser(userId);
       return res.status(400).json({ message: "Reset link has expired." });
     }
   } catch (error) {
@@ -285,6 +264,10 @@ export const resetPassword = async (req: Request, res: Response) => {
 
   const hashedPassword = await bcrypt.hash(newPassword, 10);
 
+  // This step is a genuine multi-table transaction (password update +
+  // session revocation + token cleanup must succeed or fail together), so
+  // it stays as a direct pool.connect()/BEGIN/COMMIT rather than being
+  // split across three model calls that couldn't share the transaction.
   let client;
   try {
     client = await pool.connect();
@@ -330,9 +313,10 @@ export const resetPassword = async (req: Request, res: Response) => {
 export const changeUserStatus = async (req: Request, res: Response) => {
   const { userId, status } = req.body;
 
-  const validStatuses = ["active", "suspended", "pending"];
-  if (!validStatuses.includes(status)) {
-    return res.status(400).json({ message: "Invalid status type" });
+  if (!isUserStatus(status)) {
+    return res.status(400).json({
+      message: `Invalid status type. Must be one of: ${USER_STATUSES.join(", ")}`,
+    });
   }
 
   try {
@@ -385,29 +369,6 @@ export const getCurrentUser = async (req: Request, res: Response) => {
 // step would be an account-takeover risk, so only first/last name are
 // updatable through this route.
 // ============================================
-const notifyAdminsOfProfileChange = async (
-  userId: string,
-  fullName: string
-): Promise<void> => {
-  try {
-    const admins = await pool.query(
-      `SELECT id FROM users WHERE role = 'admin' AND status = 'active' AND id != $1`,
-      [userId]
-    );
-    await Promise.all(
-      admins.rows.map((a) =>
-        createNotification({
-          userId: a.id,
-          type: "user",
-          message: `${fullName} updated their profile information.`,
-        })
-      )
-    );
-  } catch (err) {
-    console.error("[updateCurrentUser] Failed to notify admins:", err);
-  }
-};
-
 export const updateCurrentUser = async (req: Request, res: Response) => {
   const { firstName, lastName } = req.body;
 
@@ -445,10 +406,10 @@ export const updateCurrentUser = async (req: Request, res: Response) => {
 
     // Fire-and-forget — every role (admin, editor, author) triggers this,
     // so admins always know when any account's info changes.
-    notifyAdminsOfProfileChange(
-      updated.id,
-      `${updated.first_name} ${updated.last_name}`
-    );
+    notifyActiveAdmins({
+      message: `${updated.first_name} ${updated.last_name} updated their profile information.`,
+      excludeUserId: updated.id,
+    });
 
     res.json(updated);
   } catch (error) {

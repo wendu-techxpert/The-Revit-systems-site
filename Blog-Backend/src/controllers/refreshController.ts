@@ -5,7 +5,7 @@ import {
   findSessionByTokenId,
   revokeSessionByTokenId,
 } from "@/models/sessionModel.js";
-import { pool } from "@/config/db.js";
+import { findUserStatusAndRole } from "@/models/userModel.js";
 
 export const refresh = async (req: Request, res: Response) => {
   const refreshToken = req.cookies.refreshToken;
@@ -40,12 +40,11 @@ export const refresh = async (req: Request, res: Response) => {
       return res.status(401).json({ message: "Invalid session" });
     }
 
-    // Always fetch live role + status so changes take effect within 15 minutes
-    const userResult = await pool.query(
-      "SELECT role, status FROM users WHERE id = $1",
-      [session.user_id]
-    );
-    const user = userResult.rows[0];
+    // Always fetch live role + status so changes take effect within 15 minutes.
+    // CHANGED: previously ran `pool.query("SELECT role, status FROM users ...")`
+    // directly — the same shape of query authMiddleware.ts had its own copy
+    // of. Both now share one model function.
+    const user = await findUserStatusAndRole(session.user_id);
 
     if (!user) {
       await revokeSessionByTokenId(tokenId);

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { findSessionByTokenId } from "@/models/sessionModel.js";
-import { pool } from "@/config/db.js";
+import { findUserStatusAndRole } from "@/models/userModel.js";
 
 export const authenticate = async (
   req: Request,
@@ -46,11 +46,11 @@ export const authenticate = async (
     // revoked can keep making authenticated requests until their JWT expires.
     // changeUserStatus in authController.ts updates the users table but does
     // not call revokeAllSessions, so this check is the only safety net.
-    const userResult = await pool.query(
-      "SELECT status FROM users WHERE id = $1",
-      [decoded.id]
-    );
-    const user = userResult.rows[0];
+    //
+    // CHANGED: previously ran `pool.query("SELECT status FROM users ...")`
+    // directly, duplicating table/column knowledge that refreshController.ts
+    // also had its own copy of. Now both go through the same model function.
+    const user = await findUserStatusAndRole(decoded.id);
 
     if (!user) {
       return res.status(401).json({ message: "User no longer exists" });

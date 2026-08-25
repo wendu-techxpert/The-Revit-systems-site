@@ -1,42 +1,40 @@
 import { Request, Response } from "express";
 import * as UserModel from "@/models/userModel.js";
+import { parsePagination, hasMorePage } from "@/utils/pagination.js";
+import { isValidRouteParam } from "@/utils/validate.js";
+import { USER_STATUSES, USER_ROLES, isUserStatus, isUserRole } from "@/utils/constants.js";
 
 // ── GET /users ───────────────────────────────────────────────
 export const fetchAllUsers = async (req: Request, res: Response) => {
-  const limit = Number(req.query.limit) || 20;
-  const offset = Number(req.query.offset) || 0;
+  const { limit, offset } = parsePagination(req);
   const status = req.query.status as string | undefined;
   const role = req.query.role as string | undefined;
 
-  const validStatuses = ["active", "suspended", "pending"];
-  const validRoles = ["admin", "editor", "author"];
-
-  if (status && !validStatuses.includes(status)) {
-    return res.status(400).json({ message: "Invalid status filter" });
+  if (status && !isUserStatus(status)) {
+    return res.status(400).json({
+      message: `Invalid status filter. Must be one of: ${USER_STATUSES.join(", ")}`,
+    });
   }
-  if (role && !validRoles.includes(role)) {
-    return res.status(400).json({ message: "Invalid role filter" });
+  if (role && !isUserRole(role)) {
+    return res.status(400).json({
+      message: `Invalid role filter. Must be one of: ${USER_ROLES.join(", ")}`,
+    });
   }
 
-  // userController.ts — replace lines 22-27
   try {
     const filters: {
       limit: number;
       offset: number;
       status?: string;
       role?: string;
-    } = {
-      limit,
-      offset,
-    };
+    } = { limit, offset };
 
     if (status) filters.status = status;
     if (role) filters.role = role;
 
     const users = await UserModel.findManyUsers(filters);
-    const hasMore = users.length === limit;
 
-    res.json({ users, limit, offset, hasMore });
+    res.json({ users, limit, offset, hasMore: hasMorePage(users.length, limit) });
   } catch (error) {
     console.error("fetchAllUsers error:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -47,8 +45,7 @@ export const fetchAllUsers = async (req: Request, res: Response) => {
 export const fetchUserById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  // Type Guard: Ensures TypeScript knows 'id' is definitely a string
-  if (!id || typeof id !== "string") {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid user ID format" });
   }
 
@@ -68,8 +65,7 @@ export const fetchUserById = async (req: Request, res: Response) => {
 export const editUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  // Type Guard
-  if (!id || typeof id !== "string") {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid user ID format" });
   }
 
@@ -80,13 +76,11 @@ export const editUser = async (req: Request, res: Response) => {
   }
 
   const { firstName, lastName, role, status } = req.body;
-  const validRoles = ["admin", "editor", "author"];
-  const validStatuses = ["active", "suspended", "pending"];
 
-  if (role && !validRoles.includes(role)) {
+  if (role && !isUserRole(role)) {
     return res.status(400).json({ message: "Invalid role" });
   }
-  if (status && !validStatuses.includes(status)) {
+  if (status && !isUserStatus(status)) {
     return res.status(400).json({ message: "Invalid status" });
   }
 
@@ -115,8 +109,7 @@ export const editUser = async (req: Request, res: Response) => {
 export const removeUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  // Type Guard: This completely clears up the red squiggly line!
-  if (!id || typeof id !== "string") {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid user ID format" });
   }
 

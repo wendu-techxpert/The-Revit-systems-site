@@ -331,6 +331,23 @@ export const publishDueScheduledPosts = async (): Promise<
 };
 
 // =============================================
+// NEW — narrow lookup used by commentController.moderateComment and
+// postController.publishExistingPost/removePost, which previously ran
+// their own inline `SELECT author_id, title FROM posts WHERE id = $1`
+// directly against pool (a Law of Demeter violation — the model layer
+// exists precisely so callers don't need to know posts' column names).
+// =============================================
+export const getPostAuthorAndTitle = async (
+  id: string
+): Promise<{ author_id: string | null; title: string } | undefined> => {
+  const result = await pool.query(
+    `SELECT author_id, title FROM posts WHERE id = $1`,
+    [id]
+  );
+  return result.rows[0];
+};
+
+// =============================================
 // Get a single published post by its slug
 // Used by the OG meta tag endpoint so crawlers
 // get correct og:title/og:image/og:description

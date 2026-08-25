@@ -12,6 +12,8 @@ import {
   CreateCategoryInput,
   UpdateCategoryInput,
 } from "@/types/category.types.js";
+import { isValidRouteParam } from "@/utils/validate.js";
+import { sanitize } from "@/utils/sanitize.js";
 
 // ============================================
 // GET /categories
@@ -35,7 +37,7 @@ export const fetchAllCategories = async (req: Request, res: Response) => {
 export const fetchCategoryById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid category ID" });
   }
 
@@ -59,7 +61,7 @@ export const fetchCategoryById = async (req: Request, res: Response) => {
 export const fetchCategoryBySlug = async (req: Request, res: Response) => {
   const { slug } = req.params;
 
-  if (!slug || Array.isArray(slug)) {
+  if (!isValidRouteParam(slug)) {
     return res.status(400).json({ message: "Invalid slug" });
   }
 
@@ -83,7 +85,7 @@ export const fetchCategoryBySlug = async (req: Request, res: Response) => {
 export const fetchChildCategories = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid category ID" });
   }
 
@@ -106,14 +108,17 @@ export const addCategory = async (req: Request, res: Response) => {
     return res.status(400).json({ message: "Category name is required" });
   }
 
-  // Build the input object explicitly — only include optional fields if they have a real value
-  const input: CreateCategoryInput = { name: name.trim() };
+  // Build the input object explicitly — only include optional fields if they have a real value.
+  // CHANGED: name/description are user-editable admin text — sanitized here
+  // the same way authController.ts already sanitizes first/last name,
+  // instead of being the one controller that skipped it.
+  const input: CreateCategoryInput = { name: sanitize(name.trim()) };
 
   if (typeof slug === "string" && slug.trim().length > 0) {
     input.slug = slug.trim();
   }
   if (typeof description === "string" && description.trim().length > 0) {
-    input.description = description.trim();
+    input.description = sanitize(description.trim());
   }
   if (typeof parentId === "string" && parentId.trim().length > 0) {
     input.parentId = parentId.trim();
@@ -139,10 +144,17 @@ export const addCategory = async (req: Request, res: Response) => {
 export const editCategory = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid category ID" });
   }
   const updates: UpdateCategoryInput = req.body;
+
+  if (typeof updates.name === "string") {
+    updates.name = sanitize(updates.name);
+  }
+  if (typeof updates.description === "string") {
+    updates.description = sanitize(updates.description);
+  }
 
   // Prevent a category from being set as its own parent
   if (updates.parentId === id) {
@@ -179,7 +191,7 @@ export const editCategory = async (req: Request, res: Response) => {
 export const removeCategory = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid category ID" });
   }
 

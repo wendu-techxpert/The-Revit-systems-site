@@ -1,7 +1,6 @@
 import cron from "node-cron";
 import { publishDueScheduledPosts } from "@/models/postModel.js";
-import { createNotification } from "@/models/notificationModel.js";
-import { pool } from "@/config/db.js";
+import { notifyRoles } from "@/services/notificationService.js";
 
 // ============================================
 // POST SCHEDULER
@@ -15,6 +14,12 @@ import { pool } from "@/config/db.js";
 // The task is non-blocking — if the DB call
 // fails the error is caught and logged so the
 // cron process itself never crashes.
+//
+// CHANGED: previously ran its own inline
+// `SELECT id FROM users WHERE role IN ('admin','editor')` and its own
+// Promise.all fan-out — a third copy of logic that also lived in
+// commentController.ts and postController.ts. Now delegates to
+// notificationService.notifyRoles, which is the single implementation.
 // ============================================
 
 export const startScheduler = (): void => {
@@ -39,33 +44,17 @@ export const startScheduler = (): void => {
       });
 
       // Notify all active admins and editors for each post that went live.
-      // Fire-and-forget inside the cron — a notification failure should
-      // never prevent the scheduler from continuing.
-      try {
-        const staffResult = await pool.query(
-          `SELECT id FROM users WHERE role IN ('admin', 'editor') AND status = 'active'`
-        );
-        const staffIds: string[] = staffResult.rows.map(
-          (r: { id: string }) => r.id
-        );
-
-        await Promise.all(
-          published.flatMap((post) =>
-            staffIds.map((userId) =>
-              createNotification({
-                userId,
-                type: "post",
-                message: `Scheduled post "${post.title}" has been published automatically.`,
-              })
-            )
-          )
-        );
-      } catch (notifErr) {
-        console.error(
-          `[Scheduler] ${new Date().toISOString()} — Failed to create publish notifications:`,
-          notifErr
-        );
-      }
+      // Fire-and-forget — a notification failure should never prevent the
+      // scheduler from continuing.
+      await Promise.all(
+        published.map((post) =>
+          notifyRoles({
+            roles: ["admin", "editor"],
+            type: "post",
+            message: `Scheduled post "${post.title}" has been published automatically.`,
+          })
+        )
+      );
     } catch (error) {
       // Log but don't rethrow — a DB hiccup should never kill the cron task
       console.error(

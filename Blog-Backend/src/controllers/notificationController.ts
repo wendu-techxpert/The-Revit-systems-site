@@ -9,19 +9,25 @@ import {
   deleteAllNotificationsForUser,
 } from "@/models/notificationModel.js";
 import { CreateNotificationInput } from "@/types/notification.types.js";
+import { parsePagination, hasMorePage } from "@/utils/pagination.js";
+import { isValidRouteParam } from "@/utils/validate.js";
+import { pickDefined } from "@/utils/pickDefined.js";
 
 // ============================================
 // GET /notifications
 // ============================================
 export const fetchMyNotifications = async (req: Request, res: Response) => {
   const userId = req.user!.id;
-  const limit = Number(req.query.limit) || 20;
-  const offset = Number(req.query.offset) || 0;
+  const { limit, offset } = parsePagination(req);
 
   try {
     const notifications = await getNotificationsByUserId(userId, limit, offset);
-    const hasMore = notifications.length === limit;
-    res.json({ notifications, limit, offset, hasMore });
+    res.json({
+      notifications,
+      limit,
+      offset,
+      hasMore: hasMorePage(notifications.length, limit),
+    });
   } catch (error) {
     console.error("fetchMyNotifications error:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -61,12 +67,12 @@ export const sendNotification = async (req: Request, res: Response) => {
     return res.status(400).json({ message: "message is required" });
   }
 
-  // Build input incrementally to satisfy exactOptionalPropertyTypes
-  const input: CreateNotificationInput = { userId, type, message };
-
-  if (typeof link === "string" && link.trim().length > 0) {
-    input.link = link.trim();
-  }
+  const input: CreateNotificationInput = {
+    userId,
+    type,
+    message,
+    ...pickDefined({ link }),
+  };
 
   try {
     const notification = await createNotification(input);
@@ -84,7 +90,7 @@ export const markOneAsRead = async (req: Request, res: Response) => {
   const { id } = req.params;
   const userId = req.user!.id;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid notification ID" });
   }
 
@@ -124,7 +130,7 @@ export const removeNotification = async (req: Request, res: Response) => {
   const { id } = req.params;
   const userId = req.user!.id;
 
-  if (!id || Array.isArray(id)) {
+  if (!isValidRouteParam(id)) {
     return res.status(400).json({ message: "Invalid notification ID" });
   }
 

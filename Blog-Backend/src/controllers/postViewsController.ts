@@ -6,6 +6,9 @@ import {
   getReferrerStatsByPostId,
 } from "@/models/postViewsModel.js";
 import { DeviceType, RecordPostViewInput } from "@/types/analytics.types.js";
+import { parsePagination, hasMorePage } from "@/utils/pagination.js";
+import { isValidRouteParam } from "@/utils/validate.js";
+import { pickDefined } from "@/utils/pickDefined.js";
 
 const VALID_DEVICE_TYPES: DeviceType[] = ["desktop", "mobile", "tablet"];
 
@@ -25,22 +28,16 @@ const resolveDeviceType = (raw: unknown): DeviceType | undefined => {
 export const trackPostView = async (req: Request, res: Response) => {
   const { postId } = req.params;
 
-  if (!postId || Array.isArray(postId)) {
+  if (!isValidRouteParam(postId)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
   const { visitorId, deviceType, sessionDuration, viewId } = req.body;
 
-  // Build input incrementally to satisfy exactOptionalPropertyTypes
-  const input: RecordPostViewInput = { postId };
-
-  if (typeof viewId === "string" && viewId.trim().length > 0) {
-    input.viewId = viewId.trim();
-  }
-
-  if (typeof visitorId === "string" && visitorId.trim().length > 0) {
-    input.visitorId = visitorId.trim();
-  }
+  const input: RecordPostViewInput = {
+    postId,
+    ...pickDefined({ viewId, visitorId }),
+  };
 
   if (typeof req.ip === "string") {
     input.ipAddress = req.ip;
@@ -78,17 +75,15 @@ export const trackPostView = async (req: Request, res: Response) => {
 export const fetchPostViews = async (req: Request, res: Response) => {
   const { postId } = req.params;
 
-  if (!postId || Array.isArray(postId)) {
+  if (!isValidRouteParam(postId)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
-  const limit = Number(req.query.limit) || 50;
-  const offset = Number(req.query.offset) || 0;
+  const { limit, offset } = parsePagination(req, 50);
 
   try {
     const views = await getPostViewsByPostId(postId, limit, offset);
-    const hasMore = views.length === limit;
-    res.json({ views, limit, offset, hasMore });
+    res.json({ views, limit, offset, hasMore: hasMorePage(views.length, limit) });
   } catch (error) {
     console.error("fetchPostViews error:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -101,7 +96,7 @@ export const fetchPostViews = async (req: Request, res: Response) => {
 export const fetchPostViewSummary = async (req: Request, res: Response) => {
   const { postId } = req.params;
 
-  if (!postId || Array.isArray(postId)) {
+  if (!isValidRouteParam(postId)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
@@ -120,7 +115,7 @@ export const fetchPostViewSummary = async (req: Request, res: Response) => {
 export const fetchReferrerStats = async (req: Request, res: Response) => {
   const { postId } = req.params;
 
-  if (!postId || Array.isArray(postId)) {
+  if (!isValidRouteParam(postId)) {
     return res.status(400).json({ message: "Invalid post ID" });
   }
 
