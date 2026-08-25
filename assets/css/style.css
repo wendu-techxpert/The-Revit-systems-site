@@ -1,4 +1,4 @@
-@import url("../assets/css/root-variables.css");
+@import url("./root-variables.css");
 /* Reset default margin and padding, set base font */
 * {
   padding: 0;

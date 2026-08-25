@@ -10,7 +10,7 @@ header {
   top: 0px;
   font-family: var(--font-sans);
   left: 0%;
-  z-index: 3;
+  z-index: 20;
   background-color: var(--header-bg);
   backdrop-filter: blur(10px);
 }
